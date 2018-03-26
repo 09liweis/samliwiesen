@@ -21,7 +21,7 @@ exports.todo_new = function(req, res) {
 };
 
 exports.todo_detail = function(req, res) {
-    Todo.find(req.params.id, function(err, todo) {
+    Todo.findById(req.params.id, function(err, todo) {
         if (err) {
             res.send(err);
         }
@@ -31,4 +31,4 @@ exports.todo_detail = function(req, res) {
 
 exports.todo_update = function(req, res) {
     
-}
+};

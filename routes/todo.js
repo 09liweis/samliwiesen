@@ -7,4 +7,7 @@ router.route('/')
 .get(TodoController.todo_list)
 .post(TodoController.todo_new);
 
+router.route('/:id')
+.get(TodoController.todo_detail);
+
 module.exports = router;
