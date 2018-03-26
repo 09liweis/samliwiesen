@@ -9,7 +9,7 @@ port = process.env.PORT || 3000;
 
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/Tododb'); 
+mongoose.connect('mongodb://localhost/portfolio'); 
 
 
 app.use(bodyParser.urlencoded({extended: true}));
