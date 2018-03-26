@@ -19,3 +19,16 @@ exports.todo_new = function(req, res) {
         res.json(todo);
     });
 };
+
+exports.todo_detail = function(req, res) {
+    Todo.find(req.params.id, function(err, todo) {
+        if (err) {
+            res.send(err);
+        }
+        res.json(todo);
+    });
+};
+
+exports.todo_update = function(req, res) {
+    
+}
