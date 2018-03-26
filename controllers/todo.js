@@ -1,7 +1,8 @@
 var mongoose = require('mongoose'),
-Todo = mongoose.model('Todo');
+Todo = require('../models/todo');
 
 exports.todo_list = function(req, res) {
+    console.log(req.body);
     Todo.find({}, function(err, todos) {
         if (err) {
             res.send(err);
