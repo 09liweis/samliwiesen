@@ -15,10 +15,8 @@ var TodoSchema = new Schema({
         default: Date.now
     },
     status: {
-        type: {
-            type: String,
-            default: 'pending'
-        }
+        type: String,
+        default: 'pending'
     }
 });
 
