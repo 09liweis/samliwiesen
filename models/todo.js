@@ -29,6 +29,7 @@ TodoSchema.pre('save', function(next) {
     if (!this.created_at) {
         this.created_at = currentDate;
     }
+    next();
 });
 
 module.exports = mongoose.model('Todo', TodoSchema);
