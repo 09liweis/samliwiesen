@@ -10,12 +10,24 @@ var TodoSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    update_at: {
+        type: Date,
+        default: Date.now
+    },
     status: {
         type: [{
             type: String,
             enum: ['pending', 'ongoing', 'completed']
         }],
         default: ['pending']
+    }
+});
+
+TodoSchema.pre('save', function(next) {
+    const currentDate = new Date();
+    this.update_at = currentDate;
+    if (!this.created_at) {
+        this.created_at = currentDate;
     }
 });
 
