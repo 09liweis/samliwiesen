@@ -1,0 +1,26 @@
+{
+  "name": "samliweisen_portfolio_webserver",
+  "version": "1.0.0",
+  "description": "This is web service for portfolio of Sam",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://09liweis:kanamemadoka2018@github.com/09liweis/samliwiesen.git"
+  },
+  "keywords": [
+    "API",
+    "Restfull"
+  ],
+  "author": "Sam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/09liweis/samliwiesen/issues"
+  },
+  "homepage": "https://github.com/09liweis/samliwiesen#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
