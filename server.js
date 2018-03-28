@@ -16,11 +16,10 @@ if (app.settings.env == 'development') {
 }
 
 app.use(function (req, res, next) {
+    const origins = ['https://porfolio-a09liweis.c9users.io', 'https://samliweisen.github.io'];
     // Website you wish to allow to connect
-    if (app.settings.env == 'development') {
-        res.setHeader('Access-Control-Allow-Origin', 'https://porfolio-a09liweis.c9users.io');
-    } else {
-        res.setHeader('Access-Control-Allow-Origin', 'https://samliweisen.github.io');
+    if (origins.indexOf(req.headers.origin) > -1) {
+        res.setHeader('Access-Control-Allow-Origin', req.headers.origin);   
     }
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
