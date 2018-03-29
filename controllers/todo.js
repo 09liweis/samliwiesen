@@ -30,7 +30,9 @@ exports.todo_detail = function(req, res) {
 };
 
 exports.todo_update = function(req, res) {
-    Todo.findOneAndUpdate({_id: req.params.id}, req.body, {upsert: true}, function(err, todo) {
+    let updateTodo = req.body;
+    updateTodo.update_at = new Date();
+    Todo.findOneAndUpdate({_id: req.params.id}, updateTodo, {upsert: true}, function(err, todo) {
         if (err) {
             res.send(err);
         }

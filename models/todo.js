@@ -29,9 +29,4 @@ TodoSchema.pre('save', function(next) {
     next();
 });
 
-TodoSchema.pre('findOneAndUpdate', function(next) {
-    this.update_at = new Date();
-    next();
-});
-
 module.exports = mongoose.model('Todo', TodoSchema);
