@@ -8,6 +8,7 @@ router.route('/')
 .post(TodoController.todo_new);
 
 router.route('/:id')
-.get(TodoController.todo_detail);
+.get(TodoController.todo_detail)
+.put(TodoController.todo_update);
 
 module.exports = router;
