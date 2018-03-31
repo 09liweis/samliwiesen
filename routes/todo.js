@@ -9,6 +9,7 @@ router.route('/')
 
 router.route('/:id')
 .get(TodoController.todo_detail)
-.put(TodoController.todo_update);
+.put(TodoController.todo_update)
+.delete(TodoController.todo_delete);
 
 module.exports = router;
