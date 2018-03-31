@@ -3,6 +3,7 @@ app = express(),
 bodyParser = require('body-parser'),
 mongoose = require('mongoose'),
 
+indexRoute = require('./routes/index'),
 todoRoute = require('./routes/todo'),
 
 port = process.env.PORT || 3000;
@@ -35,6 +36,7 @@ app.use(function (req, res, next) {
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+app.use('/', indexRoute);
 app.use('/api/todos', todoRoute);
 
 app.listen(port);
