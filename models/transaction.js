@@ -6,6 +6,10 @@ const TransactionSchema = new Schema({
         type: String,
         required: 'Title is required for transaction'
     },
+    price: {
+        type: Number,
+        required: 'Price is required for transaction'
+    },
     created_at: {
         type: Date,
         default: Date.now
@@ -15,3 +19,14 @@ const TransactionSchema = new Schema({
         default: Date.now
     }
 });
+
+TransactionSchema.pre('save', function(next) {
+    const currentDate = new Date();
+    this.update_at = currentDate;
+    if (!this.created_at) {
+        this.created_at = currentDate;
+    }
+    next();
+});
+
+module.exports = mongoose.model('Transaction', TransactionSchema);
