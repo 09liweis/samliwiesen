@@ -10,6 +10,10 @@ const TransactionSchema = new Schema({
         type: Number,
         required: 'Price is required for transaction'
     },
+    date: {
+        type: Date,
+        required: 'Date is required for transaction'
+    },
     created_at: {
         type: Date,
         default: Date.now
