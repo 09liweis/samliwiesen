@@ -14,6 +14,7 @@ const TransactionSchema = new Schema({
         type: Date,
         required: 'Date is required for transaction'
     },
+    place: String,
     created_at: {
         type: Date,
         default: Date.now
