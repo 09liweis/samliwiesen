@@ -11,7 +11,7 @@ const TransactionSchema = new Schema({
         required: 'Price is required for transaction'
     },
     date: {
-        type: Date,
+        type: String,
         required: 'Date is required for transaction'
     },
     place: String,
