@@ -8,6 +8,7 @@ router.route('/')
 .post(TransactionController.transaction_new);
 
 router.route('/:id')
-.put(TransactionController.transaction_update);
+.put(TransactionController.transaction_update)
+.delete(TransactionController.transaction_delete);
 
 module.exports = router;
