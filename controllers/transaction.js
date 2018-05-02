@@ -23,6 +23,13 @@ exports.transaction_update = function(req, res) {
     });
 };
 
+exports.transaction_delete = function(req, res) {
+    Transaction.remove({_id: req.params.id}, function(err) {
+        handleError(res, err);
+        res.json('ok');
+    });
+};
+
 function handleError(res, err) {
     if (err) {
         res.send(err);
