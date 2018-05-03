@@ -1,6 +1,6 @@
 {
   "name": "samliweisen_portfolio_webserver",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "This is web service for portfolio of Sam",
   "main": "index.js",
   "scripts": {
