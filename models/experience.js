@@ -4,6 +4,8 @@ var Schema = mongoose.Schema;
 var ExperienceSchema = new Schema({
     title: String,
     company: String,
+    start_date: String,
+    end_date: String,
     duty: [{
         type: String
     }],
