@@ -6,6 +6,7 @@ mongoose = require('mongoose'),
 indexRoute = require('./routes/index'),
 todoRoute = require('./routes/todo'),
 transactionRoute = require('./routes/transaction'),
+experienceRoute = require('./routes/experience'),
 
 port = process.env.PORT || 3000;
 
@@ -40,5 +41,6 @@ app.use(bodyParser.json());
 app.use('/', indexRoute);
 app.use('/api/todos', todoRoute);
 app.use('/api/transactions', transactionRoute);
+app.use('/api/experiences', experienceRoute);
 
 app.listen(port);
