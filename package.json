@@ -4,12 +4,11 @@
   "version": "3.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "nodemon server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
-    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
