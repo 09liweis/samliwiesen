@@ -15,7 +15,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
     RouterModule.forRoot([
       {
         path: '',
-        component: AppComponent
+        component: HomepageComponent
       }
     ])
   ],
