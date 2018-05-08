@@ -2,7 +2,7 @@
 
 Run on Cloud9
 nvm use 10
-ng serve --host 0.0.0.0 --port 8080 --disable-host-check
+npm run c9
 
 Tech Stack: Nodejs, ExpressJs, MongoDB, Angular 6 for Front End CMS
 
