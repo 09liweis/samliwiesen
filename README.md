@@ -1,6 +1,10 @@
 # Portfolio Web Service For Sam
 
-Tech Stack: Nodejs, ExpressJs, MongoDB
+Run on Cloud9
+nvm use 10
+ng serve --host 0.0.0.0 --port 8080 --disable-host-check
+
+Tech Stack: Nodejs, ExpressJs, MongoDB, Angular 6 for Front End CMS
 
 ## Exist Feature
 
