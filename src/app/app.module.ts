@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import {MatCardModule} from '@angular/material/card';
+
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 
@@ -11,6 +13,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
     HomepageComponent
   ],
   imports: [
+    MatCardModule,
     BrowserModule,
     RouterModule.forRoot([
       {
