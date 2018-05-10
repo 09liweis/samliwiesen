@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 
 import {MatCardModule, MatGridListModule} from '@angular/material';
 
+//import { ProjectService } from './services/project.service';
+
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 
@@ -25,7 +27,9 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
       }
     ])
   ],
-  providers: [],
+  providers: [
+    //ProjectService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
