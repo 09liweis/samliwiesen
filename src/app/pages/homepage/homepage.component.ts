@@ -14,9 +14,9 @@ export class HomepageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.projectService.getList().subscribe(projects => {
-      console.log(projects);
-    })
+    // this.projectService.getList().subscribe(projects => {
+    //   console.log(projects);
+    // })
   }
 
 }
