@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ProjectService } from '../../services/project.service';
+import { ExperienceService } from '../../services/experience.service';
 
 @Component({
   selector: 'app-homepage',
@@ -10,13 +11,14 @@ import { ProjectService } from '../../services/project.service';
 export class HomepageComponent implements OnInit {
 
   constructor(
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private experienceService: ExperienceService
   ) { }
 
   ngOnInit() {
-    // this.projectService.getList().subscribe(projects => {
-    //   console.log(projects);
-    // })
+    this.experienceService.getList().subscribe(exs => {
+      console.log(exs);
+    })
   }
 
 }
