@@ -27,6 +27,10 @@ import { ExperienceFormComponent } from './forms/experience-form/experience-form
       {
         path: '',
         component: HomepageComponent
+      },
+      {
+        path: 'experiences/:id',
+        component: ExperienceFormComponent
       }
     ])
   ],
