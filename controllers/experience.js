@@ -7,6 +7,13 @@ exports.experience_list = function(req, res) {
     });
 };
 
+exports.experience_detail = function(req, res) {
+    Experience.findById(req.params._id, function(err, experience) {
+        handleError(res, err);
+        res.json(experience);
+    });
+};
+
 exports.experience_new = function(req, res) {
     const newExperience = new Experience(req.body);
     newExperience.save(function(err, experience) {

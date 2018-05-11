@@ -13,11 +13,15 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ExperienceService {
-  private api = 'https://samliweisen.herokuapp.com/api/experiences';
+  private api = 'https://samliweisen.herokuapp.com/api/experiences/';
   constructor(private http: HttpClient) { }
   
   getList(): Observable<any> {
     return this.http.get(this.api);
+  }
+  
+  getDetail(id: string): Observable<any> {
+    return this.http.get(this.api + id);
   }
   
   add(experience: Experience): Observable<any> {
