@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import {MatCardModule, MatGridListModule} from '@angular/material';
+import {MatCardModule, MatGridListModule, MatFormFieldModule} from '@angular/material';
 
 //import { ProjectService } from './services/project.service';
 import { ExperienceService } from './services/experience.service';
@@ -21,6 +21,7 @@ import { ExperienceFormComponent } from './forms/experience-form/experience-form
   imports: [
     MatCardModule,
     MatGridListModule,
+    MatFormFieldModule,
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot([
