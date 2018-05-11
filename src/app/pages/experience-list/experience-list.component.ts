@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ExperienceService } from '../../services/experience.service';
+
 @Component({
   selector: 'app-experience-list',
   templateUrl: './experience-list.component.html',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExperienceListComponent implements OnInit {
 
-  constructor() { }
+  public experiences;
+  constructor(private experienceService: ExperienceService) { }
 
   ngOnInit() {
+    this.experienceService.getList().subscribe(exs => {
+      this.experiences = exs;
+    })
   }
 
 }
