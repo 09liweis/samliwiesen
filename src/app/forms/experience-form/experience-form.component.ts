@@ -10,7 +10,14 @@ import { Experience } from '../../models/experience';
 })
 export class ExperienceFormComponent implements OnInit {
 
-  public experience: Experience;
+  public experience: Experience = {
+    _id: '',
+    title: '',
+    company: '',
+    start_date: '',
+    end_date: '',
+    duty: []
+  };
   constructor(private experienceService: ExperienceService) { }
 
   ngOnInit() {
