@@ -10,6 +10,7 @@ import { ExperienceService } from '../../services/experience.service';
 })
 export class HomepageComponent implements OnInit {
   public experiences;
+  public experience;
 
   constructor(
     private projectService: ProjectService,
@@ -21,6 +22,11 @@ export class HomepageComponent implements OnInit {
       console.log(exs);
       this.experiences = exs;
     })
+  }
+  add() {
+    this.experienceService.add(this.experience).subscribe(ex => {
+      
+    });
   }
 
 }
