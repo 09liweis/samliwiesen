@@ -3,7 +3,7 @@
     <mat-grid-list cols="4">
         <mat-card>
             <h3>Experiences</h3>
-            <h3>{{experiences.length}}</h3>
+            <h3>{{experiences ? experiences.length : '0'}}</h3>
             <a routerLink="/experiences/new">Add New</a>
         </mat-card>
         <mat-card>

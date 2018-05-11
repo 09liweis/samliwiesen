@@ -13,12 +13,14 @@ import { ExperienceService } from './services/experience.service';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { ExperienceFormComponent } from './forms/experience-form/experience-form.component';
+import { ExperienceListComponent } from './pages/experience-list/experience-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
-    ExperienceFormComponent
+    ExperienceFormComponent,
+    ExperienceListComponent
   ],
   imports: [
     MatCardModule,
@@ -34,6 +36,10 @@ import { ExperienceFormComponent } from './forms/experience-form/experience-form
       {
         path: '',
         component: HomepageComponent
+      },
+      {
+        path: 'experiences',
+        component: ExperienceListComponent
       },
       {
         path: 'experiences/:id',
