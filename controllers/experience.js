@@ -8,7 +8,7 @@ exports.experience_list = function(req, res) {
 };
 
 exports.experience_detail = function(req, res) {
-    Experience.findById(req.params._id, function(err, experience) {
+    Experience.findById(req.params.id, function(err, experience) {
         handleError(res, err);
         res.json(experience);
     });

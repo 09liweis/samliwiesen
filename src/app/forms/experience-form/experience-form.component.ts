@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params }   from '@angular/router';
 
 import { ExperienceService } from '../../services/experience.service';
 import { Experience } from '../../models/experience';
@@ -15,9 +16,12 @@ export class ExperienceFormComponent implements OnInit {
     company: '',
     start_date: '',
     end_date: '',
-    duty: []
+    duty: ['']
   };
-  constructor(private experienceService: ExperienceService) { }
+  constructor(
+    private experienceService: ExperienceService,
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit() {
   }
