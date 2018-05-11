@@ -32,8 +32,8 @@ export class ExperienceFormComponent implements OnInit {
     }
   }
   
-  add() {
-    this.experienceService.add(this.experience).subscribe(ex => {
+  submit() {
+    this.experienceService.submit(this.experience).subscribe(ex => {
       
     });
   }

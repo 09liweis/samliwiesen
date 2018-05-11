@@ -24,7 +24,7 @@ export class ExperienceService {
     return this.http.get(this.api + id);
   }
   
-  add(experience: Experience): Observable<any> {
+  submit(experience: Experience): Observable<any> {
     return this.http.post(this.api, experience, httpOptions);
   }
 }
