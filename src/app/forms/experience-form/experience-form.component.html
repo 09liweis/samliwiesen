@@ -2,7 +2,11 @@
     <h2>Add Experience</h2>
     <form class="example-form">
         <mat-form-field>
-            <input matInput placeholder="Title"  [(ngModel)]="experience" name="title">
+            <input matInput placeholder="Title"  [(ngModel)]="experience.title" name="title">
         </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Company"  [(ngModel)]="experience.company" name="company">
+        </mat-form-field>
+        <button mat-raised-button color="primary">Submit</button>
     </form>
 </div>

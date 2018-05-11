@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule }   from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MatCardModule, MatGridListModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import {MatCardModule, MatGridListModule, MatFormFieldModule, MatInputModule, MatButtonModule} from '@angular/material';
 
 //import { ProjectService } from './services/project.service';
 import { ExperienceService } from './services/experience.service';
@@ -25,6 +25,7 @@ import { ExperienceFormComponent } from './forms/experience-form/experience-form
     MatGridListModule,
     MatFormFieldModule,
     MatInputModule,
+    MatButtonModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
