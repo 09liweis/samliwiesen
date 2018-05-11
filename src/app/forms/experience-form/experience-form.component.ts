@@ -9,6 +9,7 @@ import { ExperienceService } from '../../services/experience.service';
 })
 export class ExperienceFormComponent implements OnInit {
 
+  public experience;
   constructor(private experienceService: ExperienceService) { }
 
   ngOnInit() {
