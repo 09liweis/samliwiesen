@@ -19,7 +19,7 @@ if (app.settings.env == 'development') {
 }
 
 app.use(function (req, res, next) {
-    const origins = ['https://porfolio-a09liweis.c9users.io', 'https://samliweisen.github.io'];
+    const origins = ['https://porfolio-a09liweis.c9users.io', 'https://samliweisen.github.io', 'https://samliweisen-a09liweis.c9users.io'];
     // Website you wish to allow to connect
     if (origins.indexOf(req.headers.origin) > -1) {
         res.setHeader('Access-Control-Allow-Origin', req.headers.origin);   
