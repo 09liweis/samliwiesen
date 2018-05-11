@@ -24,6 +24,12 @@ export class ExperienceFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (this.route.snapshot.params['id'] != 'new') {
+      this.experience._id = this.route.snapshot.params['id'];
+      this.experienceService.getDetail(this.experience._id).subscribe(e => {
+        this.experience = e;
+      })
+    }
   }
   
   add() {

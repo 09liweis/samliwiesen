@@ -42,7 +42,7 @@ import { ExperienceListComponent } from './pages/experience-list/experience-list
         component: ExperienceListComponent
       },
       {
-        path: 'experiences/:id',
+        path: 'experience/:id',
         component: ExperienceFormComponent
       }
     ])
