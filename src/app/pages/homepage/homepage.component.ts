@@ -23,10 +23,4 @@ export class HomepageComponent implements OnInit {
       this.experiences = exs;
     })
   }
-  add() {
-    this.experienceService.add(this.experience).subscribe(ex => {
-      
-    });
-  }
-
 }
