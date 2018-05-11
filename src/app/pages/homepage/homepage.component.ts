@@ -9,6 +9,7 @@ import { ExperienceService } from '../../services/experience.service';
   styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent implements OnInit {
+  public experiences;
 
   constructor(
     private projectService: ProjectService,
@@ -18,6 +19,7 @@ export class HomepageComponent implements OnInit {
   ngOnInit() {
     this.experienceService.getList().subscribe(exs => {
       console.log(exs);
+      this.experiences = exs;
     })
   }
 
