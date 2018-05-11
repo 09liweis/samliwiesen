@@ -1,8 +1,10 @@
 export class Experience {
-    _id: string;
-    title: string;
-    company: string;
-    start_date: string;
-    end_date: string;
-    duty: Array<string>;
+    constructor(
+        public _id: string,
+        public title: string,
+        public company: string,
+        public start_date: string,
+        public end_date: string,
+        public duty: Array<string>,
+    ) {}
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ExperienceService } from '../../services/experience.service';
+import { Experience } from '../../models/experience';
 
 @Component({
   selector: 'app-experience-form',
@@ -9,7 +10,7 @@ import { ExperienceService } from '../../services/experience.service';
 })
 export class ExperienceFormComponent implements OnInit {
 
-  public experience;
+  public experience: Experience;
   constructor(private experienceService: ExperienceService) { }
 
   ngOnInit() {

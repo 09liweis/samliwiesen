@@ -2,8 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { FormsModule }   from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MatCardModule, MatGridListModule, MatFormFieldModule} from '@angular/material';
+import {MatCardModule, MatGridListModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 
 //import { ProjectService } from './services/project.service';
 import { ExperienceService } from './services/experience.service';
@@ -22,7 +24,10 @@ import { ExperienceFormComponent } from './forms/experience-form/experience-form
     MatCardModule,
     MatGridListModule,
     MatFormFieldModule,
+    MatInputModule,
     BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
       {
