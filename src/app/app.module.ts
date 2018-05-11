@@ -10,11 +10,13 @@ import { ExperienceService } from './services/experience.service';
 
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
+import { ExperienceFormComponent } from './forms/experience-form/experience-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomepageComponent
+    HomepageComponent,
+    ExperienceFormComponent
   ],
   imports: [
     MatCardModule,
