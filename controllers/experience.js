@@ -15,6 +15,7 @@ exports.experience_detail = function(req, res) {
 };
 
 exports.experience_new = function(req, res) {
+    delete req.body._id;
     const newExperience = new Experience(req.body);
     newExperience.save(function(err, experience) {
         handleError(res, err);
