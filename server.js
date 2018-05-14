@@ -1,4 +1,5 @@
 var express = require('express'),
+path = require('path'),
 app = express(),
 bodyParser = require('body-parser'),
 mongoose = require('mongoose'),
@@ -33,6 +34,12 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Credentials', true);
     // Pass to next layer of middleware
     next();
+});
+
+app.use(express.static(path.join(__dirname) + '/dist'));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
 app.use(bodyParser.urlencoded({extended: true}));
