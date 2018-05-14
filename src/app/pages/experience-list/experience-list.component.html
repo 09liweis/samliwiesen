@@ -1,3 +1,5 @@
 <div *ngIf="experiences">
-    <a *ngFor="let e of experiences" [routerLink]="['/experience', e._id]">{{e.title}} - {{e.company}}</a>
+    <a *ngFor="let e of experiences" [routerLink]="['/experience', e._id]">
+        <mat-card>{{e.title}} - {{e.company}}</mat-card>
+    </a>
 </div>
