@@ -1,7 +1,8 @@
-h3 {
+.card__title {
     display: inline-block;
+    font-size: 1.25em;
 }
-.number {
+.card__number {
     background-color: #f57c7c;
     color: #ffffff;
     padding: 10px;
@@ -9,4 +10,5 @@ h3 {
     width: 18px;
     text-align: center;
     display: inline-block;
+    margin-right: 20px;
 }

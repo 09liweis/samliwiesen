@@ -2,22 +2,22 @@
     <h1>Dashboard</h1>
     <mat-grid-list cols="4">
         <mat-card>
-            <span class="number">{{experiences ? experiences.length : '0'}}</span>
-            <h3>Experiences</h3>
+            <span class="card__number">{{experiences ? experiences.length : '0'}}</span>
+            <span class="card__title">Experiences</span>
             <a routerLink="experiences">View All</a>
             <a routerLink="/experience/new">Add New</a>
         </mat-card>
         <mat-card>
-            <span class="number">4</span>
-            <h3>Projects</h3>
+            <span class="card__number">4</span>
+            <span class="card__title">Projects</span>
         </mat-card>
         <mat-card>
-            <span class="number">2</span>
-            <h3>Educations</h3>
+            <span class="card__number">2</span>
+            <span class="card__title">Educations</span>
         </mat-card>
         <mat-card>
-            <span class="number">10</span>
-            <h3>Skills</h3>
+            <span class="card__number">10</span>
+            <span class="card__title">Skills</span>
         </mat-card>
     </mat-grid-list>
 </section>
