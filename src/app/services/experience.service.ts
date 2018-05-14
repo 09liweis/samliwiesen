@@ -25,7 +25,7 @@ export class ExperienceService {
   }
   
   submit(experience: Experience): Observable<any> {
-    if (typeof experience._id != 'undefined') {
+    if (experience._id != '') {
       return this.http.put(this.api + experience._id, experience, httpOptions);
     } else {
       return this.http.post(this.api, experience, httpOptions);
