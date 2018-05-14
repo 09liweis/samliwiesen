@@ -34,7 +34,9 @@ export class ExperienceFormComponent implements OnInit {
   }
   
   addDuty() {
-    
+    let duty = this.experience.duty;
+    duty.push('');
+    this.experience.duty = duty;
   }
   
   submit() {
