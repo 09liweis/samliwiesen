@@ -1,3 +1,25 @@
-<p>
-  project-form works!
-</p>
+<div class="form">
+    <h2>Add Project</h2>
+    <form class="example-form">
+        <mat-form-field>
+            <input matInput placeholder="Title"  [(ngModel)]="project.title" name="title">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="description"  [(ngModel)]="project.description" name="description">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Link"  [(ngModel)]="project.link" name="link">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="End Date"  [(ngModel)]="project.end_date" name="end_date">
+        </mat-form-field>
+        <div>
+            <label for="feature">features</label>
+            <mat-form-field *ngFor="let feature of project.features; let index = index">
+                <input matInput (change)="updateFeature($event, index)" value="{{feature}}">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="addFeature()">Add feature</button>
+        </div>
+        <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+    </form>
+</div>
