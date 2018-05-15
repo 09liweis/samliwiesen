@@ -50,6 +50,10 @@ import { ProjectFormComponent } from './forms/project-form/project-form.componen
         component: ExperienceFormComponent
       },
       {
+        path: 'projects',
+        component: ProjectListComponent
+      },
+      {
         path: 'project/:id',
         component: ProjectFormComponent
       }
