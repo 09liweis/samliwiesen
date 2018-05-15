@@ -6,7 +6,7 @@ var ProjectSchema = new Schema({
         type: String,
         required: 'Kindly enter the name of the task'
     },
-    content: {
+    description: {
         type: String
     },
     features: [{
@@ -19,7 +19,7 @@ var ProjectSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    update_at: {
+    updated_at: {
         type: Date,
         default: Date.now
     }
@@ -27,7 +27,7 @@ var ProjectSchema = new Schema({
 
 ProjectSchema.pre('save', function(next) {
     const currentDate = new Date();
-    this.update_at = currentDate;
+    this.updated_at = currentDate;
     if (!this.created_at) {
         this.created_at = currentDate;
     }
