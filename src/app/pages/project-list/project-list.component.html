@@ -1,3 +1,5 @@
-<p>
-  project-list works!
-</p>
+<div *ngIf="projects">
+    <a *ngFor="let p of projects" [routerLink]="['/project', e._id]">
+        <mat-card>{{p.title}}</mat-card>
+    </a>
+</div>
