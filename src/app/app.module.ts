@@ -14,13 +14,15 @@ import { AppComponent } from './app.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { ExperienceFormComponent } from './forms/experience-form/experience-form.component';
 import { ExperienceListComponent } from './pages/experience-list/experience-list.component';
+import { ProjectListComponent } from './pages/project-list/project-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
     ExperienceFormComponent,
-    ExperienceListComponent
+    ExperienceListComponent,
+    ProjectListComponent
   ],
   imports: [
     MatCardModule,
