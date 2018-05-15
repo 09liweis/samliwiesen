@@ -38,8 +38,10 @@ export class ExperienceFormComponent implements OnInit {
     duty.push('');
     this.experience.duty = duty;
   }
-  updateDuty(index) {
-    console.log(index);
+  updateDuty(event: any, index) {
+    let duty = this.experience.duty;
+    duty[index] = event.target.value;
+    this.experience.duty = duty;
   }
   
   submit() {

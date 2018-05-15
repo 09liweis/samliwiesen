@@ -16,7 +16,7 @@
         <div>
             <label for="duty">Duty</label>
             <mat-form-field *ngFor="let duty of experience.duty; let index = index">
-                <input matInput (keyup)="updateDuty(index)">
+                <input matInput (change)="updateDuty($event, index)" value="{{duty}}">
             </mat-form-field>
             <button mat-raised-button color="primary" (click)="addDuty()">Add Duty</button>
         </div>
