@@ -9,6 +9,9 @@ var ProjectSchema = new Schema({
     content: {
         type: String
     },
+    features: [{
+        type: String
+    }],
     link: {
         type: String
     },
