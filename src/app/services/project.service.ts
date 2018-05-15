@@ -12,4 +12,8 @@ const httpOptions = {
 export class ProjectService {
   private api = 'https://samliweisen.herokuapp.com/api/projects/';
   constructor(private http: HttpClient) { }
+  
+  getList(): Observable<any> {
+    return this.http.get(this.api);
+  }
 }
