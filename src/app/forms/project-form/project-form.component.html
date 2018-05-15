@@ -10,9 +10,6 @@
         <mat-form-field>
             <input matInput placeholder="Link"  [(ngModel)]="project.link" name="link">
         </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="End Date"  [(ngModel)]="project.end_date" name="end_date">
-        </mat-form-field>
         <div>
             <label for="feature">features</label>
             <mat-form-field *ngFor="let feature of project.features; let index = index">
