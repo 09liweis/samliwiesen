@@ -47,6 +47,6 @@ app.use('/', indexRoute);
 app.use('/api/todos', todoRoute);
 app.use('/api/transactions', transactionRoute);
 app.use('/api/experiences', experienceRoute);
-app.use('/api/project', projectRoute);
+app.use('/api/projects', projectRoute);
 
 app.listen(port);
