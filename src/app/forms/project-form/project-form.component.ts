@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params }   from '@angular/router';
+
+import { ProjectService } from '../../services/project.service';
+import { Project } from '../../models/project';
 
 @Component({
   selector: 'app-project-form',
@@ -7,7 +11,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private projectService: ProjectService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
   }
