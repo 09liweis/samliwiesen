@@ -10,7 +10,7 @@ import { ExperienceService } from '../../services/experience.service';
 })
 export class HomepageComponent implements OnInit {
   public experiences;
-  public experience;
+  public projects;
 
   constructor(
     private projectService: ProjectService,
@@ -19,8 +19,11 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit() {
     this.experienceService.getList().subscribe(exs => {
-      console.log(exs);
       this.experiences = exs;
+    })
+    
+    this.projectService.getList().subscribe(projs => {
+      this.projects = prjs;
     })
   }
 }
