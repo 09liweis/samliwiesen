@@ -23,6 +23,12 @@ export class ProjectFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (this.route.snapshot.params['id'] != 'new') {
+      this.project._id = this.route.snapshot.params['id'];
+      this.projectService.getDetail(this.project._id).subscribe(p => {
+        this.project = p;
+      })
+    }
   }
   
   addFeature() {
