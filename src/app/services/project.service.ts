@@ -16,4 +16,13 @@ export class ProjectService {
   getList(): Observable<any> {
     return this.http.get(this.api);
   }
+  
+  submit(project): Observable<any> {
+    if (project._id != '') {
+      return this.http.put(this.api + project._id, project, httpOptions);
+    } else {
+      delete project._id;
+      return this.http.post(this.api, project, httpOptions);
+    }
+  }
 }
