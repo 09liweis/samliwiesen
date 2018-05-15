@@ -23,7 +23,7 @@ export class HomepageComponent implements OnInit {
     })
     
     this.projectService.getList().subscribe(projs => {
-      this.projects = prjs;
+      this.projects = projs;
     })
   }
 }
