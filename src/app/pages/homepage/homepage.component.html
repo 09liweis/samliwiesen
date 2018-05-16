@@ -2,16 +2,19 @@
     <mat-grid-list cols="4">
         <mat-card>
             <span class="card__number">{{experiences ? experiences.length : '0'}}</span>
-            <i class="material-icons">work</i>
-            <span class="card__title">Experiences</span>
-            <a routerLink="experiences">View All</a>
-            <a routerLink="/experience/new">Add New</a>
+            <div class="card__info">
+                <h2 class="card__title">Experiences</h2>
+                <a routerLink="experiences">View All</a>
+                <a routerLink="/experience/new">Add New</a>
+            </div>
         </mat-card>
         <mat-card>
             <span class="card__number">{{projects ? projects.length : '0'}}</span>
-            <span class="card__title">Projects</span>
-            <a routerLink="projects">View All</a>
-            <a routerLink="/project/new">Add New</a>
+            <div class="card__info">
+                <h2 class="card__title">Projects</h2>
+                <a routerLink="projects">View All</a>
+                <a routerLink="/project/new">Add New</a>
+            </div>
         </mat-card>
         <mat-card>
             <span class="card__number">2</span>
