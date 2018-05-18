@@ -9,6 +9,7 @@ todoRoute = require('./routes/todo'),
 transactionRoute = require('./routes/transaction'),
 experienceRoute = require('./routes/experience'),
 projectRoute = require('./routes/project'),
+placeRoute = require('./routes/place'),
 
 port = process.env.PORT || 3000;
 
@@ -48,5 +49,6 @@ app.use('/api/todos', todoRoute);
 app.use('/api/transactions', transactionRoute);
 app.use('/api/experiences', experienceRoute);
 app.use('/api/projects', projectRoute);
+app.use('/api/places', placeRoute);
 
 app.listen(port);
