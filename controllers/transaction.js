@@ -13,10 +13,12 @@ exports.transaction_new = async function(req, res) {
     if (!p) {
         p = Place(place);
         await p.save();
-        
-        console.log('add place');
     } else {
-        console.log('place exist');
+        p.name = place.name;
+        p.address = place.address;
+        p.lat = place.lat;
+        p.lng = place.lng;
+        await Place.findOneAndUpdate({_id: p._id}, p, {upsert: true});
     }
     const newTransaction = new Transaction({
         title: req.body.title,
@@ -36,14 +38,18 @@ exports.transaction_detail = function(req, res) {
 
 exports.transaction_update = async function(req, res) {
     const place = req.body.place;
+    console.log(place);
     let p = await Place.findOne({place_id: place.place_id});
     if (!p) {
         p = Place(place);
         await p.save();
-        
-        console.log('add place');
+    } else {
+        p.name = place.name;
+        p.address = place.address;
+        p.lat = place.lat;
+        p.lng = place.lng;
+        await Place.findOneAndUpdate({_id: p._id}, p, {upsert: true});
     }
-    console.log(p);
     let updateTransaction = {
         title: req.body.title,
         price: req.body.price,
