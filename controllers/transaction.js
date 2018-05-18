@@ -9,7 +9,7 @@ exports.transaction_list = function(req, res) {
 };
 exports.transaction_new = async function(req, res) {
     const place = req.body.place;
-    let p = await Place.findOne({google_place_id: place.google_place_id});
+    let p = await Place.findOne({place_id: place.place_id});
     if (!p) {
         p = Place(place);
         await p.save();
@@ -35,7 +35,13 @@ exports.transaction_detail = function(req, res) {
 };
 
 exports.transaction_update = function(req, res) {
-    let updateTransaction = req.body;
+    const p = getPlace(req.body.place);
+    let updateTransaction = {
+        title: req.body.title,
+        price: req.body.price,
+        date: req.body.date,
+        place: p._id
+    };
     updateTransaction.update_at = new Date();
     Transaction.findOneAndUpdate({_id: req.params.id}, updateTransaction, {upsert: true}, function(err, transaction) {
         handleError(res, err);
@@ -54,4 +60,15 @@ function handleError(res, err) {
     if (err) {
         res.send(err);
     }
+}
+
+async function getPlace(place) {
+    let p = await Place.findOne({place_id: place.place_id});
+    if (!p) {
+        p = Place(place);
+        await p.save();
+        
+        console.log('add place');
+    }
+    return p;
 }
