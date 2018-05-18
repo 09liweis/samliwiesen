@@ -1,4 +1,5 @@
 var Transaction = require('../models/transaction');
+var Place = require('../models/place');
 
 exports.transaction_list = function(req, res) {
     Transaction.find({}).sort('-date').exec(function(err, transactions) {
@@ -6,8 +7,23 @@ exports.transaction_list = function(req, res) {
         res.json(transactions);
     });
 };
-exports.transaction_new = function(req, res) {
-    const newTransaction = new Transaction(req.body);
+exports.transaction_new = async function(req, res) {
+    const place = req.body.place;
+    let p = await Place.findOne({google_place_id: place.google_place_id});
+    if (!p) {
+        p = Place(place);
+        await p.save();
+        
+        console.log('add place');
+    } else {
+        console.log('place exist');
+    }
+    const newTransaction = new Transaction({
+        title: req.body.title,
+        price: req.body.price,
+        date: req.body.date,
+        place: p._id
+    });
     newTransaction.save(function(err, transaction) {
         handleError(res, err);
         res.json(transaction);
