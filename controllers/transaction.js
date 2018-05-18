@@ -30,6 +30,10 @@ exports.transaction_new = async function(req, res) {
     });
 };
 
+exports.transaction_detail = function(req, res) {
+    
+};
+
 exports.transaction_update = function(req, res) {
     let updateTransaction = req.body;
     updateTransaction.update_at = new Date();
