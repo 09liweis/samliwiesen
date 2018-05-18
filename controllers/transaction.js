@@ -34,8 +34,16 @@ exports.transaction_detail = function(req, res) {
     
 };
 
-exports.transaction_update = function(req, res) {
-    const p = getPlace(req.body.place);
+exports.transaction_update = async function(req, res) {
+    const place = req.body.place;
+    let p = await Place.findOne({place_id: place.place_id});
+    if (!p) {
+        p = Place(place);
+        await p.save();
+        
+        console.log('add place');
+    }
+    console.log(p);
     let updateTransaction = {
         title: req.body.title,
         price: req.body.price,
