@@ -24,6 +24,7 @@ exports.transaction_new = async function(req, res) {
         title: req.body.title,
         price: req.body.price,
         date: req.body.date,
+        category: req.body.category,
         place: p._id
     });
     newTransaction.save(function(err, transaction) {
@@ -54,6 +55,7 @@ exports.transaction_update = async function(req, res) {
         title: req.body.title,
         price: req.body.price,
         date: req.body.date,
+        category: req.body.category,
         place: p._id
     };
     updateTransaction.update_at = new Date();
