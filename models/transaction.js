@@ -18,6 +18,7 @@ const TransactionSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Place'
     },
+    category: String,
     created_at: {
         type: Date,
         default: Date.now
