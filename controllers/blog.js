@@ -5,3 +5,10 @@ exports.blog_list = function(req, res) {
         res.json(blogs);
     });
 };
+
+exports.blog_add = function(req, res) {
+    const newBlog = new Blog(req.body);
+    newBlog.save(function(err, blog) {
+        res.json(blog);
+    });
+};
