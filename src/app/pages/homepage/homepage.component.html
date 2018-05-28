@@ -1,6 +1,14 @@
 <section class="dashboard">
     <mat-grid-list cols="4">
         <mat-card>
+            <span class="card__number">0</span>
+            <div class="card__info">
+                <h2 class="card__title">Blogs</h2>
+                <a routerLink="blogs">View All</a>
+                <a routerLink="/blog/new">Add New</a>
+            </div>
+        </mat-card>
+        <mat-card>
             <span class="card__number">{{experiences ? experiences.length : '0'}}</span>
             <div class="card__info">
                 <h2 class="card__title">Experiences</h2>
