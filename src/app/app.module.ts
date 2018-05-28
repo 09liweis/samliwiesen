@@ -58,6 +58,10 @@ import { BlogFormComponent } from './forms/blog-form/blog-form.component';
       {
         path: 'project/:id',
         component: ProjectFormComponent
+      },
+      {
+        path: 'blog/:id',
+        component: BlogFormComponent
       }
     ])
   ],
