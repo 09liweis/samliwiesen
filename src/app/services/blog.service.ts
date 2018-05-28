@@ -29,6 +29,7 @@ export class BlogService {
     if (blog._id != '') {
       return this.http.put(this.api + blog._id, blog, httpOptions);
     } else {
+      delete blog._id
       return this.http.post(this.api, blog, httpOptions);
     }
     }

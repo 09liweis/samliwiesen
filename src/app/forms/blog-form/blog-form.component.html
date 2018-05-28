@@ -2,7 +2,17 @@
     <h2>Add Blog</h2>
     <form class="">
         <mat-form-field>
-            <input matInput placeholder="Title" name="title">
+            <input matInput placeholder="Title" name="title" [(ngModel)]="blog.title">
         </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="url" name="url" [(ngModel)]="blog.url">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="content" name="content" [(ngModel)]="blog.content">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="image" name="image" [(ngModel)]="blog.image">
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="submit()">Submit</button>
     </form>
 </div>
