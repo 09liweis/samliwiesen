@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+
+import { BlogService } form '../../services/blog.service';
+import { Blog } from '../../models/blog';
 
 @Component({
   selector: 'app-blog-form',
@@ -6,10 +10,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./blog-form.component.scss']
 })
 export class BlogFormComponent implements OnInit {
+  
+  public blog: Blog = {
+    _id: '',
+    title: '',
+    url: '',
+    content: '',
+    image: ''
+  };
 
-  constructor() { }
+  constructor(
+    private blogService: BlogService,
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit() {
+  }
+  
+  submit() {
+    this.blogService.submit(this.blog).subscribe(blog => {
+      
+    });
   }
 
 }
