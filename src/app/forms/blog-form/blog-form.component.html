@@ -11,6 +11,9 @@
             <input matInput placeholder="content" name="content" [(ngModel)]="blog.content">
         </mat-form-field>
         <mat-form-field>
+            <input matInput placeholder="category" name="category" [(ngModel)]="blog.category">
+        </mat-form-field>
+        <mat-form-field>
             <input matInput placeholder="image" name="image" [(ngModel)]="blog.image">
         </mat-form-field>
         <button mat-raised-button color="primary" (click)="submit()">Submit</button>

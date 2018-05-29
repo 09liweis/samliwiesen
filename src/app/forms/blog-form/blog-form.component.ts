@@ -16,7 +16,8 @@ export class BlogFormComponent implements OnInit {
     title: '',
     url: '',
     content: '',
-    image: ''
+    image: '',
+    category: ''
   };
 
   constructor(
