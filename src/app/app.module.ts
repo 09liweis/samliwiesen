@@ -62,6 +62,10 @@ import { BlogListComponent } from './pages/blog-list/blog-list.component';
         component: ProjectFormComponent
       },
       {
+        path: 'blogs',
+        component: BlogListComponent
+      },
+      {
         path: 'blog/:id',
         component: BlogFormComponent
       }
