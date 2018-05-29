@@ -17,6 +17,7 @@ import { ExperienceListComponent } from './pages/experience-list/experience-list
 import { ProjectListComponent } from './pages/project-list/project-list.component';
 import { ProjectFormComponent } from './forms/project-form/project-form.component';
 import { BlogFormComponent } from './forms/blog-form/blog-form.component';
+import { BlogListComponent } from './pages/blog-list/blog-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BlogFormComponent } from './forms/blog-form/blog-form.component';
     ExperienceListComponent,
     ProjectListComponent,
     ProjectFormComponent,
-    BlogFormComponent
+    BlogFormComponent,
+    BlogListComponent
   ],
   imports: [
     MatCardModule,
