@@ -7,6 +7,13 @@ exports.transaction_list = function(req, res) {
         res.json(transactions);
     });
 };
+
+exports.category_list = function(req, res) {
+    Transaction.distinct('category', function(err, categories) {
+        handleError(res, err);
+        res.json(categories);
+    });
+};
 exports.transaction_new = async function(req, res) {
     const place = req.body.place;
     let p = await Place.findOne({place_id: place.place_id});
