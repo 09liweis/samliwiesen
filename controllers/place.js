@@ -5,3 +5,7 @@ exports.place_list = function(req, res) {
         res.json(places);
     });
 };
+
+exports.place_detail = function(req, res) {
+    
+};
