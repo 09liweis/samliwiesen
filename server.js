@@ -16,11 +16,7 @@ port = process.env.PORT || 3000;
 
 mongoose.Promise = global.Promise;
 
-if (app.settings.env == 'development') {
-    mongoose.connect('mongodb://localhost/portfolio');
-} else {
-    mongoose.connect('mongodb://heroku_6njptcbp:dg8h3o8v9dpjk1osignqn3ibel@ds125489.mlab.com:25489/heroku_6njptcbp');
-}
+mongoose.connect('mongodb://heroku_6njptcbp:dg8h3o8v9dpjk1osignqn3ibel@ds125489.mlab.com:25489/heroku_6njptcbp');
 
 app.use(function (req, res, next) {
     const origins = ['https://porfolio-a09liweis.c9users.io', 'https://samliweisen.github.io', 'https://samliweisen-a09liweis.c9users.io'];
