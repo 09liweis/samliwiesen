@@ -22,6 +22,15 @@ exports.blog_detail = function(req, res) {
     });
 };
 
+exports.blog_update = function(req, res) {
+    let updateblog = req.body;
+    updateblog.update_at = new Date();
+    Blog.findOneAndUpdate({_id: req.params.id}, updateblog, {upsert: true}, function(err, blog) {
+        handleError(res, err);
+        res.json(blog);
+    });
+};
+
 function handleError(res, err) {
     if (err) {
         res.send(err);
