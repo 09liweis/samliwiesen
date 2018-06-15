@@ -26,6 +26,12 @@ export class BlogFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (this.route.snapshot.params['id'] != 'new') {
+      this.blog._id = this.route.snapshot.params['id'];
+      this.blogService.getDetail(this.blog._id).subscribe(b => {
+        this.blog = b;
+      })
+    }
   }
   
   submit() {
