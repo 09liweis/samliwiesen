@@ -9,6 +9,7 @@ router.route('/')
 ;
 
 router.route('/:id')
-.get(BlogController.blog_detail);
+.get(BlogController.blog_detail)
+.post(BlogController.blog_update);
 
 module.exports = router;
