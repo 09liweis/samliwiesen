@@ -15,6 +15,13 @@ exports.blog_add = function(req, res) {
     });
 };
 
+exports.blog_detail = function(req, res) {
+    Blog.findById(req.params.id, function(err, blog) {
+        handleError(res, err);
+        res.json(blog);
+    });
+};
+
 function handleError(res, err) {
     if (err) {
         res.send(err);
