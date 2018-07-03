@@ -20,6 +20,7 @@ import { ProjectListComponent } from './pages/project-list/project-list.componen
 import { ProjectFormComponent } from './forms/project-form/project-form.component';
 import { BlogFormComponent } from './forms/blog-form/blog-form.component';
 import { BlogListComponent } from './pages/blog-list/blog-list.component';
+import { GalleryComponent } from './pages/gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { BlogListComponent } from './pages/blog-list/blog-list.component';
     ProjectListComponent,
     ProjectFormComponent,
     BlogFormComponent,
-    BlogListComponent
+    BlogListComponent,
+    GalleryComponent
   ],
   imports: [
     TinymceModule.withConfig({
