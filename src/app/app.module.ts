@@ -40,7 +40,7 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
     TinymceModule.withConfig({
       skin_url: '/assets/skins/lightgray'
     }),
-    CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'your_cloud_name' } as CloudinaryConfiguration),
+    CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'samliweisen' } as CloudinaryConfiguration),
     MatCardModule,
     MatGridListModule,
     MatFormFieldModule,
