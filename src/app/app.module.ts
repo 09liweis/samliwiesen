@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule }   from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { TinymceModule } from 'angular2-tinymce';
+
 import {MatCardModule, MatGridListModule, MatFormFieldModule, MatInputModule, MatButtonModule} from '@angular/material';
 
 //import { ProjectService } from './services/project.service';
