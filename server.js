@@ -12,7 +12,7 @@ projectRoute = require('./routes/project'),
 placeRoute = require('./routes/place'),
 blogRoute = require('./routes/blog'),
 
-port = process.env.PORT || 3000;
+port = process.env.PORT || 8081;
 
 mongoose.Promise = global.Promise;
 
