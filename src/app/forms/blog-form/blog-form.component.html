@@ -7,9 +7,6 @@
         <mat-form-field>
             <input matInput placeholder="url" name="url" [(ngModel)]="blog.url">
         </mat-form-field>
-        <!--<mat-form-field>-->
-        <!--    <input matInput placeholder="content" name="content" [(ngModel)]="blog.content">-->
-        <!--</mat-form-field>-->
         <app-tinymce [(ngModel)]='blog.content'></app-tinymce>
         <mat-form-field>
             <input matInput placeholder="category" name="category" [(ngModel)]="blog.category">
