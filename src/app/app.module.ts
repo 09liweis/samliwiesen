@@ -33,6 +33,7 @@ import { BlogListComponent } from './pages/blog-list/blog-list.component';
     BlogListComponent
   ],
   imports: [
+    TinymceModule.withConfig({}),
     MatCardModule,
     MatGridListModule,
     MatFormFieldModule,
