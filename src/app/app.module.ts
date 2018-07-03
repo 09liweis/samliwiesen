@@ -6,6 +6,8 @@ import { FormsModule }   from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TinymceModule } from 'angular2-tinymce';
+import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
+import { Cloudinary } from 'cloudinary-core';
 
 import {MatCardModule, MatGridListModule, MatFormFieldModule, MatInputModule, MatButtonModule} from '@angular/material';
 
@@ -38,6 +40,7 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
     TinymceModule.withConfig({
       skin_url: '/assets/skins/lightgray'
     }),
+    CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'your_cloud_name' } as CloudinaryConfiguration),
     MatCardModule,
     MatGridListModule,
     MatFormFieldModule,
@@ -75,6 +78,10 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
       {
         path: 'blog/:id',
         component: BlogFormComponent
+      },
+      {
+        path: 'gallery',
+        component: GalleryComponent
       }
     ])
   ],
