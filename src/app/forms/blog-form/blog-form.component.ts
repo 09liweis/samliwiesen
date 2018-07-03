@@ -34,6 +34,10 @@ export class BlogFormComponent implements OnInit {
     }
   }
   
+  ngAfterViewInit() {
+    
+  }
+  
   submit() {
     this.blogService.submit(this.blog).subscribe(blog => {
       

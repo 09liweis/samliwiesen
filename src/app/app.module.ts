@@ -33,7 +33,9 @@ import { BlogListComponent } from './pages/blog-list/blog-list.component';
     BlogListComponent
   ],
   imports: [
-    TinymceModule.withConfig({}),
+    TinymceModule.withConfig({
+      skin_url: 'assets/skins/lightgray'
+    }),
     MatCardModule,
     MatGridListModule,
     MatFormFieldModule,
