@@ -34,7 +34,7 @@ import { BlogListComponent } from './pages/blog-list/blog-list.component';
   ],
   imports: [
     TinymceModule.withConfig({
-      skin_url: 'assets/skins/lightgray'
+      skin_url: '/assets/skins/lightgray'
     }),
     MatCardModule,
     MatGridListModule,

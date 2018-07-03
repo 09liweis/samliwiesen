@@ -35,7 +35,7 @@ export class BlogFormComponent implements OnInit {
   }
   
   ngAfterViewInit() {
-    
+    console.log('test');
   }
   
   submit() {
