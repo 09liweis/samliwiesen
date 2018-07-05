@@ -23,6 +23,7 @@ export class BlogFormComponent implements OnInit {
   constructor(
     private blogService: BlogService,
     private route: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit() {
