@@ -41,7 +41,7 @@ export class BlogFormComponent implements OnInit {
   
   submit() {
     this.blogService.submit(this.blog).subscribe(blog => {
-      
+      this.router.navigate(['blogs']); 
     });
   }
 
