@@ -1,19 +1,21 @@
 <div class="form">
     <h2>Add Blog</h2>
     <div class="">
-        <mat-form-field>
-            <input matInput placeholder="Title" name="title" [(ngModel)]="blog.title">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="url" name="url" [(ngModel)]="blog.url">
-        </mat-form-field>
+        <mat-grid-list cols="4">
+            <mat-form-field>
+                <input matInput placeholder="Title" name="title" [(ngModel)]="blog.title">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="url" name="url" [(ngModel)]="blog.url">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="category" name="category" [(ngModel)]="blog.category">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="image" name="image" [(ngModel)]="blog.image">
+            </mat-form-field>
+        </mat-grid-list>
         <app-tinymce [(ngModel)]='blog.content'></app-tinymce>
-        <mat-form-field>
-            <input matInput placeholder="category" name="category" [(ngModel)]="blog.category">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="image" name="image" [(ngModel)]="blog.image">
-        </mat-form-field>
         <button mat-raised-button color="primary" (click)="submit()">Submit</button>
     </div>
 </div>
