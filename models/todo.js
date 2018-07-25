@@ -6,6 +6,15 @@ var TodoSchema = new Schema({
         type: String,
         required: 'Kindly enter the name of the task'
     },
+    steps: [
+        {
+            name: String,
+            status: {
+                type: String,
+                default: 'pending'
+            }
+        }
+    ],
     created_at: {
         type: Date,
         default: Date.now
