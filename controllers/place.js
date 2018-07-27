@@ -2,7 +2,7 @@ var Place = require('../models/place');
 var Transaction = require('../models/transaction');
 
 exports.place_list = function(req, res) {
-    Place.find({}, '_id').exec(function(err, places) {
+    Place.find({}, '_id name address lat lng').exec(function(err, places) {
         res.json(places);
     });
 };
