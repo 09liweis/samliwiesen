@@ -2,7 +2,7 @@ var mongoose = require('mongoose'),
 Todo = require('../models/todo');
 
 exports.todo_list = function(req, res) {
-    Todo.find({}).sort('-created_at').exec(function(err, todos) {
+    Todo.find({}, '_id name steps status').sort('-created_at').exec(function(err, todos) {
         handleError(res, err);
         res.json(todos);
     });
