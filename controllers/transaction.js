@@ -2,7 +2,7 @@ var Transaction = require('../models/transaction');
 var Place = require('../models/place');
 
 exports.transaction_list = function(req, res) {
-    Transaction.find({}, '_id title price date category').populate('place').sort('-date').exec(function(err, transactions) {
+    Transaction.find({}, '_id title price date category').populate('place', '_id name address lat lng').sort('-date').exec(function(err, transactions) {
         handleError(res, err);
         res.json(transactions);
     });
