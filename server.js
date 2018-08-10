@@ -22,6 +22,10 @@ mongoose.connection.on('connected', function() {
     console.log('Connected to db');
 });
 
+mongoose.connection.on('error', function() {
+    console.log('connected fail');
+});
+
 app.use(function (req, res, next) {
     const origins = ['https://porfolio-a09liweis.c9users.io', 'https://samliweisen.github.io', 'https://samliweisen-a09liweis.c9users.io'];
     // Website you wish to allow to connect
