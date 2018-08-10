@@ -26,6 +26,10 @@ mongoose.connection.on('error', function() {
     console.log('connected fail');
 });
 
+mongoose.connection.on('disconnected', function () {    
+    console.log('Mongoose connection disconnected');  
+}); 
+
 app.use(function (req, res, next) {
     const origins = ['https://porfolio-a09liweis.c9users.io', 'https://samliweisen.github.io', 'https://samliweisen-a09liweis.c9users.io'];
     // Website you wish to allow to connect
