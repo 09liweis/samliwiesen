@@ -11,6 +11,7 @@ experienceRoute = require('./routes/experience'),
 projectRoute = require('./routes/project'),
 placeRoute = require('./routes/place'),
 blogRoute = require('./routes/blog'),
+SiteRoute = require('./routes/site'),
 
 port = process.env.PORT || 8081;
 
@@ -60,5 +61,6 @@ app.use('/api/experiences', experienceRoute);
 app.use('/api/projects', projectRoute);
 app.use('/api/places', placeRoute);
 app.use('/api/blogs', blogRoute);
+app.use('/api/sites', SiteRoute);
 
 app.listen(port);
