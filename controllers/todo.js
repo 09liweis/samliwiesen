@@ -4,7 +4,17 @@ Todo = require('../models/todo');
 exports.todo_list = function(req, res) {
     let page = req.query.page;
     let limit = req.query.limit;
-    Todo.find({}, '_id name steps status', {}).sort('-created_at').exec(function(err, todos) {
+    let options = {};
+    if (page) {
+        options.skip = parseInt(page);
+    } else {
+        options.skip = 0;
+    }
+    if (limit) {
+        options.limit = parseInt(limit);
+    }
+    console.log(options);
+    Todo.find({}, '_id name steps status', options).sort('-created_at').exec(function(err, todos) {
         handleError(res, err);
         res.json(todos);
     });
