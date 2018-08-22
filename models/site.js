@@ -3,7 +3,8 @@ var Schema = mongoose.Schema;
 
 var SiteSchema = new Schema({
     name: {
-        type: String
+        type: String,
+        default: 'Samliweisen'
     },
     visit: {
         type: Number,
