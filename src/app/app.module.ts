@@ -9,7 +9,7 @@ import { TinymceModule } from 'angular2-tinymce';
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
 import { Cloudinary } from 'cloudinary-core';
 
-import {MatCardModule, MatGridListModule, MatFormFieldModule, MatInputModule, MatButtonModule} from '@angular/material';
+import {MatCardModule, MatGridListModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSnackBar} from '@angular/material';
 
 //import { ProjectService } from './services/project.service';
 import { ExperienceService } from './services/experience.service';
@@ -46,6 +46,7 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatSnackBar,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
