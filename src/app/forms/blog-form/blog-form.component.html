@@ -16,6 +16,7 @@
             </mat-form-field>
         </mat-grid-list>
         <app-tinymce [(ngModel)]='blog.content'></app-tinymce>
-        <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+        <button mat-raised-button color="primary" (click)="submit(false)">Submit</button>
+        <button mat-raised-button color="primary" (click)="submit(true)">Submit and Return</button>
     </div>
 </div>
