@@ -39,10 +39,11 @@ export class BlogFormComponent implements OnInit {
     console.log('test');
   }
   
-  submit() {
+  submit(back: boolean):void {
     this.blogService.submit(this.blog).subscribe(blog => {
-      this.router.navigate(['blogs']); 
+      if (back) {
+        this.router.navigate(['blogs']); 
+      }
     });
   }
-
 }
