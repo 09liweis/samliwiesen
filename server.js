@@ -1,3 +1,4 @@
+'use strict';
 var express = require('express'),
 path = require('path'),
 app = express(),
@@ -63,6 +64,6 @@ app.use('/api/places', placeRoute);
 app.use('/api/blogs', blogRoute);
 app.use('/api/sites', SiteRoute);
 
-app.listen(port);
-
-console.log('Web server runs on: ' + port);
+app.listen(port, () => {
+    console.log('Web server runs on: ' + port);
+});
