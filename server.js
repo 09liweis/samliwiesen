@@ -64,3 +64,5 @@ app.use('/api/blogs', blogRoute);
 app.use('/api/sites', SiteRoute);
 
 app.listen(port);
+
+console.log('Web server runs on: ' + port);
