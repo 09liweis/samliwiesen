@@ -27,8 +27,8 @@ exports.todo_new = (req, res) => {
     });
 };
 
-exports.todo_detail = function(req, res) {
-    Todo.findById(req.params.id, function(err, todo) {
+exports.todo_detail = (req, res) => {
+    Todo.findById(req.params.id, (err, todo) => {
         handleError(res, err);
         res.json(todo);
     });
