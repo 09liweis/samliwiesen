@@ -13,8 +13,7 @@ exports.todo_list = function(req, res) {
     if (limit) {
         options.limit = parseInt(limit);
     }
-    console.log(options);
-    Todo.find({}, '_id name steps status', options).sort('-created_at').exec(function(err, todos) {
+    Todo.find({}, '_id name steps status', options).sort('-created_at').exec((err, todos) => {
         handleError(res, err);
         res.json(todos);
     });
