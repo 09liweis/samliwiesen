@@ -43,8 +43,8 @@ exports.todo_update = function(req, res) {
     });
 };
 
-exports.todo_delete = function(req, res) {
-    Todo.remove({_id: req.params.id}, function(err) {
+exports.todo_delete = (req, res) => {
+    Todo.remove({_id: req.params.id}, (err) => {
         handleError(res, err);
         res.json('ok');
     });
