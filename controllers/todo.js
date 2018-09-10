@@ -21,7 +21,7 @@ exports.todo_list = (req, res) => {
 
 exports.todo_new = (req, res) => {
     const newTodo = new Todo(req.body);
-    newTodo.save(function(err, todo) {
+    newTodo.save((err, todo) => {
         handleError(res, err);
         res.json(todo);
     });
