@@ -34,10 +34,10 @@ exports.todo_detail = (req, res) => {
     });
 };
 
-exports.todo_update = function(req, res) {
+exports.todo_update = (req, res) => {
     let updateTodo = req.body;
     updateTodo.update_at = new Date();
-    Todo.findOneAndUpdate({_id: req.params.id}, updateTodo, {upsert: true}, function(err, todo) {
+    Todo.findOneAndUpdate({_id: req.params.id}, updateTodo, {upsert: true}, (err, todo) => {
         handleError(res, err);
         res.json(todo);
     });
