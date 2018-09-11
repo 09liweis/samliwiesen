@@ -1,7 +1,7 @@
 const Blog = require('../models/blog');
 
-exports.blog_list = function(req, res) {
-    Blog.find({}, '_id title url content image category').sort('-created_at').exec(function(err, blogs) {
+exports.blog_list = (req, res) => {
+    Blog.find({}, '_id title url content image category').sort('-created_at').exec((err, blogs) => {
         handleError(res, err);
         res.json(blogs);
     });
