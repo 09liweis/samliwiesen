@@ -15,7 +15,7 @@ exports.todo_list = (req, res) => {
     }
     Todo.find({}, '_id name steps status', options).sort('-created_at').exec((err, todos) => {
         handleError(res, err);
-        res.json(todos);
+        res.status(200).json(todos);
     });
 };
 
