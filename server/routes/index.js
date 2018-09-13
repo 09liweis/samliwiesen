@@ -2,8 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 router.route('/').get(function(req, res) {
-    res.json({
-        'code': 200,
+    res.status(200).json({
         'msg': 'Welcome to my world'
     });
 });

@@ -55,7 +55,7 @@ app.use(express.static(distDir));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.use('/', indexRoute);
+app.use('/api', indexRoute);
 app.use('/api/todos', todoRoute);
 app.use('/api/transactions', transactionRoute);
 app.use('/api/experiences', experienceRoute);
