@@ -5,14 +5,14 @@ app = express(),
 bodyParser = require('body-parser'),
 mongoose = require('mongoose'),
 
-indexRoute = require('./routes/index'),
-todoRoute = require('./routes/todo'),
-transactionRoute = require('./routes/transaction'),
-experienceRoute = require('./routes/experience'),
-projectRoute = require('./routes/project'),
-placeRoute = require('./routes/place'),
-blogRoute = require('./routes/blog'),
-SiteRoute = require('./routes/site'),
+indexRoute = require('.server/routes/index'),
+todoRoute = require('.server/routes/todo'),
+transactionRoute = require('.server/routes/transaction'),
+experienceRoute = require('.server/routes/experience'),
+projectRoute = require('.server/routes/project'),
+placeRoute = require('.server/routes/place'),
+blogRoute = require('.server/routes/blog'),
+SiteRoute = require('.server/routes/site'),
 
 port = process.env.PORT || 8081;
 
