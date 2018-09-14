@@ -5,11 +5,15 @@ exports.transaction_list = function(req, res) {
     let filter = {};
     const category = req.query.category;
     const date = req.query.date;
+    const place_id = req.query.place_id;
     if (date) {
         filter.date = new RegExp(date, 'i');
     }
     if (category) {
         filter.category = category;
+    }
+    if (place_id) {
+        filter.place = place_id;
     }
     Transaction.find(filter, '_id title price date category').populate('place', '_id name address lat lng').sort('-date').exec(function(err, transactions) {
         handleError(res, err);
