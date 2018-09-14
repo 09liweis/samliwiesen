@@ -59,7 +59,6 @@ exports.transaction_detail = function(req, res) {
 
 exports.transaction_update = async function(req, res) {
     const place = req.body.place;
-    console.log(place);
     let p = await Place.findOne({place_id: place.place_id});
     if (!p) {
         p = Place(place);
