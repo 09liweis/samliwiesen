@@ -17,7 +17,7 @@ exports.transaction_list = function(req, res) {
     }
     Transaction.find(filter, '_id title price date category').populate('place', '_id name address lat lng').sort('-date').exec(function(err, transactions) {
         handleError(res, err);
-        res.json(transactions);
+        res.status(200).json(transactions);
     });
 };
 
