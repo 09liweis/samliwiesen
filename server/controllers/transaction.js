@@ -4,6 +4,10 @@ var Place = require('../models/place');
 exports.transaction_list = function(req, res) {
     let filter = {};
     const category = req.query.category;
+    const date = req.query.date;
+    if (date) {
+        filter.date = new RegExp(date, 'i');
+    }
     if (category) {
         filter.category = category;
     }
