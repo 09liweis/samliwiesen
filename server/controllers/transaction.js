@@ -1,7 +1,7 @@
 var Transaction = require('../models/transaction');
 var Place = require('../models/place');
 
-exports.transaction_list = function(req, res) {
+exports.transaction_list = (req, res) => {
     let filter = {};
     const category = req.query.category;
     const date = req.query.date;
@@ -15,7 +15,7 @@ exports.transaction_list = function(req, res) {
     if (place_id) {
         filter.place = place_id;
     }
-    Transaction.find(filter, '_id title price date category').populate('place', '_id name address lat lng').sort('-date').exec(function(err, transactions) {
+    Transaction.find(filter, '_id title price date category').populate('place', '_id name address lat lng').sort('-date').exec((err, transactions) => {
         handleError(res, err);
         res.status(200).json(transactions);
     });
