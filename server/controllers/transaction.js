@@ -21,8 +21,8 @@ exports.transaction_list = (req, res) => {
     });
 };
 
-exports.category_list = function(req, res) {
-    Transaction.distinct('category', function(err, categories) {
+exports.category_list = (req, res) => {
+    Transaction.distinct('category', (err, categories) => {
         handleError(res, err);
         res.json(categories);
     });
