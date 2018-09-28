@@ -7,7 +7,7 @@ var x = Xray();
 var request = require('request');
 var cheerio = require('cheerio');
 
-router.route('/realtime').get((req, res) => {
+router.route('/yorkbbs').get((req, res) => {
     // x('http://news.yorkbbs.ca/local/', 'title')(function(err, title) {
     //     console.log(title);
     // });
