@@ -13,6 +13,7 @@ projectRoute = require('./server/routes/project'),
 placeRoute = require('./server/routes/place'),
 blogRoute = require('./server/routes/blog'),
 SiteRoute = require('./server/routes/site'),
+newsRoute = require('./server/routes/news'),
 
 port = process.env.PORT || 8081;
 
@@ -63,6 +64,7 @@ app.use('/api/projects', projectRoute);
 app.use('/api/places', placeRoute);
 app.use('/api/blogs', blogRoute);
 app.use('/api/sites', SiteRoute);
+app.use('/api/news', newsRoute);
 
 app.listen(port, () => {
     console.log('Web server runs on: ' + port);
