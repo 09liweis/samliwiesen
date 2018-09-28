@@ -11,9 +11,11 @@ router.route('/yorkbbs').get((req, res) => {
     // x('http://news.yorkbbs.ca/local/', 'title')(function(err, title) {
     //     console.log(title);
     // });
+    let type = req.query.type;
+    type = type ? type : 'local';
     
     request({
-        url:    'http://news.yorkbbs.ca/local/',   // 请求的URL
+        url:    'http://news.yorkbbs.ca/' + type,   // 请求的URL
         method: 'GET',                   // 请求方法
         headers: {                       // 指定请求头
             'Accept-Language': 'zh-CN,zh;q=0.8',         // 指定 Accept-Language
