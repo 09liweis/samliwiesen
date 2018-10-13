@@ -15,7 +15,7 @@ exports.blog_add = function(req, res) {
     });
 };
 
-exports.blog_detail = function(req, res) {
+exports.blog_detail = (req, res) => {
     Blog.findById(req.params.id, function(err, blog) {
         handleError(res, err);
         res.json(blog);
