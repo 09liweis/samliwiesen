@@ -7,9 +7,9 @@ exports.blog_list = (req, res) => {
     });
 };
 
-exports.blog_add = function(req, res) {
+exports.blog_add = (req, res) => {
     const newBlog = new Blog(req.body);
-    newBlog.save(function(err, blog) {
+    newBlog.save((err, blog) => {
         handleError(res, err);
         res.json(blog);
     });
