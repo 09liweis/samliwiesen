@@ -7,6 +7,10 @@ const BlogSchema = new Schema({
     content: String,
     image: String,
     category: String,
+    published: {
+        type: String,
+        default: '1' // 1: published, 0: draft
+    },
     created_at: {
         type: Date,
         default: Date.now
