@@ -6,5 +6,6 @@ export class Blog {
         public content: string,
         public image: string,
         public category: string,
+        public published: string
     ) {}
 }
