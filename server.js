@@ -12,6 +12,7 @@ experienceRoute = require('./server/routes/experience'),
 projectRoute = require('./server/routes/project'),
 placeRoute = require('./server/routes/place'),
 blogRoute = require('./server/routes/blog'),
+commentRoute = require('./server/routes/comment'),
 SiteRoute = require('./server/routes/site'),
 newsRoute = require('./server/routes/news'),
 
@@ -63,6 +64,7 @@ app.use('/api/experiences', experienceRoute);
 app.use('/api/projects', projectRoute);
 app.use('/api/places', placeRoute);
 app.use('/api/blogs', blogRoute);
+app.use('/api/comments', commentRoute);
 app.use('/api/sites', SiteRoute);
 app.use('/api/news', newsRoute);
 
