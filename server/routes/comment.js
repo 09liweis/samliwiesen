@@ -3,7 +3,7 @@ var router = express.Router();
 
 const Comment = require('../models/comment');
 
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next) => {
     Comment.find({}).exec((err, comments) => {
         if (err) throw err;
         res.send(comments);
