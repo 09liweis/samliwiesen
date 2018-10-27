@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
     });
 });
 
-router.post('/', function(req, res, next) {
+router.post('/', (req, res, next) => {
 
     const name = req.body.name;
     const content = req.body.content;
@@ -19,7 +19,7 @@ router.post('/', function(req, res, next) {
         content: content
     });
   
-    comment.save(function(err) {
+    comment.save((err) => {
         if (err) throw err;
         res.send(comment);
     });
