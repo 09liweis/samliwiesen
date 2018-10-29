@@ -51,8 +51,11 @@ app.use(function (req, res, next) {
     next();
 });
 
-var distDir = __dirname + "/dist/";
-app.use(express.static(distDir));
+app.use(express.static(path.join(__dirname) + '/dist'));
+
+app.get('/dashboard/*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
+});
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
