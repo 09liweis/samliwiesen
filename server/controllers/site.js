@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
 Site = require('../models/site');
 
-exports.site_detail = function(req, res) {
+exports.site_detail = (req, res) => {
     Site.findById(req.params.id, function(err, site) {
         handleError(res, err);
         res.json(site);
