@@ -16,8 +16,8 @@ exports.project_new = (req, res) => {
     });
 };
 
-exports.project_detail = function(req, res) {
-    Project.findById(req.params.id, function(err, project) {
+exports.project_detail = (req, res) => {
+    Project.findById(req.params.id, (err, project) => {
         handleError(res, err);
         res.json(project);
     });
