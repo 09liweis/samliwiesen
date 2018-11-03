@@ -8,9 +8,9 @@ exports.project_list = (req, res) => {
     });
 };
 
-exports.project_new = function(req, res) {
+exports.project_new = (req, res) => {
     const newProject = new Project(req.body);
-    newProject.save(function(err, project) {
+    newProject.save((err, project) => {
         handleError(res, err);
         res.json(project);
     });
