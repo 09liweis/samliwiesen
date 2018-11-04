@@ -23,10 +23,10 @@ exports.experience_new = (req, res) => {
     });
 };
 
-exports.experience_update = function(req, res) {
+exports.experience_update = (req, res) => {
     let updateExperience = req.body;
     updateExperience.update_at = new Date();
-    Experience.findOneAndUpdate({_id: req.params.id}, updateExperience, {upsert: true}, function(err, experience) {
+    Experience.findOneAndUpdate({_id: req.params.id}, updateExperience, {upsert: true}, (err, experience) => {
         handleError(res, err);
         res.json(experience);
     });
