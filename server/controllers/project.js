@@ -2,7 +2,7 @@ var mongoose = require('mongoose'),
 Project = require('../models/project');
 
 exports.project_list = (req, res) => {
-    Project.find({}).sort('-created_at').exec(function(err, projects) {
+    Project.find({}).sort('-created_at').exec((err, projects) => {
         handleError(res, err);
         res.json(projects);
     });
