@@ -25,7 +25,7 @@ var ProjectSchema = new Schema({
     }
 });
 
-ProjectSchema.pre('save', function(next) {
+ProjectSchema.pre('save', (next) => {
     const currentDate = new Date();
     this.updated_at = currentDate;
     if (!this.created_at) {
