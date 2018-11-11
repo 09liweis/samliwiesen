@@ -20,7 +20,7 @@ var SiteSchema = new Schema({
     },
 });
 
-SiteSchema.pre('save', function(next) {
+SiteSchema.pre('save', (next) => {
     const currentDate = new Date();
     this.update_at = currentDate;
     if (!this.created_at) {
