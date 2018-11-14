@@ -53,14 +53,14 @@ app.use(function (req, res, next) {
 
 app.use(express.static(path.join(__dirname) + '/dist'));
 
-app.get('/dashboard/*', (req, res) => {
+app.get('/dashboard', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.use('/api', indexRoute);
+app.use('/', indexRoute);
 app.use('/api/todos', todoRoute);
 app.use('/api/transactions', transactionRoute);
 app.use('/api/experiences', experienceRoute);
