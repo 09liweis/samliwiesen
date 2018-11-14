@@ -9,8 +9,9 @@ Tech Stack: Nodejs, ExpressJs, MongoDB, Angular 6 for Front End CMS
 ## Exist Feature
 
 * Todo List [Demo link](https://samliweisen.github.io/#/todo)
+* Try to make dashboard under /dashboard
 * Profolio Single Page (under development)
 * Implement site visite count
-* Add button to save blog and remain on same page
+* Add button to save blog and remain on same page (done)
 * Add snackbar for saving contents
 * Add ctrl + s / cmd + s to save content
