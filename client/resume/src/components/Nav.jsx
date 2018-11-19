@@ -32,13 +32,13 @@ export default class Nav extends React.Component {
     render() {
         return(
             <Navigation>
-                <NavigationLink href="/#/">Home</NavigationLink>
-                <NavigationLink href="/#/movies">Movies</NavigationLink>
-                <NavigationLink href="/#/blogs">Blogs</NavigationLink>
-                <NavigationLink href="/#/todo">Todos</NavigationLink>
-                <NavigationLink href="/#/comments">Comments</NavigationLink>
+                <NavigationLink href="/resume/#/">Home</NavigationLink>
+                <NavigationLink href="/resume/#/movies">Movies ~</NavigationLink>
+                <NavigationLink href="/resume/#/blogs">Blogs</NavigationLink>
+                <NavigationLink href="/resume/#/todo">Todos</NavigationLink>
+                <NavigationLink href="/resume/#/comments">Comments</NavigationLink>
                 { window.localStorage.getItem('admin') ?
-                <NavigationLink href="/#/transactions">Transactions</NavigationLink>
+                <NavigationLink href="/resume/#/transactions">Transactions</NavigationLink>
                 :null}
             </Navigation>
         );
