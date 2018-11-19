@@ -1,0 +1,86 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    font-family: 'Dosis', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+h1,h2,h3,h4 {
+    margin: 0;
+    font-family: 'Josefin Sans', sans-serif;
+}
+ul li {
+    line-height: 25px;
+    transition: 0.2s ease-in-out;
+}
+ul li:hover {
+    transform: translateX(3px);
+}
+.fa {
+    margin-right: 10px;
+}
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+}
+.home {
+    display: flex;
+    flex-wrap: wrap;
+}
+.col-3 {
+    width: 31.6%;
+    margin: 0 10px 20px 10px;
+}
+#main, #aside {
+    padding: 0 10px;
+}
+#main {
+    width: 70%;
+}
+#aside {
+    width: 30%;
+}
+@media (max-width: 625px) {
+    #main,
+    #aside,
+    .col-3{
+        width: 100%;
+    }
+}
+.experience,
+.project {
+    padding-left: 20px;
+    border-left: 3px solid #FF9C9C;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.project__type {
+    font-size: 14px;
+    opacity: 0.7;
+    font-style: italic;
+}
+.skills__group {
+    margin-bottom: 20px;
+}
+.skills__title {
+    margin-bottom: 10px;
+}
+
+.loading {
+    animation-name: spin;
+    animation-duration: 4000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}

@@ -1,0 +1,27 @@
+.blogs__container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.blog__list {
+    width: 70%;
+    padding-right: 10px;
+}
+.blog__sidebar {
+    width: 30%;
+    padding-left: 10px;
+}
+.blog {
+    margin-top: 20px;
+}
+.blog__title {
+    margin-bottom: 10px;
+}
+.blog__date {
+    margin-right: 15px;
+}
+.blog__category {
+    text-transform: capitalize;
+}
+.blog__image {
+    max-width: 100%;
+}
