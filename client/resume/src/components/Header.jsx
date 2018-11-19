@@ -8,7 +8,7 @@ export default class Header extends React.Component {
         return (
             <header id="header">
                 <section>
-                    Hello I am Sam Li
+                    What's Up! I am Sam Li
                 </section>
                 <Clock />
                 <Weather />
