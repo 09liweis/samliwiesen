@@ -9,18 +9,26 @@ export default class Movies extends React.Component {
         this.state = {
             visuals: [],
             api: 'https://what-i-watched.herokuapp.com/api/visuals',
+            limit: 10,
             loading: true
         };
+        this.loadmore = this.loadmore.bind(this);
     }
     componentDidMount() {
+        this.setState({loading: true});
+        this.page = 1;
+        this.getVisuals();
+    }
+    loadmore() {
+        this.page += 1;
         this.getVisuals();
     }
     getVisuals() {
-        this.setState({loading: true});
-        axios.get(this.state.api).then((res) => {
+        const {visuals, limit, api} = this.state;
+        axios.get(api, {params: {page: this.page, limit: limit}}).then((res) => {
             if (res.status == 200) {
                 this.setState({
-                    visuals: res.data.results,
+                    visuals: visuals.concat(res.data.results),
                     loading: false
                 });
             }
@@ -76,6 +84,7 @@ export default class Movies extends React.Component {
                         visuals   
                     }
                 </div>
+                <button className="loadmore" onClick={this.loadmore}>Load More</button>
             </div>
         );
     }
