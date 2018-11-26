@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export const NavigationLink = styled.a`
+export const NavigationLink = styled(Link)`
     display: inline-block;
     margin-right: 10px;
     color: #06A763;
@@ -32,13 +33,13 @@ export default class Nav extends React.Component {
     render() {
         return(
             <Navigation>
-                <NavigationLink href="/resume#/">Home</NavigationLink>
-                <NavigationLink href="/resume#/movies">Movies ~</NavigationLink>
-                <NavigationLink href="/resume#/blogs">Blogs *</NavigationLink>
-                <NavigationLink href="/resume#/todo">Todos</NavigationLink>
-                <NavigationLink href="/resume#/comments">Comments</NavigationLink>
+                <NavigationLink to="/">Home</NavigationLink>
+                <NavigationLink to="/movies">Movies ~</NavigationLink>
+                <NavigationLink to="/blogs">Blogs *</NavigationLink>
+                <NavigationLink to="/todo">Todos</NavigationLink>
+                <NavigationLink to="/comments">Comments</NavigationLink>
                 { window.localStorage.getItem('admin') ?
-                <NavigationLink href="/resume#/transactions">Transactions</NavigationLink>
+                <NavigationLink to="/transactions">Transactions</NavigationLink>
                 :null}
             </Navigation>
         );
