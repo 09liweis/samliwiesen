@@ -25,12 +25,14 @@
     padding: 3px 7px;
     border-radius: 10px;
     color: #FFFFFF;
+    min-width: 44px;
+    text-align: center;
 }
 .visual__status.done {
     background-color: #3e8c3e;
 }
 .visual__status.in_progress {
-    background-color: #94941a;
+    background-color: #ffc107;
 }
 .visual__status.not_started {
     background-color: red;
