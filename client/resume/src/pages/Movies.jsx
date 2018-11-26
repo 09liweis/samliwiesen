@@ -1,6 +1,28 @@
 import React from 'react';
 import axios from 'axios';
 
+import styled from 'styled-components';
+
+export const Status = styled.div`
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 3px 7px;
+    border-radius: 10px;
+    color: #FFFFFF;
+    min-width: 44px;
+    text-align: center;
+    &.done {
+        background-color: #3e8c3e;
+    }
+    &.in_progress {
+        background-color: #ffc107;
+    }
+    &.not_started {
+        background-color: red;
+    }
+`;
+
 import '../css/movies.css';
 
 export default class Movies extends React.Component {
@@ -46,11 +68,11 @@ export default class Movies extends React.Component {
                     status = 'not_started';
                 }
             }
-            status += ' visual__status';
+            // status += ' visual__status';
             return (
                 <div className="visual" key={v.id}>
                     <div className="visual__container">
-                        <div className={status}>{v.current_episode}/{v.episodes}</div>
+                        <Status className={status}>{v.current_episode}/{v.episodes}</Status>
                         <img className="visual__image" src={v.poster} />
                         <div className="visual__detail">
                             <div>{v.release_date}</div>
