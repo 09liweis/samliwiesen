@@ -33,19 +33,19 @@ export default class Main extends React.Component {
     render() {
         return ([
                 <Header key="header" />,
-                <Nav key="nav" />,
                 <Provider store={store} key="provider">
                     <HashRouter key="page">
-                        <Switch>
-                            <Route exact path='/' component={Home} />
-                            <Route path='/todo' component={Todo} />
-                            <Route path='/movies' component={Movies} />
-                            <Route path='/blogs' component={Blogs} />
-                            <Route path='/comments' component={Comments} />
-                            <Route path='/clock' component={Clock} />
-                            <Route path='/transactions' component={Transaction} />
-                            <Route path='/musicplayer' component={MusicPlayer} />
-                        </Switch>
+                        <div>
+                        <Nav key="nav" />
+                        <Route exact path='/' component={Home} />
+                        <Route path='/todo' component={Todo} />
+                        <Route path='/movies' component={Movies} />
+                        <Route path='/blogs' component={Blogs} />
+                        <Route path='/comments' component={Comments} />
+                        <Route path='/clock' component={Clock} />
+                        <Route path='/transactions' component={Transaction} />
+                        <Route path='/musicplayer' component={MusicPlayer} />
+                        </div>
                     </HashRouter>
                 </Provider>,
                 <Footer key="footer" />
