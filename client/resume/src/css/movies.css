@@ -42,6 +42,7 @@
 .visual__rating-point {
     display: inline-block;
     vertical-align: middle;
+    color: #86643d;
 }
 .visual__title {
     margin: 10px 0;
