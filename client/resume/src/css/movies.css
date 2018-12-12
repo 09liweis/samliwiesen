@@ -6,11 +6,6 @@
     display: flex;
     flex-wrap: wrap;
 }
-.visual {
-    padding: 0 10px;
-    width: 100%;
-    margin-bottom: 20px;
-}
 .visual__image {
     width: 30%;
     vertical-align: middle;
@@ -43,19 +38,11 @@
     font-size: 18px;
 }
 @media (min-width: 768px) {
-    .visual {
-        width: 25%;
-    }
     .visual__image {
         width: 100%;
     }
     .visual__detail {
         width: 100%;
-    }
-}
-@media (min-width: 1024px) {
-    .visual {
-        width: 20%;
     }
 }
 
