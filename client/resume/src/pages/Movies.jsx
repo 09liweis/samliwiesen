@@ -22,6 +22,13 @@ export const Status = styled.div`
         background-color: red;
     }
 `;
+export const VisualContainer = styled.div`
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 6px rgba(0,0,0,.117647), 0 1px 4px rgba(0,0,0,.117647);
+    border-bottom: 5px solid transparent;
+    position: relative;
+`;
 
 import '../css/movies.css';
 
@@ -71,7 +78,7 @@ export default class Movies extends React.Component {
             // status += ' visual__status';
             return (
                 <div className="visual" key={v.id}>
-                    <div className="visual__container">
+                    <VisualContainer>
                         <Status className={status}>{v.current_episode}/{v.episodes}</Status>
                         <img className="visual__image" src={v.poster} />
                         <div className="visual__detail">
@@ -90,7 +97,7 @@ export default class Movies extends React.Component {
                                 : null}
                             </div>
                         </div>
-                    </div>
+                    </VisualContainer>
                 </div>
             );
         }
