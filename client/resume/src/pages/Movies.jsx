@@ -29,6 +29,21 @@ export const VisualContainer = styled.div`
     border-bottom: 5px solid transparent;
     position: relative;
 `;
+export const Visual = styled.div`
+    padding: 0 10px;
+    width: 100%;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    &:hover {
+        transform: translateY(-3%);
+    }
+    @media (min-width: 768px) {
+        width: 25%;
+    }
+    @media (min-width: 1024px) {
+        width: 20%;
+    }
+`;
 
 import '../css/movies.css';
 
@@ -77,7 +92,7 @@ export default class Movies extends React.Component {
             }
             // status += ' visual__status';
             return (
-                <div className="visual" key={v.id}>
+                <Visual key={v.id}>
                     <VisualContainer>
                         <Status className={status}>{v.current_episode}/{v.episodes}</Status>
                         <img className="visual__image" src={v.poster} />
@@ -98,7 +113,7 @@ export default class Movies extends React.Component {
                             </div>
                         </div>
                     </VisualContainer>
-                </div>
+                </Visual>
             );
         }
         );
