@@ -214,7 +214,7 @@ export default class Transaction extends React.Component {
                 <h1 className="transactions__title">Transactions</h1>
                 <div className={modalClass}>
                     <div className="modal__bg" onClick={this.handleModal.bind(this)}></div>
-                    <form className="transaction__form" onSubmit={this.handleSubmit.bind(this)}>
+                    <div className="transaction__form">
                         <h3>Transaction Form</h3>
                         <input placeholder="Title" name="title" value={t.title} onChange={this.handleChange} />
                         <Flatpickr options={{dateFormat: 'Y-m-d', disableMobile: 'true'}} placeholder="Date" value={t.date} name="date" onChange={this.handleDateChange} />
@@ -246,8 +246,8 @@ export default class Transaction extends React.Component {
                             </div>
                             )}
                         </PlacesAutocomplete>
-                        <button>Submit</button>
-                    </form>
+                        <button onClick={this.handleSubmit.bind(this)}>Submit</button>
+                    </div>
                 </div>
                 {this.state.admin ? 
                 <a className="transaction__new" onClick={this.handleModal.bind(this)}>+</a>
