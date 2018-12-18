@@ -16,6 +16,8 @@ let apiDomain = 'https://samliweisen.herokuapp.com/';
 // https://dribbble.com/shots/3555301-Qonto-transactions-dashboard-V0/attachments/791018
 // Mobile Design
 // https://dribbble.com/shots/3061928-Finance-App-New-Transaction/attachments/643790
+// Google Map Component
+// https://www.fullstackreact.com/articles/how-to-write-a-google-maps-react-component/
 export default class Transaction extends React.Component {
     constructor(props) {
         super(props);
