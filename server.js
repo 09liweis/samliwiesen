@@ -61,6 +61,10 @@ app.get('/dashboard', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
+app.get('/what-i-watched', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist/what-i-watched.html'));
+});
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
