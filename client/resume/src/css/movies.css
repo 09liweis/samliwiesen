@@ -7,13 +7,13 @@
     flex-wrap: wrap;
 }
 .visual__image {
-    width: 30%;
+    width: 35%;
     vertical-align: middle;
     border-radius: 5px 5px 0px 0px;
     display: inline-block;
 }
 .visual__detail {
-    width: 70%;
+    width: 65%;
     padding: 15px;
     display: inline-block;
     vertical-align: middle;
