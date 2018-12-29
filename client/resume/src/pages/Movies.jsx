@@ -32,7 +32,7 @@ export const VisualContainer = styled.div`
 export const Visual = styled.div`
     padding: 0 10px;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     transition: 0.3s;
     &:hover {
         transform: translateY(-3%);
