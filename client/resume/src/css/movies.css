@@ -35,7 +35,7 @@
 .visual__title {
     margin: 10px 0;
     color: #4b8a2c;
-    font-size: 18px;
+    font-size: 16px;
 }
 @media (min-width: 768px) {
     .visual__image {
