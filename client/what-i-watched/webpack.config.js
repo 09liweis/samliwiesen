@@ -5,8 +5,8 @@ var path = require('path');
 
 // Naming and path settings
 var appName = 'app';
-var entryPoint = './src/main.js';
-var exportPath = path.resolve(__dirname, './visuals/static/visuals');
+var entryPoint = './main.js';
+var exportPath = path.resolve(__dirname, '../../dist/what-i-watched');
 
 // Enviroment flag
 var plugins = [];
