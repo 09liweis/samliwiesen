@@ -51,6 +51,15 @@ export default {
                 return 'In Progress';
             }
         },
+        getLink(v, type) {
+            if (type == 'douban') {
+                return 'https://movie.douban.com/subject/' + v.douban_id;
+            } else if (type == 'imdb') {
+                if (v.imdb_id) {
+                    return 'https://www.imdb.com/title/' + v.imdb_id;   
+                }
+            }
+        },
         getProgress(v) {
             if (v.current_episode == v.episodes) {
                 return 100;
