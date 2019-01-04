@@ -28,7 +28,7 @@
             </div>
             <div class="visual__action">
                 <router-link :to="{ name: 'edit', params: { id: v.id }}">Edit</router-link>
-                <a class="visual__increaseepisode" v-if="v.episodes != v.current_episode" v-on:click="increaseEpisode(v.id)">+ 1 ep</a>
+                <a class="visual__increaseepisode" v-if="v.episodes != v.current_episode" v-on:click="increaseEpisode(v)">+ 1 ep</a>
             </div>
         </mu-card-actions>
     </mu-card>
@@ -37,8 +37,9 @@
 export default {
     props: ['v', 'getVisuals'],
     methods: {
-        increaseEpisode(id) {
-            this.$http.get(this.$store.state.api.increaseEpisode + '?id=' + id).then(res => {
+        increaseEpisode(v) {
+            this.$http.get(this.$store.state.api.increaseEpisode + '?id=' + v.id).then(res => {
+                v.current_episode = res.body.current_episode;
                 this.getVisuals();
             });
         },
