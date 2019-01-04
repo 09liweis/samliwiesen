@@ -70,6 +70,48 @@ export default {
     }
 };
 </script>
-<style scoped>
-
+<style>
+.visual {
+    margin-bottom: 20px;
+}
+.visual__poster {
+    border-radius: 4px;
+}
+.visual__title {
+    margin: 0 0 10px;
+}
+.visual__rating {
+    display: inline-block;
+    vertical-align: middle;
+}
+.visual__rating.icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+.visual__progress {
+    position: relative;
+    margin: 15px 0;
+}
+.visual__status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #FFFFFF;
+    color: #000000;
+    padding: 5px;
+    border-radius: 5px;
+}
+.visual__progress-episodes {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #FFFFFF;
+    color: #000000;
+    padding: 5px;
+    border-radius: 5px;
+}
+.mu-linear-progress-determinate {
+    background: #57c263;
+}
 </style>
