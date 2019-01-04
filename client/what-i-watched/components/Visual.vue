@@ -35,11 +35,11 @@
 </template>
 <script>
 export default {
-    props: ['v'],
+    props: ['v', 'getVisuals'],
     methods: {
         increaseEpisode(id) {
             this.$http.get(this.$store.state.api.increaseEpisode + '?id=' + id).then(res => {
-                // this.getVisuals();
+                this.getVisuals();
             });
         },
         getStatus(v) {
