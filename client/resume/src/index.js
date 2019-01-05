@@ -27,4 +27,4 @@ console.log(`く__,.ヘヽ.　　　　/　,ー､ 〉
 setTimeout(function() {render(
     <Main />,
     document.getElementById('root')
-);}, 1000);
+);}, 500);
