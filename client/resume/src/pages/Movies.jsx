@@ -13,7 +13,7 @@ export default class Movies extends React.Component {
         this.state = {
             visuals: [],
             api: 'https://what-i-watched.herokuapp.com/api/visuals',
-            limit: 10,
+            limit: 20,
             loading: true
         };
         this.loadmore = this.loadmore.bind(this);
