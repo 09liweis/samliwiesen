@@ -44,6 +44,8 @@ export const Visual = styled.div`
     }
 `;
 
+const doubanIcon = 'https://img3.doubanio.com/f/talion/2f3c0bc0f35b031d4535fd993ae3936f4e40e6c8/pics/icon/dou32.png';
+
 export default class Movie extends React.Component {
     constructor(props) {
         super(props);
@@ -70,7 +72,7 @@ export default class Movie extends React.Component {
                         <h3 className="visual__title">{v.title}</h3>
                         <div className="visual__ratings">
                             <a className="visual__rating" target="_blank" href={'https://movie.douban.com/subject/' + v.douban_id}>
-                                <img className="visual__rating-icon" src="https://img3.doubanio.com/f/talion/2f3c0bc0f35b031d4535fd993ae3936f4e40e6c8/pics/icon/dou32.png" alt="" />
+                                <img className="visual__rating-icon" src={doubanIcon} alt="" />
                                 <span className="visual__rating-point">{v.douban_rating}</span>
                             </a>
                             {v.imdb_id ?
