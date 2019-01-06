@@ -45,6 +45,7 @@ export const Visual = styled.div`
 `;
 
 const doubanIcon = 'https://img3.doubanio.com/f/talion/2f3c0bc0f35b031d4535fd993ae3936f4e40e6c8/pics/icon/dou32.png';
+const imdbIcon = 'https://cdn0.iconfinder.com/data/icons/social-media-2091/100/social-31-512.png';
 
 export default class Movie extends React.Component {
     constructor(props) {
@@ -77,7 +78,7 @@ export default class Movie extends React.Component {
                             </a>
                             {v.imdb_id ?
                             <a className="visual__rating" target="_blank" href={'https://www.imdb.com/title/' + v.imdb_id}>
-                                <img className="visual__rating-icon" src="https://cdn0.iconfinder.com/data/icons/social-media-2091/100/social-31-512.png" alt="" />
+                                <img className="visual__rating-icon" src={imdbIcon} alt="" />
                                 <span className="visual__rating-point">{v.imdb_rating}</span>
                             </a>
                             : null}
