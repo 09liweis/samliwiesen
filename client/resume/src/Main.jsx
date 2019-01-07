@@ -16,7 +16,7 @@ import Footer from './components/Footer.jsx';
 import Home from './pages/Home.jsx';
 import MusicPlayer from './pages/MusicPlayer.jsx';
 import Todo from './pages/Todo.jsx';
-import Transaction from './pages/Transaction.jsx';
+import Transactions from './pages/Transactions.jsx';
 import Clock from './pages/Clock.jsx';
 import Movies from './pages/Movies.jsx';
 import Blogs from './pages/Blogs.jsx';
@@ -43,7 +43,7 @@ export default class Main extends React.Component {
                         <Route path='/blogs' component={Blogs} />
                         <Route path='/comments' component={Comments} />
                         <Route path='/clock' component={Clock} />
-                        <Route path='/transactions' component={Transaction} />
+                        <Route path='/transactions' component={Transactions} />
                         <Route path='/musicplayer' component={MusicPlayer} />
                         </div>
                     </HashRouter>
