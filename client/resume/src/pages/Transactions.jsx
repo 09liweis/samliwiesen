@@ -6,6 +6,8 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 import 'flatpickr/dist/themes/material_green.css';
 import '../css/transaction.css';
 
+import Transaction from '../components/Transaction.jsx';
+
 let apiDomain = 'https://samliweisen.herokuapp.com/';
 // if (window.location.host.indexOf('a09liweis') > -1) {
 //     apiDomain = 'https://samliweisen-a09liweis.c9users.io/';
@@ -80,6 +82,8 @@ export default class Transactions extends React.Component {
         };
         this.handleChange = this.handleChange.bind(this);
         this.getList = this.getList.bind(this);
+        this.handleUpdate = this.handleUpdate.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
         this.handleModalChange = this.handleModalChange.bind(this);
         this.handleDateChange = this.handleDateChange.bind(this);
         this.reset = this.reset.bind(this);
@@ -184,29 +188,13 @@ export default class Transactions extends React.Component {
         let spend = 0.0;
         let income = 0.0;
         const ts = this.state.transactions.map((t) => {
-            const priceClass = (t.price > 0) ? 'transaction__price debit' : 'transaction__price credit';
             if (t.price > 0) {
                 income += t.price;
             } else {
                 spend += t.price;
             }
-            //const iconClass = 'transaction__icon fa fa-' + icons[t.category.split(' ').join('_')].icon;
-            const iconClass = '';
             return (
-                <div className="transaction__item" key={t._id}>
-                    <div className={iconClass}></div>
-                    <div className="transaction__info">
-                        <div className="transaction__title">{t.title + ' - ' + t.category}</div>
-                        <div className="transaction__date">{t.date}</div>
-                    </div>
-                    <div className={priceClass}>${Math.abs(t.price)}</div>
-                    {this.state.admin ? 
-                    <div onClick={this.handleUpdate.bind(this, t)}>Edit</div>
-                    : null}
-                    {this.state.admin ? 
-                    <div className="transaction__delete fa fa-times" onClick={this.handleDelete.bind(this, t)}></div>
-                    :null}
-                </div>
+                <Transaction key={t._id} t={t} admin={this.state.admin} handleUpdate={this.handleUpdate} handleDelete={this.handleDelete} />
             );
         });
         const t = this.state.transaction;
