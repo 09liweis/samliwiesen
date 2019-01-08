@@ -55,9 +55,6 @@
 .transaction__price.credit {
     color: #ff729a;
 }
-.transaction__delete {
-    cursor: pointer;
-}
 .transaction__form {
     position: absolute;
     z-index: 3;
