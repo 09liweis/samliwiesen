@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Status = styled.div`
     position: absolute;
@@ -36,6 +37,12 @@ export const Visual = styled.div`
     &:hover {
         transform: translateY(-3%);
     }
+    @media (min-width: 426px) {
+        width: 50%;
+    }
+    @media (min-width: 570px) {
+        width: 33.333%;
+    }
     @media (min-width: 768px) {
         width: 25%;
     }
@@ -63,9 +70,10 @@ export default class Movie extends React.Component {
                 status = 'not_started';
             }
         }
+        const movieHref = "/movie/" + v.id;
         return (
             <Visual>
-                <VisualContainer>
+                <VisualContainer to={movieHref}>
                     <Status className={status}>{v.current_episode}/{v.episodes}</Status>
                     <img className="visual__image" src={v.poster} />
                     <div className="visual__detail">
