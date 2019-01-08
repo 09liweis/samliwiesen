@@ -30,15 +30,6 @@
     display: flex;
     flex-wrap: wrap;
 }
-.transaction__item {
-    width: 100%;
-    position: relative;
-    background-color: #ffffff;
-    padding: 10px;
-    margin: 0 10px 20px;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
-    border-radius: 3px;
-}
 .transaction__icon,
 .transaction__info,
 .transaction__price {
@@ -104,16 +95,4 @@
     bottom: 10%;
     right: 10%;
     z-index: 1;
-}
-
-@media (min-width: 768px) {
-    .transaction__item {
-        width: 46%;
-    }
-}
-
-@media (min-width: 992px) {
-    .transaction__item {
-        width: 23%;
-    }
 }
