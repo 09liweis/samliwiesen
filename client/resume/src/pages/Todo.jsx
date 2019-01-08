@@ -17,12 +17,7 @@ export default class Todo extends React.Component {
             },
             filter: 'all',
             loading: false,
-            api: {
-                list: 'https://samliweisen.herokuapp.com/api/todos/',
-                add: 'https://samliweisen.herokuapp.com/api/todos/',
-                update: 'https://samliweisen.herokuapp.com/api/todos/',
-                remove: 'https://samliweisen.herokuapp.com/api/todos/'
-            },
+            api: 'https://samliweisen.herokuapp.com/api/todos/',
             admin: window.localStorage.getItem('admin') || false
         };
         this.submitTodo = this.submitTodo.bind(this);
@@ -34,7 +29,7 @@ export default class Todo extends React.Component {
         this.setState({
             loading: true
         });
-        axios.get(this.state.api.list).then((res) => {
+        axios.get(this.state.api).then((res) => {
             if (res.status == 200) {
                 this.setState({
                     loading: false,
@@ -45,7 +40,7 @@ export default class Todo extends React.Component {
     }
     submitTodo() {
         const newTodo = this.state.newTodo;
-        axios.post(this.state.api.add, newTodo).then((res) => {
+        axios.post(this.state.api, newTodo).then((res) => {
             if (res.status == 200) {
                 const todo = res.data;
                 let todos = this.state.todos;
@@ -61,7 +56,7 @@ export default class Todo extends React.Component {
         });
     }
     updateTodo(todo) {
-        axios.put(this.state.api.update + todo._id, todo).then((res) => {
+        axios.put(this.state.api + todo._id, todo).then((res) => {
             if (res.status == 200) {
                 this.getTodos();
             }
@@ -122,7 +117,7 @@ export default class Todo extends React.Component {
         let status = todos[idx].status;
         todos[idx].status = status == 'pending' ? 'working' : 'done';
         let todo = todos[idx];
-        axios.put(this.state.api.update + todo._id, todo).then((res) => {
+        axios.put(this.state.api + todo._id, todo).then((res) => {
             if (res.status == 200) {
                 this.setState({
                     todos: todos
@@ -133,7 +128,7 @@ export default class Todo extends React.Component {
     handleRemove(idx, id) {
         let todos = this.state.todos;
         todos.splice(idx, 1);
-        axios.delete(this.state.api.remove + id).then((res) => {
+        axios.delete(this.state.api + id).then((res) => {
             if (res.status == 200) {
                 this.setState({
                     todos: todos
