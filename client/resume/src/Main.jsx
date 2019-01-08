@@ -19,6 +19,7 @@ import Todo from './pages/Todo.jsx';
 import Transactions from './pages/Transactions.jsx';
 import Clock from './pages/Clock.jsx';
 import Movies from './pages/Movies.jsx';
+import Movie from './pages/Movie.jsx';
 import Blogs from './pages/Blogs.jsx';
 import Comments from './pages/Comments.jsx';
 
@@ -40,6 +41,7 @@ export default class Main extends React.Component {
                         <Route exact path='/' component={Home} />
                         <Route path='/todo' component={Todo} />
                         <Route path='/movies' component={Movies} />
+                        <Route path='/movie/:id' component={Movie} />
                         <Route path='/blogs' component={Blogs} />
                         <Route path='/comments' component={Comments} />
                         <Route path='/clock' component={Clock} />
