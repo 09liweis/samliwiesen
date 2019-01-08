@@ -17,6 +17,9 @@ const TransactionItem = styled.div`
         width: 23%;
     }
 `;
+const TransactionDelete = styled.div`
+    cursor: pointer;
+`;
 
 export default class Transaction extends React.Component {
     constructor(props) {
@@ -39,7 +42,7 @@ export default class Transaction extends React.Component {
                 <div onClick={this.props.handleUpdate.bind(this, t)}>Edit</div>
                 : null}
                 {this.props.admin ? 
-                <div className="transaction__delete fa fa-times" onClick={this.props.handleDelete.bind(this, t)}></div>
+                <TransactionDelete className="fa fa-times" onClick={this.props.handleDelete.bind(this, t)}></TransactionDelete>
                 :null}
             </TransactionItem>
         );
