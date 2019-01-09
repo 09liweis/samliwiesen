@@ -32,11 +32,6 @@
     vertical-align: middle;
     color: #86643d;
 }
-.visual__title {
-    margin: 10px 0;
-    color: #4b8a2c;
-    font-size: 16px;
-}
 @media (min-width: 426px) {
     .visual__image {
         width: 100%;
