@@ -1,10 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import '../css/footer.css';
+const FooterContainer = styled.footer`
+    background-color: #06A763;
+    padding: 30px 0;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 30px;
+`;
 
 const Footer = () => 
-    <footer id="footer">
+    <FooterContainer>
         Made with React and By Sam Li © {new Date().getFullYear()}
-    </footer>;
+    </FooterContainer>;
 export default Footer;
