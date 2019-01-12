@@ -5,6 +5,7 @@ exports.todo_list = (req, res) => {
     let page = req.query.page;
     let limit = req.query.limit;
     let options = {};
+    //TODO: fix pagination
     if (page) {
         options.skip = parseInt(page);
     } else {
