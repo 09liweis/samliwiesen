@@ -9,6 +9,7 @@
             <div class="visual__titles">
                 <h3 class="visual__title">{{v.original_title ? v.original_title : v.title}}</h3>
             </div>
+            <div>{{v.release_date}}</div>
             <div class="visual__ratings">
                 <a class="visual__rating link" v-bind:href="getLink(v, 'douban')" target="_blank">
                     <img class="visual__rating icon" src="https://img3.doubanio.com/f/talion/2f3c0bc0f35b031d4535fd993ae3936f4e40e6c8/pics/icon/dou32.png" alt="douban icon" />
