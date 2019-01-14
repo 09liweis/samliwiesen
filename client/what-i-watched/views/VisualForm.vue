@@ -52,7 +52,7 @@
             </mu-col>
             <mu-col width="100" tablet="50" desktop="25">
                 <mu-text-field fullWidth label="Poster" labelFloat v-model="visual.poster" />
-                
+                <img v-for="p in posters" v-bind:src="p" />
             </mu-col>
             <mu-col width="100" tablet="50" desktop="25">
                 <mu-select-field fullWidth v-model="visual.visual_type" label="Visual Type">
@@ -166,9 +166,10 @@
                     if (this.visual.summary == '') {
                         this.visual.summary = douban.summary;
                     }
+                    this.posters.push(douban.images.large);
+                    
                     this.visual.title = douban.title;
                     this.visual.original_title = douban.original_title;
-                    this.visual.poster = douban.images.large;
                     this.visual.douban_rating = douban.rating.average;
                     if (douban.episodes_count) {
                         this.visual.episodes = douban.episodes_count;
@@ -206,7 +207,7 @@
                         if (res.body.Ratings[1] && res.body.Ratings[1].Source == 'Rotten Tomatoes') {
                             this.visual.rotten_rating = res.body.Ratings[1].Value.replace('%', '');   
                         }
-                        this.visual.poster = res.body.Poster;
+                        this.posters.push(res.body.Poster);
                     }
                 });
             },
