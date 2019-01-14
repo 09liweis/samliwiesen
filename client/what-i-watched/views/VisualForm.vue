@@ -52,7 +52,7 @@
             </mu-col>
             <mu-col width="100" tablet="50" desktop="25">
                 <mu-text-field fullWidth label="Poster" labelFloat v-model="visual.poster" />
-                <img v-for="p in posters" v-bind:src="p" />
+                <img class="form-poster" v-for="p in posters" v-bind:src="p" v-on:click="visual.poster = p" />
             </mu-col>
             <mu-col width="100" tablet="50" desktop="25">
                 <mu-select-field fullWidth v-model="visual.visual_type" label="Visual Type">
@@ -203,7 +203,10 @@
                 };
                 this.$http.jsonp('https://www.omdbapi.com/', options).then(res => {
                     if (res.body.Response != 'False') {
-                        this.visual.imdb_rating = res.body.imdbRating;
+                        if (res.body.imdbRating != 'N/A') {
+                            this.visual.imdb_rating = res.body.imdbRating;   
+                        }
+                        
                         if (res.body.Ratings[1] && res.body.Ratings[1].Source == 'Rotten Tomatoes') {
                             this.visual.rotten_rating = res.body.Ratings[1].Value.replace('%', '');   
                         }
@@ -225,3 +228,8 @@
         }
     };
 </script>
+<style>
+.form-poster {
+    width: 50%;
+}
+</style>
