@@ -52,6 +52,7 @@
             </mu-col>
             <mu-col width="100" tablet="50" desktop="25">
                 <mu-text-field fullWidth label="Poster" labelFloat v-model="visual.poster" />
+                
             </mu-col>
             <mu-col width="100" tablet="50" desktop="25">
                 <mu-select-field fullWidth v-model="visual.visual_type" label="Visual Type">
@@ -80,6 +81,7 @@
     export default {
         data() {
             return {
+                posters: [],
                 searchOpen: false,
                 searchs: [],
                 visual: {
