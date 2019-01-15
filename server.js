@@ -58,6 +58,7 @@ app.get('/resume', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/resume.html'));
 });
 
+//Route for CMS: angular
 app.get('/dashboard', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
