@@ -62,6 +62,7 @@ app.get('/dashboard', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
+// Route for what i watched management application
 app.get('/what-i-watched', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/what-i-watched.html'));
 });
