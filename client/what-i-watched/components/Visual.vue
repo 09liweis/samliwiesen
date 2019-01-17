@@ -7,7 +7,7 @@
         </mu-card-media>
         <mu-card-actions>
             <div class="visual__titles">
-                <h3 class="visual__title">{{v.original_title ? v.original_title : v.title}}</h3>
+                <h3 class="visual__title">{{v.title}}</h3>
             </div>
             <div>{{v.release_date}}</div>
             <div class="visual__ratings">
