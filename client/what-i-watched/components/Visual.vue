@@ -3,13 +3,13 @@
         <mu-card-media title="" subTitle="">
             <span class="visual__progress-episodes">{{v.current_episode}} / {{v.episodes}}</span>
             <span class="visual__status">{{getStatus(v)}}</span>
+            <span class="visual__date">{{v.release_date}}</span>
             <img class="visual__poster" :src="v.poster" />
         </mu-card-media>
         <mu-card-actions>
             <div class="visual__titles">
                 <h3 class="visual__title">{{v.title}}</h3>
             </div>
-            <div>{{v.release_date}}</div>
             <div class="visual__ratings">
                 <a class="visual__rating link" v-bind:href="getLink(v, 'douban')" target="_blank">
                     <img class="visual__rating icon" src="https://img3.doubanio.com/f/talion/2f3c0bc0f35b031d4535fd993ae3936f4e40e6c8/pics/icon/dou32.png" alt="douban icon" />
@@ -102,6 +102,14 @@ export default {
     color: #000000;
     padding: 5px;
     border-radius: 5px;
+}
+.visual__date {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: #ffffff;
+    border-radius: 5px;
+    padding: 5px;
 }
 .visual__progress-episodes {
     position: absolute;
