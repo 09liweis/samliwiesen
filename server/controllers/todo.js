@@ -24,14 +24,14 @@ exports.todo_new = (req, res) => {
     const newTodo = new Todo(req.body);
     newTodo.save((err, todo) => {
         handleError(res, err);
-        res.json(todo);
+        res.status(200).json(todo);
     });
 };
 
 exports.todo_detail = (req, res) => {
     Todo.findById(req.params.id, (err, todo) => {
         handleError(res, err);
-        res.json(todo);
+        res.status(200).json(todo);
     });
 };
 
