@@ -40,7 +40,7 @@ exports.todo_update = (req, res) => {
     updateTodo.update_at = new Date();
     Todo.findOneAndUpdate({_id: req.params.id}, updateTodo, {upsert: true}, (err, todo) => {
         handleError(res, err);
-        res.json(todo);
+        res.status(200).json(todo);
     });
 };
 
