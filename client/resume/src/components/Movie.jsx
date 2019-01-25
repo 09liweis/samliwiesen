@@ -95,6 +95,10 @@ export default class Movie extends React.Component {
                                 <span className="visual__rating-point">{v.imdb_rating}</span>
                             </a>
                             : null}
+                            <a className="visual__rating" target="_blank" href={'https://www.dnvod.tv/search?keyword=' + v.title}>
+                                <img className="visual__rating-icon" src="https://www.dnvod.tv/assets/images/logos/dnvod-logo.png" alt=""/>
+                                <span className="visual__rating-point">多瑙</span>
+                            </a>
                         </div>
                     </div>
                 </VisualContainer>
