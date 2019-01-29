@@ -4,7 +4,7 @@ Run on Cloud9
 nvm use 10
 npm run c9
 
-Tech Stack: Nodejs, ExpressJs, MongoDB, Angular 6 for Front End CMS
+Tech Stack: Nodejs, ExpressJs, MongoDB, Angular 6 for Front End CMS, react for resume site
 
 ## Exist Feature
 
