@@ -35,7 +35,7 @@ mongoose.connection.on('disconnected', function () {
 }); 
 
 app.use(function (req, res, next) {
-    const origins = ['https://porfolio-a09liweis.c9users.io', 'https://samliweisen.github.io', 'https://samliweisen-a09liweis.c9users.io', 'http://samliweisen.herokuapp.com/'];
+    const origins = ['https://samliweisen-a09liweis.c9users.io', 'http://samliweisen.herokuapp.com/'];
     // Website you wish to allow to connect
     if (origins.indexOf(req.headers.origin) > -1) {
         res.setHeader('Access-Control-Allow-Origin', req.headers.origin);   
