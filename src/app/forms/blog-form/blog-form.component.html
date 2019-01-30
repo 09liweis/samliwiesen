@@ -21,5 +21,6 @@
         <app-tinymce [(ngModel)]='blog.content'></app-tinymce>
         <button mat-raised-button color="primary" (click)="submit(false)">Submit</button>
         <button mat-raised-button color="primary" (click)="submit(true)">Submit and Return</button>
+        <button *ngIf="blog._id" mat-raised-button color="primary" (click)="delete(blog._id)">Delete</button>
     </div>
 </div>
