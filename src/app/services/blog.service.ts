@@ -33,4 +33,7 @@ export class BlogService {
       return this.http.post(this.api, blog, httpOptions);
     }
   }
+  delete(id: string): Observable<any> {
+    return this.http.delete(this.api + id, httpOptions);
+  }
 }
