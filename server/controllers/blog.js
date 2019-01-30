@@ -31,6 +31,13 @@ exports.blog_update = (req, res) => {
     });
 };
 
+exports.blog_delete = (req, res) => {
+    Blog.remove({_id: req.params.id}, (err) => {
+        handleError(res, err);
+        res.status(200).json('ok');
+    });
+};
+
 function handleError(res, err) {
     if (err) {
         res.send(err);
