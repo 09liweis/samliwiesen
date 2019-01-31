@@ -107,7 +107,7 @@ export default {
     position: absolute;
     bottom: 10px;
     left: 10px;
-    background: #ffffff;
+    background: rgba(255, 242, 28, 0.8);
     border-radius: 5px;
     padding: 5px;
 }
