@@ -104,7 +104,8 @@
                     online_source: '',
                     episodes: 1,
                     current_episode: 0,
-                    visual_type: 'movie'
+                    visual_type: 'movie',
+                    website: ''
                 },
                 release_dates: [],
                 songs: []
