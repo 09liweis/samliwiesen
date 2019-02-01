@@ -161,7 +161,7 @@
                     return;
                 }
                 this.getImdbId();
-                this.$http.jsonp('https://api.douban.com/v2/movie/subject/' + this.visual.douban_id).then(res => {
+                this.$http.jsonp('https://api.douban.com/v2/movie/subject/' + this.visual.douban_id + '?apikey=0df993c66c0c636e29ecbb5344252a4a').then(res => {
                     const douban = res.body;
                     if (this.visual.summary == '') {
                         this.visual.summary = douban.summary;
