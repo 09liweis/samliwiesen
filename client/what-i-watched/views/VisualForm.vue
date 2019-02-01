@@ -179,6 +179,7 @@
                         this.visual.episodes = douban.episodes_count;
                         this.visual.visual_type = 'tv';
                     }
+                    this.visual.website = douban.website;
                 }, res => {
                     //error
                 });
