@@ -55,6 +55,9 @@
                 <img class="form-poster" v-for="p in posters" v-bind:src="p" v-on:click="visual.poster = p" />
             </mu-col>
             <mu-col width="100" tablet="50" desktop="25">
+                <mu-text-field fullWidth label="Website" labelFloat v-model="visual.website" />
+            </mu-col>
+            <mu-col width="100" tablet="50" desktop="25">
                 <mu-select-field fullWidth v-model="visual.visual_type" label="Visual Type">
                     <mu-menu-item value="movie" title="Movie"/>
                     <mu-menu-item value="tv" title="Tv" />
