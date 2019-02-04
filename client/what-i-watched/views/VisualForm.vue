@@ -208,14 +208,15 @@
                 };
                 this.$http.jsonp('https://www.omdbapi.com/', options).then(res => {
                     if (res.body.Response != 'False') {
-                        if (res.body.imdbRating != 'N/A') {
-                            this.visual.imdb_rating = res.body.imdbRating;   
-                        }
-                        
                         if (res.body.Ratings[1] && res.body.Ratings[1].Source == 'Rotten Tomatoes') {
                             this.visual.rotten_rating = res.body.Ratings[1].Value.replace('%', '');   
                         }
                         this.posters.push(res.body.Poster);
+                    }
+                });
+                this.$http.get('https://what-i-watched.herokuapp.com/api/get_imdb_detail?imdb_id='+this.visual.imdb_id).then(res => {
+                    if (res.status == 200) {
+                        this.visual.imdb_rating = res.body.imdb_rating;
                     }
                 });
             },
