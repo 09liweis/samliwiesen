@@ -22,6 +22,8 @@
         },
         data() {
             return {
+                limit: 20,
+                page: 1,
                 list: [],
                 filters: [],
                 loading: true,
@@ -53,8 +55,8 @@
             },
             getVisuals() {
                 const params = {
-                    page: 1,
-                    // limit: 10
+                    page: this.page,
+                    limit: this.limit
                 };
                 this.$http.get(this.$store.state.api.visualList, {params: params}).then(res => {
                     this.list = res.body.results;
