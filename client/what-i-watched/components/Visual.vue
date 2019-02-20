@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <mu-col desktop="15">
+        <mu-col desktop="10">
             <mu-card>
                 <mu-card-media title="" subTitle="">
                     <img class="visual__poster" :src="v.poster" />
@@ -16,6 +16,7 @@
         <mu-col>
             <div class="visual__titles">
                 <h3 class="visual__title">{{v.title}}</h3>
+                <h3 class="visual__title">{{v.original_title}}</h3>
             </div>
         </mu-col>
         <mu-col>
