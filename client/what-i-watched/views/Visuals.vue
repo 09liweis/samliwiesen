@@ -7,10 +7,10 @@
             <mu-checkbox name="type" label="Tv" nativeValue="tv" class="demo-checkbox" v-model="filters" />
             <mu-checkbox name="type" label="Not Start" nativeValue="not_start" class="demo-checkbox" v-model="filters" />
         </div>
-        <transition-group v-if="list.length > 0" name="visual" class="row" appear>
-            <mu-col class="visual" v-for="v in resultVisuals" :key="v.id" desktop="100">
+        <transition-group v-if="list.length > 0" name="visual" class="" appear>
+            <div class="visual" v-for="v in resultVisuals" :key="v.id">
                 <Visual v-bind:v="v" v-bind:getVisuals="getVisuals"></Visual>
-            </mu-col>
+            </div>
         </transition-group>
     </div>
 </template>
