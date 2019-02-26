@@ -1,25 +1,25 @@
 <template>
     <div class="row">
-        <mu-col desktop="10">
-            <mu-card>
-                <mu-card-media title="" subTitle="">
-                    <img class="visual__poster" :src="v.poster" />
-                </mu-card-media>
-            </mu-card>
-        </mu-col>
-        <mu-col>
-            <span>{{v.visual_type}}</span>
-        </mu-col>
-        <mu-col>
-            <span class="visual__status">{{getStatus(v)}}</span>
-        </mu-col>
-        <mu-col>
+        <!--<mu-col desktop="10">-->
+        <!--    <mu-card>-->
+        <!--        <mu-card-media title="" subTitle="">-->
+        <!--            <img class="visual__poster" :src="v.poster" referrerpolicy ="never" />-->
+        <!--        </mu-card-media>-->
+        <!--    </mu-card>-->
+        <!--</mu-col>-->
+        <div class="visual__col">
             <div class="visual__titles">
                 <h3 class="visual__title">{{v.title}}</h3>
                 <h3 class="visual__title">{{v.original_title}}</h3>
             </div>
-        </mu-col>
-        <mu-col>
+        </div>
+        <div class="visual__col">
+            <span>{{v.visual_type}}</span>
+        </div>
+        <div class="visual__col">
+            <span class="visual__status">{{getStatus(v)}}</span>
+        </div>
+        <div class="visual__col">
             <div class="visual__ratings">
                 <a class="visual__rating link" v-bind:href="getLink(v, 'douban')" target="_blank">
                     <img class="visual__rating icon" src="https://img3.doubanio.com/f/talion/2f3c0bc0f35b031d4535fd993ae3936f4e40e6c8/pics/icon/dou32.png" alt="douban icon" />
@@ -34,29 +34,33 @@
                     <span class="visual__rating">{{v.rotten_rating}}</span>
                 </a>
             </div>
-        </mu-col>
-        <mu-col>
+        </div>
+        <div class="visual__col">
             <div class="visual__progress">
                 <mu-linear-progress mode="determinate" :value="getProgress(v)"/>
             </div>
-        </mu-col>
-        <mu-col>
+        </div>
+        <div class="visual__col">
             <span class="visual__progress-episodes">{{v.current_episode}} / {{v.episodes}}</span>
-        </mu-col>
-        <mu-col>
+        </div>
+        <div class="visual__col">
             <span>{{v.release_date}}</span>
-        </mu-col>
-        <mu-col>
+        </div>
+        <div class="visual__col">
             <div class="visual__action">
                 <router-link :to="{ name: 'edit', params: { id: v.id }}">Edit</router-link>
                 <a class="visual__increaseepisode" v-if="v.episodes != v.current_episode" v-on:click="increaseEpisode(v)">+ 1 ep</a>
             </div>
-        </mu-col>
+        </div>
     </div>
 </template>
 <script>
 export default {
     props: ['v', 'getVisuals'],
+    data() {
+        return {
+        };
+    },
     methods: {
         increaseEpisode(v) {
             this.$http.get(this.$store.state.api.increaseEpisode + '?id=' + v.id).then(res => {
@@ -94,6 +98,10 @@ export default {
 <style>
 .visual {
     margin-bottom: 20px;
+}
+.visual__col {
+    display:inline-block;
+    vertical-align:middle;
 }
 .visual__poster {
     border-radius: 4px;
