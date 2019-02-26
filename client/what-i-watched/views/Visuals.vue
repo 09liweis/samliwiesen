@@ -12,6 +12,9 @@
                 <Visual v-bind:v="v" v-bind:getVisuals="getVisuals"></Visual>
             </div>
         </transition-group>
+        <div class="paginations" v-if="total != 0">
+            <a class="pagination__link" v-bind:class="{ active: page == p }" v-for="p in totalPages" v-on:click="getVisuals(p)">{{p}}</a>
+        </div>
     </div>
 </template>
 <script>
@@ -24,6 +27,8 @@
             return {
                 limit: 20,
                 page: 1,
+                total: 0,
+                totalPages: 0,
                 list: [],
                 filters: [],
                 loading: true,
@@ -53,13 +58,16 @@
                 window.localStorage.setItem('admin', true);
                 this.admin = true;
             },
-            getVisuals() {
+            getVisuals(page = 1) {
+                this.page = page;
                 const params = {
                     page: this.page,
                     limit: this.limit
                 };
                 this.$http.get(this.$store.state.api.visualList, {params: params}).then(res => {
                     this.list = res.body.results;
+                    this.total = res.body.total;
+                    this.totalPages = Math.ceil(this.total/this.limit);
                     this.loading = false;
                 });
             },
@@ -88,5 +96,16 @@
     .visual-leave-to {
         opacity: 0;
         transform: translateX(-20%);
+    }
+    .pagination__link {
+        display: inline-block;
+        padding: 10px;
+        margin-right: 5px;
+        border: 1px solid #ff4081;
+        cursor: pointer;
+    }
+    .pagination__link.active {
+        background: #ff4081;
+        color: #ffffff;
     }
 </style>
