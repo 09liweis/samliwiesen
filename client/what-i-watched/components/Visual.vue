@@ -122,10 +122,10 @@ export default {
     width: 5%;
 }
 .visual__col.release_date {
-    width: 7%;
+    width: 10%;
 }
 .visual__col.actions {
-    width: 5%;
+    width: 10%;
 }
 .visual__poster {
     border-radius: 4px;
