@@ -7,19 +7,19 @@
         <!--        </mu-card-media>-->
         <!--    </mu-card>-->
         <!--</mu-col>-->
-        <div class="visual__col">
+        <div class="visual__col title">
             <div class="visual__titles">
                 <h3 class="visual__title">{{v.title}}</h3>
                 <h3 class="visual__title">{{v.original_title}}</h3>
             </div>
         </div>
-        <div class="visual__col">
+        <div class="visual__col type">
             <span>{{v.visual_type}}</span>
         </div>
-        <div class="visual__col">
+        <div class="visual__col status">
             <span class="visual__status">{{getStatus(v)}}</span>
         </div>
-        <div class="visual__col">
+        <div class="visual__col ratings">
             <div class="visual__ratings">
                 <a class="visual__rating link" v-bind:href="getLink(v, 'douban')" target="_blank">
                     <img class="visual__rating icon" src="https://img3.doubanio.com/f/talion/2f3c0bc0f35b031d4535fd993ae3936f4e40e6c8/pics/icon/dou32.png" alt="douban icon" />
@@ -35,18 +35,18 @@
                 </a>
             </div>
         </div>
-        <div class="visual__col">
+        <div class="visual__col progress">
             <div class="visual__progress">
                 <mu-linear-progress mode="determinate" :value="getProgress(v)"/>
             </div>
         </div>
-        <div class="visual__col">
+        <div class="visual__col episodes">
             <span class="visual__progress-episodes">{{v.current_episode}} / {{v.episodes}}</span>
         </div>
-        <div class="visual__col">
+        <div class="visual__col release_date">
             <span>{{v.release_date}}</span>
         </div>
-        <div class="visual__col">
+        <div class="visual__col actions">
             <div class="visual__action">
                 <router-link :to="{ name: 'edit', params: { id: v.id }}">Edit</router-link>
                 <a class="visual__increaseepisode" v-if="v.episodes != v.current_episode" v-on:click="increaseEpisode(v)">+ 1 ep</a>
@@ -102,6 +102,30 @@ export default {
 .visual__col {
     display:inline-block;
     vertical-align:middle;
+}
+.visual__col.title {
+    width: 20%;
+}
+.visual__col.type {
+    width: 5%;
+}
+.visual__col.status {
+    width: 8%;
+}
+.visual__col.ratings {
+    width: 16%;
+}
+.visual__col.progress {
+    width: 5%;
+}
+.visual__col.episodes {
+    width: 5%;
+}
+.visual__col.release_date {
+    width: 7%;
+}
+.visual__col.actions {
+    width: 5%;
 }
 .visual__poster {
     border-radius: 4px;
