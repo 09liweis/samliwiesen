@@ -1,5 +1,5 @@
 <template>
-    <div class="row">
+    <div class="row visual">
         <!--<mu-col desktop="10">-->
         <!--    <mu-card>-->
         <!--        <mu-card-media title="" subTitle="">-->
@@ -10,7 +10,7 @@
         <div class="visual__col title">
             <div class="visual__titles">
                 <h3 class="visual__title">{{v.title}}</h3>
-                <h3 class="visual__title">{{v.original_title}}</h3>
+                <h3 class="visual__title" v-if="v.title != v.original_title">{{v.original_title}}</h3>
             </div>
         </div>
         <div class="visual__col type">
