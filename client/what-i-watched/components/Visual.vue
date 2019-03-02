@@ -10,7 +10,7 @@
         <div class="visual__col title">
             <div class="visual__titles">
                 <h3 class="visual__title">{{v.title}}</h3>
-                <h3 class="visual__title" v-if="v.title != v.original_title">{{v.original_title}}</h3>
+                <!--<h3 class="visual__title" v-if="v.title != v.original_title">{{v.original_title}}</h3>-->
             </div>
         </div>
         <div class="visual__col type">
@@ -97,14 +97,17 @@ export default {
 </script>
 <style>
 .visual {
-    margin-bottom: 20px;
+    border-bottom: 1px solid #bfbaba;
+    padding: 5px 0;
 }
 .visual__col {
     display:inline-block;
     vertical-align:middle;
+    border-right: 1px solid #bfbaba;
+    padding: 0 5px;
 }
 .visual__col.title {
-    width: 20%;
+    width: 25%;
 }
 .visual__col.type {
     width: 5%;
@@ -119,7 +122,7 @@ export default {
     width: 5%;
 }
 .visual__col.episodes {
-    width: 5%;
+    width: 6%;
 }
 .visual__col.release_date {
     width: 10%;
@@ -131,7 +134,7 @@ export default {
     border-radius: 4px;
 }
 .visual__title {
-    margin: 0 0 10px;
+    margin: 0;
 }
 .visual__rating {
     display: inline-block;
