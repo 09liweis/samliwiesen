@@ -97,14 +97,13 @@ export default {
 </script>
 <style>
 .visual {
-    border-bottom: 1px solid #bfbaba;
-    padding: 5px 0;
+    border-top: 1px solid #bfbaba;
 }
 .visual__col {
     display:inline-block;
     vertical-align:middle;
     border-right: 1px solid #bfbaba;
-    padding: 0 5px;
+    padding: 10px 5px;
 }
 .visual__col.title {
     width: 25%;
@@ -147,7 +146,7 @@ export default {
 }
 .visual__progress {
     position: relative;
-    margin: 15px 0;
+    margin: 10px 0;
 }
 .visual__status {
 }
