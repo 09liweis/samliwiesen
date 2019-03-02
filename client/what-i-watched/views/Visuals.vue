@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>I have watched {{list.length}}</h2>
+        <h2>I have watched {{total}}</h2>
         <mu-circular-progress :size="90" color="red" v-if="list.length == 0"/>
         <div class="filters">
             <mu-checkbox name="type" label="Movie" nativeValue="movie" class="demo-checkbox" v-model="filters" />
