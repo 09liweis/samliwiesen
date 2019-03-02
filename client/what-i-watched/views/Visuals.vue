@@ -8,7 +8,7 @@
             <mu-checkbox name="type" label="Not Start" nativeValue="not_start" class="demo-checkbox" v-model="filters" />
         </div>
         <transition-group v-if="list.length > 0" name="visual" class="" appear>
-            <div class="visual" v-for="v in resultVisuals" :key="v.id">
+            <div class="visual__container" v-for="v in resultVisuals" :key="v.id">
                 <Visual v-bind:v="v" v-bind:getVisuals="getVisuals"></Visual>
             </div>
         </transition-group>
