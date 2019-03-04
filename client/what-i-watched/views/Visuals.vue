@@ -13,7 +13,8 @@
             </div>
         </transition-group>
         <div class="paginations" v-if="total != 0">
-            <a class="pagination__link" v-bind:class="{ active: page == p }" v-for="p in totalPages" v-on:click="getVisuals(p)">{{p}}</a>
+            <router-link class="pagination__link" v-bind:class="{ active: page == p }" v-for="p in totalPages" :to="{ name: 'page', params: { pageId: p }}">{{p}}</router-link>
+            <!--<a class="pagination__link" v-bind:class="{ active: page == p }" v-for="p in totalPages" v-on:click="getVisuals(p)">{{p}}</a>-->
         </div>
     </div>
 </template>
@@ -51,7 +52,19 @@
             }
         },
         mounted() {
-            this.getVisuals();
+            const pageId = this.$route.params.pageId;
+            if (typeof pageId != 'undefined') {
+                this.page = pageId;
+            } else {
+                this.page = 1;
+            }
+            this.getVisuals(this.page);
+        },
+        watch:{
+            $route (to, from){
+                this.page = to.params.pageId;
+                this.getVisuals(this.page);
+            }
         },
         methods: {
             gotoAdmin() {
