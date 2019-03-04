@@ -14,6 +14,7 @@ export default new VueRouter({
     base: __dirname,
     routes: [
          { path: '/', component: Visuals, name: 'home' },
+         { path: '/page/:pageId', component: Visuals, name: 'page' },
          { path: '/add', component: VisualForm },
          { path: '/edit/:id', component: VisualForm, name: 'edit' },
          
