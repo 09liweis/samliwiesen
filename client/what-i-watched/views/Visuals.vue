@@ -14,7 +14,6 @@
         </transition-group>
         <div class="paginations" v-if="total != 0">
             <router-link class="pagination__link" v-bind:class="{ active: page == p }" v-for="p in totalPages" :key="p" :to="{ name: 'page', params: { pageId: p }}">{{p}}</router-link>
-            <!--<a class="pagination__link" v-bind:class="{ active: page == p }" v-for="p in totalPages" v-on:click="getVisuals(p)">{{p}}</a>-->
         </div>
     </div>
 </template>
