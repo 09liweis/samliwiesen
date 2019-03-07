@@ -170,6 +170,7 @@
                     if (this.visual.summary == '') {
                         this.visual.summary = douban.summary;
                     }
+                    this.release_dates = douban.pubdates;
                     this.posters = [];
                     this.posters.push(douban.images.large);
                     
@@ -193,7 +194,7 @@
                 };
                 this.$http.get(this.$store.state.api.visualImdb, options).then(res => {
                     this.visual.imdb_id = res.body.imdb_id;
-                    this.release_dates = res.body.release_dates;
+                    // this.release_dates = res.body.release_dates;
                     this.renderIMDB();
                 }, res => {
                     
