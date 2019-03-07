@@ -170,6 +170,7 @@
                     if (this.visual.summary == '') {
                         this.visual.summary = douban.summary;
                     }
+                    this.posters = [];
                     this.posters.push(douban.images.large);
                     
                     this.visual.title = douban.title;
