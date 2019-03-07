@@ -11,7 +11,7 @@
             <router-link to="/add">Add</router-link>
             <router-view></router-view>
         </div>
-        <MusicPlayer></MusicPlayer>
+        <!--<MusicPlayer></MusicPlayer>-->
     </div>
 </template>
 <script>
