@@ -7,10 +7,20 @@
             <mu-checkbox name="type" label="Tv" nativeValue="tv" class="demo-checkbox" v-model="filters" />
             <mu-checkbox name="type" label="Not Start" nativeValue="not_start" class="demo-checkbox" v-model="filters" />
         </div>
+        <table class="table">
+            <tr>
+                <th>Title</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Ratings</th>
+                <th>Progress</th>
+                <th>Episodes</th>
+                <th>Release Date</th>
+                <th>Actions</th>
+            </tr>
+            <Visual v-for="v in resultVisuals" :key="v.id" v-bind:v="v" v-bind:getVisuals="getVisuals"></Visual>
+        </table>
         <transition-group v-if="list.length > 0" name="visual" class="" appear>
-            <div class="visual__container" v-for="v in resultVisuals" :key="v.id">
-                <Visual v-bind:v="v" v-bind:getVisuals="getVisuals"></Visual>
-            </div>
         </transition-group>
         <div class="paginations" v-if="total != 0">
             <router-link class="pagination__link" v-bind:class="{ active: page == p }" v-for="p in totalPages" :key="p" :to="{ name: 'page', params: { pageId: p }}">{{p}}</router-link>
@@ -87,6 +97,10 @@
     };
 </script>
 <style>
+    .table {
+        width: 100%;
+        text-align: left;
+    }
     /* moving */
     .visual-move {
         transition: all 600ms ease-in-out 50ms;
@@ -95,7 +109,7 @@
     /* appearing */
     .visual-enter-active {
         transition: all 300ms ease-out;
-        transform: translateX(20%);
+        transform: translateX(3%);
     }
     
     /* disappearing */
@@ -107,7 +121,7 @@
     .visual-enter,
     .visual-leave-to {
         opacity: 0;
-        transform: translateX(-20%);
+        transform: translateX(-3%);
     }
     .pagination__link {
         display: inline-block;
