@@ -56,7 +56,7 @@ app.use('/resume', express.static(path.join(__dirname) + '/resume'));
 
 //TODO: try to fix root to display resume site
 app.get('/resume', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist/resume.html'));
+    res.sendFile(path.join(__dirname, 'resume/resume.html'));
 });
 
 //Route for CMS: angular
