@@ -53,6 +53,7 @@ app.use(function (req, res, next) {
 
 app.use(express.static(path.join(__dirname) + '/dist'));
 app.use('/resume', express.static(path.join(__dirname) + '/resume'));
+app.use('/what-i-watched', express.static(path.join(__dirname) + '/what-i-watched'));
 
 //TODO: try to fix root to display resume site
 app.get('/resume', (req, res) => {
@@ -66,7 +67,7 @@ app.get('/dashboard', (req, res) => {
 
 // Route for what i watched management application
 app.get('/what-i-watched', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist/what-i-watched.html'));
+    res.sendFile(path.join(__dirname, 'what-i-watched/what-i-watched.html'));
 });
 
 app.use(bodyParser.urlencoded({extended: true}));
