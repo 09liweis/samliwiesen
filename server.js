@@ -52,6 +52,7 @@ app.use(function (req, res, next) {
 });
 
 app.use(express.static(path.join(__dirname) + '/dist'));
+app.use('/resume', express.static(path.join(__dirname) + '/resume'));
 
 //TODO: try to fix root to display resume site
 app.get('/resume', (req, res) => {
