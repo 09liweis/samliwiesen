@@ -13,7 +13,7 @@ module.exports = {
     output: {
         //can change this to dist to store in dist directory
         path: path.resolve(''),
-        filename: '../../dist/index_bundle.js?v=' + new Date().getMilliseconds()
+        filename: '../../resume/index_bundle.js?v=' + new Date().getMilliseconds()
     },
     module: {
         loaders: [
