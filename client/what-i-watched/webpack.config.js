@@ -6,7 +6,7 @@ var path = require('path');
 // Naming and path settings
 var appName = 'app';
 var entryPoint = './main.js';
-var exportPath = path.resolve(__dirname, '../../what-i-watched/what-i-watched');
+var exportPath = path.resolve(__dirname, '../../what-i-watched');
 
 // Enviroment flag
 var plugins = [];
