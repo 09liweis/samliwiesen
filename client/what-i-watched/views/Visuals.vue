@@ -8,7 +8,7 @@
             <mu-checkbox name="type" label="Not Start" nativeValue="not_start" class="demo-checkbox" v-model="filters" />
         </div>
         <table class="table">
-            <tr>
+            <tr class="table__head">
                 <th>Title</th>
                 <th>Type</th>
                 <th>Status</th>
@@ -18,7 +18,9 @@
                 <th>Release Date</th>
                 <th>Actions</th>
             </tr>
-            <Visual v-for="v in resultVisuals" :key="v.id" v-bind:v="v" v-bind:getVisuals="getVisuals"></Visual>
+            <tbody>
+                <Visual v-for="v in resultVisuals" :key="v.id" v-bind:v="v" v-bind:getVisuals="getVisuals"></Visual>
+            </tbody>
         </table>
         <transition-group v-if="list.length > 0" name="visual" class="" appear>
         </transition-group>
@@ -100,6 +102,20 @@
     .table {
         width: 100%;
         text-align: left;
+        border-radius: 10px;
+    }
+    .table th {
+        padding: 10px;
+    }
+    .table__head th {
+        background:#36304a;
+        color: #ffffff;
+    }
+    .table tbody tr {
+        color: #808080;
+    }
+    .table tbody tr:nth-child(even) {
+        background: #f5f5f5;
     }
     /* moving */
     .visual-move {
