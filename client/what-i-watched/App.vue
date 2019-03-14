@@ -34,7 +34,6 @@ export default {
 </script>
 <style type="text/css">
 html, body{
-    background-color: rgb(236, 236, 236);
     font-family: 'Dosis';
 }
 .container {
