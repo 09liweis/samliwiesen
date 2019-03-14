@@ -4,8 +4,7 @@
             <a v-on:click="changeLang('en')">English</a>
             <a v-on:click="changeLang('zh')">中文</a>
         </div>
-        <h1>{{this.$store.state.languages[this.$store.state.lang].title}}</h1>
-        <p>This page is built by Vue</p>
+        <h1 class="title">{{this.$store.state.languages[this.$store.state.lang].title}}</h1>
         <div class="layout">
             <router-link to="/">Visuals</router-link>
             <router-link to="/add">Add</router-link>
@@ -40,7 +39,12 @@ html, body{
     background-color: #ffffff;
     margin: auto;
     width: 100%;
-    max-width: 1024px;
     padding: 20px;
+}
+.languages {
+    float: right;
+}
+.title {
+    text-align: center;
 }
 </style>
