@@ -9,7 +9,7 @@
         <!--</mu-col>-->
         <th class="visual__col title">
             <h3 class="visual__title">{{v.title}}</h3>
-            <!--<h3 class="visual__title" v-if="v.title != v.original_title">{{v.original_title}}</h3>-->
+            <h3 class="visual__title" v-if="v.title != v.original_title">{{v.original_title}}</h3>
         </th>
         <th class="visual__col type">
             <span>{{v.visual_type}}</span>
@@ -102,6 +102,7 @@ export default {
 }
 .visual__title {
     margin: 0;
+    text-align: left;
     font-family: 'Josefin Sans';
 }
 .visual__rating {
