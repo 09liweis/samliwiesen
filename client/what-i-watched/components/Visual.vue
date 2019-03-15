@@ -99,36 +99,6 @@ export default {
 .visual {
     border-top: 1px solid #bfbaba;
 }
-/*.visual__col {*/
-/*    display:inline-block;*/
-/*    vertical-align:middle;*/
-/*    border-right: 1px solid #bfbaba;*/
-/*    padding: 10px 5px;*/
-/*}*/
-/*.visual__col.title {*/
-/*    width: 25%;*/
-/*}*/
-/*.visual__col.type {*/
-/*    width: 5%;*/
-/*}*/
-/*.visual__col.status {*/
-/*    width: 8%;*/
-/*}*/
-/*.visual__col.ratings {*/
-/*    width: 16%;*/
-/*}*/
-/*.visual__col.progress {*/
-/*    width: 5%;*/
-/*}*/
-/*.visual__col.episodes {*/
-/*    width: 6%;*/
-/*}*/
-/*.visual__col.release_date {*/
-/*    width: 10%;*/
-/*}*/
-/*.visual__col.actions {*/
-/*    width: 10%;*/
-/*}*/
 .visual__poster {
     border-radius: 4px;
 }
