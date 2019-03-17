@@ -109,10 +109,12 @@ export default {
     display: inline-block;
     vertical-align: middle;
 }
+.visual__rating.link {
+    margin-right: 5px;
+}
 .visual__rating.icon {
     width: 20px;
     height: 20px;
-    margin-right: 5px;
 }
 .visual__progress-episodes {
     color: #000000;
