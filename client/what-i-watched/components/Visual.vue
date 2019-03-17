@@ -114,12 +114,6 @@ export default {
     height: 20px;
     margin-right: 5px;
 }
-.visual__progress {
-    position: relative;
-    margin: 10px 0;
-}
-.visual__status {
-}
 .visual__progress-episodes {
     color: #000000;
 }
