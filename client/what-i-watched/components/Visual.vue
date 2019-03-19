@@ -103,7 +103,8 @@ export default {
 .visual__title {
     margin: 0;
     text-align: left;
-    font-family: 'Josefin Sans';
+    font-family: 'ZCOOL KuaiLe';
+    font-weight: lighter;
 }
 .visual__rating {
     display: inline-block;
