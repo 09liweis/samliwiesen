@@ -14,7 +14,6 @@
                 <th>Status</th>
                 <th>Ratings</th>
                 <th>Progress</th>
-                <th>Episodes</th>
                 <th>Release Date</th>
                 <th>Actions</th>
             </tr>
