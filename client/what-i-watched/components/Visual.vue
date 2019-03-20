@@ -34,12 +34,10 @@
             </div>
         </th>
         <th class="visual__col progress">
+            <span class="visual__progress-episodes">{{v.current_episode}} / {{v.episodes}}</span>
             <div class="visual__progress">
                 <mu-linear-progress mode="determinate" :value="getProgress(v)"/>
             </div>
-        </th>
-        <th class="visual__col episodes">
-            <span class="visual__progress-episodes">{{v.current_episode}} / {{v.episodes}}</span>
         </th>
         <th class="visual__col release_date">
             <span>{{v.release_date}}</span>
