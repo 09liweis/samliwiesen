@@ -8,7 +8,7 @@
         <!--    </mu-card>-->
         <!--</mu-col>-->
         <th class="visual__col title">
-            <h3 class="visual__title">{{v.title}} <a v-if="v.website" :href="v.website" target="_blank">Website</a></h3>
+            <h3 class="visual__title">{{v.title}} <a v-if="v.website" :href="getWebsite(v.website)" target="_blank">Website</a></h3>
             <h3 class="visual__title" v-if="v.title != v.original_title">{{v.original_title}}</h3>
         </th>
         <th class="visual__col type">
@@ -88,6 +88,13 @@ export default {
             }
             return (v.current_episode/v.episodes) * 100;
         },
+        getWebsite(website) {
+            if (website.indexOf('http') == -1) {
+                return 'http://' + website;
+            } else {
+                return website;
+            }
+        }
     }
 };
 </script>
