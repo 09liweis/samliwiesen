@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const Status = styled.div`
+const Status = styled.div`
     position: absolute;
     top: 10px;
     left: 10px;
@@ -22,14 +22,14 @@ export const Status = styled.div`
     }
 `;
 
-export const VisualContainer = styled.div`
+const VisualContainer = styled.div`
     border-radius: 5px;
     background-color: #FFFFFF;
     box-shadow: 0 1px 6px rgba(0,0,0,.117647), 0 1px 4px rgba(0,0,0,.117647);
     border-bottom: 5px solid transparent;
     position: relative;
 `;
-export const Visual = styled.div`
+const Visual = styled.div`
     padding: 0 10px;
     width: 100%;
     margin-bottom: 15px;
