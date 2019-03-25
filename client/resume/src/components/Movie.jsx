@@ -80,7 +80,7 @@ export default class Movie extends React.Component {
             <Visual>
                 <VisualContainer to={movieHref}>
                     <Status className={status}>{v.current_episode}/{v.episodes}</Status>
-                    <img className="visual__image" src={v.poster} alt={v.original_title} />
+                    <img className="visual__image" src={v.poster} alt={v.original_title} onError={(e)=>{e.target.onerror = null; e.target.src="https://www.haitioutreach.org/wp-content/uploads/2016/05/404error-graphic.png"}} />
                     <div className="visual__detail">
                         <div>{v.release_date}</div>
                         <VisualTitle>{v.title}</VisualTitle>
