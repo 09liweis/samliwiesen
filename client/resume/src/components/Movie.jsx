@@ -58,6 +58,7 @@ const VisualTitle = styled.h3`
 
 const doubanIcon = 'https://img3.doubanio.com/f/talion/2f3c0bc0f35b031d4535fd993ae3936f4e40e6c8/pics/icon/dou32.png';
 const imdbIcon = 'https://cdn0.iconfinder.com/data/icons/social-media-2091/100/social-31-512.png';
+const errImg = 'https://www.haitioutreach.org/wp-content/uploads/2016/05/404error-graphic.png';
 
 export default class Movie extends React.Component {
     constructor(props) {
@@ -65,7 +66,7 @@ export default class Movie extends React.Component {
     }
     handleErrorImg(e) {
         e.target.onerror = null;
-        e.target.src="https://www.haitioutreach.org/wp-content/uploads/2016/05/404error-graphic.png";
+        e.target.src = errImg;
     }
     render() {
         const v = this.props.v;
