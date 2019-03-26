@@ -5,7 +5,7 @@ const initialExperiences = [
     {
         company: 'Canada Goose',
         title: 'Front End Developer',
-        date: 'May 2017 - Present',
+        date: 'May 2018 - Oct 2018',
         duty: []
     },
     {
