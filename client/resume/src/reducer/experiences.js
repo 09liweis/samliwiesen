@@ -1,5 +1,8 @@
 const initialExperiences = [
     {
+        company: 'RealMaster Technology Inc.'
+    },
+    {
         company: 'Canada Goose',
         title: 'Front End Developer',
         date: 'May 2017 - Present',
