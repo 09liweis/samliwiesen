@@ -11,7 +11,6 @@
             <tr class="table__head">
                 <th>Title</th>
                 <th>Type</th>
-                <th>Status</th>
                 <th>Ratings</th>
                 <th>Progress</th>
                 <th>Release Date</th>
