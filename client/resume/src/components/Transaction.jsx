@@ -19,7 +19,6 @@ const TransactionItem = styled.div`
 const TransactionDelete = styled.div`
     cursor: pointer;
 `;
-
 export default class Transaction extends React.Component {
     constructor(props) {
         super(props);
