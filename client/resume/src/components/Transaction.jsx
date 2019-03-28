@@ -12,7 +12,6 @@ const TransactionItem = styled.div`
     @media (min-width: 768px) {
         width: 46%;
     }
-    
     @media (min-width: 992px) {
         width: 23%;
     }
