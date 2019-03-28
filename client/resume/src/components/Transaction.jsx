@@ -32,7 +32,6 @@ export default class Transaction extends React.Component {
         const iconClass = '';
         return (
             <TransactionItem>
-                <div className={iconClass}></div>
                 <div className="transaction__info">
                     <div className="transaction__title">{t.title + ' - ' + t.category}</div>
                     <div className="transaction__date">{t.date}</div>
