@@ -7,7 +7,6 @@ const TransactionItem = styled.div`
     background-color: #ffffff;
     padding: 10px;
     margin: 0 10px 20px;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
     border-radius: 3px;
     @media (min-width: 768px) {
         width: 46%;
@@ -29,7 +28,7 @@ export default class Transaction extends React.Component {
         //const iconClass = 'transaction__icon fa fa-' + icons[t.category.split(' ').join('_')].icon;
         const iconClass = '';
         return (
-            <TransactionItem>
+            <TransactionItem className="box-shadow">
                 <div className="transaction__info">
                     <div className="transaction__title">{t.title + ' - ' + t.category}</div>
                     <div className="transaction__date">{t.date}</div>
