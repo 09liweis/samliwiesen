@@ -7,6 +7,9 @@
         <!--        </mu-card-media>-->
         <!--    </mu-card>-->
         <!--</mu-col>-->
+        <th>
+            <img class="visual__poster" :src="v.poster" referrerpolicy ="never" />
+        </th>
         <th class="visual__col title">
             <h3 class="visual__title">{{v.title}} <a v-if="v.website" :href="getWebsite(v.website)" target="_blank">Website</a></h3>
             <h3 class="visual__title" v-if="v.title != v.original_title">{{v.original_title}}</h3>
@@ -101,6 +104,7 @@ export default {
 }
 .visual__poster {
     border-radius: 4px;
+    width: 100px;
 }
 .visual__title {
     margin: 0;
