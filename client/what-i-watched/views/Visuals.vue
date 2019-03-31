@@ -9,6 +9,7 @@
         </div>
         <table class="table">
             <tr class="table__head">
+                <th>Poster</th>
                 <th>Title</th>
                 <th>Type</th>
                 <th>Ratings</th>
