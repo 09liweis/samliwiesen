@@ -14,6 +14,9 @@
             <h3 class="visual__title">{{v.title}} <a v-if="v.website" :href="getWebsite(v.website)" target="_blank">Website</a></h3>
             <h3 class="visual__title" v-if="v.title != v.original_title">{{v.original_title}}</h3>
         </th>
+        <th>
+            {{v.country}}
+        </th>
         <th class="visual__col type">
             <span>{{v.visual_type}}</span>
         </th>
