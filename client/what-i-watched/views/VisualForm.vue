@@ -172,7 +172,6 @@
                     }
                     this.release_dates = douban.pubdates;
                     this.posters = [];
-                    this.posters.push(douban.images.large);
                     
                     this.visual.title = douban.title;
                     this.visual.original_title = douban.original_title;
