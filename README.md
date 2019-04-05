@@ -15,3 +15,7 @@ Tech Stack: Nodejs, ExpressJs, MongoDB, Angular 6 for Front End CMS, react for r
 * Add button to save blog and remain on same page (done)
 * Add snackbar for saving contents
 * Add ctrl + s / cmd + s to save content
+
+
+# What I Watched Management Tool
+design: https://dribbble.com/shots/4518513-Freebie-Dashboard-Design/attachments/1023208
