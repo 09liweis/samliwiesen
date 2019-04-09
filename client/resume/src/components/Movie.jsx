@@ -81,6 +81,11 @@ export default class Movie extends React.Component {
             }
         }
         const movieHref = "/movie/" + v.id;
+        const countries = v.countries.map((c,i) =>{
+            return (
+                <span key={i}>{c}</span>
+            );
+        });
         return (
             <Visual>
                 <VisualContainer to={movieHref}>
@@ -88,6 +93,7 @@ export default class Movie extends React.Component {
                     <img className="visual__image" src={v.poster} alt={v.original_title} onError={(e)=>this.handleErrorImg(e)} />
                     <div className="visual__detail">
                         <div>{v.release_date}</div>
+                        <div>{countries}</div>
                         <VisualTitle>{v.title}</VisualTitle>
                         <div className="visual__ratings">
                             <a className="visual__rating" target="_blank" href={'https://movie.douban.com/subject/' + v.douban_id}>
