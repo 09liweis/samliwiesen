@@ -15,7 +15,7 @@
             <h3 class="visual__title" v-if="v.title != v.original_title">{{v.original_title}}</h3>
         </th>
         <th>
-            <span v-for="c in v.countries">{{c}}</span>
+            {{v.countries.join(',')}}
         </th>
         <th class="visual__col type">
             <span>{{v.visual_type}}</span>
