@@ -1,12 +1,5 @@
 <template>
     <tr class="visual">
-        <!--<mu-col desktop="10">-->
-        <!--    <mu-card>-->
-        <!--        <mu-card-media title="" subTitle="">-->
-        <!--            <img class="visual__poster" :src="v.poster" referrerpolicy ="never" />-->
-        <!--        </mu-card-media>-->
-        <!--    </mu-card>-->
-        <!--</mu-col>-->
         <th>
             <img class="visual__poster" :src="v.poster" referrerpolicy ="never" />
         </th>
