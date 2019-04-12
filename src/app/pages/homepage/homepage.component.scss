@@ -1,10 +1,14 @@
-.mat-card {
+.card {
+    background-color: rgba(34, 34, 44, 0.5);
     margin-bottom: 20px;
     border-radius: 20px;
     transition: transform 0.2s ease;
     &:hover {
         transform: translateY(-10%);
     }
+}
+.card__title {
+    color: #fff;
 }
 .card__info,
 .card__number {
