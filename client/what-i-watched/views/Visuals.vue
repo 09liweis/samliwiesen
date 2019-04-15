@@ -12,6 +12,7 @@
                 <th>Poster</th>
                 <th>Title</th>
                 <th>Country</th>
+                <th>Production</th>
                 <th>Type</th>
                 <th>Ratings</th>
                 <th>Progress</th>
