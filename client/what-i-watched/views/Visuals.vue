@@ -3,9 +3,9 @@
         <h2>I have watched {{total}}</h2>
         <mu-circular-progress :size="90" color="red" v-if="list.length == 0"/>
         <div class="filters">
-            <mu-checkbox name="type" label="Movie" nativeValue="movie" class="demo-checkbox" v-model="filters" />
-            <mu-checkbox name="type" label="Tv" nativeValue="tv" class="demo-checkbox" v-model="filters" />
-            <mu-checkbox name="type" label="Not Start" nativeValue="not_start" class="demo-checkbox" v-model="filters" />
+            <!--<mu-checkbox name="type" label="Movie" nativeValue="movie" class="demo-checkbox" v-model="filters" />-->
+            <!--<mu-checkbox name="type" label="Tv" nativeValue="tv" class="demo-checkbox" v-model="filters" />-->
+            <!--<mu-checkbox name="type" label="Not Start" nativeValue="not_start" class="demo-checkbox" v-model="filters" />-->
         </div>
         <table class="table">
             <tr class="table__head">
