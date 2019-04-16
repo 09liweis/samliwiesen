@@ -13,7 +13,7 @@ body {
     color: #fff;
 }
 a {
-    color:#777889;
+    color:#1f213c;
     text-decoration: none;
     transition: 0.4s;
     &:hover {
@@ -22,10 +22,9 @@ a {
     }
 }
 .container {
-    max-width: 1200px;
     width: 100%;
     margin: auto;
-    background-color: #37414d;
+    background-color: rgba(55, 65, 77, 0.4);
 }
 .mat-form-field {
     display: block;
