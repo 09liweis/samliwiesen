@@ -4,7 +4,7 @@
   "newProjectRoot": "projects",
   "projects": {
     "samliweisen": {
-      "root": "",
+      "root": "dashboard",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
