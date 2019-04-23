@@ -7,7 +7,7 @@
             <!--<mu-checkbox name="type" label="Tv" nativeValue="tv" class="demo-checkbox" v-model="filters" />-->
             <!--<mu-checkbox name="type" label="Not Start" nativeValue="not_start" class="demo-checkbox" v-model="filters" />-->
         </div>
-        <table class="table">
+        <table class="table" v-if="resultVisuals.length > 0">
             <tr class="table__head">
                 <th>Poster</th>
                 <th>Title</th>
