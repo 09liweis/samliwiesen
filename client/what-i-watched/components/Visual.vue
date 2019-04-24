@@ -10,7 +10,7 @@
         <th>
             {{v.countries.join(',')}}
         </th>
-        <th>{{v.production}}</th>
+        <th>{{v.languages.join(',')}}</th>
         <th class="visual__col type">
             <span>{{v.visual_type}}</span>
         </th>
