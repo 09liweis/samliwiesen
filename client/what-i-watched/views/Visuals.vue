@@ -13,7 +13,6 @@
                 <th>Title</th>
                 <th>Country</th>
                 <th>Language</th>
-                <th>Type</th>
                 <th>Ratings</th>
                 <th>Progress</th>
                 <th>Release Date</th>

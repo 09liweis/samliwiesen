@@ -11,9 +11,6 @@
             {{v.countries.join(',')}}
         </th>
         <th>{{v.languages.join(',')}}</th>
-        <th class="visual__col type">
-            <span>{{v.visual_type}}</span>
-        </th>
         <th class="visual__col ratings">
             <div class="visual__ratings">
                 <a class="visual__rating link" v-bind:href="getLink(v, 'douban')" target="_blank">
