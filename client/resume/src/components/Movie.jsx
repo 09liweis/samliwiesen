@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 const Status = styled.div`
     position: absolute;
-    top: 10px;
-    left: 10px;
-    padding: 3px 7px;
-    border-radius: 10px;
+    top: 0;
+    left: 0;
+    padding: 2px 3px;
+    border-radius: 5px;
     color: #FFFFFF;
     min-width: 44px;
     text-align: center;
@@ -21,7 +21,16 @@ const Status = styled.div`
         background-color: red;
     }
 `;
-
+const ReleaseDate = styled.div`
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2px 3px;
+    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+    background-color: #ff9800;
+`;
 const VisualContainer = styled.div`
     border-radius: 5px;
     background-color: #FFFFFF;
@@ -90,9 +99,9 @@ export default class Movie extends React.Component {
             <Visual>
                 <VisualContainer to={movieHref}>
                     <Status className={status}>{v.current_episode}/{v.episodes}</Status>
+                    <ReleaseDate>{v.release_date.substr(0,4)}</ReleaseDate>
                     <img className="visual__image" src={v.poster} alt={v.original_title} onError={(e)=>this.handleErrorImg(e)} />
                     <div className="visual__detail">
-                        <div>{v.release_date.substr(0,4)}</div>
                         <div>{v.countries.join(',')}</div>
                         <VisualTitle>{v.title}</VisualTitle>
                         <div className="visual__ratings">
