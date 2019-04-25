@@ -60,7 +60,7 @@ const Visual = styled.div`
     }
 `;
 const VisualTitle = styled.h3`
-    margin: 10px 0;
+    margin: 0;
     color: #4b8a2c;
     font-size: 16px;
 `;
