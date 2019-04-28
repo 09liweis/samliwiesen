@@ -55,7 +55,6 @@ app.use('/dashboard', express.static(path.join(__dirname) + '/dashboard'));
 app.use('/resume', express.static(path.join(__dirname) + '/resume'));
 app.use('/what-i-watched', express.static(path.join(__dirname) + '/what-i-watched'));
 
-//TODO: try to fix root to display resume site
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'resume/resume.html'));
 });
