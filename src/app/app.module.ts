@@ -83,7 +83,7 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
         path: 'gallery',
         component: GalleryComponent
       }
-    ])
+    ], { useHash: true })
   ],
   providers: [
     ExperienceService
