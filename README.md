@@ -17,7 +17,7 @@ Tech Stack: Nodejs, ExpressJs, MongoDB, Angular 6 for Front End CMS, react for r
 * Add ctrl + s / cmd + s to save content
 
 # Dashboard Design
-https://dribbble.com/shots/3161212-HL-Dashboard-Dark-WIP
+https://cdn.dribbble.com/users/295315/screenshots/2117099/attachments/572428/transparent_dashboard.png
 
 # What I Watched Management Tool
 design: https://dribbble.com/shots/4518513-Freebie-Dashboard-Design/attachments/1023208
