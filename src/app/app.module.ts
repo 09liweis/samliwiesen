@@ -21,7 +21,6 @@ import { ExperienceListComponent } from './pages/experience-list/experience-list
 import { ProjectListComponent } from './pages/project-list/project-list.component';
 import { ProjectFormComponent } from './forms/project-form/project-form.component';
 import { BlogFormComponent } from './forms/blog-form/blog-form.component';
-// import { BlogListComponent } from './pages/blog-list/blog-list.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 
 @NgModule({
@@ -33,7 +32,6 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
     ProjectListComponent,
     ProjectFormComponent,
     BlogFormComponent,
-    // BlogListComponent,
     GalleryComponent
   ],
   imports: [
@@ -71,10 +69,6 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
         path: 'project/:id',
         component: ProjectFormComponent
       },
-      // {
-      //   path: 'blogs',
-      //   component: BlogListComponent
-      // },
       {
         path: 'blog/:id',
         component: BlogFormComponent
