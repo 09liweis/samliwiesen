@@ -2,14 +2,22 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
 body {
+    min-height: 100%;
     padding: 0;
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    background-image: url(https://i.pinimg.com/originals/70/46/21/704621f1d7ff85014faf04e35dbcaaf9.jpg);
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: rgba(55, 65, 77, 0.4);
+    // background-attachment: fixed;
+    // background-size: cover;
+    // background-repeat: no-repeat;
     color: #fff;
 }
 a {
@@ -24,7 +32,6 @@ a {
 .container {
     width: 100%;
     margin: auto;
-    background-color: rgba(55, 65, 77, 0.4);
 }
 .mat-form-field {
     display: block;

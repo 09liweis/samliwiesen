@@ -1,4 +1,13 @@
+.dashboard {
+    display:flex;
+    flex-wrap:wrap;
+}
 .card {
+    width: 100%;
+    padding: 0 15px;
+}
+.card-container {
+    padding: 10px;
     background-color: rgba(34, 34, 44, 0.5);
     margin-bottom: 20px;
     border-radius: 20px;
@@ -20,8 +29,18 @@
     color: #ffffff;
     padding: 10px;
     border-radius: 50px;
-    width: 40px;
+    width: 60px;
     font-size: 2em;
     text-align: center;
     margin-right: 20px;
+}
+@media only screen and (min-width: 600px) {
+    .card {
+        width: 50%;
+    }
+}
+@media only screen and (min-width: 1024px) {
+    .card {
+        width: 25%;
+    }
 }
