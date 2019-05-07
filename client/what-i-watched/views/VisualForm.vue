@@ -191,7 +191,9 @@
                         douban_id: this.visual.douban_id
                     }
                 };
-                this.$http.get(this.$store.state.api.visualImdb, options).then(res => {
+                // const api = this.$store.state.api.visualImdb;
+                const api = 'https://samliweisen.herokuapp.com/api/visuals/get_imdb_id';
+                this.$http.get(api, options).then(res => {
                     this.visual.imdb_id = res.body.imdb_id;
                     // this.release_dates = res.body.release_dates;
                     this.renderIMDB();
@@ -215,7 +217,9 @@
                         this.posters.push(res.body.Poster);
                     }
                 });
-                this.$http.get('https://what-i-watched.herokuapp.com/api/get_imdb_detail?imdb_id='+this.visual.imdb_id).then(res => {
+                const api = '/api/visuals/get_imdb_rating?imdb_id='+this.visual.imdb_id;
+                // 'https://what-i-watched.herokuapp.com/api/get_imdb_detail?imdb_id='+this.visual.imdb_id
+                this.$http.get(api).then(res => {
                     if (res.status == 200) {
                         this.visual.imdb_rating = res.body.imdb_rating;
                     }
