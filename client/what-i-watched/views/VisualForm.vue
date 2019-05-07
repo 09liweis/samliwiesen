@@ -192,7 +192,7 @@
                     }
                 };
                 // const api = this.$store.state.api.visualImdb;
-                const api = 'https://samliweisen.herokuapp.com/api/visuals/get_imdb_id';
+                const api = '/api/visuals/get_imdb_id';
                 this.$http.get(api, options).then(res => {
                     this.visual.imdb_id = res.body.imdb_id;
                     // this.release_dates = res.body.release_dates;
