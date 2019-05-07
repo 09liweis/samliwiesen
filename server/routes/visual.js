@@ -54,4 +54,23 @@ router.route('/get_imdb_id').get((req,res)=>{
     });
 });
 
+router.route('/get_imdb_rating').get((req, res) => {
+    const imdb_id = req.query.imdb_id;
+    request({
+        url: 'https://www.imdb.com/title/' + imdb_id,   // 请求的URL
+        method: 'GET',                   // 请求方法
+        headers: {                       // 指定请求头
+            'Accept-Language': 'zh-CN,zh;q=0.8', // 指定 Accept-Language
+            'Accept-Charset': 'utf-8, iso-8859-1;q=0.5'
+        }
+    },
+    function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            const $ = cheerio.load(body.toString());
+            const imdb_rating = $('span[itemprop="ratingValue"]').text();
+            res.send({imdb_rating});
+        }
+    });
+});
+
 module.exports = router;
