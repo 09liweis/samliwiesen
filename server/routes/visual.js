@@ -37,7 +37,19 @@ router.route('/get_imdb_id').get((req,res)=>{
     },
     function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            res.send(body);
+            const matches = body.match(/tt[\d]{7}/g);
+            let imdb_id = '';
+            if (matches.length > 0) {
+                imdb_id = matches[0];
+            }
+            const dateMatches = body.match(/[\d]{4}-[\d]{2}-[\d]{2}\([\u4e00-\u9fff]+\)/g);
+            let dates = [];
+            for (let i in dateMatches) {
+                if (dates.indexOf(dateMatches[i]) == -1 ) {
+                    dates.push(dateMatches[i]);
+                }
+            }
+            res.send({imdb_id,release_dates:dates,status:200});
         }
     });
 });
