@@ -8,16 +8,16 @@
 }
 .card-container {
     padding: 10px;
-    background-color: rgba(34, 34, 44, 0.5);
+    background-color: #fff;
     margin-bottom: 20px;
-    border-radius: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px #8c8383;
     transition: transform 0.2s ease;
     &:hover {
-        transform: translateY(-10%);
+        transform: translateY(-10px);
     }
 }
 .card__title {
-    color: #fff;
 }
 .card__info,
 .card__number {
@@ -34,13 +34,12 @@
     text-align: center;
     margin-right: 20px;
 }
+.post-link {
+    display: block;
+    margin-top: 10px;
+}
 @media only screen and (min-width: 600px) {
     .card {
         width: 50%;
-    }
-}
-@media only screen and (min-width: 1024px) {
-    .card {
-        width: 25%;
     }
 }

@@ -1,24 +1,30 @@
 #main {
     display: flex;
+    min-height: calc(100vh - 19px)
 }
 #main__sidebar {
     width: 20%;
-    padding: 20px;
+    padding: 20px 0;
+    background-color: #fff;
 }
 #main__content {
     padding: 20px;
     width: 80%;
 }
 .sidebar__link {
+    padding: 20px 0;
     display: block;
-    margin-bottom: 20px;
+    font-size: 18px;
+    text-align: center;
     .material-icons {
-        margin-right: 10px;
-        display: inline-block;
-        vertical-align: middle;
+        display: block;
+        font-size: 48px;
+    }
+    &:hover {
+        text-decoration: none;
+        background-color: #3adad0;
+        color: #fff;
     }
 }
 .sidebar__link-text {
-    display: inline-block;
-    vertical-align: middle;
 }

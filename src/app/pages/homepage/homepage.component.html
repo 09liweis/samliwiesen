@@ -5,7 +5,7 @@
         <div class="card__info">
             <h2 class="card__title">Blogs</h2>
             <div *ngIf="blogs">
-                <a *ngFor="let e of blogs" [routerLink]="['/blog', e._id]">{{e.title}}</a>
+                <a class="post-link" *ngFor="let e of blogs" [routerLink]="['/blog', e._id]">{{e.title}}</a>
             </div>
             <a routerLink="/blog/new">Add New</a>
         </div>
