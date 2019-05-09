@@ -6,6 +6,7 @@
     font-size: 24px;
     font-weight: bold;
     color: #fff;
+    font-family: Sofia;
 }
 #main {
     display: flex;
@@ -14,25 +15,27 @@
 #main__sidebar {
     width: 20%;
     padding: 20px 0;
-    background-color: #fff;
+    background-color: #2d3b54;
 }
 #main__content {
     padding: 20px;
     width: 80%;
 }
 .sidebar__link {
+    font-family: 'Sofia';
+    color:#fff;
     padding: 20px 0;
     display: block;
     font-size: 18px;
     text-align: center;
     .material-icons {
         display: block;
-        font-size: 48px;
+        font-size: 36px;
     }
     &:hover {
         text-decoration: none;
-        background-color: #3adad0;
-        color: #fff;
+        background-color: #3f5475;
+        color: #d2ec65;
     }
 }
 .sidebar__link-text {
