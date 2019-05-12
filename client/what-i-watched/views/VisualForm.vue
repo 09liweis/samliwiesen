@@ -194,7 +194,9 @@
                 // const api = this.$store.state.api.visualImdb;
                 const api = '/api/visuals/get_imdb_id';
                 this.$http.get(api, options).then(res => {
-                    this.visual.imdb_id = res.body.imdb_id;
+                    if (res.body.imdb_id) {
+                        this.visual.imdb_id = res.body.imdb_id;    
+                    }
                     // this.release_dates = res.body.release_dates;
                     this.renderIMDB();
                 }, res => {
@@ -221,7 +223,9 @@
                 // 'https://what-i-watched.herokuapp.com/api/get_imdb_detail?imdb_id='+this.visual.imdb_id
                 this.$http.get(api).then(res => {
                     if (res.status == 200) {
-                        this.visual.imdb_rating = res.body.imdb_rating;
+                        if (res.body.imdb_rating) {
+                            this.visual.imdb_rating = res.body.imdb_rating;
+                        }
                     }
                 });
             },
