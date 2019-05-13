@@ -152,7 +152,7 @@
             },
             searchDouban(e) {
                 const val = e.target.value;
-                this.$http.jsonp('https://api.douban.com/v2/movie/search?q=' + val).then(res => {
+                this.$http.jsonp('https://api.douban.com/v2/movie/search?q=' + val + '&apikey=0df993c66c0c636e29ecbb5344252a4a').then(res => {
                     this.searchs = [];
                     if (res.status == 200) {
                         this.searchs = res.body.subjects;
