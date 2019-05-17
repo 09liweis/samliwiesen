@@ -20,7 +20,12 @@ router.route('/douban').get((req, res) => {
     function (error, response, body) {
         if (!error && response.statusCode == 200) {
             const visual = JSON.parse(body);
-            res.send(visual);
+            const method = req.query.method;
+            if (method == 'update') {
+                console.log('Going to implement POST to what-i-watched');
+            } else {
+                res.send(visual);
+            }
         }
     });
 });
