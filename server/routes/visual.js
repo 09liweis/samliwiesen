@@ -22,6 +22,7 @@ router.route('/douban').get((req, res) => {
             const visual = JSON.parse(body);
             const method = req.query.method;
             if (method == 'update') {
+                request.post('https://what-i-watched.herokuapp.com/api/visual/update').form(visual);
                 console.log('Going to implement POST to what-i-watched');
             } else {
                 res.send(visual);
@@ -74,7 +75,8 @@ router.route('/get_imdb_rating').get((req, res) => {
         if (!error && response.statusCode == 200) {
             const $ = cheerio.load(body.toString());
             const imdb_rating = $('span[itemprop="ratingValue"]').text();
-            res.send({imdb_rating});
+            const poster = $('.poster a img').attr('src');
+            res.send({imdb_rating,poster});
         }
     });
 });
