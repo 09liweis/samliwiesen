@@ -7,6 +7,24 @@ var x = Xray();
 var request = require('request');
 var cheerio = require('cheerio');
 
+router.route('/search').get((req,res)=>{
+    const keyword = req.query.keyword;
+    request({
+        url: 'https://movie.douban.com/j/subject_suggest?q='+keyword,
+        method: 'GET',                   // 请求方法
+        headers: {                       // 指定请求头
+            'Accept-Language': 'zh-CN,zh;q=0.8', // 指定 Accept-Language
+            'Accept-Charset': 'utf-8, iso-8859-1;q=0.5'
+        }
+    },
+    function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            const results = JSON.parse(body);
+            res.send(results);
+        }
+    });
+});
+
 router.route('/douban').get((req, res) => {
     const douban_id = req.query.douban_id;
     request({
