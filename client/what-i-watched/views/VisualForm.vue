@@ -8,7 +8,6 @@
             <mu-text-field fullWidth label="Search From Douban" labelFloat v-on:change="searchDouban" />
             <mu-list>
                 <mu-list-item v-for="s in searchs" v-bind:title="s.title" key="s.id" v-on:click="renderFromSearch(s.id)">
-                    <mu-avatar v-bind:src="s.images.large" slot="rightAvatar"/>
                 </mu-list-item>
             </mu-list>
             <mu-raised-button slot="actions" flat color="primary" @click="toggleSearch">Close</mu-raised-button>
@@ -105,7 +104,9 @@
                     episodes: 1,
                     current_episode: 0,
                     visual_type: 'movie',
-                    website: ''
+                    website: '',
+                    languages:[],
+                    countries:[]
                 },
                 release_dates: [],
                 songs: []
@@ -152,10 +153,13 @@
             },
             searchDouban(e) {
                 const val = e.target.value;
-                this.$http.jsonp('https://api.douban.com/v2/movie/search?q=' + val + '&apikey=0df993c66c0c636e29ecbb5344252a4a').then(res => {
+                const api = '/api/visuals/search?keyword=' + val;
+                // 'https://api.douban.com/v2/movie/search?q=' + val + '&apikey=0df993c66c0c636e29ecbb5344252a4a'
+                this.$http.get(api).then(res => {
                     this.searchs = [];
                     if (res.status == 200) {
-                        this.searchs = res.body.subjects;
+                        console.log(res.body);
+                        this.searchs = res.body;
                     }
                 });
             },
