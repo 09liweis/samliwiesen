@@ -184,6 +184,12 @@
                         this.visual.episodes = douban.episodes_count;
                         this.visual.visual_type = 'tv';
                     }
+                    if (douban.countries) {
+                        this.visual.countries = douban.countries;
+                    }
+                    if (douban.languages) {
+                        this.visual.languages = douban.languages;
+                    }
                     this.visual.website = douban.website;
                 }, res => {
                     //error
