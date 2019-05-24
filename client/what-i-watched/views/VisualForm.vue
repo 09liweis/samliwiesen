@@ -62,6 +62,9 @@
                     <mu-menu-item value="tv" title="Tv" />
                 </mu-select-field>
             </mu-col>
+            <mu-col width="100" tablet="50" desktop="25">
+                <mu-text-field fullWidth label="Duration" labelFloat v-model="visual.duration" />
+            </mu-col>
         </mu-row>
         <div class="form-group">
             <mu-text-field fullWidth label="Summary" multiLine :rows="3" :rowsMax="6" labelFloat v-model="visual.summary" />
@@ -106,7 +109,8 @@
                     visual_type: 'movie',
                     website: '',
                     languages:[],
-                    countries:[]
+                    countries:[],
+                    duration:0,
                 },
                 release_dates: [],
                 songs: []
@@ -192,6 +196,10 @@
                     }
                     if (douban.languages) {
                         this.visual.languages = douban.languages;
+                    }
+                    if (douban.durations && douban.durations.length > 0) {
+                        const duration = douban.durations[0];
+                        this.visual.duration = duration.slice(0,duration.length - 2);
                     }
                     this.visual.website = douban.website;
                 }, res => {
