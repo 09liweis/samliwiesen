@@ -149,6 +149,9 @@
             getVisual(id) {
                 this.$http.get(this.$store.state.api.visualDetail + id).then(res => {
                     this.visual = res.body.result;
+                    if (this.visual.douban_id) {
+                        this.renderDouban();
+                    }
                 });
             },
             searchDouban(e) {
