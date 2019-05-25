@@ -35,6 +35,7 @@
         </th>
         <th class="visual__col release_date">
             <span>{{v.release_date}}</span>
+            <div v-if="v.duration">{{v.duration}} mins</div>
         </th>
         <th class="visual__col actions">
             <div class="visual__action">
