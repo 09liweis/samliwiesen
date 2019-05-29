@@ -51,3 +51,12 @@ input {
         border-bottom: 1px solid green;
     }
 }
+.button {
+    padding:10px;
+    background-color:#aac146;
+    color:#fff;
+    display:inline-block;
+    &:hover {
+        text-decoration:none;
+    }
+}

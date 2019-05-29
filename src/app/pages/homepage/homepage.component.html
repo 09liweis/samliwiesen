@@ -7,7 +7,7 @@
             <div *ngIf="blogs">
                 <a class="post-link" *ngFor="let e of blogs" [routerLink]="['/blog', e._id]">{{e.title}}</a>
             </div>
-            <a routerLink="/blog/new">Add New</a>
+            <a class="button" routerLink="/blog/new">Add New</a>
         </div>
         </section>
     </article>
