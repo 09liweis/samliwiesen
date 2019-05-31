@@ -8,7 +8,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 
 const headers = {
-    'Accept-Language': 'zh-CN,zh;q=0.8', // 指定 Accept-Language
+    'Accept-Language': 'zh-CN,zh;q=0.8',
     'Accept-Charset': 'utf-8, iso-8859-1;q=0.5'
 };
 
@@ -16,7 +16,7 @@ router.route('/search').get((req,res)=>{
     const keyword = req.query.keyword;
     request({
         url: 'https://movie.douban.com/j/subject_suggest?q='+keyword,
-        method: 'GET',                   // 请求方法
+        method: 'GET',
         headers
     },
     function (error, response, body) {
@@ -30,8 +30,8 @@ router.route('/search').get((req,res)=>{
 router.route('/douban').get((req, res) => {
     const douban_id = req.query.douban_id;
     request({
-        url: 'https://api.douban.com/v2/movie/subject/' + douban_id + '?apikey=0df993c66c0c636e29ecbb5344252a4a',   // 请求的URL
-        method: 'GET',                   // 请求方法
+        url: 'https://api.douban.com/v2/movie/subject/' + douban_id + '?apikey=0df993c66c0c636e29ecbb5344252a4a',
+        method: 'GET',
         headers
     },
     function (error, response, body) {
@@ -52,7 +52,7 @@ router.route('/get_imdb_id').get((req,res)=>{
     const douban_id = req.query.douban_id;
     request({
         url: 'https://movie.douban.com/subject/' + douban_id,
-        method: 'GET',                   // 请求方法
+        method: 'GET',
         headers
     },
     function (error, response, body) {
