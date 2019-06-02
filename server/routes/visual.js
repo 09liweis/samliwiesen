@@ -39,7 +39,7 @@ router.route('/douban').get((req, res) => {
             const visual = JSON.parse(body);
             const method = req.query.method;
             if (method == 'update') {
-                request.post('https://what-i-watched.herokuapp.com/api/visual/update').form(visual);
+                // request.post('https://what-i-watched.herokuapp.com/api/visual/update').form(visual);
                 console.log('Going to implement POST to what-i-watched');
             } else {
                 res.send(visual);
