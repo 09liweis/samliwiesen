@@ -11,11 +11,12 @@ const headers = {
     'Accept-Language': 'zh-CN,zh;q=0.8',
     'Accept-Charset': 'utf-8, iso-8859-1;q=0.5'
 };
+const DOUBAN_SEARCH_API = 'https://movie.douban.com/j/subject_suggest?q=';
 
 router.route('/search').get((req,res)=>{
     const keyword = req.query.keyword;
     request({
-        url: 'https://movie.douban.com/j/subject_suggest?q='+keyword,
+        url: DOUBAN_SEARCH_API+keyword,
         method: 'GET',
         headers
     },
