@@ -12,6 +12,7 @@ const headers = {
     'Accept-Charset': 'utf-8, iso-8859-1;q=0.5'
 };
 const DOUBAN_SEARCH_API = 'https://movie.douban.com/j/subject_suggest?q=';
+const DOUBAN_SITE = 'https://movie.douban.com/subject/';
 
 router.route('/search').get((req,res)=>{
     const keyword = req.query.keyword;
@@ -52,7 +53,7 @@ router.route('/douban').get((req, res) => {
 router.route('/get_imdb_id').get((req,res)=>{
     const douban_id = req.query.douban_id;
     request({
-        url: 'https://movie.douban.com/subject/' + douban_id,
+        url: DOUBAN_SITE + douban_id,
         method: 'GET',
         headers
     },
