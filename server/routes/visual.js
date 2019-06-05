@@ -13,6 +13,7 @@ const headers = {
 };
 const DOUBAN_SEARCH_API = 'https://movie.douban.com/j/subject_suggest?q=';
 const DOUBAN_SITE = 'https://movie.douban.com/subject/';
+const DOUBAN_MOVIE_API = 'https://api.douban.com/v2/movie/subject/';
 const DOUBAN_API_KEY = '0df993c66c0c636e29ecbb5344252a4a';
 
 router.route('/search').get((req,res)=>{
@@ -33,7 +34,7 @@ router.route('/search').get((req,res)=>{
 router.route('/douban').get((req, res) => {
     const douban_id = req.query.douban_id;
     request({
-        url: 'https://api.douban.com/v2/movie/subject/' + douban_id + '?apikey='+DOUBAN_API_KEY,
+        url: DOUBAN_MOVIE_API + douban_id + '?apikey='+DOUBAN_API_KEY,
         method: 'GET',
         headers
     },
