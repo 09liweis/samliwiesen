@@ -15,6 +15,7 @@ const DOUBAN_SEARCH_API = 'https://movie.douban.com/j/subject_suggest?q=';
 const DOUBAN_SITE = 'https://movie.douban.com/subject/';
 const DOUBAN_MOVIE_API = 'https://api.douban.com/v2/movie/subject/';
 const DOUBAN_API_KEY = '0df993c66c0c636e29ecbb5344252a4a';
+const IMDB_SITE = 'https://www.imdb.com/title/';
 
 router.route('/search').get((req,res)=>{
     const keyword = req.query.keyword;
@@ -82,7 +83,7 @@ router.route('/get_imdb_id').get((req,res)=>{
 router.route('/get_imdb_rating').get((req, res) => {
     const imdb_id = req.query.imdb_id;
     request({
-        url: 'https://www.imdb.com/title/' + imdb_id,   // 请求的URL
+        url: IMDB_SITE + imdb_id,   // 请求的URL
         method: 'GET',                   // 请求方法
         headers
     },
