@@ -19,6 +19,9 @@ const IMDB_SITE = 'https://www.imdb.com/title/';
 
 router.route('/search').get((req,res)=>{
     const keyword = req.query.keyword;
+    if (!keyword) {
+        res.send({ok:0,msg:'No Keyword'});
+    }
     request({
         url: DOUBAN_SEARCH_API+keyword,
         method: 'GET',
