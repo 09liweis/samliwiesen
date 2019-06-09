@@ -37,6 +37,9 @@ router.route('/search').get((req,res)=>{
 
 router.route('/douban').get((req, res) => {
     const douban_id = req.query.douban_id;
+    if (!douban_id) {
+        res.send({msg:'No Douban Id',ok:0});
+    }
     request({
         url: DOUBAN_MOVIE_API + douban_id + '?apikey='+DOUBAN_API_KEY,
         method: 'GET',
