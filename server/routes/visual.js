@@ -88,6 +88,9 @@ router.route('/get_imdb_id').get((req,res)=>{
 
 router.route('/get_imdb_rating').get((req, res) => {
     const imdb_id = req.query.imdb_id;
+    if (!imdb_id) {
+        res.send({ok:0,msg:'No IMDB ID'});
+    }
     request({
         url: IMDB_SITE + imdb_id,   // 请求的URL
         method: 'GET',                   // 请求方法
