@@ -9,6 +9,9 @@
         </div>
         <input v-model="searchText" />
         <button v-on:click="search()">Search</button>
+        <div class="filters">
+            <button v-on:click="filter()">Not Started</button>
+        </div>
         <table class="table" v-if="resultVisuals.length > 0">
             <tr class="table__head">
                 <th>Poster</th>
@@ -100,6 +103,13 @@
             },
             search() {
                 this.$http.get('https://what-i-watched.herokuapp.com/api/search?keyword=' + this.searchText).then(res=>{
+                    if (res.ok) {
+                        this.list = res.body.results;
+                    }
+                });
+            },
+            filter() {
+                this.$http.get('https://what-i-watched.herokuapp.com/api/visuals?type=not_start').then(res=>{
                     if (res.ok) {
                         this.list = res.body.results;
                     }
