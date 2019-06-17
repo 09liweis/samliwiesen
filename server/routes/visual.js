@@ -95,8 +95,8 @@ router.route('/get_imdb_rating').get((req, res) => {
         res.send({ok:0,msg:'No IMDB ID'});
     }
     request({
-        url: IMDB_SITE + imdb_id,   // 请求的URL
-        method: 'GET',                   // 请求方法
+        url: IMDB_SITE + imdb_id,
+        method: 'GET',
         headers
     },
     function (error, response, body) {
