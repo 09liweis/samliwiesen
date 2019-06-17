@@ -32,6 +32,10 @@
     vertical-align: middle;
     color: #86643d;
 }
+.loadmore {
+    text-align:center;
+    cursor: pointer;
+}
 @media (min-width: 426px) {
     .visual__image {
         width: 100%;
