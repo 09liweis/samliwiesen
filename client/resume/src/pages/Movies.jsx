@@ -57,7 +57,7 @@ export default class Movies extends React.Component {
                         visuals   
                     }
                 </div>
-                <button className="loadmore" onClick={this.loadmore}>Load More</button>
+                <div className="loadmore" onClick={this.loadmore}>Load More</div>
             </div>
         );
     }
