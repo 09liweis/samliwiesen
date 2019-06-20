@@ -54,7 +54,7 @@ exports.transaction_new = async function(req, res) {
 };
 
 exports.transaction_detail = function(req, res) {
-    
+    const id = req.params.id;
 };
 
 exports.transaction_update = async function(req, res) {
