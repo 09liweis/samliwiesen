@@ -85,6 +85,7 @@ exports.transaction_update = async function(req, res) {
 };
 
 exports.transaction_delete = (req, res) => {
+    //Delete transaction
     Transaction.remove({_id: req.params.id}, (err) => {
         handleError(res, err);
         res.json({ok:1,msg:'Transaction Deleted'});
