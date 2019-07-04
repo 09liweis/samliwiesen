@@ -16,8 +16,7 @@
             <tr class="table__head">
                 <th>Poster</th>
                 <th>Title</th>
-                <th>Country</th>
-                <th>Language</th>
+                <th>Country/Language</th>
                 <th>Ratings</th>
                 <th>Progress</th>
                 <th>Release Date</th>
