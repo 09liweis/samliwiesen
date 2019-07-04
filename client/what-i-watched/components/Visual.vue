@@ -8,9 +8,9 @@
             <h3 class="visual__title" v-if="v.title != v.original_title">{{v.original_title}}</h3>
         </th>
         <th>
-            {{v.countries.join(',')}}
+            <div>{{v.countries.join(',')}}</div>
+            <div>{{v.languages.join(',')}}</div>
         </th>
-        <th>{{v.languages.join(',')}}</th>
         <th class="visual__col ratings">
             <div class="visual__ratings">
                 <a class="visual__rating link" v-bind:href="getLink(v, 'douban')" target="_blank">
