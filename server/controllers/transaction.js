@@ -99,14 +99,3 @@ function handleError(res, err) {
         return;
     }
 }
-
-async function getPlace(place) {
-    let p = await Place.findOne({place_id: place.place_id});
-    if (!p) {
-        p = Place(place);
-        await p.save();
-        
-        console.log('add place');
-    }
-    return p;
-}
