@@ -22,7 +22,7 @@
     font-family: 'Inconsolata';
     margin: 0 0 10px 0;
 }
-.card__info,
+.card__title,
 .card__number {
     display: inline-block;
     vertical-align: middle;
@@ -42,7 +42,7 @@
     margin-top: 10px;
 }
 @media only screen and (min-width: 600px) {
-    .card {
-        width: 50%;
-    }
+    // .card {
+    //     width: 50%;
+    // }
 }
