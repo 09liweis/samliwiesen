@@ -71,9 +71,8 @@ router.route('/get_imdb_id').get((req,res)=>{
     },
     function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            const matches = body.match(/tt[\d]{7}/g);
+            const matches = body.match(/tt[\d]{7,8}/g);
             let imdb_id = '';
-            console.log(matches);
             if (matches && matches.length > 0) {
                 imdb_id = matches[0];
             }
