@@ -8,20 +8,14 @@ var TodoSchema = new Schema({
   },
   steps: [
     {
-      name: String,
       status: {
         type: String,
         default: 'pending'
       },
-      place:{
-        _id:String,
-        name:String,
-        address:String,
-        pos:{
-          lat:Number,
-          lng:Number
-        }
-      }
+      transaction: {
+        type: Schema.Types.ObjectId,
+        ref: 'Transaction'
+      },
     }
   ],
   created_at: {
