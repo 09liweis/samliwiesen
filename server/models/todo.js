@@ -12,6 +12,15 @@ var TodoSchema = new Schema({
       status: {
         type: String,
         default: 'pending'
+      },
+      place:{
+        _id:String,
+        name:String,
+        address:String,
+        pos:{
+          lat:Number,
+          lng:Number
+        }
       }
     }
   ],
