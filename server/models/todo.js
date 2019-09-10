@@ -8,6 +8,7 @@ var TodoSchema = new Schema({
   },
   steps: [
     {
+      name:String,
       status: {
         type: String,
         default: 'pending'
