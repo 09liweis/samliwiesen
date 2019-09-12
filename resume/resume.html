@@ -115,11 +115,11 @@
             if ('serviceWorker' in window.navigator) {
             window.addEventListener('load', function() {
                 window.navigator.serviceWorker.register('sw.js').then(function(registration) {
-                    // console.log('Worker registration successful', registration.scope);
+                    console.log('Worker registration successful', registration.scope);
                 }, function(err) {
-                    // console.log('Worker registration failed', err);
+                    console.log('Worker registration failed', err);
                 }).catch(function(err) {
-                    // console.log(err);
+                    console.log(err);
                 });
             });
             } else {
