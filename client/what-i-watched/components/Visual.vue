@@ -18,7 +18,7 @@
                     <span class="visual__rating">{{v.douban_rating}}</span>
                 </a>
                 <a class="visual__rating link" v-if="v.imdb_id" v-bind:href="getLink(v, 'imdb')" target="_blank">
-                    <img class="visual__rating icon" src="https://a4.mzstatic.com/us/r30/Purple71/v4/eb/6a/9d/eb6a9d94-4631-194c-3e24-852a06dc4ced/icon175x175.jpeg" alt="imdb icon" />
+                    <span class="visual__rating icon imdb">IMDB</span>
                     <span class="visual__rating">{{v.imdb_rating}}</span>
                 </a>
                 <a v-if="v.rotten_rating">
@@ -117,6 +117,14 @@ export default {
 .visual__rating.icon {
     width: 20px;
     height: 20px;
+}
+.visual__rating.icon.imdb {
+    width:auto;
+    height:auto;
+    background-color:#f5c518;
+    color:#000;
+    padding:1px;
+    margin-right:2px;
 }
 .visual__progress-episodes {
     color: #000000;
