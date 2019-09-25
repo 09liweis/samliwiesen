@@ -31,27 +31,26 @@ const store = createStore(reducer, compose(
 store.dispatch(getCharacters());
 
 export default class Main extends React.Component {
-    render() {
-        return ([
-                <Header key="header" />,
-                <Provider store={store} key="provider">
-                    <HashRouter key="page">
-                        <div>
-                        <Nav key="nav" />
-                        <Route exact path='/' component={Home} />
-                        <Route path='/todo' component={Todo} />
-                        <Route path='/movies' component={Movies} />
-                        <Route path='/movie/:id' component={Movie} />
-                        <Route path='/blogs' component={Blogs} />
-                        <Route path='/comments' component={Comments} />
-                        <Route path='/clock' component={Clock} />
-                        <Route path='/transactions' component={Transactions} />
-                        <Route path='/musicplayer' component={MusicPlayer} />
-                        </div>
-                    </HashRouter>
-                </Provider>,
-                <Footer key="footer" />
-            ]
-        );
-    }
+	render() {
+		return ([
+			<Header key="header" />,
+			<Provider store={store} key="provider">
+					<HashRouter key="page">
+							<div>
+							<Nav key="nav" />
+							<Route exact path='/' component={Home} />
+							<Route path='/todo' component={Todo} />
+							<Route path='/movies' component={Movies} />
+							<Route path='/movie/:id' component={Movie} />
+							<Route path='/blogs' component={Blogs} />
+							<Route path='/comments' component={Comments} />
+							<Route path='/clock' component={Clock} />
+							<Route path='/transactions' component={Transactions} />
+							<Route path='/musicplayer' component={MusicPlayer} />
+							</div>
+					</HashRouter>
+			</Provider>,
+			<Footer key="footer" />
+		]);
+	}
 }
