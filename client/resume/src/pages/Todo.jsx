@@ -38,23 +38,17 @@ export default class Todo extends React.Component {
 			}
 		});
 	}
-    submitTodo() {
-        const newTodo = this.state.newTodo;
-        axios.post(this.state.api, newTodo).then((res) => {
-            if (res.status == 200) {
-                const todo = res.data;
-                let todos = this.state.todos;
-                todos.unshift(todo);
-                this.setState({
-                    newTodo: {
-                        name: '',
-                        status: 'pending'
-                    },
-                    todos: todos
-                });
-            }
-        });
-    }
+	submitTodo() {
+		let {newTodo,api,todos} = this.state;
+		axios.post(api, newTodo).then((res) => {
+			if (res.status == 200) {
+				const todo = res.data;
+				todos.unshift(todo);
+				newTodo = {name:'',status:'pending'};
+				this.setState({newTodo,todos});
+			}
+		});
+	}
     updateTodo(todo) {
         axios.put(this.state.api + todo._id, todo).then((res) => {
             if (res.status == 200) {
