@@ -7,37 +7,37 @@ import {CSSTransition,TransitionGroup} from 'react-transition-group';
 import '../css/todo.css';
 
 export default class Todo extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            todos: [],
-            newTodo: {
-                name: '',
-                status: 'pending'
-            },
-            filter: 'all',
-            loading: false,
-            api: 'https://samliweisen.herokuapp.com/api/todos/',
-            admin: window.localStorage.getItem('admin') || false
-        };
-        this.submitTodo = this.submitTodo.bind(this);
-    }
-    componentDidMount() {
-        this.getTodos();
-    }
-    getTodos() {
-        this.setState({
-            loading: true
-        });
-        axios.get(this.state.api).then((res) => {
-            if (res.status == 200) {
-                this.setState({
-                    loading: false,
-                    todos: res.data
-                });
-            }
-        });
-    }
+	constructor(props) {
+		super(props);
+		this.state = {
+			todos: [],
+			newTodo: {
+				name: '',
+				status: 'pending',
+				steps:[]
+			},
+			filter: 'all',
+			loading: false,
+			api: 'https://samliweisen.herokuapp.com/api/todos/',
+			admin: window.localStorage.getItem('admin') || false
+		};
+		this.submitTodo = this.submitTodo.bind(this);
+	}
+	componentDidMount() {
+		this.getTodos();
+	}
+	getTodos() {
+		let {api,loading} = this.state;
+		loading = true;
+		this.setState({loading});
+		axios.get(api).then((res) => {
+			if (res.status == 200) {
+				const todos = res.data;
+				loading = false;
+				this.setState({loading,todos});
+			}
+		});
+	}
     submitTodo() {
         const newTodo = this.state.newTodo;
         axios.post(this.state.api, newTodo).then((res) => {
