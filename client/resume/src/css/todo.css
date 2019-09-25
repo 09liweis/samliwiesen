@@ -10,6 +10,11 @@
     margin: auto;
     padding: 0 15px;
 }
+.todos_error {
+	text-align: center;
+	color:red;
+	margin:20px
+}
 #todoName {
     width: 100%;
     padding: 10px;

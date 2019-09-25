@@ -10,6 +10,7 @@ export default class Todo extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			error:'',
 			todos: [],
 			newTodo: {
 				name: '',
@@ -36,6 +37,9 @@ export default class Todo extends React.Component {
 				loading = false;
 				this.setState({loading,todos});
 			}
+		},(res)=>{
+			loading = false;
+			this.setState({loading,error:'Network Error'});
 		});
 	}
 	submitTodo() {
@@ -133,8 +137,11 @@ export default class Todo extends React.Component {
 		return 'todo ' + todo.status;
 	}
 	render() {
-		const {admin, todos, newTodo, loading, filter} = this.state;
-		let todosFilter = todos;
+		const {admin, todos, newTodo, loading, filter,error} = this.state;
+		let todosFilter = todos,errorMsg;
+		if (error) {
+			errorMsg = <div className="todos_error">{error}</div>;
+		}
 		if (filter != 'all') {
 			todosFilter = todos.filter(todo => todo.status == filter);
 		}
@@ -172,6 +179,7 @@ export default class Todo extends React.Component {
 					{todoList}
 					</TransitionGroup>
 					}
+					{errorMsg}
 				</div>
 			</div>
 		);
