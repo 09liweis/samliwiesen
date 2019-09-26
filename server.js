@@ -21,35 +21,39 @@ port = process.env.PORT || 8081;
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://heroku_6njptcbp:dg8h3o8v9dpjk1osignqn3ibel@ds125489.mlab.com:25489/heroku_6njptcbp');
+if (port == 8081) {
+  mongoose.connect('mongodb://localhost:27017/samliweisen');
+} else {
+  mongoose.connect('mongodb://heroku_6njptcbp:dg8h3o8v9dpjk1osignqn3ibel@ds125489.mlab.com:25489/heroku_6njptcbp');
+}
 
 mongoose.connection.on('connected', function() {
-    console.log('Connected to db');
+  console.log('Connected to db');
 });
 
 mongoose.connection.on('error', function() {
-    console.log('connected fail');
+  console.log('connected fail');
 });
 
 mongoose.connection.on('disconnected', function () {    
-    console.log('Mongoose connection disconnected');  
+  console.log('Mongoose connection disconnected');
 }); 
 
 app.use(function (req, res, next) {
-    const origins = ['localhost', 'http://samliweisen.herokuapp.com/','https://40be6f621cdf43b78d3827c72b7093c0.vfs.cloud9.us-east-1.amazonaws.com'];
-    // Website you wish to allow to connect
-    if (origins.indexOf(req.headers.origin) > -1) {
-        res.setHeader('Access-Control-Allow-Origin', req.headers.origin);   
-    }
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    // Pass to next layer of middleware
-    next();
+	const origins = ['http://samliweisen.herokuapp.com/','https://40be6f621cdf43b78d3827c72b7093c0.vfs.cloud9.us-east-1.amazonaws.com'];
+	// Website you wish to allow to connect
+	if (origins.indexOf(req.headers.origin) > -1) {
+		res.setHeader('Access-Control-Allow-Origin', req.headers.origin);   
+	}
+	// Request methods you wish to allow
+	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+	// Request headers you wish to allow
+	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+	// Set to true if you need the website to include cookies in the requests sent
+	// to the API (e.g. in case you use sessions)
+	res.setHeader('Access-Control-Allow-Credentials', true);
+	// Pass to next layer of middleware
+	next();
 });
 app.use('/assets', express.static(path.join(__dirname) + '/assets'));
 app.use('/dashboard', express.static(path.join(__dirname) + '/dashboard'));
@@ -57,17 +61,17 @@ app.use('/resume', express.static(path.join(__dirname) + '/resume'));
 app.use('/what-i-watched', express.static(path.join(__dirname) + '/what-i-watched'));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'resume/resume.html'));
+  res.sendFile(path.join(__dirname, 'resume/resume.html'));
 });
 
 //Route for CMS: angular
 app.get('/dashboard', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dashboard/index.html'));
+  res.sendFile(path.join(__dirname, 'dashboard/index.html'));
 });
 
 // Route for what i watched management application
 app.get('/what-i-watched', (req, res) => {
-    res.sendFile(path.join(__dirname, 'what-i-watched/what-i-watched.html'));
+  res.sendFile(path.join(__dirname, 'what-i-watched/what-i-watched.html'));
 });
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -86,5 +90,6 @@ app.use('/api/news', newsRoute);
 app.use('/api/visuals', visualRoute);
 
 app.listen(port, () => {
-    console.log('Web server runs on: ' + port);
+	console.log('Web server runs on: ' + port);
+	console.log(new Date());
 });
