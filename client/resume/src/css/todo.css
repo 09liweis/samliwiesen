@@ -5,17 +5,26 @@
     margin-bottom: 20px;
 }
 .todos__container {
-    width: 100%;
-    max-width: 624px;
-    margin: auto;
-    padding: 0 15px;
+	width: 100%;
+	max-width: 624px;
+	margin: auto;
+	padding: 0 15px;
+	text-align:center;
 }
 .todos_error {
 	text-align: center;
 	color:red;
 	margin:20px
 }
-#todoName {
+.todo__button {
+	background-color: #0ba360;
+	color:#fff;
+	padding:10px;
+	cursor:pointer;
+	margin:10px 0;
+	display:inline-block;
+}
+.todo__name {
     width: 100%;
     padding: 10px;
     font-size: 1.5em;
@@ -77,12 +86,16 @@
     display: flex;
     transition: all 0.3s ease;
 }
+.todo__edit,
 .todo__remove,
 .todo__complete {
-    cursor: pointer;
-    color: #ffffff;
-    padding: 10px;
-    line-height: 28px;
+	cursor: pointer;
+	color: #ffffff;
+	padding: 10px;
+	line-height: 28px;
+}
+.todo__edit {
+	background-color:#8080ea;
 }
 .todo__remove {
     background-color: #f12626;
@@ -152,4 +165,18 @@
     opacity: 0;
     transition: all 0.3s ease;
     transform: translateX(20%);
+}
+.todo__form {
+	z-index:1;
+	position:absolute;
+	top:50%;
+	transform:translateY(-50%);
+	max-width:680px;
+	width:100%;
+	background-color:#fff;
+	left:0;
+	right:0;
+	margin:auto;
+	padding:10px;
+	border:1px solid #ccc;
 }
