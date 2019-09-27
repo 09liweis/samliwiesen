@@ -29,6 +29,7 @@ export default class Todo extends React.Component {
 		this.submitStep = this.submitStep.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.toggleForm = this.toggleForm.bind(this);
+		this.handleAdd = this.handleAdd.bind(this);
 	}
 	componentDidMount() {
 		this.getTodos();
@@ -60,8 +61,8 @@ export default class Todo extends React.Component {
 			if (res.status == 200) {
 				const todo = res.data;
 				todos.unshift(todo);
-				newTodo = {name:'',status:'pending',steps:[]};
-				this.setState({newTodo,todos});
+				this.setEmptyTodo()
+				this.setState({todos});
 				this.toggleForm();
 			}
 		});
@@ -104,6 +105,13 @@ export default class Todo extends React.Component {
 	// 		}
 	// 	}
 	// }
+	setEmptyTodo() {
+		this.setState({newTodo:{name:'',steps:[],status:'pending'}});
+	}
+	handleAdd() {
+		this.setEmptyTodo();
+		this.toggleForm();
+	}
 	handleEdit(idx) {
 		let {todos} = this.state;
 		const newTodo = todos[idx];
@@ -217,7 +225,7 @@ export default class Todo extends React.Component {
 				{form}
 				<h2 className="todos__title">Todo List</h2>
 				<div className="todos__container">
-					<a className="todo__button" onClick={this.toggleForm}>Add New</a>
+					<a className="todo__button" onClick={this.handleAdd}>Add New</a>
 					{/* <input placeholder="Add New Todo" id="todoName" value={newTodo.name} onChange={this.handleChange} onKeyPress={this.handleKeyPress.bind(this, 'add')} /> */}
 					<div className="todo__statics">
 						<span className="done" onClick={this.setFilter.bind(this, 'done')}>Done</span>
