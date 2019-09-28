@@ -51,16 +51,47 @@ export default class Todo extends React.Component {
 	}
 	submitStep() {
 		let {newTodo,step} = this.state;
-		newTodo.steps.push(step);
+		if (step._id) {
+			for (let i in newTodo.steps) {
+				if (step._id = newTodo.steps[i]._id) {
+					newTodo.steps[i] = step
+				}
+			}
+		} else {
+			newTodo.steps.push(step);
+		}
 		step = {name:'',status:'pending'};
 		this.setState({newTodo,step});
 	}
+	editStep(i) {
+		let {step,newTodo} = this.state;
+		step = newTodo.steps[i]
+		this.setState({step});
+	}
+	deleteStep(i) {
+		let {newTodo} = this.state;
+		newTodo.steps.splice(i,1);
+		this.setState({newTodo});
+	}
 	submitTodo() {
 		let {newTodo,api,todos} = this.state;
-		axios.post(api, newTodo).then((res) => {
+		let url = api,method = 'post';
+		if (newTodo._id) {
+			url += newTodo._id;
+			method = 'put';
+		}
+		axios[method](url, newTodo).then((res) => {
 			if (res.status == 200) {
 				const todo = res.data;
-				todos.unshift(todo);
+				if (newTodo._id) {
+					for (let i in todos) {
+						if (todos[i]._id == newTodo._id) {
+							todos[i] = newTodo;
+						}
+					}
+				} else {
+					todos.unshift(todo);
+				}
 				this.setEmptyTodo()
 				this.setState({todos});
 				this.toggleForm();
@@ -122,15 +153,13 @@ export default class Todo extends React.Component {
 		const name = e.target.name;
 		const value = e.target.value;
 		if (name == 'name') {
-			this.setState({
-				newTodo: {
-					steps:[],
-					name: value,
-					status: 'pending'
-				}
-			});
+			let {newTodo} = this.state;
+			newTodo.name = value;
+			this.setState({newTodo});
 		} else {
-			this.setState({step:{name:value,status:'pending'}});
+			let {step} = this.state;
+			step.name = value;
+			this.setState({step});
 		}
 	}
 	handleUpdate(idx, e) {
@@ -177,7 +206,11 @@ export default class Todo extends React.Component {
 	renderForm() {
 		const {newTodo,step} = this.state;
 		const steps = newTodo.steps.map((s,i)=>
-			<div key={i}>{s.name}</div>
+			<div key={i}>
+				<span>{s.name}</span>
+				<span className="fa fa-pencil" onClick={this.editStep.bind(this,i)}></span>
+				<span className="fa fa-times" onClick={this.deleteStep.bind(this,i)}></span>
+			</div>
 		);
 		return (
 			<div className="todo__form">
@@ -186,7 +219,10 @@ export default class Todo extends React.Component {
 				<input autoComplete="off" className="todo__name-step" name="step" value={step.name} onChange={this.handleChange}/>
 				<span className="fa fa-plus" onClick={this.submitStep}></span>
 				{steps}
-				<a className="todo__button" onClick={this.submitTodo}>Submit</a>
+				<div className="">
+					<a className="todo__btn" onClick={this.submitTodo}>Submit</a>
+					<a className="todo__btn" onClick={this.toggleForm}>Cancel</a>
+				</div>
 			</div>
 		);
 	}
@@ -205,11 +241,7 @@ export default class Todo extends React.Component {
 		const todoList = todosFilter.map((todo, idx) => 
 			<CSSTransition key={todo._id} timeout={500} classNames="todoAnimation">
 				<div className={this.getStatus(todo)}>
-					{admin ?
-					<input className="todo__title" value={todo.name} onChange={this.handleUpdate.bind(this, idx)} />
-					:
 					<div className="todo__title">{todo.name}</div>
-					}
 					{todo.status != 'done'?
 					<div className="todo__actions">
 						<div className="todo__edit" onClick={this.handleEdit.bind(this,idx)}>Edit</div>
@@ -217,6 +249,9 @@ export default class Todo extends React.Component {
 						<div className="todo__remove" onClick={this.handleRemove.bind(this, idx, todo._id)}>Remove</div>
 					</div>
 					:null}
+					{todo.steps.map((s,i)=>
+						<div key={i}>{s.name} - {s.status}</div>
+					)}
 				</div>
 			</CSSTransition>
 		);
@@ -225,8 +260,7 @@ export default class Todo extends React.Component {
 				{form}
 				<h2 className="todos__title">Todo List</h2>
 				<div className="todos__container">
-					<a className="todo__button" onClick={this.handleAdd}>Add New</a>
-					{/* <input placeholder="Add New Todo" id="todoName" value={newTodo.name} onChange={this.handleChange} onKeyPress={this.handleKeyPress.bind(this, 'add')} /> */}
+					<a className="todo__btn" onClick={this.handleAdd}>Add New</a>
 					<div className="todo__statics">
 						<span className="done" onClick={this.setFilter.bind(this, 'done')}>Done</span>
 						<span className="working" onClick={this.setFilter.bind(this, 'working')}>In Progress</span>
