@@ -33,7 +33,7 @@ var TodoSchema = new Schema({
   }
 });
 
-TodoSchema.pre('save', function(next) {
+TodoSchema.pre('save', (next) => {
   const currentDate = new Date();
   this.update_at = currentDate;
   if (!this.created_at) {
