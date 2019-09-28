@@ -13,11 +13,6 @@ export default class Todo extends React.Component {
 		this.state = {
 			error:'',
 			todos: [],
-			newTodo: {
-				name: '',
-				status: 'pending',
-				steps:[]
-			},
 			step:{name:'',status:'pending'},
 			filter: 'all',
 			loading: false,
@@ -32,13 +27,18 @@ export default class Todo extends React.Component {
 		this.handleAdd = this.handleAdd.bind(this);
 	}
 	componentDidMount() {
+		this.setEmptyTodo();
 		this.getTodos();
 	}
 	getTodos() {
-		let {api,loading} = this.state;
+		let {api,loading,filter} = this.state;
+		let opt = {};
 		loading = true;
 		this.setState({loading});
-		axios.get(api).then((res) => {
+		if (filter != 'all') {
+			opt.status = filter;
+		}
+		axios.get(api,{params:opt}).then((res) => {
 			if (res.status == 200) {
 				const todos = res.data;
 				loading = false;
@@ -137,7 +137,7 @@ export default class Todo extends React.Component {
 	// 	}
 	// }
 	setEmptyTodo() {
-		this.setState({newTodo:{name:'',steps:[],status:'pending'}});
+		this.setState({newTodo:{date:'',name:'',steps:[],status:'pending'}});
 	}
 	handleAdd() {
 		this.setEmptyTodo();
@@ -152,14 +152,22 @@ export default class Todo extends React.Component {
 	handleChange(e) {
 		const name = e.target.name;
 		const value = e.target.value;
-		if (name == 'name') {
-			let {newTodo} = this.state;
-			newTodo.name = value;
-			this.setState({newTodo});
-		} else {
-			let {step} = this.state;
-			step.name = value;
-			this.setState({step});
+		let {newTodo,step} = this.state;
+		switch (name) {
+			case 'name':
+				newTodo[name] = value;
+				this.setState({newTodo});
+				break;
+			case 'date':
+				newTodo[name] = value;
+				this.setState({newTodo});
+				break;
+			case 'step':
+				step.name = value;
+				this.setState({step});
+				break;
+			default:
+				break;
 		}
 	}
 	handleUpdate(idx, e) {
@@ -194,7 +202,12 @@ export default class Todo extends React.Component {
 		});
 	}
 	setFilter(filter) {
-		this.setState({filter});
+		this.setState(
+			{filter},
+			()=>{
+				this.getTodos();
+			}
+		);
 	}
 	getStatus(todo) {
 		return 'todo ' + todo.status;
@@ -215,6 +228,7 @@ export default class Todo extends React.Component {
 		return (
 			<div className="todo__form">
 				<input autoComplete="off" className="todo__name" placeholder="Title" name="name" value={newTodo.name} onChange={this.handleChange} />
+				<input autoComplete="off" className="todo__date" placeholder="Date" name="date" value={newTodo.date} onChange={this.handleChange} />
 				<h4>Steps</h4>
 				<input autoComplete="off" className="todo__name-step" name="step" value={step.name} onChange={this.handleChange}/>
 				<span className="fa fa-plus" onClick={this.submitStep}></span>
@@ -228,17 +242,14 @@ export default class Todo extends React.Component {
 	}
 	render() {
 		const {admin, todos, newTodo, loading, filter,error,showForm} = this.state;
-		let todosFilter = todos,errorMsg,form;
+		let errorMsg,form;
 		if (showForm) {
 			form = this.renderForm();
 		}
 		if (error) {
 			errorMsg = <div className="todos_error">{error}</div>;
 		}
-		if (filter != 'all') {
-			todosFilter = todos.filter(todo => todo.status == filter);
-		}
-		const todoList = todosFilter.map((todo, idx) => 
+		const todoList = todos.map((todo, idx) => 
 			<CSSTransition key={todo._id} timeout={500} classNames="todoAnimation">
 				<div className={this.getStatus(todo)}>
 					<div className="todo__title">{todo.name}</div>

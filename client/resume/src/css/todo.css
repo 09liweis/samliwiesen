@@ -47,17 +47,17 @@
     transform: translateX(0);
 }
 .todo__statics {
-    text-align: center;
-    margin-top: 30px;
+	text-align: center;
+	margin-top: 15px;
 }
 .todo__statics span {
-    display: inline-block;
-    border-left-width: 5px;
-    border-left-style: solid;
-    padding: 10px;
-    margin-right: 15px;
-    background-color: #ffffff;
-    cursor: pointer;
+	display: inline-block;
+	border-left-width: 5px;
+	border-left-style: solid;
+	padding: 10px;
+	margin-right: 15px;
+	background-color: #ffffff;
+	cursor: pointer;
 }
 .pending {
     border-left-color: #ff000096;
