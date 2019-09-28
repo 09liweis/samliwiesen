@@ -2,22 +2,25 @@ var mongoose = require('mongoose'),
 Todo = require('../models/todo');
 
 exports.todo_list = (req, res) => {
-    let page = req.query.page;
-    let limit = req.query.limit;
-    let options = {};
-    //TODO: fix pagination
-    if (page) {
-        options.skip = parseInt(page);
-    } else {
-        options.skip = 0;
-    }
-    if (limit) {
-        options.limit = parseInt(limit);
-    }
-    Todo.find({}, '_id name steps status', options).sort('-created_at').exec((err, todos) => {
-        handleError(res, err);
-        res.status(200).json(todos);
-    });
+	const {page,limit,status} = req.query;
+	let options = {};
+	let query = {};
+	if (status) {
+		query.status = status
+	}
+	//TODO: fix pagination
+	if (page) {
+		options.skip = parseInt(page);
+	} else {
+		options.skip = 0;
+	}
+	if (limit) {
+		options.limit = parseInt(limit);
+	}
+	Todo.find(query, '_id name steps status created_at', options).sort('-created_at').exec((err, todos) => {
+		handleError(res, err);
+		res.status(200).json(todos);
+	});
 };
 
 exports.todo_new = (req, res) => {
