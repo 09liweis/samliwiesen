@@ -6,6 +6,7 @@ var TodoSchema = new Schema({
     type: String,
     required: 'Kindly enter the name of the task'
   },
+  date:String,
   steps: [
     {
       name:String,
