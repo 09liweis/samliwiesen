@@ -18,12 +18,17 @@ export default class Todo extends React.Component {
 			loading: false,
 			api: API,
 			admin: window.localStorage.getItem('admin') || false,
-			showForm:false
+			showForm:false,
+			form:'todo',
+			transation:{
+				title:'',price:'',date:''
+			}
 		};
 		this.submitTodo = this.submitTodo.bind(this);
 		this.submitStep = this.submitStep.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.toggleForm = this.toggleForm.bind(this);
+		this.toggleTransactionForm = this.toggleTransactionForm.bind(this);
 		this.handleAdd = this.handleAdd.bind(this);
 	}
 	componentDidMount() {
@@ -98,44 +103,6 @@ export default class Todo extends React.Component {
 			}
 		});
 	}
-	updateTodo(todo) {
-		axios.put(this.state.api + todo._id, todo).then((res) => {
-			if (res.status == 200) {
-				this.getTodos();
-			}
-		});
-	}
-	// handleKeyPress(todo, e) {
-	// 	if (e.key === 'Enter') {
-	// 		if (e.target.value == 'go to admin mode') {
-	// 			window.localStorage.setItem('admin', true);
-	// 			this.setState({
-	// 				admin: true,
-	// 				newTodo: {
-	// 					name: '',
-	// 					status: 'pending'
-	// 				},
-	// 			});
-	// 			return false;
-	// 		}
-	// 		if (e.target.value == 'exit admin mode') {
-	// 			window.localStorage.setItem('admin', '');
-	// 			this.setState({
-	// 				admin: false,
-	// 				newTodo: {
-	// 					name: '',
-	// 					status: 'pending'
-	// 				},
-	// 			});
-	// 			return false;
-	// 		}
-	// 		if (todo != 'add') {
-	// 			this.updateTodo(todo);
-	// 		} else {
-	// 			this.submitTodo();
-	// 		}
-	// 	}
-	// }
 	setEmptyTodo() {
 		this.setState({newTodo:{date:'',name:'',steps:[],status:'pending'}});
 	}
@@ -170,17 +137,6 @@ export default class Todo extends React.Component {
 				break;
 		}
 	}
-	handleUpdate(idx, e) {
-		const newTodos = this.state.todos.map((todo, i) => {
-			if (i !== idx) {
-				return todo;
-			} else {
-				todo.name = e.target.value;
-				return todo;
-			}
-		});
-		this.setState({todos: newTodos});
-	}
 	handleComplete(idx) {
 		let todos = this.state.todos;
 		let status = todos[idx].status;
@@ -214,29 +170,70 @@ export default class Todo extends React.Component {
 	}
 	toggleForm() {
 		const {showForm} = this.state;
-		this.setState({showForm:!showForm});
+		this.setState({showForm:!showForm},
+			()=>{
+				if (!this.map) {
+					this.setupMap();
+				} else {
+					delete this.map;
+				}
+			}
+		);
+	}
+	setupMap() {
+		this.map = new AMap.Map('map', {
+			zoom:11,//级别
+			center: [116.397428, 39.90923],//中心点坐标
+			viewMode:'3D'//使用3D视图
+		});
+	}
+	showTransationForm(stpIdx) {
+		this.setState({form:'transation',stpIdx});
+	}
+	toggleTransactionForm() {
+		let {form} = this.state;
+		form = form == 'todo' ? 'transation' : 'todo';
+		this.setState({form});
 	}
 	renderForm() {
-		const {newTodo,step} = this.state;
+		const {newTodo,step,form,transation} = this.state;
 		const steps = newTodo.steps.map((s,i)=>
 			<div key={i}>
 				<span>{s.name}</span>
 				<span className="fa fa-pencil" onClick={this.editStep.bind(this,i)}></span>
 				<span className="fa fa-times" onClick={this.deleteStep.bind(this,i)}></span>
+				<span className="fa fa-plus" onClick={this.showTransationForm.bind(this,i)}></span>
 			</div>
 		);
 		return (
 			<div className="todo__form">
-				<input autoComplete="off" className="todo__name" placeholder="Title" name="name" value={newTodo.name} onChange={this.handleChange} />
-				<input autoComplete="off" className="todo__date" placeholder="Date" name="date" value={newTodo.date} onChange={this.handleChange} />
-				<h4>Steps</h4>
-				<input autoComplete="off" className="todo__name-step" name="step" value={step.name} onChange={this.handleChange}/>
-				<span className="fa fa-plus" onClick={this.submitStep}></span>
-				{steps}
-				<div className="">
-					<a className="todo__btn" onClick={this.submitTodo}>Submit</a>
-					<a className="todo__btn" onClick={this.toggleForm}>Cancel</a>
+				<div id="form">
+					{form == 'todo'?
+					<div>
+						<input autoComplete="off" className="todo__name" placeholder="Name" name="name" value={newTodo.name} onChange={this.handleChange} />
+						<input autoComplete="off" className="todo__date" placeholder="Date" name="date" value={newTodo.date} onChange={this.handleChange} />
+						<h4>Steps</h4>
+						<input autoComplete="off" className="todo__name-step" name="step" value={step.name} onChange={this.handleChange}/>
+						<span className="fa fa-plus" onClick={this.submitStep}></span>
+						{steps}
+						<div className="">
+							<a className="todo__btn" onClick={this.submitTodo}>Submit</a>
+							<a className="todo__btn" onClick={this.toggleForm}>Cancel</a>
+						</div>
+					</div>
+					:
+					<div>
+						<input placeholder="Title" autoComplete="off" value={transaction.title}/>
+						<input placeholder="Price" autoComplete="off" value={transation.price}/>
+						<input placeholder="Search location" autoComplete="off" ref="search" />
+						<div className="">
+							<a className="todo__btn">Submit</a>
+							<a className="todo__btn" onClick={this.toggleTransactionForm}>Cancel</a>
+						</div>
+					</div>
+					}
 				</div>
+				<div id="map"></div>
 			</div>
 		);
 	}

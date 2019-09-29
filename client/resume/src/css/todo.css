@@ -179,4 +179,11 @@
 	margin:auto;
 	padding:10px;
 	border:1px solid #ccc;
+	display:flex;
+}
+#form {
+	width:50%;
+}
+#map {
+	width:50%;
 }
