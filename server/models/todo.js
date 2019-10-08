@@ -7,6 +7,10 @@ var TodoSchema = new Schema({
     required: 'Kindly enter the name of the task'
   },
   date:String,
+  transaction:{
+    type:Schema.Types.ObjectId,
+    ref:'Transaction'
+  },
   steps: [
     {
       name:String,
