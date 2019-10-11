@@ -24,18 +24,18 @@ exports.todo_list = (req, res) => {
 };
 
 exports.todo_new = (req, res) => {
-    const newTodo = new Todo(req.body);
-    newTodo.save((err, todo) => {
-        handleError(res, err);
-        res.status(200).json(todo);
-    });
+	const newTodo = new Todo(req.body);
+	newTodo.save((err, todo) => {
+		handleError(res, err);
+		res.status(200).json(todo);
+	});
 };
 
 exports.todo_detail = (req, res) => {
-    Todo.findById(req.params.id, (err, todo) => {
-        handleError(res, err);
-        res.status(200).json(todo);
-    });
+	Todo.findById(req.params.id, (err, todo) => {
+		handleError(res, err);
+		res.status(200).json(todo);
+	});
 };
 
 exports.todo_update = (req, res) => {
@@ -48,15 +48,15 @@ exports.todo_update = (req, res) => {
 };
 
 exports.todo_delete = (req, res) => {
-    Todo.remove({_id: req.params.id}, (err) => {
-        handleError(res, err);
-        res.status(200).json({ok:1});
-    });
+	Todo.remove({_id: req.params.id}, (err) => {
+		handleError(res, err);
+		res.status(200).json({ok:1});
+	});
 };
 
 
 function handleError(res, err) {
-    if (err) {
-        res.send(err);
-    }
+	if (err) {
+		res.send(err);
+	}
 }
