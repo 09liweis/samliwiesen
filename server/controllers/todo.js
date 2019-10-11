@@ -50,7 +50,7 @@ exports.todo_update = (req, res) => {
 exports.todo_delete = (req, res) => {
     Todo.remove({_id: req.params.id}, (err) => {
         handleError(res, err);
-        res.status(200).json('ok');
+        res.status(200).json({ok:1});
     });
 };
 
