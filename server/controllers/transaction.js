@@ -59,30 +59,30 @@ exports.transaction_detail = function(req, res) {
 };
 
 exports.transaction_update = async function(req, res) {
-    const place = req.body.place;
-    let p = await Place.findOne({place_id: place.place_id});
-    if (!p) {
-        p = Place(place);
-        await p.save();
-    } else {
-        p.name = place.name;
-        p.address = place.address;
-        p.lat = place.lat;
-        p.lng = place.lng;
-        await Place.findOneAndUpdate({_id: p._id}, p, {upsert: true});
-    }
-    let updateTransaction = {
-        title: req.body.title,
-        price: req.body.price,
-        date: req.body.date,
-        category: req.body.category,
-        place: p._id
-    };
-    updateTransaction.update_at = new Date();
-    Transaction.findOneAndUpdate({_id: req.params.id}, updateTransaction, {upsert: true}, function(err, transaction) {
-        handleError(res, err);
-        res.json(transaction);
-    });
+	const place = req.body.place;
+	let p = await Place.findOne({place_id: place.place_id});
+	if (!p) {
+		p = Place(place);
+		await p.save();
+	} else {
+		p.name = place.name;
+		p.address = place.address;
+		p.lat = place.lat;
+		p.lng = place.lng;
+		await Place.findOneAndUpdate({_id: p._id}, p, {upsert: true});
+	}
+	let updateTransaction = {
+		title: req.body.title,
+		price: req.body.price,
+		date: req.body.date,
+		category: req.body.category,
+		place: p._id
+	};
+	updateTransaction.update_at = new Date();
+	Transaction.findOneAndUpdate({_id: req.params.id}, updateTransaction, {upsert: true}, function(err, transaction) {
+		handleError(res, err);
+		res.json(transaction);
+	});
 };
 
 exports.transaction_delete = (req, res) => {
