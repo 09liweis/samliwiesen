@@ -22,10 +22,10 @@ exports.transaction_list = (req, res) => {
 };
 
 exports.category_list = (req, res) => {
-    Transaction.distinct('category', (err, categories) => {
-        handleError(res, err);
-        res.json(categories);
-    });
+	Transaction.distinct('category', (err, categories) => {
+		handleError(res, err);
+		res.json(categories);
+	});
 };
 exports.transaction_new = async function(req, res) {
     const place = req.body.place;
