@@ -28,29 +28,29 @@ exports.category_list = (req, res) => {
 	});
 };
 exports.transaction_new = async function(req, res) {
-    const place = req.body.place;
-    let p = await Place.findOne({place_id: place.place_id});
-    if (!p) {
-        p = Place(place);
-        await p.save();
-    } else {
-        p.name = place.name;
-        p.address = place.address;
-        p.lat = place.lat;
-        p.lng = place.lng;
-        await Place.findOneAndUpdate({_id: p._id}, p, {upsert: true});
-    }
-    const newTransaction = new Transaction({
-        title: req.body.title,
-        price: req.body.price,
-        date: req.body.date,
-        category: req.body.category,
-        place: p._id
-    });
-    newTransaction.save(function(err, transaction) {
-        handleError(res, err);
-        res.json(transaction);
-    });
+	const place = req.body.place;
+	let p = await Place.findOne({place_id: place.place_id});
+	if (!p) {
+		p = Place(place);
+		await p.save();
+	} else {
+		p.name = place.name;
+		p.address = place.address;
+		p.lat = place.lat;
+		p.lng = place.lng;
+		await Place.findOneAndUpdate({_id: p._id}, p, {upsert: true});
+	}
+	const newTransaction = new Transaction({
+		title: req.body.title,
+		price: req.body.price,
+		date: req.body.date,
+		category: req.body.category,
+		place: p._id
+	});
+	newTransaction.save(function(err, transaction) {
+		handleError(res, err);
+		res.json(transaction);
+	});
 };
 
 exports.transaction_detail = function(req, res) {
