@@ -27,7 +27,8 @@ exports.todo_new = (req, res) => {
 	const todo = {
 		name:req.body.name,
 		date:req.body.date,
-		status:req.body.status
+		status:req.body.status,
+		steps:req.body.steps
 	}
 	console.log(todo);
 	const newTodo = new Todo(todo);
