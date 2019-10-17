@@ -24,7 +24,13 @@ exports.todo_list = (req, res) => {
 };
 
 exports.todo_new = (req, res) => {
-	const newTodo = new Todo(req.body);
+	const todo = {
+		name:req.body.name,
+		date:req.body.date,
+		steps:req.body.steps,
+		status:req.body.status
+	}
+	const newTodo = new Todo(todo);
 	newTodo.save((err, todo) => {
 		handleError(res, err);
 		res.status(200).json(todo);
