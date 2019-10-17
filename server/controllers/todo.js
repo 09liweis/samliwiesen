@@ -27,9 +27,9 @@ exports.todo_new = (req, res) => {
 	const todo = {
 		name:req.body.name,
 		date:req.body.date,
-		steps:req.body.steps,
 		status:req.body.status
 	}
+	console.log(todo);
 	const newTodo = new Todo(todo);
 	newTodo.save((err, todo) => {
 		handleError(res, err);
