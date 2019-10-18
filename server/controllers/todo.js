@@ -33,6 +33,10 @@ exports.todo_new = (req, res) => {
 	if (steps) {
 		todo.steps = steps;
 	}
+	//handle post data from wechat mini program
+	if (typeof steps == 'string') {
+		todo.steps = JSON.parse(steps);
+	}
 	console.log(todo);
 	const newTodo = new Todo(todo);
 	newTodo.save((err, todo) => {
