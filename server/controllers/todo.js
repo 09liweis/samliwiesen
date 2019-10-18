@@ -24,11 +24,14 @@ exports.todo_list = (req, res) => {
 };
 
 exports.todo_new = (req, res) => {
+	const steps = req.body.steps;
 	const todo = {
 		name:req.body.name,
 		date:req.body.date,
 		status:req.body.status,
-		steps:req.body.steps
+	}
+	if (steps) {
+		todo.steps = steps;
 	}
 	console.log(todo);
 	const newTodo = new Todo(todo);
