@@ -37,7 +37,6 @@ exports.todo_new = (req, res) => {
 	if (typeof steps == 'string') {
 		todo.steps = JSON.parse(steps);
 	}
-	console.log(todo);
 	const newTodo = new Todo(todo);
 	newTodo.save((err, todo) => {
 		handleError(res, err);
@@ -53,9 +52,21 @@ exports.todo_detail = (req, res) => {
 };
 
 exports.todo_update = (req, res) => {
-	let updateTodo = req.body;
-	updateTodo.update_at = new Date();
-	Todo.findOneAndUpdate({_id: req.params.id}, updateTodo, {upsert: true}, (err, todo) => {
+	const steps = req.body.steps;
+	const todo = {
+		name:req.body.name,
+		date:req.body.date,
+		status:req.body.status,
+	}
+	if (steps) {
+		todo.steps = steps;
+	}
+	//handle post data from wechat mini program
+	if (typeof steps == 'string') {
+		todo.steps = JSON.parse(steps);
+	}
+	todo.update_at = new Date();
+	Todo.findOneAndUpdate({_id: req.params.id}, todo, {upsert: true}, (err, todo) => {
 		handleError(res, err);
 		res.status(200).json(todo);
 	});
