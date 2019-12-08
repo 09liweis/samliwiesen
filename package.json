@@ -2,6 +2,10 @@
   "name": "samliweisen_portfolio_webserver",
   "description": "This is web service for portfolio of Sam",
   "version": "3.0.0",
+  "engines": {
+    "node": "10.16.3",
+    "npm": "6.9.0"
+  },
   "scripts": {
     "ng": "ng",
     "start": "nodemon server.js",
