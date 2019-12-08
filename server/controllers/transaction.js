@@ -35,7 +35,7 @@ exports.transaction_new = async function(req, res) {
 		category: req.body.category
 	};
 	const place = req.body.place;
-	if (place) {
+	if (place.place_id) {
 		let p = await Place.findOne({place_id: place.place_id});
 		if (!p) {
 			p = Place(place);
