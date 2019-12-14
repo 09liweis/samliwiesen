@@ -17,3 +17,24 @@ exports.place_detail = async function(req, res) {
 	};
 	res.json(result);
 };
+exports.place_upsert = async function(req, res) {
+	const place = {
+		place_id:req.body.place_id,
+		name:req.body.name,
+		address:req.body.address,
+		lat:req.body.lat,
+		lng:req.body.lng,
+	}
+	let p = await Place.findOne({place_id: place.place_id});
+	if (!p) {
+		p = Place(place);
+		await p.save();
+	} else {
+		p.name = place.name;
+		p.address = place.address;
+		p.lat = place.lat;
+		p.lng = place.lng;
+		await Place.findOneAndUpdate({_id: p._id}, p, {upsert: true});
+	}
+	res.status(200).json(p);
+};
