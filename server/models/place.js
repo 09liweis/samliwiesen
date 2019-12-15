@@ -14,7 +14,8 @@ const PlaceSchema = new Schema({
 	updated_at: {
 		type: Date,
 		default: Date.now
-	}
+	},
+	transactions:Array
 });
 
 PlaceSchema.pre('save', function(next) {
