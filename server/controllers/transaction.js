@@ -56,7 +56,7 @@ exports.transaction_new = async function(req, res) {
 	});
 };
 
-exports.transaction_detail = function(req, res) {
+exports.transaction_detail = async function(req, res) {
     const id = req.params.id;
     const t = await Transaction.findById(id).populate('place', '_id place_id name address lat lng');
 		res.json(t);
