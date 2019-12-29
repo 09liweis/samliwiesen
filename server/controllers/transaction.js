@@ -58,7 +58,8 @@ exports.transaction_new = async function(req, res) {
 
 exports.transaction_detail = function(req, res) {
     const id = req.params.id;
-    // Transaction.findOne()
+    const t = await Transaction.findById(id).populate('place', '_id place_id name address lat lng');
+		res.json(t);
 };
 
 exports.transaction_update = async function(req, res) {
