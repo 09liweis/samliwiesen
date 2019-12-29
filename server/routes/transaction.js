@@ -11,6 +11,7 @@ router.route('/categories')
 .get(TransactionController.category_list);
 
 router.route('/:id')
+.get(TransactionController.transaction_detail)
 .put(TransactionController.transaction_update)
 .delete(TransactionController.transaction_delete);
 
