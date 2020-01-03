@@ -22,7 +22,7 @@ port = process.env.PORT || 8081;
 mongoose.Promise = global.Promise;
 
 if (port == 8081) {
-  mongoose.connect('mongodb://localhost:27017/samliweisen');
+  mongoose.connect('mongodb://localhost:27017/tdlisting');
 } else {
   mongoose.connect('mongodb://heroku_6njptcbp:dg8h3o8v9dpjk1osignqn3ibel@ds125489.mlab.com:25489/heroku_6njptcbp');
 }
