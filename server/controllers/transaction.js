@@ -70,7 +70,7 @@ exports.transaction_update = async function(req, res) {
 		category: req.body.category,
 	};
 	const place = req.body.place;
-	if (typeof place != 'undefined'){
+	if (typeof place != 'undefined' && place.place_id != ''){
 		let p = await Place.findOne({place_id: place.place_id});
 		if (!p) {
 			p = Place(place);
