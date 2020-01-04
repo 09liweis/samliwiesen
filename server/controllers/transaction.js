@@ -52,6 +52,7 @@ exports.transaction_new = async function(req, res) {
 	const newTransaction = new Transaction(transactionData);
 	newTransaction.save(function(err, transaction) {
 		handleError(res, err);
+		transaction.place = p;
 		res.json(transaction);
 	});
 };
@@ -87,6 +88,7 @@ exports.transaction_update = async function(req, res) {
 	updateTransaction.update_at = new Date();
 	Transaction.findOneAndUpdate({_id: req.params.id}, updateTransaction, {upsert: true}, function(err, transaction) {
 		handleError(res, err);
+		transaction.place = p;
 		res.json(transaction);
 	});
 };
