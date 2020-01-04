@@ -6,7 +6,11 @@ exports.transaction_list = (req, res) => {
   const {category,date,place_id,limit,page} = req.query;
 	let opt = {limit:30};
 	if (limit) {
-		opt.limit = parseInt(limit);
+		if (limit != 'all') {
+			opt.limit = parseInt(limit);
+		} else {
+			delete opt.limit;
+		}
 	}
 	if (page) {
 		opt.skip = parseInt(page)*opt.limit;
