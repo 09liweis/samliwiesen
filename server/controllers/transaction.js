@@ -3,22 +3,22 @@ var Place = require('../models/place');
 
 exports.transaction_list = (req, res) => {
   let filter = {};
-  const category = req.query.category;
-  const date = req.query.date;
-	const place_id = req.query.place_id;
-	let limit = req.query.limit;
+  const {category,date,place_id,limit,page} = req.query;
 	let opt = {limit:30};
 	if (limit) {
 		opt.limit = parseInt(limit);
 	}
-  if (date) {
-    filter.date = new RegExp(date, 'i');
-  }
+	if (page) {
+		opt.skip = parseInt(page)*opt.limit;
+	}
   if (category) {
     filter.category = category;
   }
   if (place_id) {
     filter.place = place_id;
+	}
+	if (date) {
+		filter.date = new RegExp(date, 'i');
   }
   Transaction.find(filter, '_id title price date category',opt).populate('place', '_id name address lat lng').sort('-date').exec((err, transactions) => {
     handleError(res, err);
