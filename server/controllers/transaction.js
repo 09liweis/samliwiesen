@@ -5,7 +5,12 @@ exports.transaction_list = (req, res) => {
   let filter = {};
   const category = req.query.category;
   const date = req.query.date;
-  const place_id = req.query.place_id;
+	const place_id = req.query.place_id;
+	let limit = req.query.limit;
+	let opt = {limit:30};
+	if (limit) {
+		opt.limit = parseInt(limit);
+	}
   if (date) {
     filter.date = new RegExp(date, 'i');
   }
@@ -15,7 +20,7 @@ exports.transaction_list = (req, res) => {
   if (place_id) {
     filter.place = place_id;
   }
-  Transaction.find(filter, '_id title price date category').populate('place', '_id name address lat lng').sort('-date').exec((err, transactions) => {
+  Transaction.find(filter, '_id title price date category',opt).populate('place', '_id name address lat lng').sort('-date').exec((err, transactions) => {
     handleError(res, err);
     res.status(200).json(transactions);
   });
