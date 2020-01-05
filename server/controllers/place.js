@@ -31,7 +31,7 @@ exports.place_update_random = async (req,res) =>{
 };
 
 exports.place_list = (req, res) => {
-	Place.find({}, '_id place_id name address lat lng').sort('-updated_at').exec((err, places) => {
+	Place.find({}, '_id place_id name address lat lng rating').sort('-updated_at').exec((err, places) => {
 		if (err) return res.json(err);
 		res.json(places);
 	});
