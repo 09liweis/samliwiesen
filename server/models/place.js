@@ -7,6 +7,7 @@ const PlaceSchema = new Schema({
 	lat: String,
 	lng: String,
 	place_id: String,
+	rating:Number,
 	created_at: {
 		type: Date,
 		default: Date.now
