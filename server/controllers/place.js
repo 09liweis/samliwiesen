@@ -20,6 +20,9 @@ exports.place_update_random = async (req,res) =>{
 					if (result.rating) {
 						p.rating = result.rating;
 					}
+					if (result.name) {
+						p.name = result.name;
+					}
 				}
 				await Place.findOneAndUpdate({_id: p._id}, p, {upsert: true});
 				res.send(p);
