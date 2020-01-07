@@ -36,7 +36,7 @@ exports.category_list = (req, res) => {
 		res.json(categories);
 	});
 };
-exports.transaction_new = async function(req, res) {
+upsertTransaction = async (req,res) =>{
 	transactionData = {
 		title: req.body.title,
 		price: req.body.price,
@@ -58,48 +58,34 @@ exports.transaction_new = async function(req, res) {
 		}
 		transactionData.place = p._id;
 	}
-	const newTransaction = new Transaction(transactionData);
-	newTransaction.save(function(err, transaction) {
-		handleError(res, err);
-		transaction.place = p;
-		res.json(transaction);
-	});
+	const transaction = new Transaction(transactionData);
+	if (req.params.id) {
+		transaction.update_at = new Date();
+		Transaction.findOneAndUpdate({_id: req.params.id}, transaction, {upsert: true}, function(err, t) {
+			handleError(res, err);
+			t.place = p;
+			res.json(t);
+		});
+	} else {
+		transaction.save(function(err, t) {
+			handleError(res, err);
+			t.place = p;
+			res.json(t);
+		});
+	}
+}
+exports.transaction_new = (req, res) => {
+	upsertTransaction(req,res);
+};
+
+exports.transaction_update = (req, res) => {
+	upsertTransaction(req,res);
 };
 
 exports.transaction_detail = async function(req, res) {
     const id = req.params.id;
     const t = await Transaction.findById(id).populate('place', '_id place_id name address lat lng');
 		res.json(t);
-};
-
-exports.transaction_update = async function(req, res) {
-	let updateTransaction = {
-		title: req.body.title,
-		price: req.body.price,
-		date: req.body.date,
-		category: req.body.category,
-	};
-	const place = req.body.place;
-	if (typeof place != 'undefined' && place.place_id != ''){
-		let p = await Place.findOne({place_id: place.place_id});
-		if (!p) {
-			p = Place(place);
-			await p.save();
-		} else {
-			p.name = place.name;
-			p.address = place.address;
-			p.lat = place.lat;
-			p.lng = place.lng;
-			await Place.findOneAndUpdate({_id: p._id}, p, {upsert: true});
-		}
-		updateTransaction.place = p._id;
-	}
-	updateTransaction.update_at = new Date();
-	Transaction.findOneAndUpdate({_id: req.params.id}, updateTransaction, {upsert: true}, function(err, transaction) {
-		handleError(res, err);
-		transaction.place = p;
-		res.json(transaction);
-	});
 };
 
 exports.transaction_delete = (req, res) => {
