@@ -44,8 +44,9 @@ upsertTransaction = async (req,res) =>{
 		category: req.body.category
 	};
 	const place = req.body.place;
+	let p;
 	if (typeof place != 'undefined') {
-		let p = await Place.findOne({place_id: place.place_id});
+		p = await Place.findOne({place_id: place.place_id});
 		if (!p) {
 			p = Place(place);
 			await p.save();
@@ -58,15 +59,17 @@ upsertTransaction = async (req,res) =>{
 		}
 		transactionData.place = p._id;
 	}
-	const transaction = new Transaction(transactionData);
+	let transaction;
 	if (req.params.id) {
+		transaction = transactionData;
 		transaction.update_at = new Date();
-		Transaction.findOneAndUpdate({_id: req.params.id}, transaction, {upsert: true}, function(err, t) {
-			handleError(res, err);
+		Transaction.findOneAndUpdate({_id: req.params.id}, transaction, {returnNewDocument: true,upsert: true},(err, t)=>{
+			console.error(err);
 			t.place = p;
 			res.json(t);
 		});
 	} else {
+		transaction = new Transaction(transactionData);
 		transaction.save(function(err, t) {
 			handleError(res, err);
 			t.place = p;
