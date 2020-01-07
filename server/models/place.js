@@ -8,6 +8,7 @@ const PlaceSchema = new Schema({
 	lng: String,
 	place_id: String,
 	rating:Number,
+	icon:String,
 	created_at: {
 		type: Date,
 		default: Date.now

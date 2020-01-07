@@ -23,6 +23,9 @@ exports.place_update_random = async (req,res) =>{
 					if (result.name) {
 						p.name = result.name;
 					}
+					if (result.icon) {
+						p.icon = result.icon;
+					}
 				}
 				await Place.findOneAndUpdate({_id: p._id}, p, {upsert: true});
 				res.send(p);
