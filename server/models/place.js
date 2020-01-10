@@ -17,6 +17,7 @@ const PlaceSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
+	photos:Array,
 	transactions:Array
 });
 
