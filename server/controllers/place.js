@@ -26,6 +26,14 @@ exports.place_update_random = async (req,res) =>{
 					if (result.icon) {
 						p.icon = result.icon;
 					}
+					if (result.photos) {
+						let photos = [];
+						for (let pho of result.photos) {
+							const photo = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth='+pho.width+'&photoreference='+pho.photo_reference+'&key='+API_KEY
+							photos.push(photo);
+						}
+						p.photos = photos;
+					}
 				}
 				await Place.findOneAndUpdate({_id: p._id}, p, {upsert: true});
 				res.send(p);
@@ -37,7 +45,7 @@ exports.place_update_random = async (req,res) =>{
 };
 
 exports.place_list = (req, res) => {
-	Place.find({}, '_id place_id icon name address lat lng rating').sort('-updated_at').exec((err, places) => {
+	Place.find({}, '_id place_id icon name address lat lng rating photos').sort('-updated_at').exec((err, places) => {
 		if (err) return res.json(err);
 		res.json(places);
 	});
