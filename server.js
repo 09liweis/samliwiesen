@@ -15,6 +15,7 @@ blogRoute = require('./server/routes/blog'),
 commentRoute = require('./server/routes/comment'),
 SiteRoute = require('./server/routes/site'),
 newsRoute = require('./server/routes/news'),
+userRoute = require('./server/routes/user'),
 // visualRoute = require('./server/routes/visual'),
 
 port = process.env.PORT || 8081;
@@ -87,6 +88,7 @@ app.use('/api/blogs', blogRoute);
 app.use('/api/comments', commentRoute);
 app.use('/api/sites', SiteRoute);
 app.use('/api/news', newsRoute);
+app.use('/api/user',userRoute);
 // app.use('/api/visuals', visualRoute);
 
 app.listen(port, () => {
