@@ -15,7 +15,7 @@ blogRoute = require('./server/routes/blog'),
 commentRoute = require('./server/routes/comment'),
 SiteRoute = require('./server/routes/site'),
 newsRoute = require('./server/routes/news'),
-visualRoute = require('./server/routes/visual'),
+// visualRoute = require('./server/routes/visual'),
 
 port = process.env.PORT || 8081;
 
@@ -87,7 +87,7 @@ app.use('/api/blogs', blogRoute);
 app.use('/api/comments', commentRoute);
 app.use('/api/sites', SiteRoute);
 app.use('/api/news', newsRoute);
-app.use('/api/visuals', visualRoute);
+// app.use('/api/visuals', visualRoute);
 
 app.listen(port, () => {
 	console.log('Web server runs on: ' + port);
