@@ -6,8 +6,19 @@ exports.list = (req, res) => {
 		res.json(users);
 	});
 };
-exports.add = (req,res)=>{
-	res.json(req.body);
+exports.add = async (req,res)=>{
+	const body = req.body;
+	const eml = body.eml;
+	let user = await User.findOne({eml})
+	let msg = 'ok';
+	if (user) {
+		msg = 'Email has been registered';
+		return res.status(200).json({msg});
+	} else {
+		user = new User(body);
+		// await user.save()
+		res.status(200).json({msg});
+	}
 }
 function handleError(res, err) {
 	if (err) {
