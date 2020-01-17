@@ -34,6 +34,9 @@ exports.place_update_random = async (req,res) =>{
 						}
 						p.photos = photos;
 					}
+					if (result.types) {
+						p.types = result.types;
+					}
 				}
 				await Place.findOneAndUpdate({_id: p._id}, p, {upsert: true});
 				res.send(p);
@@ -45,7 +48,7 @@ exports.place_update_random = async (req,res) =>{
 };
 
 exports.place_list = (req, res) => {
-	Place.find({}, '_id place_id icon name address lat lng rating photos').sort('-updated_at').exec((err, places) => {
+	Place.find({}, '_id place_id icon name address lat lng rating photos types').sort('-updated_at').exec((err, places) => {
 		if (err) return res.json(err);
 		res.json(places);
 	});
