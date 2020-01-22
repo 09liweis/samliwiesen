@@ -36,27 +36,27 @@ router.route('/search').get((req,res)=>{
 });
 
 router.route('/douban').get((req, res) => {
-    const douban_id = req.query.douban_id;
-    if (!douban_id) {
-        res.send({msg:'No Douban Id',ok:0});
-    }
-    request({
-        url: DOUBAN_MOVIE_API + douban_id + '?apikey='+DOUBAN_API_KEY,
-        method: 'GET',
-        headers
-    },
-    function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            const visual = JSON.parse(body);
-            const method = req.query.method;
-            if (method == 'update') {
-                // request.post('https://what-i-watched.herokuapp.com/api/visual/update').form(visual);
-                console.log('Going to implement POST to what-i-watched');
-            } else {
-                res.send(visual);
-            }
-        }
-    });
+	const douban_id = req.query.douban_id;
+	if (!douban_id) {
+		res.send({msg:'No Douban Id',ok:0});
+	}
+	request({
+		url: DOUBAN_MOVIE_API + douban_id + '?apikey='+DOUBAN_API_KEY,
+		method: 'GET',
+		headers
+	},
+	function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			const visual = JSON.parse(body);
+			const method = req.query.method;
+			if (method == 'update') {
+				// request.post('https://what-i-watched.herokuapp.com/api/visual/update').form(visual);
+				console.log('Going to implement POST to what-i-watched');
+			} else {
+				res.send(visual);
+			}
+		}
+	});
 });
 
 router.route('/get_imdb_id').get((req,res)=>{
