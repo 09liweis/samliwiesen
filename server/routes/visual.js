@@ -18,21 +18,21 @@ const DOUBAN_API_KEY = '0df993c66c0c636e29ecbb5344252a4a';
 const IMDB_SITE = 'https://www.imdb.com/title/';
 
 router.route('/search').get((req,res)=>{
-    const keyword = req.query.keyword;
-    if (!keyword) {
-        res.send({ok:0,msg:'No Keyword'});
-    }
-    request({
-        url: DOUBAN_SEARCH_API+keyword,
-        method: 'GET',
-        headers
-    },
-    function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            const results = JSON.parse(body);
-            res.send(results);
-        }
-    });
+	const keyword = req.query.keyword;
+	if (!keyword) {
+		res.send({ok:0,msg:'No Keyword'});
+	}
+	request({
+		url: DOUBAN_SEARCH_API+keyword,
+		method: 'GET',
+		headers
+	},
+	function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			const results = JSON.parse(body);
+			res.send(results);
+		}
+	});
 });
 
 router.route('/douban').get((req, res) => {
