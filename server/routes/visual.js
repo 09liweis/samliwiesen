@@ -60,32 +60,32 @@ router.route('/douban').get((req, res) => {
 });
 
 router.route('/get_imdb_id').get((req,res)=>{
-    const douban_id = req.query.douban_id;
-    if (!douban_id) {
-        res.send({ok:0,msg:'No Douban Id'});
-    }
-    request({
-        url: DOUBAN_SITE + douban_id,
-        method: 'GET',
-        headers
-    },
-    function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            const matches = body.match(/tt[\d]{7,8}/g);
-            let imdb_id = '';
-            if (matches && matches.length > 0) {
-                imdb_id = matches[0];
-            }
-            const dateMatches = body.match(/[\d]{4}-[\d]{2}-[\d]{2}\([\u4e00-\u9fff]+\)/g);
-            let dates = [];
-            for (let i in dateMatches) {
-                if (dates.indexOf(dateMatches[i]) == -1 ) {
-                    dates.push(dateMatches[i]);
-                }
-            }
-            res.send({imdb_id,release_dates:dates,status:200});
-        }
-    });
+	const douban_id = req.query.douban_id;
+	if (!douban_id) {
+		res.send({ok:0,msg:'No Douban Id'});
+	}
+	request({
+		url: DOUBAN_SITE + douban_id,
+		method: 'GET',
+		headers
+	},
+	function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			const matches = body.match(/tt[\d]{7,8}/g);
+			let imdb_id = '';
+			if (matches && matches.length > 0) {
+				imdb_id = matches[0];
+			}
+			const dateMatches = body.match(/[\d]{4}-[\d]{2}-[\d]{2}\([\u4e00-\u9fff]+\)/g);
+			let dates = [];
+			for (let i in dateMatches) {
+				if (dates.indexOf(dateMatches[i]) == -1 ) {
+					dates.push(dateMatches[i]);
+				}
+			}
+			res.send({imdb_id,release_dates:dates,status:200});
+		}
+	});
 });
 
 router.route('/get_imdb_rating').get((req, res) => {
