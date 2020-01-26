@@ -89,23 +89,23 @@ router.route('/get_imdb_id').get((req,res)=>{
 });
 
 router.route('/get_imdb_rating').get((req, res) => {
-    const imdb_id = req.query.imdb_id;
-    if (!imdb_id) {
-        res.send({ok:0,msg:'No IMDB ID'});
-    }
-    request({
-        url: IMDB_SITE + imdb_id,
-        method: 'GET',
-        headers
-    },
-    function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            const $ = cheerio.load(body.toString());
-            const imdb_rating = $('span[itemprop="ratingValue"]').text();
-            const poster = $('.poster a img').attr('src');
-            res.send({imdb_rating,poster});
-        }
-    });
+	const imdb_id = req.query.imdb_id;
+	if (!imdb_id) {
+		return res.send({ok:0,msg:'No IMDB ID'});
+	}
+	request({
+		url: IMDB_SITE + imdb_id,
+		method: 'GET',
+		headers
+	},
+	function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			const $ = cheerio.load(body.toString());
+			const imdb_rating = $('span[itemprop="ratingValue"]').text();
+			const poster = $('.poster a img').attr('src');
+			res.send({imdb_rating,poster});
+		}
+	});
 });
 
 module.exports = router;
