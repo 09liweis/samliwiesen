@@ -1,10 +1,10 @@
 var Experience = require('../models/experience');
 
 exports.experience_list = (req, res) => {
-    Experience.find({}).sort('-start_date').exec((err, experiences) => {
-        handleError(res, err);
-        res.json(experiences);
-    });
+	Experience.find({}).sort('-start_date').exec((err, experiences) => {
+		handleError(res, err);
+		res.json(experiences);
+	});
 };
 
 exports.experience_detail = (req, res) => {
