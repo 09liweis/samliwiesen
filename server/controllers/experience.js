@@ -8,10 +8,10 @@ exports.experience_list = (req, res) => {
 };
 
 exports.experience_detail = (req, res) => {
-    Experience.findById(req.params.id, (err, experience) => {
-        handleError(res, err);
-        res.json(experience);
-    });
+	Experience.findById(req.params.id, (err, experience) => {
+		handleError(res, err);
+		res.json(experience);
+	});
 };
 
 exports.experience_new = (req, res) => {
