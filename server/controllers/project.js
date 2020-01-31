@@ -24,12 +24,12 @@ exports.project_detail = (req, res) => {
 };
 
 exports.project_update = (req, res) => {
-    let updateProject = req.body;
-    updateProject.update_at = new Date();
-    Project.findOneAndUpdate({_id: req.params.id}, updateProject, {upsert: true}, (err, project) => {
-        handleError(res, err);
-        res.json(project);
-    });
+	let updateProject = req.body;
+	updateProject.update_at = new Date();
+	Project.findOneAndUpdate({_id: req.params.id}, updateProject, {upsert: true}, (err, project) => {
+		handleError(res, err);
+		res.json(project);
+	});
 };
 
 exports.project_delete = (req, res) =>{
