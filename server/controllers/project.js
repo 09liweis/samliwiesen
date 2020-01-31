@@ -41,7 +41,7 @@ exports.project_delete = (req, res) =>{
 
 
 function handleError(res, err) {
-    if (err) {
-        res.send(err);
-    }
+	if (err) {
+		res.send(err);
+	}
 }
