@@ -17,10 +17,10 @@ exports.project_new = (req, res) => {
 };
 
 exports.project_detail = (req, res) => {
-    Project.findById(req.params.id, (err, project) => {
-        handleError(res, err);
-        res.json(project);
-    });
+	Project.findById(req.params.id, (err, project) => {
+		handleError(res, err);
+		res.json(project);
+	});
 };
 
 exports.project_update = (req, res) => {
