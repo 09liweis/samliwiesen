@@ -9,11 +9,11 @@ exports.project_list = (req, res) => {
 };
 
 exports.project_new = (req, res) => {
-    const newProject = new Project(req.body);
-    newProject.save((err, project) => {
-        handleError(res, err);
-        res.json(project);
-    });
+	const newProject = new Project(req.body);
+	newProject.save((err, project) => {
+		handleError(res, err);
+		res.json(project);
+	});
 };
 
 exports.project_detail = (req, res) => {
