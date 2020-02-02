@@ -26,43 +26,37 @@ const ReleaseDate = styled.div`
 	top: 0;
 	right: 0;
 	padding: 2px 3px;
-	border-radius: 5px;
 	color: #fff;
-	text-align: center;
-	background-color: #ff9800;
+	background-color: #308541;
 `;
 const VisualContainer = styled.div`
-    border-radius: 5px;
-    background-color: #FFFFFF;
-    box-shadow: 0 1px 6px rgba(0,0,0,.117647), 0 1px 4px rgba(0,0,0,.117647);
-    border-bottom: 5px solid transparent;
-    position: relative;
+	border-radius: 5px;
+	background-color: #FFFFFF;
+	box-shadow: 0 1px 6px rgba(0,0,0,.117647), 0 1px 4px rgba(0,0,0,.117647);
+	position: relative;
 `;
 const Visual = styled.div`
-    padding: 0 10px;
-    width: 100%;
-    margin-bottom: 15px;
-    transition: 0.3s;
-    &:hover {
-        transform: translateY(-3%);
-    }
-    @media (min-width: 426px) {
-        width: 50%;
-    }
-    @media (min-width: 570px) {
-        width: 33.333%;
-    }
-    @media (min-width: 768px) {
-        width: 25%;
-    }
-    @media (min-width: 1024px) {
-        width: 20%;
-    }
+	padding: 0 10px;
+	width: 100%;
+	margin-bottom: 15px;
+	transition: 0.3s;
+	&:hover {
+		transform: translateY(-3%);
+	}
+	@media (min-width: 570px) {
+		width: 33.333%;
+	}
+	@media (min-width: 768px) {
+		width: 25%;
+	}
+	@media (min-width: 1024px) {
+		width: 20%;
+	}
 `;
 const VisualTitle = styled.h3`
-    margin: 0;
-    color: #4b8a2c;
-    font-size: 16px;
+	margin: 0;
+	color: #4b8a2c;
+	font-size: 16px;
 `;
 
 const doubanIcon = 'https://img3.doubanio.com/f/talion/2f3c0bc0f35b031d4535fd993ae3936f4e40e6c8/pics/icon/dou32.png';

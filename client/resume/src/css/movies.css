@@ -36,13 +36,13 @@
     text-align:center;
     cursor: pointer;
 }
-@media (min-width: 426px) {
-    .visual__image {
-        width: 100%;
-    }
-    .visual__detail {
-        width: 100%;
-    }
+@media (min-width: 570px) {
+	.visual__image {
+		width: 100%;
+	}
+	.visual__detail {
+		width: 100%;
+	}
 }
 
 .lds-hourglass {
