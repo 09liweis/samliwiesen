@@ -22,14 +22,14 @@ const Status = styled.div`
 	}
 `;
 const ReleaseDate = styled.div`
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 2px 3px;
-    border-radius: 5px;
-    color: #fff;
-    text-align: center;
-    background-color: #ff9800;
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 2px 3px;
+	border-radius: 5px;
+	color: #fff;
+	text-align: center;
+	background-color: #ff9800;
 `;
 const VisualContainer = styled.div`
     border-radius: 5px;
