@@ -3,23 +3,23 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const Status = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 2px 3px;
-    border-radius: 5px;
-    color: #FFFFFF;
-    min-width: 44px;
-    text-align: center;
-    &.done {
-        background-color: #3e8c3e;
-    }
-    &.in_progress {
-        background-color: #ffc107;
-    }
-    &.not_started {
-        background-color: red;
-    }
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 2px 3px;
+	border-radius: 5px;
+	color: #FFFFFF;
+	min-width: 44px;
+	text-align: center;
+	&.done {
+		background-color: #3e8c3e;
+	}
+	&.in_progress {
+		background-color: #ffc107;
+	}
+	&.not_started {
+		background-color: red;
+	}
 `;
 const ReleaseDate = styled.div`
     position: absolute;
