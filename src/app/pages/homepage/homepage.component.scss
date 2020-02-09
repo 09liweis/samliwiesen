@@ -1,45 +1,45 @@
 .dashboard {
-    display:flex;
-    flex-wrap:wrap;
+	display:flex;
+	flex-wrap:wrap;
 }
 .card {
-    width: 100%;
-    padding: 0 15px;
+	width: 100%;
+	padding: 0 15px;
 }
 .card-container {
-    padding: 10px;
-    background-color: #fff;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    // box-shadow: 0px 0px 5px 0px #8c8383;
-    border-bottom: 1px solid #ccc;
-    transition: transform 0.2s ease;
-    &:hover {
-        transform: translateY(-5px);
-    }
+	padding: 10px;
+	background-color: #fff;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	// box-shadow: 0px 0px 5px 0px #8c8383;
+	border-bottom: 1px solid #ccc;
+	transition: transform 0.2s ease;
+	&:hover {
+		transform: translateY(-5px);
+	}
 }
 .card__title {
-    font-family: 'Inconsolata';
-    margin: 0 0 10px 0;
+	font-family: 'Inconsolata';
+	margin: 0 0 10px 0;
 }
 .card__title,
 .card__number {
-    display: inline-block;
-    vertical-align: middle;
+	display: inline-block;
+	vertical-align: middle;
 }
 .card__number {
-    background-color: #f57c7c;
-    color: #ffffff;
-    padding: 10px;
-    border-radius: 50px;
-    width: 60px;
-    font-size: 2em;
-    text-align: center;
-    margin-right: 20px;
+	background-color: #f57c7c;
+	color: #ffffff;
+	padding: 10px;
+	border-radius: 50px;
+	width: 60px;
+	font-size: 2em;
+	text-align: center;
+	margin-right: 20px;
 }
 .post-link {
-    display: block;
-    margin-top: 10px;
+	display: block;
+	margin-top: 10px;
 }
 @media only screen and (min-width: 600px) {
     // .card {
