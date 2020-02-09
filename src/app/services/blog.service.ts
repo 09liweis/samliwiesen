@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Rx';
 import { Blog } from '../models/blog';
 
 const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
 @Injectable({
