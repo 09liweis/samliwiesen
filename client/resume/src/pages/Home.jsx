@@ -8,18 +8,18 @@ import Projects from '../components/home/Projects.jsx';
 import '../css/resume.css';
 
 const Home  = ({characters}) => 
-    <div className="container home">
-        <main id="main">
-            <Experiences />
-            <Projects />
-        </main>
-        <aside id="aside">
-            <Skills />
-        </aside>
-    </div>;
+	<div className="container home">
+		<main id="main">
+			<Experiences />
+			<Projects />
+		</main>
+		<aside id="aside">
+			<Skills />
+		</aside>
+	</div>;
     
 const mapStateToProps = ({characters}) => ({
-    characters
+  characters
 });
 
 export default connect(mapStateToProps)(Home);
