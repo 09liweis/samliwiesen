@@ -125,50 +125,50 @@ export default {
 	},
 	methods: {
 		toggleSearch() {
-				this.searchOpen = !this.searchOpen;
+			this.searchOpen = !this.searchOpen;
 		},
 		gotoAddSong() {
-				this.$router.push({path: '/' + this.$route.params.id + '/song/add'});
+			this.$router.push({path: '/' + this.$route.params.id + '/song/add'});
 		},
 		gotoAddImage() {
-				this.$router.push({path: '/' + this.$route.params.id + '/image/add'});
+			this.$router.push({path: '/' + this.$route.params.id + '/image/add'});
 		},
 		renderFromSearch(id) {
-				this.toggleSearch();
-				this.visual.douban_id = id;
-				this.renderDouban();
+			this.toggleSearch();
+			this.visual.douban_id = id;
+			this.renderDouban();
 		},
 		handleSubmit() {
-				const options = this.visual;
-				this.$http.post(this.$store.state.api.visualSubmit, options).then(res => {
-						if (res.status == 200) {
-								if (res.body.code == 'exist') {
-										alert('Douban Id exist');
-								} else {
-										this.$router.push({ path: '/' });
-								}
-						}
-				});
+			const options = this.visual;
+			this.$http.post(this.$store.state.api.visualSubmit, options).then(res => {
+				if (res.status == 200) {
+					if (res.body.code == 'exist') {
+						alert('Douban Id exist');
+					} else {
+						this.$router.push({ path: '/' });
+					}
+				}
+			});
 		},
 		getVisual(id) {
-				this.$http.get(this.$store.state.api.visualDetail + id).then(res => {
-						this.visual = res.body.result;
-						if (this.visual.douban_id) {
-								this.renderDouban();
-						}
-				});
+			this.$http.get(this.$store.state.api.visualDetail + id).then(res => {
+				this.visual = res.body.result;
+				if (this.visual.douban_id) {
+					this.renderDouban();
+				}
+			});
 		},
 		searchDouban(e) {
-				const val = e.target.value;
-				const api = '/api/visuals/search?keyword=' + val;
-				// 'https://api.douban.com/v2/movie/search?q=' + val + '&apikey=0df993c66c0c636e29ecbb5344252a4a'
-				this.$http.get(api).then(res => {
-						this.searchs = [];
-						if (res.status == 200) {
-								console.log(res.body);
-								this.searchs = res.body;
-						}
-				});
+			const val = e.target.value;
+			const api = '/api/visuals/search?keyword=' + val;
+			// 'https://api.douban.com/v2/movie/search?q=' + val + '&apikey=0df993c66c0c636e29ecbb5344252a4a'
+			this.$http.get(api).then(res => {
+				this.searchs = [];
+				if (res.status == 200) {
+					console.log(res.body);
+					this.searchs = res.body;
+				}
+			});
 		},
 		renderDouban() {
 			if (this.visual.douban_id == '') {
