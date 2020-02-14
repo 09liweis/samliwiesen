@@ -10,17 +10,17 @@ Vue.use(MuseUI);
 Vue.use(VueSource);
 
 const http =  {
-    emulateJSON: true,
-    emulateHTTP: true
+	emulateJSON: true,
+	emulateHTTP: true
 };
 
 Vue.http.options.emulateJSON = true;
 
 Vue.config.productionTip = true;
 new Vue({
-    http,
-    router,
-    store,
-    el: '#app',
-    render: h => h(App)
+	http,
+	router,
+	store,
+	el: '#app',
+	render: h => h(App)
 });
