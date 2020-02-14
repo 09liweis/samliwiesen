@@ -24,8 +24,8 @@ import Blogs from './pages/Blogs.jsx';
 import Comments from './pages/Comments.jsx';
 
 const store = createStore(reducer, compose(
-    applyMiddleware(thunk),
-    window.devToolsExtension ? window.devToolsExtension() : f => f
+	applyMiddleware(thunk),
+	window.devToolsExtension ? window.devToolsExtension() : f => f
 ));
 
 store.dispatch(getCharacters());
@@ -35,20 +35,20 @@ export default class Main extends React.Component {
 		return ([
 			<Header key="header" />,
 			<Provider store={store} key="provider">
-					<HashRouter key="page">
-							<div>
-							<Nav key="nav" />
-							<Route exact path='/' component={Home} />
-							<Route path='/todo' component={Todo} />
-							<Route path='/movies' component={Movies} />
-							<Route path='/movie/:id' component={Movie} />
-							<Route path='/blogs' component={Blogs} />
-							<Route path='/comments' component={Comments} />
-							<Route path='/clock' component={Clock} />
-							<Route path='/transactions' component={Transactions} />
-							<Route path='/musicplayer' component={MusicPlayer} />
-							</div>
-					</HashRouter>
+				<HashRouter key="page">
+					<div>
+						<Nav key="nav" />
+						<Route exact path='/' component={Home} />
+						<Route path='/todo' component={Todo} />
+						<Route path='/movies' component={Movies} />
+						<Route path='/movie/:id' component={Movie} />
+						<Route path='/blogs' component={Blogs} />
+						<Route path='/comments' component={Comments} />
+						<Route path='/clock' component={Clock} />
+						<Route path='/transactions' component={Transactions} />
+						<Route path='/musicplayer' component={MusicPlayer} />
+					</div>
+				</HashRouter>
 			</Provider>,
 			<Footer key="footer" />
 		]);
