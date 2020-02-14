@@ -13,11 +13,11 @@
 		</th>
 		<th class="visual__col ratings">
 			<div class="visual__ratings">
-				<a class="visual__rating link" v-bind:href="getLink(v, 'douban')" target="_blank">
+				<a class="visual__rating link" v-bind:href="getLink(v.douban_id, 'douban')" target="_blank">
 					<img class="visual__rating icon" src="https://img3.doubanio.com/f/talion/2f3c0bc0f35b031d4535fd993ae3936f4e40e6c8/pics/icon/dou32.png" alt="douban icon" />
 					<span class="visual__rating">{{v.douban_rating}}</span>
 				</a>
-				<a class="visual__rating link" v-if="v.imdb_id" v-bind:href="getLink(v, 'imdb')" target="_blank">
+				<a class="visual__rating link" v-if="v.imdb_id" v-bind:href="getLink(v.imdb_id, 'imdb')" target="_blank">
 					<span class="visual__rating icon imdb">IMDB</span>
 					<span class="visual__rating">{{v.imdb_rating}}</span>
 				</a>
@@ -30,7 +30,7 @@
 		<th class="visual__col progress">
 			<span class="visual__progress-episodes">{{v.current_episode}} / {{v.episodes}}</span>
 			<div class="visual__progress">
-				<mu-linear-progress mode="determinate" :value="getProgress(v)"/>
+				<mu-linear-progress mode="determinate" :value="(v.current_episode/v.episodes) * 100"/>
 			</div>
 		</th>
 		<th class="visual__col release_date">
@@ -49,8 +49,8 @@
 export default {
 	props: ['v', 'getVisuals'],
 	data() {
-			return {
-			};
+		return {
+		};
 	},
 	methods: {
 		increaseEpisode(v) {
@@ -59,29 +59,13 @@ export default {
 				this.getVisuals();
 			});
 		},
-		getStatus(v) {
-			if (v.current_episode == v.episodes) {
-				return 'Done';
-			} else if (v.current_episode == 0) {
-				return 'Not Started';
-			} else if (v.current_episode < v.episodes) {
-				return 'In Progress';
-			}
-		},
-		getLink(v, type) {
+		getLink(id, type) {
 			if (type == 'douban') {
-				return 'https://movie.douban.com/subject/' + v.douban_id;
-			} else if (type == 'imdb') {
-				if (v.imdb_id) {
-					return 'https://www.imdb.com/title/' + v.imdb_id;   
-				}
+				return 'https://movie.douban.com/subject/' + id;
 			}
-		},
-		getProgress(v) {
-			if (v.current_episode == v.episodes) {
-				return 100;
+			if (type == 'imdb') {
+				return 'https://www.imdb.com/title/' + id;
 			}
-			return (v.current_episode/v.episodes) * 100;
 		},
 		getWebsite(website) {
 			if (website.indexOf('http') == -1) {
