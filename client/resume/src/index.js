@@ -25,6 +25,6 @@ console.log(`く__,.ヘヽ.　　　　/　,ー､ 〉
 　　　　　 　　　'ｰ'　　!_,.:`);
 
 setTimeout(function() {render(
-    <Main />,
-    document.getElementById('root')
+	<Main />,
+	document.getElementById('root')
 );}, 500);
