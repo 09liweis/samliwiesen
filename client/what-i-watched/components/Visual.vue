@@ -70,9 +70,8 @@ export default {
 		getWebsite(website) {
 			if (website.indexOf('http') == -1) {
 				return 'http://' + website;
-			} else {
-				return website;
 			}
+			return website;
 		}
 	}
 };
