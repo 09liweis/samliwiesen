@@ -16,7 +16,7 @@ const Experiences = ({experiences}) => {
 			<div className="experience" key={i}>
 				<h3>{e.company} - {e.title}</h3>
 				<ExperienceDate><i className="fa fa-calendar" aria-hidden="true"></i>{e.date}</ExperienceDate>
-				<ul>
+				<ul className="list">
 					{duties}
 				</ul>
 			</div>
