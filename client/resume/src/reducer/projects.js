@@ -10,9 +10,9 @@ const initialProjects = [
 		]
 	},
 	{
-		name: 'What I Watech',
+		name: 'What I Watched',
 		type: 'Vue app',
-		link: 'https://what-i-watched.herokuapp.com',
+		link: 'https://samliweisen.herokuapp.com/what-i-watched',
 		steps: []
 	},
 	{
@@ -26,17 +26,17 @@ const initialProjects = [
 			'Use Nodejs as backend host on Heroku'
 		]
 	},
-	{
-		name: 'La Promesse',
-		type: 'Admin Dashboard',
-		link: 'http://lapromesseca.com/admin',
-		steps: [
-			'Create SPA with react and react router',
-			'Build reusable and extensible react components',
-			'Implement Bulma CSS framework with flexbox',
-			'Create RESTful API with PHP'
-		]
-	},
+	// {
+	// 	name: 'La Promesse',
+	// 	type: 'Admin Dashboard',
+	// 	link: 'http://lapromesseca.com/admin',
+	// 	steps: [
+	// 		'Create SPA with react and react router',
+	// 		'Build reusable and extensible react components',
+	// 		'Implement Bulma CSS framework with flexbox',
+	// 		'Create RESTful API with PHP'
+	// 	]
+	// },
 	{
 		name: 'Where We Work',
 		type: 'Web application',
