@@ -11,6 +11,9 @@ h1,h2,h3,h4 {
 	margin: 0;
 	font-family: 'Josefin Sans', sans-serif;
 }
+.list {
+	padding-left: 20px;
+}
 ul li {
 	line-height: 25px;
 	transition: 0.2s ease-in-out;
@@ -66,10 +69,10 @@ ul li:hover {
 	font-style: italic;
 }
 .skills__group {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .skills__title {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .loading {
