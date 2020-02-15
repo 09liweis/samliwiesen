@@ -9,13 +9,13 @@ import '../css/resume.css';
 
 const Home  = ({characters}) => 
 	<div className="container home">
+		<aside id="aside">
+			<Skills />
+		</aside>
 		<main id="main">
 			<Experiences />
 			<Projects />
 		</main>
-		<aside id="aside">
-			<Skills />
-		</aside>
 	</div>;
     
 const mapStateToProps = ({characters}) => ({
