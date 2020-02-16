@@ -3,17 +3,12 @@ import styled from 'styled-components';
 import axios from 'axios';
 import {Box, BoxTitle, BoxBody} from './style.jsx';
 
-const Temp = styled.span`
-	font-size: 1em;
-	margin-left: 10px;
-	padding-left: 20px;
-	background-image: url(${props => props.icon});
-	background-position: -14px -12px;;
-	background-repeat: no-repeat;
-	background-size: 85%;
-`;
-const City = styled.span`
+const City = styled.div`
   font-size: 1em;
+`;
+const InfoContainer = styled.div`
+	display:flex;
+	align-items:center;
 `;
 
 const api = 'https://api.openweathermap.org/data/2.5/weather';
@@ -66,6 +61,7 @@ export default class Weather extends React.Component {
 	componentWillUnmount() {
 	}
 	render() {
+		const {loading,temp,city,icon} = this.state;
 		return (
 			<Box className="weather">
 				<BoxTitle>
@@ -73,13 +69,16 @@ export default class Weather extends React.Component {
 					<span>Weather</span>
 				</BoxTitle>
 				<BoxBody>
-					{this.state.loading ?
+					{loading ?
 					<i className="fa fa-spinner loading" aria-hidden="true"></i>
 					:
-					<div>
-						<City>{this.state.city}</City>
-						<Temp icon={this.state.icon}>{Math.ceil(this.state.temp)} <sup>o</sup>C</Temp>
-					</div>
+					<InfoContainer>
+						<img src={icon}/>
+						<div>
+							<City>{city}</City>
+							<div>{Math.floor(temp)} <sup>o</sup>C</div>
+						</div>
+					</InfoContainer>
 					}
 				</BoxBody>
 			</Box>
