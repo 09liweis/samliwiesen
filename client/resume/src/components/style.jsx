@@ -18,7 +18,7 @@ export const BoxTitle = styled.h2`
 	padding: 10px;
 	background-color: #06A763;
 	color: #ffffff;
-	font-weight: lighter;
+	font-size:18px;
 `;
 export const BoxBody = styled.div`
 	padding: 10px;
