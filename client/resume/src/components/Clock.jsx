@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Box, BoxTitle, BoxBody} from './style.jsx';
 
 const Dates = styled.span`
 	font-size: 1em;
@@ -36,16 +37,24 @@ export default class Clock extends React.Component {
 		});
 	}
 	componentWillUnmount() {
-		this.intervalId.clearInterval();
+		if (this.intervalId) {
+			delete this.intervalId;
+			// this.intervalId.clearInterval();
+		}
 	}
 	render() {
 		const {year, month, date, hour, min, sec} = this.state;
 		return (
-			<section>
-				<i className="fa fa-clock-o" aria-hidden="true"></i>
-				<Dates>{year}-{month > 9 ? month: '0' + month}-{date > 9 ? date : '0' + date}</Dates>
-				<span>{hour} : {min} : {sec}</span>
-			</section>
+			<Box className="experiences">
+				<BoxTitle>
+					<i className="fa fa-clock-o" aria-hidden="true"></i>
+					<span>Clock</span>
+				</BoxTitle>
+				<BoxBody>
+					<Dates>{year}-{month > 9 ? month: '0' + month}-{date > 9 ? date : '0' + date}</Dates>
+					<span>{hour} : {min} : {sec}</span>
+				</BoxBody>
+			</Box>
 		);
 	}
 }
