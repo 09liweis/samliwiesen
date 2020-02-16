@@ -67,15 +67,22 @@ export default class Weather extends React.Component {
 	}
 	render() {
 		return (
-			<section>
-				{this.state.loading ?
-				<i className="fa fa-spinner loading" aria-hidden="true"></i>
-				:
-				<span>
-					<i className="fa fa-map-marker" aria-hidden="true"></i><City>{this.state.city}</City>
-					<Temp icon={this.state.icon}>{Math.ceil(this.state.temp)} <sup>o</sup>C</Temp>
-				</span>}
-			</section>
+			<Box className="weather">
+				<BoxTitle>
+					<i className="fa fa-map-marker" aria-hidden="true"></i>
+					<span>Weather</span>
+				</BoxTitle>
+				<BoxBody>
+					{this.state.loading ?
+					<i className="fa fa-spinner loading" aria-hidden="true"></i>
+					:
+					<div>
+						<City>{this.state.city}</City>
+						<Temp icon={this.state.icon}>{Math.ceil(this.state.temp)} <sup>o</sup>C</Temp>
+					</div>
+					}
+				</BoxBody>
+			</Box>
 		);
 	}
 }
