@@ -15,13 +15,13 @@ export const Box = styled.div`
 	margin-bottom: 20px;
 `;
 export const BoxTitle = styled.h2`
-	padding: 13px;
+	padding: 10px;
 	background-color: #06A763;
 	color: #ffffff;
 	font-weight: lighter;
 `;
 export const BoxBody = styled.div`
-	padding: 20px;
+	padding: 10px;
 `;
 
 export const ExperienceDate = styled.h4`
