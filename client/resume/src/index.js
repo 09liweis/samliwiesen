@@ -23,8 +23,12 @@ console.log(`く__,.ヘヽ.　　　　/　,ー､ 〉
 　　　　　　 ﾚ'ヽL__|___i,___,ンﾚ|ノ
 　　　　　 　　　ﾄ-,/　|___./
 　　　　　 　　　'ｰ'　　!_,.:`);
-
-setTimeout(function() {render(
+const root = document.getElementById('root');
+render(
 	<Main />,
-	document.getElementById('root')
-);}, 500);
+	root
+);
+root.classList.remove('root');
+// setTimeout(function() {
+	
+// }, 500);
