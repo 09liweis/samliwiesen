@@ -47,7 +47,7 @@ export default class Clock extends React.Component {
 		return (
 			<Box className="experiences">
 				<BoxTitle>
-					<i className="fa fa-clock-o" aria-hidden="true"></i>
+					<i className="boxIcon fa fa-clock-o" aria-hidden="true"></i>
 					<span>Clock</span>
 				</BoxTitle>
 				<BoxBody>

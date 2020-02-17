@@ -15,7 +15,7 @@ const Experiences = ({experiences}) => {
 		return (
 			<div className="experience" key={i}>
 				<h3>{e.company} - {e.title}</h3>
-				<ExperienceDate><i className="fa fa-calendar" aria-hidden="true"></i>{e.date}</ExperienceDate>
+				<ExperienceDate><i className="boxIcon fa fa-calendar" aria-hidden="true"></i>{e.date}</ExperienceDate>
 				<ul className="list">
 					{duties}
 				</ul>
@@ -25,7 +25,7 @@ const Experiences = ({experiences}) => {
 	return(
 		<Box className="experiences">
 				<BoxTitle>
-					<i className="fa fa-briefcase" aria-hidden="true"></i>
+					<i className="boxIcon fa fa-briefcase" aria-hidden="true"></i>
 					<span>Experiences</span>
 				</BoxTitle>
 				<BoxBody>

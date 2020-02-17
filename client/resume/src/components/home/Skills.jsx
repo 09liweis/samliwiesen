@@ -29,7 +29,7 @@ const Skills = ({skills}) => {
 	return(
 		<Box className="skills">
 			<BoxTitle>
-				<i className="fa fa-pencil" aria-hidden="true"></i>
+				<i className="boxIcon fa fa-pencil" aria-hidden="true"></i>
 				<span>Skills</span>
 			</BoxTitle>
 			<BoxBody>

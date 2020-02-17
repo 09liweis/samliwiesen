@@ -65,7 +65,7 @@ export default class Weather extends React.Component {
 		return (
 			<Box className="weather">
 				<BoxTitle>
-					<i className="fa fa-map-marker" aria-hidden="true"></i>
+					<i className="boxIcon fa fa-map-marker" aria-hidden="true"></i>
 					<span>Weather</span>
 				</BoxTitle>
 				<BoxBody>

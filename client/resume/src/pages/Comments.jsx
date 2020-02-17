@@ -76,7 +76,7 @@ export default class Comments extends React.Component {
         return(
             <Box className="comments container">
                 <BoxTitle>
-                    <i className="fa fa-comments" aria-hidden="true"></i>
+                    <i className="boxIcon fa fa-comments" aria-hidden="true"></i>
                     <span>Comments</span>
                 </BoxTitle>
                 <BoxBody>

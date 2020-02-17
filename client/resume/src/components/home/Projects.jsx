@@ -34,7 +34,7 @@ const Projects = ({projects}) => {
 	return(
 		<Box className="projects">
 			<BoxTitle>
-				<i className="fa fa-tasks" aria-hidden="true"></i>
+				<i className="boxIcon fa fa-tasks" aria-hidden="true"></i>
 				<span>Projects</span>
 			</BoxTitle>
 			<BoxBody>
