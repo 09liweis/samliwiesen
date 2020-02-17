@@ -10,21 +10,20 @@ const InfoContainer = styled.div`
 	display:flex;
 	align-items:center;
 `;
-
 const api = 'https://api.openweathermap.org/data/2.5/weather';
-
-
 export default class Weather extends React.Component {
 	constructor(props) {
-			super(props);
-			this.state = {
-				lat: '',
-				lon:'',
-				city: '',
-				temp: '',
-				icon: '',
-				loading: true
-			};
+		super(props);
+		this.state = {
+			lat: '',
+			lon:'',
+			city: '',
+			temp: '',
+			feels_like:'',
+			description:'',
+			icon: '',
+			loading: true
+		};
 	}
 	componentDidMount() {
 		if (window.navigator.geolocation) {
@@ -46,11 +45,16 @@ export default class Weather extends React.Component {
 				units: 'metric'
 			}
 		})
-		.then((response) => {
+		.then((res) => {
+			const data = res.data;
+			const main = data.main;
+			const weather = data.weather[0];
 			this.setState({
-				city: response.data.name,
-				temp: response.data.main.temp,
-				icon: 'https://openweathermap.org/img/w/' + response.data.weather[0].icon + '.png',
+				description:weather.description,
+				feels_like:main.feels_like,
+				city: data.name,
+				temp: main.temp,
+				icon: 'https://openweathermap.org/img/w/' + weather.icon + '.png',
 				loading: false
 			});
 		})
@@ -61,7 +65,7 @@ export default class Weather extends React.Component {
 	componentWillUnmount() {
 	}
 	render() {
-		const {loading,temp,city,icon} = this.state;
+		const {loading,temp,city,icon,feels_like,description} = this.state;
 		return (
 			<Box className="weather">
 				<BoxTitle>
@@ -76,7 +80,8 @@ export default class Weather extends React.Component {
 						<img src={icon}/>
 						<div>
 							<City>{city}</City>
-							<div>{Math.floor(temp)} <sup>o</sup>C</div>
+							<div>{Math.floor(temp)} <sup>o</sup>C Feels like {Math.floor(feels_like)} <sup>o</sup>C</div>
+							<div>{description}</div>
 						</div>
 					</InfoContainer>
 					}
