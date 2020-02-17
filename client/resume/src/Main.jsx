@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ Suspense, lazy } from 'react';
 import { HashRouter, Switch, Route, browserHistory  } from 'react-router-dom';
 
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
@@ -13,15 +13,20 @@ import Header from './components/Header.jsx';
 import Nav from './components/Nav.jsx';
 import Footer from './components/Footer.jsx';
 
-import Home from './pages/Home.jsx';
-// import MusicPlayer from './pages/MusicPlayer.jsx';
-import Todo from './pages/Todo.jsx';
 // import Transactions from './pages/Transactions.jsx';
-import Clock from './pages/Clock.jsx';
+// import Clock from './pages/Clock.jsx';
+// import MusicPlayer from './pages/MusicPlayer.jsx';
+import Home from './pages/Home.jsx';
+import Todo from './pages/Todo.jsx';
 import Movies from './pages/Movies.jsx';
 import Movie from './pages/Movie.jsx';
 import Blogs from './pages/Blogs.jsx';
 import Comments from './pages/Comments.jsx';
+// const Home = lazy(() => require('./pages/Home.jsx'));
+// const Movies = lazy(() => require('./pages/Movies.jsx'));
+// const Todo = lazy(() => require('./pages/Todo.jsx'));
+// const Blogs = lazy(() => require('./pages/Blogs.jsx'));
+// const Comments = lazy(() => require('./pages/Comments.jsx'));
 
 const store = createStore(reducer, compose(
 	applyMiddleware(thunk),
@@ -36,6 +41,7 @@ export default class Main extends React.Component {
 			<Header key="header" />,
 			<Provider store={store} key="provider">
 				<HashRouter key="page">
+					<Suspense fallback={<div>Loading...</div>}>
 					<div>
 						<Nav key="nav" />
 						<Route exact path='/' component={Home} />
@@ -44,10 +50,8 @@ export default class Main extends React.Component {
 						<Route path='/movie/:id' component={Movie} />
 						<Route path='/blogs' component={Blogs} />
 						<Route path='/comments' component={Comments} />
-						<Route path='/clock' component={Clock} />
-						{/* <Route path='/transactions' component={Transactions} />
-						<Route path='/musicplayer' component={MusicPlayer} /> */}
 					</div>
+					</Suspense>
 				</HashRouter>
 			</Provider>,
 			<Footer key="footer" />
