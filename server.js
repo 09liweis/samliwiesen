@@ -41,7 +41,7 @@ mongoose.connection.on('disconnected', function () {
 }); 
 
 app.use(function (req, res, next) {
-	const origins = ['http://samliweisen.herokuapp.com/','https://40be6f621cdf43b78d3827c72b7093c0.vfs.cloud9.us-east-1.amazonaws.com'];
+	const origins = ['https://what-i-watched.herokuapp.com/','https://samliweisen.herokuapp.com/','https://40be6f621cdf43b78d3827c72b7093c0.vfs.cloud9.us-east-1.amazonaws.com','localhost'];
 	// Website you wish to allow to connect
 	if (origins.indexOf(req.headers.origin) > -1) {
 		res.setHeader('Access-Control-Allow-Origin', req.headers.origin);   
