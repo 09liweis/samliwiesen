@@ -4,10 +4,10 @@
 			<div class="card__info">
 				<span class="card__number">{{blogs?blogs.length:'0'}}</span>
 				<h2 class="card__title">Blogs</h2>
-				<!--<div *ngIf="blogs">-->
-				<!--    <a class="post-link" *ngFor="let e of blogs" [routerLink]="['/blog', e._id]">{{e.title}}</a>-->
-				<!--</div>-->
-				<a routerLink="blogs">View All</a>
+				<div *ngIf="blogs">
+				   <a class="post-link" *ngFor="let e of blogs" [routerLink]="['/blog', e._id]">{{e.title}}</a>
+				</div>
+				<!-- <a routerLink="blogs">View All</a> -->
 				<a class="button" routerLink="/blog/new">Add New</a>
 			</div>
 		</section>
