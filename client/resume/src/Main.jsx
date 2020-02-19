@@ -8,8 +8,6 @@ import thunk from 'redux-thunk';
 import reducer from './reducer';
 import { getCharacters } from './reducer/characters/actions';
 
-
-import Header from './components/Header.jsx';
 import Nav from './components/Nav.jsx';
 import Footer from './components/Footer.jsx';
 
@@ -38,7 +36,6 @@ store.dispatch(getCharacters());
 export default class Main extends React.Component {
 	render() {
 		return ([
-			<Header key="header" />,
 			<Provider store={store} key="provider">
 				<HashRouter key="page">
 					<Suspense fallback={<div>Loading...</div>}>
