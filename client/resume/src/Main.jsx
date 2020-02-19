@@ -9,7 +9,7 @@ import reducer from './reducer';
 import { getCharacters } from './reducer/characters/actions';
 
 import Nav from './components/Nav.jsx';
-import Footer from './components/Footer.jsx';
+// import Footer from './components/Footer.jsx';
 
 // import Transactions from './pages/Transactions.jsx';
 // import Clock from './pages/Clock.jsx';
@@ -51,7 +51,7 @@ export default class Main extends React.Component {
 					</Suspense>
 				</HashRouter>
 			</Provider>,
-			<Footer key="footer" />
+			// <Footer key="footer" />
 		]);
 	}
 }
