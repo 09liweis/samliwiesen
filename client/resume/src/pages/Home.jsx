@@ -6,12 +6,14 @@ import Skills from '../components/home/Skills.jsx';
 import Projects from '../components/home/Projects.jsx';
 import Clock from '../components/Clock.jsx';
 import Weather from '../components/Weather.jsx';
+import About from '../components/About.jsx';
 
 import '../css/resume.css';
 
 const Home  = ({characters}) => 
 	<div className="container home">
 		<aside id="aside">
+			<About/>
 			<Clock/>
 			<Weather/>
 		</aside>
