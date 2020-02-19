@@ -2,11 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import {Box, BoxTitle, BoxBody} from './style.jsx';
 
-const Dates = styled.span`
-	font-size: 1em;
-	margin-right: 10px;
-`;
-
 export default class About extends React.Component {
 	constructor(props) {
 		super(props);
@@ -23,6 +18,9 @@ export default class About extends React.Component {
 		}
 	}
 	render() {
+		const title = 'developer'.split('').map((t,i)=>
+			<span key={i}>{t}</span>
+		);
 		return (
 			<Box className="experiences">
 				<BoxTitle>
@@ -30,7 +28,7 @@ export default class About extends React.Component {
 					<span>Hi I am Sam</span>
 				</BoxTitle>
 				<BoxBody>
-					I am a developer.
+					<div id="about">I am a {title}.</div>
 				</BoxBody>
 			</Box>
 		);
