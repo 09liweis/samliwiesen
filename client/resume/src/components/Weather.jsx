@@ -3,9 +3,6 @@ import styled from 'styled-components';
 import axios from 'axios';
 import {Box, BoxTitle, BoxBody} from './style.jsx';
 
-const City = styled.div`
-  font-size: 1em;
-`;
 const InfoContainer = styled.div`
 	display:flex;
 	align-items:center;
@@ -19,6 +16,8 @@ export default class Weather extends React.Component {
 			lon:'',
 			city: '',
 			temp: '',
+			temp_min:'',
+			temp_max:'',
 			feels_like:'',
 			description:'',
 			icon: '',
@@ -51,9 +50,11 @@ export default class Weather extends React.Component {
 			const weather = data.weather[0];
 			this.setState({
 				description:weather.description,
-				feels_like:main.feels_like,
+				feels_like:Math.floor(main.feels_like),
 				city: data.name,
-				temp: main.temp,
+				temp: Math.floor(main.temp),
+				temp_min:Math.floor(main.temp_min),
+				temp_max:Math.floor(main.temp_max),
 				icon: 'https://openweathermap.org/img/w/' + weather.icon + '.png',
 				loading: false
 			});
@@ -65,12 +66,12 @@ export default class Weather extends React.Component {
 	componentWillUnmount() {
 	}
 	render() {
-		const {loading,temp,city,icon,feels_like,description} = this.state;
+		const {loading,temp,temp_min,temp_max,city,icon,feels_like,description} = this.state;
 		return (
 			<Box className="weather">
 				<BoxTitle>
 					<i className="boxIcon fa fa-map-marker" aria-hidden="true"></i>
-					<span>Weather</span>
+					<span>{city} Weather</span>
 				</BoxTitle>
 				<BoxBody>
 					{loading ?
@@ -79,9 +80,9 @@ export default class Weather extends React.Component {
 					<InfoContainer>
 						<img src={icon}/>
 						<div>
-							<City>{city}</City>
-							<div>{Math.floor(temp)} <sup>o</sup>C Feels like {Math.floor(feels_like)} <sup>o</sup>C</div>
+							<div>{temp} <sup>o</sup>C</div>
 							<div>{description}</div>
+							<div>{temp_max}<sup>o</sup>/{temp_min}<sup>o</sup> Feels like {feels_like} <sup>o</sup>C</div>
 						</div>
 					</InfoContainer>
 					}
