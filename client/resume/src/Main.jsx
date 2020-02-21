@@ -9,6 +9,9 @@ import reducer from './reducer';
 import { getCharacters } from './reducer/characters/actions';
 
 import Nav from './components/Nav.jsx';
+import Clock from './components/Clock.jsx';
+import Weather from './components/Weather.jsx';
+import About from './components/About.jsx';
 // import Footer from './components/Footer.jsx';
 
 // import Transactions from './pages/Transactions.jsx';
@@ -41,12 +44,21 @@ export default class Main extends React.Component {
 					<Suspense fallback={<div>Loading...</div>}>
 					<div>
 						<Nav key="nav" />
-						<Route exact path='/' component={Home} />
-						<Route path='/todo' component={Todo} />
-						<Route path='/movies' component={Movies} />
-						<Route path='/movie/:id' component={Movie} />
-						<Route path='/blogs' component={Blogs} />
-						<Route path='/comments' component={Comments} />
+						<div id="mainContainer" className="container">
+							<aside id="aside">
+								<About/>
+								<Clock/>
+								<Weather/>
+							</aside>
+							<main id="main">
+								<Route exact path='/' component={Home} />
+								<Route path='/todo' component={Todo} />
+								<Route path='/movies' component={Movies} />
+								<Route path='/movie/:id' component={Movie} />
+								<Route path='/blogs' component={Blogs} />
+								<Route path='/comments' component={Comments} />
+							</main>
+						</div>
 					</div>
 					</Suspense>
 				</HashRouter>

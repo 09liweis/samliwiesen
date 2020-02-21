@@ -60,7 +60,7 @@ ul li:hover {
 	width: 100%;
 	margin: auto;
 }
-.home {
+#mainContainer {
 	display: flex;
 	flex-wrap: wrap;
 }
