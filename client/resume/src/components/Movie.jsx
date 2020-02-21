@@ -49,9 +49,6 @@ const Visual = styled.div`
 	@media (min-width: 768px) {
 		width: 25%;
 	}
-	@media (min-width: 1024px) {
-		width: 20%;
-	}
 `;
 const VisualTitle = styled.h3`
 	margin: 0;
