@@ -1,8 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-
-import styled from 'styled-components';
-
+import {Box, BoxTitle, BoxBody} from '../components/style.jsx';
 import Movie from '../components/Movie.jsx';
 
 import '../css/movies.css';
@@ -48,13 +46,18 @@ export default class Movies extends React.Component {
 		);
 		const loading = this.state.loading;
 		return (
-			<div className="container">
-				<h2 className="visuals__title">What I Watched</h2>
-				<div className="visual__list">
-					{loading ?<div className="lds-hourglass"></div>:visuals}
-				</div>
-				<div className="loadmore" onClick={this.loadmore}>Load More</div>
-			</div>
+			<Box className="movies">
+				<BoxTitle>
+					<i className="boxIcon fa fa-film" aria-hidden="true"></i>
+					<span>What I Watched</span>
+				</BoxTitle>
+				<BoxBody>
+					<div className="visual__list">
+						{loading ?<div className="lds-hourglass"></div>:visuals}
+					</div>
+					<div className="loadmore" onClick={this.loadmore}>Load More</div>
+				</BoxBody>
+			</Box>
 		);
 	}
 }
