@@ -72,10 +72,10 @@ ul li:hover {
 	padding: 0 10px;
 }
 #main {
-	width: 70%;
+	width: 75%;
 }
 #aside {
-	width: 30%;
+	width: 25%;
 }
 @media (max-width: 625px) {
 	#main,
