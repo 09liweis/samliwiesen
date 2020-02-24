@@ -1,17 +1,17 @@
 <template>
 	<div class="form">
 		<h2>Form</h2>
-		<mu-raised-button label="Add Image" class="demo-raised-button" primary v-on:click="gotoAddImage()" />
+		<!-- <mu-raised-button label="Add Image" class="demo-raised-button" primary v-on:click="gotoAddImage()" /> -->
 		
-		<mu-raised-button slot="actions" flat color="primary" @click="toggleSearch" v-if="visual.id == 0">Search on Douban</mu-raised-button>
-		<mu-dialog title="Dialog" width="360" scrollable :open.sync="searchOpen">
+		<!-- <mu-raised-button slot="actions" flat color="primary" @click="toggleSearch" v-if="visual.id == 0">Search on Douban</mu-raised-button> -->
+		<!-- <mu-dialog title="Dialog" width="360" scrollable :open.sync="searchOpen">
 			<mu-text-field fullWidth label="Search From Douban" labelFloat v-on:change="searchDouban" />
 			<mu-list>
 				<mu-list-item v-for="s in searchs" v-bind:title="s.title" :key="s.id" v-on:click="renderFromSearch(s.id)">
 				</mu-list-item>
 			</mu-list>
 			<mu-raised-button slot="actions" flat color="primary" @click="toggleSearch">Close</mu-raised-button>
-		</mu-dialog>
+		</mu-dialog> -->
 		<mu-row gutter>
 			<mu-col width="100" tablet="50" desktop="25">
 				<mu-text-field fullWidth label="Title" labelFloat v-model="visual.title" />
@@ -124,15 +124,15 @@ export default {
 		}
 	},
 	methods: {
-		toggleSearch() {
-			this.searchOpen = !this.searchOpen;
-		},
+		// toggleSearch() {
+		// 	this.searchOpen = !this.searchOpen;
+		// },
 		gotoAddSong() {
 			this.$router.push({path: '/' + this.$route.params.id + '/song/add'});
 		},
-		gotoAddImage() {
-			this.$router.push({path: '/' + this.$route.params.id + '/image/add'});
-		},
+		// gotoAddImage() {
+		// 	this.$router.push({path: '/' + this.$route.params.id + '/image/add'});
+		// },
 		renderFromSearch(id) {
 			this.toggleSearch();
 			this.visual.douban_id = id;
@@ -158,18 +158,18 @@ export default {
 				}
 			});
 		},
-		searchDouban(e) {
-			const val = e.target.value;
-			const api = '/api/visuals/search?keyword=' + val;
-			// 'https://api.douban.com/v2/movie/search?q=' + val + '&apikey=0df993c66c0c636e29ecbb5344252a4a'
-			this.$http.get(api).then(res => {
-				this.searchs = [];
-				if (res.status == 200) {
-					console.log(res.body);
-					this.searchs = res.body;
-				}
-			});
-		},
+		// searchDouban(e) {
+		// 	const val = e.target.value;
+		// 	const api = '/api/visuals/search?keyword=' + val;
+		// 	// 'https://api.douban.com/v2/movie/search?q=' + val + '&apikey=0df993c66c0c636e29ecbb5344252a4a'
+		// 	this.$http.get(api).then(res => {
+		// 		this.searchs = [];
+		// 		if (res.status == 200) {
+		// 			console.log(res.body);
+		// 			this.searchs = res.body;
+		// 		}
+		// 	});
+		// },
 		renderDouban() {
 			if (this.visual.douban_id == '') {
 				alert('Empty douban id');
