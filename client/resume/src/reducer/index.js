@@ -6,9 +6,9 @@ import skills from './skills.js';
 import todos from './todos.js';
 
 export default combineReducers({
-    projects,
-    experiences,
-    skills,
-    todos,
-    characters
+	projects,
+	experiences,
+	skills,
+	todos,
+	characters
 });
