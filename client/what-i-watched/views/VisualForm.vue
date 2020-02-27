@@ -159,7 +159,9 @@ export default {
 				this.posters = [];
 				
 				this.visual.title = douban.title;
-				this.visual.original_title = douban.original_title;
+				if (!this.visual.original_title) {
+					this.visual.original_title = douban.original_title;
+				}
 				this.visual.douban_rating = douban.rating.average;
 				if (douban.episodes_count) {
 					this.visual.episodes = douban.episodes_count;
