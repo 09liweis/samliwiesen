@@ -3,7 +3,11 @@
 		<div style="display:flex;">
 			<div style="width:50%;">
 				<div v-for="(v,k) in visual" :key="k">
-					<div>{{k}}: {{v}} <a @click="editField(k)">Edit</a></div>
+					<div>
+						<span>{{k}}:</span>
+						<img v-if="k=='poster'" :src="v"/>
+						<span v-else>{{v}}</span>
+						<a @click="editField(k)">Edit</a></div>
 				</div>
 			</div>
 			<div class="input-form" style="width:50%;">
@@ -13,8 +17,8 @@
 				<div v-if="currentField == 'release_date'">
 					<div v-for="d in release_dates" :key="d" @click="currentVal = d.substring(0, 10)">{{d}}</div>
 				</div>
-				<div v-if="currentField == 'poster' && posters.length > 0">
-					<img v-for="p in posters" :key="p" :src="p" @click="currentVal=p"/>
+				<div style="display:flex;" v-if="currentField == 'poster' && posters.length > 0">
+					<img style="width:33%;" v-for="p in posters" :key="p" :src="p" @click="currentVal=p"/>
 				</div>
 			</div>
 		</div>
