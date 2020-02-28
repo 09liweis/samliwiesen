@@ -13,6 +13,9 @@
 				<div v-if="currentField == 'release_date'">
 					<div v-for="d in release_dates" :key="d" @click="currentVal = d.substring(0, 10)">{{d}}</div>
 				</div>
+				<div v-if="currentField == 'poster' && posters.length > 0">
+					<img v-for="p in posters" :key="p" :src="p" @click="currentVal=p"/>
+				</div>
 			</div>
 		</div>
 		<!-- <mu-raised-button label="Add Image" class="demo-raised-button" primary v-on:click="gotoAddImage()" /> -->
@@ -142,6 +145,10 @@ export default {
 				}
 				this.release_dates = douban.pubdates;
 				this.posters = [];
+				if (this.visual.poster) {
+					this.posters.push(this.visual.poster);
+				}
+				this.posters.push(douban.images.large);
 				
 				this.visual.title = douban.title;
 				if (!this.visual.original_title) {
