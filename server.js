@@ -6,6 +6,7 @@ bodyParser = require('body-parser'),
 mongoose = require('mongoose'),
 
 indexRoute = require('./server/routes/index'),
+dashboardRoute = require('./server/routes/dashboard'),
 todoRoute = require('./server/routes/todo'),
 transactionRoute = require('./server/routes/transaction'),
 experienceRoute = require('./server/routes/experience'),
@@ -79,6 +80,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use('/', indexRoute);
+app.use('/api/dashboard',dashboardRoute)
 app.use('/api/todos', todoRoute);
 app.use('/api/transactions', transactionRoute);
 app.use('/api/experiences', experienceRoute);
