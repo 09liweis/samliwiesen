@@ -2,19 +2,19 @@
 	<article class="card">
 		<section class="card-container">
 			<div class="card__info">
-				<span class="card__number">{{blogs?blogs.length:'0'}}</span>
+				<span class="card__number">{{data.blogs}}</span>
 				<h2 class="card__title">Blogs</h2>
-				<div *ngIf="blogs">
+				<!-- <div *ngIf="blogs">
 				   <a class="post-link" *ngFor="let e of blogs" [routerLink]="['/blog', e._id]">{{e.title}}</a>
-				</div>
-				<!-- <a routerLink="blogs">View All</a> -->
+				</div> -->
+				<a routerLink="blogs">View All</a>
 				<a class="button" routerLink="/blog/new">Add New</a>
 			</div>
 		</section>
 	</article>
 	<article class="card">
 			<section class="card-container">
-				<span class="card__number">{{experiences ? experiences.length : '0'}}</span>
+				<span class="card__number">{{data.experiences}}</span>
 				<div class="card__info">
 					<h2 class="card__title">Experiences</h2>
 					<a routerLink="experiences">View All</a>
@@ -25,7 +25,7 @@
 	<article class="card">
 			<section class="card-container">
 				<div class="card__info">
-					<span class="card__number">{{projects ? projects.length : '0'}}</span>
+					<span class="card__number">{{data.projects}}</span>
 					<h2 class="card__title">Projects</h2>
 					<a routerLink="projects">View All</a>
 					<a routerLink="/project/new">Add New</a>
