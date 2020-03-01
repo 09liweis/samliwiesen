@@ -68,6 +68,10 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
         component: ProjectFormComponent
       },
       {
+        path: 'blogs',
+        component: PageListComponent
+      },
+      {
         path: 'blog/:id',
         component: BlogFormComponent
       },
