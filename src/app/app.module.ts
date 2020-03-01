@@ -17,7 +17,6 @@ import { ExperienceService } from './services/experience.service';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { ExperienceFormComponent } from './forms/experience-form/experience-form.component';
-// import { ExperienceListComponent } from './pages/experience-list/experience-list.component';
 import { PageListComponent } from './pages/page-list/page-list.component';
 import { ProjectFormComponent } from './forms/project-form/project-form.component';
 import { BlogFormComponent } from './forms/blog-form/blog-form.component';
