@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ProjectService } from '../../services/project.service';
-import { ExperienceService } from '../../services/experience.service';
-import { BlogService } from '../../services/blog.service';
+import { DashboardService } from '../../services/dashboard.service';
 
 @Component({
   selector: 'app-homepage',
@@ -10,27 +8,15 @@ import { BlogService } from '../../services/blog.service';
   styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent implements OnInit {
-  public experiences;
-  public projects;
-  public blogs;
+  public data;
 
   constructor(
-    private projectService: ProjectService,
-    private experienceService: ExperienceService,
-    private blogService: BlogService
+    private dashboardService: DashboardService,
   ) { }
 
   ngOnInit() {
-    this.experienceService.getList().subscribe(exs => {
-      this.experiences = exs;
-    })
-    
-    this.projectService.getList().subscribe(projs => {
-      this.projects = projs;
+    this.dashboardService.getHome().subscribe(ret => {
+      this.data = ret;
     });
-    
-    this.blogService.getList().subscribe(blogs => {
-      this.blogs = blogs;
-    })
   }
 }
