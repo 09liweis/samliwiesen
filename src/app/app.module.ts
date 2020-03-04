@@ -33,9 +33,7 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
     GalleryComponent
   ],
   imports: [
-    TinymceModule.withConfig({
-      skin_url: '/assets/skins/lightgray'
-    }),
+    TinymceModule.withConfig({skin_url: '/assets/skins/lightgray'}),
     CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'samliweisen' } as CloudinaryConfiguration),
     MatCardModule,
     MatGridListModule,
