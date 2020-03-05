@@ -8,7 +8,7 @@ import { DashboardService } from '../../services/dashboard.service';
   styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent implements OnInit {
-  public data;
+  public data = {blogs:0,exs:0,projs:0};
 
   constructor(
     private dashboardService: DashboardService,
