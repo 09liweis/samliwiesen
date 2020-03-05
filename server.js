@@ -18,6 +18,7 @@ SiteRoute = require('./server/routes/site'),
 newsRoute = require('./server/routes/news'),
 userRoute = require('./server/routes/user'),
 visualRoute = require('./server/routes/visual'),
+categoryRoute = require('./server/routes/category'),
 
 port = process.env.PORT || 8081;
 
@@ -92,6 +93,7 @@ app.use('/api/sites', SiteRoute);
 app.use('/api/news', newsRoute);
 app.use('/api/user',userRoute);
 app.use('/api/visuals', visualRoute);
+app.use('/api/category', categoryRoute);
 
 app.listen(port, () => {
 	console.log('Web server runs on: ' + port);
