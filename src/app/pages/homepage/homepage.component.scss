@@ -7,7 +7,8 @@
 	padding: 0 15px;
 }
 .card-container {
-	display: block;
+	color:#fff;
+	cursor: pointer;
 	padding: 10px;
 	background-color: #fff;
 	margin-bottom: 20px;
@@ -15,10 +16,23 @@
 	// box-shadow: 0px 0px 5px 0px #8c8383;
 	border-bottom: 1px solid #ccc;
 	transition: transform 0.2s ease;
+	&.experiences {
+		background-color: #697ae7;
+	}
+	&.blogs {
+		background-color: #b87bf6;
+	}
+	&.projects {
+		background-color: #fb978e;
+	}
+	&.educations {
+		background-color: #ff1702;
+	}
+	&.skills {
+		background-color: #000000;
+	}
 	&:hover {
 		transform: translateY(-5px);
-		color:inherit !important;
-		text-transform: none !important;
 	}
 }
 .card__title {

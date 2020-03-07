@@ -1,35 +1,35 @@
 <section class="dashboard">
 	<article class="card">
-		<a routerLink="blogs" class="card-container">
+		<div routerLink="blogs" class="card-container blogs">
 			<span class="card__number">{{data.blogs}}</span>
 			<h2 class="card__title">Blogs</h2>
-			<a class="button" routerLink="/blog/new">Add New</a>
-		</a>
+			<a class="" routerLink="/blog/new">Add New</a>
+		</div>
 	</article>
 	<article class="card">
-		<a class="card-container" routerLink="experiences">
+		<div class="card-container experiences" routerLink="experiences">
 			<span class="card__number">{{data.exs}}</span>
 			<h2 class="card__title">Experiences</h2>
-			<a routerLink="/experience/new">Add New</a>
-		</a>
+			<a class="" routerLink="/experience/new">Add New</a>
+		</div>
 	</article>
 	<article class="card" routerLink="projects">
-		<a class="card-container" routerLink="projects">
+		<div class="card-container projects" routerLink="projects">
 			<span class="card__number">{{data.projs}}</span>
 			<h2 class="card__title">Projects</h2>
-			<a routerLink="/project/new">Add New</a>
-		</a>
+			<a class="" routerLink="/project/new">Add New</a>
+		</div>
 	</article>
 	<article class="card">
-		<a class="card-container">
+		<div class="card-container educations">
 			<span class="card__number">2</span>
 			<h2 class="card__title">Educations</h2>
-		</a>
+		</div>
 	</article>
 	<article class="card">
-		<a class="card-container">
+		<div class="card-container skills">
 			<span class="card__number">10</span>
 			<h2 class="card__title">Skills</h2>
-		</a>
+		</div>
 	</article>
 </section>
