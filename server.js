@@ -48,6 +48,9 @@ app.use(function (req, res, next) {
 	if (origins.indexOf(req.headers.origin) > -1) {
 		res.setHeader('Access-Control-Allow-Origin', req.headers.origin);   
 	}
+	if (req.query && req.query.origin && req.query.origin == 'localhost') {
+		res.setHeader('Access-Control-Allow-Origin','*');
+	}
 	// Request methods you wish to allow
 	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 	// Request headers you wish to allow
