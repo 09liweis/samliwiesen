@@ -14,7 +14,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ExperienceService {
-  private api = genAPI('experiences',true);
+  private api = genAPI('experiences',false);
   constructor(private http: HttpClient) { }
   
   getList(): Observable<any> {

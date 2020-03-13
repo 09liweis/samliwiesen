@@ -1,9 +1,6 @@
 const API = 'https://samliweisen.herokuapp.com/api/';
 function genAPI(endpoint,isLocal=false) {
-  let apiUrl = API + endpoint + '?';
-  if (isLocal) {
-    apiUrl += 'origin=localhost';
-  }
+  let apiUrl = API + endpoint + '/';
   return apiUrl;
 }
 export {

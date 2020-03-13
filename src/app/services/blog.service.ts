@@ -14,7 +14,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class BlogService {
-  private api = genAPI('blogs',true);
+  private api = genAPI('blogs',false);
 
   constructor(private http: HttpClient) { }
   
