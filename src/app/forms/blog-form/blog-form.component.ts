@@ -42,6 +42,9 @@ export class BlogFormComponent implements OnInit {
   
   submit(back: boolean):void {
     this.blogService.submit(this.blog).subscribe(blog => {
+      if (blog) {
+        alert('保存成功啦～～～～')
+      }
       if (back) {
         this.router.navigate(['/']); 
       }
