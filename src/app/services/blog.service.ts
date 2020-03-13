@@ -14,27 +14,27 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class BlogService {
-  private api = genAPI('blogs',false);
+  private endpoint = 'blogs';
 
   constructor(private http: HttpClient) { }
   
   getList(): Observable<any> {
-    return this.http.get(this.api);
+    return this.http.get(genAPI(this.endpoint));
   }
   
   getDetail(id: string): Observable<any> {
-    return this.http.get(this.api + id);
+    return this.http.get(genAPI(this.endpoint + '/' + id));
   }
   
   submit(blog: Blog): Observable<any> {
     if (blog._id != '') {
-      return this.http.put(this.api + blog._id, blog, httpOptions);
+      return this.http.put(genAPI(this.endpoint + '/' + blog._id), blog, httpOptions);
     } else {
       delete blog._id;
-      return this.http.post(this.api, blog, httpOptions);
+      return this.http.post(genAPI(this.endpoint), blog, httpOptions);
     }
   }
   delete(id: string): Observable<any> {
-    return this.http.delete(this.api + id, httpOptions);
+    return this.http.delete(genAPI(this.endpoint) + id, httpOptions);
   }
 }
