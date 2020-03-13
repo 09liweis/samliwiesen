@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs/Rx';
 
 import { Experience } from '../models/experience';
+import {genAPI} from '../constant';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -13,8 +14,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ExperienceService {
-  private api = 'https://samliweisen.herokuapp.com/api/experiences/';
-  //private api = '/api/experiences/';
+  private api = genAPI('experiences',true);
   constructor(private http: HttpClient) { }
   
   getList(): Observable<any> {
