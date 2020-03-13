@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 
 import { Blog } from '../models/blog';
+import {genAPI} from '../constant';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -13,7 +14,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class BlogService {
-  private api = 'https://samliweisen.herokuapp.com/api/blogs/';
+  private api = genAPI('blogs',true);
 
   constructor(private http: HttpClient) { }
   
