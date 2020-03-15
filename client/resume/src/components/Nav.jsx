@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link,withRouter } from 'react-router-dom';
 const navs = [
 	{url:'/',tl:'Home',icon:'fa fa-home'},
 	{url:'/movies',tl:'Movies',icon:'fa fa-film'},
@@ -8,13 +8,20 @@ const navs = [
 	{url:'/comments',tl:'Comments',icon:'fa fa-comments'},
 ];
 
-export default class Nav extends React.Component {
+class Nav extends React.Component {
+	constructor(props) {
+		super(props);
+	}
 	render() {
-		const links = navs.map((nav)=>
-			<Link className="navItem" key={nav.url} to={nav.url}>
-				<i className={nav.icon}></i>
-				<span>{nav.tl}</span>
-			</Link>
+		const {location} = this.props;
+		const pathName = location.pathname;
+		const links = navs.map((nav)=> {
+			return (
+				<Link className={(nav.url == pathName)?'navItem active':'navItem'} key={nav.url} to={nav.url}>
+					<i className={nav.icon}></i>
+					<span>{nav.tl}</span>
+				</Link>
+			)}
 		);
 		return(
 			<nav id="nav">
@@ -26,3 +33,4 @@ export default class Nav extends React.Component {
 		);
 	}
 }
+export default withRouter(Nav);
