@@ -16,8 +16,12 @@ class Nav extends React.Component {
 		const {location} = this.props;
 		const pathName = location.pathname;
 		const links = navs.map((nav)=> {
+			let navClass = 'navItem';
+			if (nav.url == pathName) {
+				navClass += ' active';
+			}
 			return (
-				<Link className={(nav.url == pathName)?'navItem active':'navItem'} key={nav.url} to={nav.url}>
+				<Link className={navClass} key={nav.url} to={nav.url}>
 					<i className={nav.icon}></i>
 					<span>{nav.tl}</span>
 				</Link>
