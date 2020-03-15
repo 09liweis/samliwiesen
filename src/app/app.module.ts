@@ -6,6 +6,8 @@ import { FormsModule }   from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TinymceModule } from 'angular2-tinymce';
+// import { EditorModule } from '@tinymce/tinymce-angular';
+
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
 import { Cloudinary } from 'cloudinary-core';
 
@@ -33,6 +35,7 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
     GalleryComponent
   ],
   imports: [
+    // EditorModule,
     TinymceModule.withConfig({skin_url: '/assets/skins/lightgray'}),
     CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'samliweisen' } as CloudinaryConfiguration),
     MatCardModule,
