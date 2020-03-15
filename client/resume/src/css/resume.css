@@ -40,10 +40,18 @@ ul li:hover {
 	padding: 10px;
 	justify-content:space-around;
 }
+#navHighlight {
+	position: absolute;
+	height:2px;
+	width: 30px;
+	bottom:5px;
+	background-color: #155810;
+	transition: 0.3s;
+}
 @media (min-width: 768px) {
 	#nav {
 		margin-bottom: 10px;
-		position: static;
+		position: relative;
 	}
 }
 .navItem {
@@ -67,10 +75,6 @@ ul li:hover {
 	display: flex;
 	flex-wrap: wrap;
 }
-.col-3 {
-	width: 31.6%;
-	margin: 0 10px 20px 10px;
-}
 #main, #aside {
 	padding: 0 10px;
 }
@@ -82,8 +86,7 @@ ul li:hover {
 }
 @media (max-width: 625px) {
 	#main,
-	#aside,
-	.col-3{
+	#aside {
 		width: 100%;
 	}
 }
