@@ -20,7 +20,7 @@ export class PageListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.page = this.route.snapshot.routeConfig.path;
+    this.page = this.route.snapshot.params.page
     switch (this.page) {
       case 'experiences':
         this.experienceService.getList().subscribe(exs => {
