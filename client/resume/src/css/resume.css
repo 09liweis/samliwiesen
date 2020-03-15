@@ -52,8 +52,11 @@ ul li:hover {
 	transition: 1s ease-in;
 	font-size: 1.3em;
 }
+.navItem.active {
+	color:#000;
+}
 .navItem:hover {
-	text-decoration: underline;
+	color:#000;
 }
 .container {
 	max-width: 1200px;
