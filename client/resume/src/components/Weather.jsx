@@ -21,6 +21,7 @@ export default class Weather extends React.Component {
 			feels_like:'',
 			description:'',
 			icon: '',
+			country:'',
 			loading: true
 		};
 	}
@@ -48,6 +49,7 @@ export default class Weather extends React.Component {
 			const data = res.data;
 			const main = data.main;
 			const weather = data.weather[0];
+			const sys = data.sys;
 			this.setState({
 				description:weather.description,
 				feels_like:Math.floor(main.feels_like),
@@ -55,6 +57,7 @@ export default class Weather extends React.Component {
 				temp: Math.floor(main.temp),
 				temp_min:Math.floor(main.temp_min),
 				temp_max:Math.floor(main.temp_max),
+				country:sys.country,
 				icon: 'https://openweathermap.org/img/w/' + weather.icon + '.png',
 				loading: false
 			});
@@ -66,21 +69,24 @@ export default class Weather extends React.Component {
 	componentWillUnmount() {
 	}
 	render() {
-		const {loading,temp,temp_min,temp_max,city,icon,feels_like,description} = this.state;
+		const {country,loading,temp,temp_min,temp_max,city,icon,feels_like,description} = this.state;
 		return (
 			<Box className="weather">
 				<BoxTitle>
 					<i className="boxIcon fa fa-map-marker" aria-hidden="true"></i>
-					<span>{city} Weather</span>
+					<span>Weather</span>
 				</BoxTitle>
 				<BoxBody>
 					{loading ?
 					<i className="fa fa-spinner loading" aria-hidden="true"></i>
 					:
 					<InfoContainer>
-						<img src={icon}/>
 						<div>
+							<img src={icon}/>
 							<div>{temp} <sup>o</sup>C</div>
+						</div>
+						<div>
+							<div>{city}, {country}</div>
 							<div>{description}</div>
 							<div>{temp_max}<sup>o</sup>/{temp_min}<sup>o</sup> Feels like {feels_like} <sup>o</sup>C</div>
 						</div>
