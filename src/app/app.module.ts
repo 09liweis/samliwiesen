@@ -53,27 +53,19 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
         component: HomepageComponent
       },
       {
-        path: 'experiences',
+        path: ':page',
         component: PageListComponent
       },
       {
-        path: 'experience/:id',
+        path: 'experiences/:id',
         component: ExperienceFormComponent
       },
       {
-        path: 'projects',
-        component: PageListComponent
-      },
-      {
-        path: 'project/:id',
+        path: 'projects/:id',
         component: ProjectFormComponent
       },
       {
-        path: 'blogs',
-        component: PageListComponent
-      },
-      {
-        path: 'blog/:id',
+        path: 'blogs/:id',
         component: BlogFormComponent
       },
       {
