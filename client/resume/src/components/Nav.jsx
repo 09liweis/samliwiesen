@@ -29,19 +29,27 @@ class Nav extends React.Component {
 		});
 		setTimeout(() => {
 			this.setHighLight(id);
+			this.setState({highLightPosId:id});
 		}, 500);
 	}
 	navClick(id) {
+		this.setHighLight(id);
+		this.setState({highLightPosId:id});
+	}
+	navHover(id) {
 		this.setHighLight(id);
 	}
 	setHighLight(id) {
 		const el = document.getElementById(id);
 		const elData = el.getBoundingClientRect();
-		const offset = (window.innerWidth - 1200)/2;
+		let offset = 0;
+		if (window.innerWidth >= 1200) {
+			offset = (window.innerWidth - 1200)/2;
+		}
 		this.setState({highLightPosLeft:elData.left-offset,highLightPosWidth:elData.width});
 	}
 	render() {
-		const {highLightPosLeft,highLightPosWidth} = this.state;
+		const {highLightPosId,highLightPosLeft,highLightPosWidth} = this.state;
 		const {location} = this.props;
 		const pathName = location.pathname;
 		const links = navs.map((nav)=> {
@@ -50,7 +58,7 @@ class Nav extends React.Component {
 				navClass += ' active';
 			}
 			return (
-				<Link className={navClass} id={nav.tl} key={nav.url} to={nav.url} onClick={this.navClick.bind(this,nav.tl)}>
+				<Link className={navClass} id={nav.tl} key={nav.url} to={nav.url} onMouseEnter={this.navHover.bind(this,nav.tl)} onMouseLeave={this.navClick.bind(this,highLightPosId)} onClick={this.navClick.bind(this,nav.tl)}>
 					<i className={nav.icon}></i>
 					<span>{nav.tl}</span>
 				</Link>

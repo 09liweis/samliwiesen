@@ -57,7 +57,7 @@ ul li:hover {
 .navItem {
 	color: #06A763;
 	text-decoration: none;
-	transition: 1s ease-in;
+	transition: 0.3s ease-in;
 	font-size: 1.3em;
 }
 .navItem.active {
