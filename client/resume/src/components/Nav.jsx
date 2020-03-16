@@ -27,7 +27,9 @@ class Nav extends React.Component {
 				id = nav.tl;
 			}
 		});
-		this.setHighLight(id);
+		setTimeout(() => {
+			this.setHighLight(id);
+		}, 500);
 	}
 	navClick(id) {
 		this.setHighLight(id);
@@ -35,8 +37,8 @@ class Nav extends React.Component {
 	setHighLight(id) {
 		const el = document.getElementById(id);
 		const elData = el.getBoundingClientRect();
-		console.log(elData);
-		this.setState({highLightPosLeft:elData.left,highLightPosWidth:elData.width});
+		const offset = (window.innerWidth - 1200)/2;
+		this.setState({highLightPosLeft:elData.left-offset,highLightPosWidth:elData.width});
 	}
 	render() {
 		const {highLightPosLeft,highLightPosWidth} = this.state;
