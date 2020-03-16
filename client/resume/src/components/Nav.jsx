@@ -21,13 +21,13 @@ class Nav extends React.Component {
 	componentDidMount() {
 		const {location} = this.props;
 		const pathName = location.pathname;
-		//TODO
-		// navs.map((nav)=>{
-		// 	if (nav.url == pathName) {
-		// 		this.setHighLight(nav.tl);
-		// 		return nav.tl;
-		// 	}
-		// });
+		let id;
+		navs.map((nav)=>{
+			if (nav.url == pathName) {
+				id = nav.tl;
+			}
+		});
+		this.setHighLight(id);
 	}
 	navClick(id) {
 		this.setHighLight(id);
@@ -35,6 +35,7 @@ class Nav extends React.Component {
 	setHighLight(id) {
 		const el = document.getElementById(id);
 		const elData = el.getBoundingClientRect();
+		console.log(elData);
 		this.setState({highLightPosLeft:elData.left,highLightPosWidth:elData.width});
 	}
 	render() {
