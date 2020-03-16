@@ -36,7 +36,6 @@ ul li:hover {
 	width: 100%;
 	display:flex;
 	margin: auto;
-	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
 	padding: 10px;
 	justify-content:space-around;
 }
@@ -61,7 +60,13 @@ ul li:hover {
 	font-size: 1.3em;
 }
 .navItem.active {
+	animation: bounce 0.3s ease infinite alternate;
 	color:#000;
+}
+@keyframes bounce {
+  100% {
+    transform: translateY(-2px);
+  }
 }
 .navItem:hover {
 	color:#000;
@@ -128,7 +133,7 @@ ul li:hover {
   position: relative;
   top: 2px;
   display: inline-block;
-  animation: bounce 0.3s ease infinite alternate;
+  animation: textbounce 0.3s ease infinite alternate;
   font-size: 33px;
   color: #fff;
   text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc,
@@ -159,7 +164,7 @@ ul li:hover {
 #about span:nth-child(9) {
   animation-delay: 0.3s;
 }
-@keyframes bounce {
+@keyframes textbounce {
   100% {
     top: -20px;
     text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc,
