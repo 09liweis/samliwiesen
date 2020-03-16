@@ -65,7 +65,7 @@ class Nav extends React.Component {
 			)}
 		);
 		return(
-			<nav id="nav">
+			<nav id="nav" className="box-shadow">
 				<div id="navHighlight" style={{left:highLightPosLeft,width:highLightPosWidth}}></div>
 				{links}
 				{/* { window.localStorage.getItem('admin') ?
