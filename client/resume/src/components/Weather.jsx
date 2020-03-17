@@ -22,6 +22,8 @@ export default class Weather extends React.Component {
 			description:'',
 			icon: '',
 			country:'',
+			sunset:'',
+			sunrise:'',
 			loading: true
 		};
 	}
@@ -35,6 +37,13 @@ export default class Weather extends React.Component {
 				this.fetchWeather(this.state.lat, this.state.lon);
 			});
 		}
+	}
+	sun2Time(timestamp) {
+		const date = new Date(timestamp*1000);
+		const hour = date.getHours() > 9 ? date.getHours() : '0' + date.getHours();
+		const min = date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes();
+		const sec = date.getSeconds() > 9 ? date.getSeconds() : '0' + date.getSeconds();
+		return `${hour}:${min}:${sec}`;
 	}
 	fetchWeather(lat, lon) {
 		axios.get(api, {
@@ -51,6 +60,8 @@ export default class Weather extends React.Component {
 			const weather = data.weather[0];
 			const sys = data.sys;
 			this.setState({
+				sunrise:this.sun2Time(sys.sunrise),
+				sunset:this.sun2Time(sys.sunset),
 				description:weather.description,
 				feels_like:Math.floor(main.feels_like),
 				city: data.name,
@@ -69,7 +80,7 @@ export default class Weather extends React.Component {
 	componentWillUnmount() {
 	}
 	render() {
-		const {country,loading,temp,temp_min,temp_max,city,icon,feels_like,description} = this.state;
+		const {sunset,sunrise,country,loading,temp,temp_min,temp_max,city,icon,feels_like,description} = this.state;
 		return (
 			<Box className="weather">
 				<BoxTitle>
@@ -89,6 +100,8 @@ export default class Weather extends React.Component {
 							<div>{city}, {country}</div>
 							<div>{description}</div>
 							<div>{temp_max}<sup>o</sup>/{temp_min}<sup>o</sup> Feels like {feels_like} <sup>o</sup>C</div>
+							<div>Sun rise:{sunrise}</div>
+							<div>Sun set:{sunset}</div>
 						</div>
 					</InfoContainer>
 					}
