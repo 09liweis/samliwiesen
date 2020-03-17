@@ -3,9 +3,22 @@ import styled from 'styled-components';
 import axios from 'axios';
 import {Box, BoxTitle, BoxBody} from './style.jsx';
 
-const InfoContainer = styled.div`
+const Center = styled.div`
 	display:flex;
 	align-items:center;
+`;
+const WeatherDesc = styled.div`
+	font-weight:bold;
+	text-transform:capitalize;
+	font-size:20px;
+`;
+const WeatherWrapper = styled.section`
+	position:relative;
+`;
+const WeatherIcon = styled.img`
+	position:absolute;
+	top:0;
+	right:0;
 `;
 const api = 'https://api.openweathermap.org/data/2.5/weather';
 export default class Weather extends React.Component {
@@ -40,9 +53,12 @@ export default class Weather extends React.Component {
 	}
 	sun2Time(timestamp) {
 		const date = new Date(timestamp*1000);
-		const hour = date.getHours() > 9 ? date.getHours() : '0' + date.getHours();
-		const min = date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes();
-		const sec = date.getSeconds() > 9 ? date.getSeconds() : '0' + date.getSeconds();
+		let hour = date.getHours();
+		let min = date.getMinutes();
+		let sec = date.getSeconds();
+		hour = hour > 9 ? hour : '0' + hour;
+		min = min > 9 ? min : '0' + min;
+		sec = sec > 9 ? sec : '0' + sec;
 		return `${hour}:${min}:${sec}`;
 	}
 	fetchWeather(lat, lon) {
@@ -91,19 +107,20 @@ export default class Weather extends React.Component {
 					{loading ?
 					<i className="fa fa-spinner loading" aria-hidden="true"></i>
 					:
-					<InfoContainer>
+					<WeatherWrapper>
+						<WeatherIcon src={icon}/>
+						<WeatherDesc>{description}</WeatherDesc>
 						<div>
-							<img src={icon}/>
 							<div>{temp} <sup>o</sup>C</div>
 						</div>
 						<div>
 							<div>{city}, {country}</div>
-							<div>{description}</div>
+							
 							<div>{temp_max}<sup>o</sup>/{temp_min}<sup>o</sup> Feels like {feels_like} <sup>o</sup>C</div>
-							<div>Sun rise:{sunrise}</div>
-							<div>Sun set:{sunset}</div>
+							<div>Sun Rise: {sunrise}</div>
+							<div>Sun Set: {sunset}</div>
 						</div>
-					</InfoContainer>
+					</WeatherWrapper>
 					}
 				</BoxBody>
 			</Box>
