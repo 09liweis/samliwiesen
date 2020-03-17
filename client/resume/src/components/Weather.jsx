@@ -17,8 +17,8 @@ const WeatherWrapper = styled.section`
 `;
 const WeatherIcon = styled.img`
 	position:absolute;
-	top:0;
-	right:0;
+	top: -10px;
+  right: -5px;
 `;
 const api = 'https://api.openweathermap.org/data/2.5/weather';
 export default class Weather extends React.Component {
