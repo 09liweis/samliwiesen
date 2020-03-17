@@ -110,16 +110,9 @@ export default class Weather extends React.Component {
 					<WeatherWrapper>
 						<WeatherIcon src={icon}/>
 						<WeatherDesc>{description}</WeatherDesc>
-						<div>
-							<div>{temp} <sup>o</sup>C</div>
-						</div>
-						<div>
-							<div>{city}, {country}</div>
-							
-							<div>{temp_max}<sup>o</sup>/{temp_min}<sup>o</sup> Feels like {feels_like} <sup>o</sup>C</div>
-							<div>Sun Rise: {sunrise}</div>
-							<div>Sun Set: {sunset}</div>
-						</div>
+						<div><span style={{'font-size':'30px'}}>{temp} <sup>o</sup></span> <span>{city}, {country}</span></div>
+						<div>{temp_max}<sup>o</sup>/{temp_min}<sup>o</sup> Feels like {feels_like} <sup>o</sup>C</div>
+						<div>Sun: {sunrise}/{sunset}</div>
 					</WeatherWrapper>
 					}
 				</BoxBody>
