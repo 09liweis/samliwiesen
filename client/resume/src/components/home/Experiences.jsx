@@ -1,9 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect,useSelector,useDispatch } from 'react-redux';
+import {getExperiences} from '../../actions/experience';
 
 import {Box, BoxTitle, BoxBody, ExperienceDate} from '../style.jsx';
 
-const Experiences = ({experiences}) => {
+// const Experiences = ({experiences}) => {
+const Experiences = () => {
+	const dispatch = useDispatch();
+	const experiences = useSelector(state => state.experiences);
 	const exs = experiences.map((e, i) => {
 		const duties = e.duty.map((d, j) => {
 			return (
@@ -34,9 +38,9 @@ const Experiences = ({experiences}) => {
 		</Box>
 	);
 };
+export default Experiences;
+// const mapStateToProps = ({experiences}) => ({
+//   experiences
+// });
 
-const mapStateToProps = ({experiences}) => ({
-  experiences
-});
-
-export default connect(mapStateToProps)(Experiences);
+// export default connect(mapStateToProps)(Experiences);

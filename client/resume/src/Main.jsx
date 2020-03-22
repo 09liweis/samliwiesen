@@ -1,22 +1,18 @@
 import React,{ Suspense, lazy } from 'react';
 import { HashRouter, Switch, Route, browserHistory  } from 'react-router-dom';
 
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import thunk from 'redux-thunk';
-import reducer from './reducer';
-import { getCharacters } from './reducer/characters/actions';
+import reducer from './reducers';
+// import { getCharacters } from './reducer/characters/actions';
 
 import Nav from './components/Nav.jsx';
 import Clock from './components/Clock.jsx';
 import Weather from './components/Weather.jsx';
 import About from './components/About.jsx';
-// import Footer from './components/Footer.jsx';
 
-// import Transactions from './pages/Transactions.jsx';
-// import Clock from './pages/Clock.jsx';
-// import MusicPlayer from './pages/MusicPlayer.jsx';
 import Home from './pages/Home.jsx';
 import Todo from './pages/Todo.jsx';
 import Movies from './pages/Movies.jsx';
@@ -33,9 +29,6 @@ const store = createStore(reducer, compose(
 	applyMiddleware(thunk),
 	window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
 ));
-
-store.dispatch(getCharacters());
-
 export default class Main extends React.Component {
 	render() {
 		return ([
@@ -63,7 +56,6 @@ export default class Main extends React.Component {
 					</Suspense>
 				</HashRouter>
 			</Provider>,
-			// <Footer key="footer" />
 		]);
 	}
 }

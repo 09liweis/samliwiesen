@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect,useSelector,useDispatch } from 'react-redux';
 
 import styled from 'styled-components';
 
@@ -13,8 +13,9 @@ const Link = styled.a`
 		color: #06A763;
 	}
 `;
-
-const Projects = ({projects}) => {
+const Projects = () => {
+// const Projects = ({projects}) => {
+	const projects = useSelector(state => state.projects);
 	const pros = projects.map((p, i) => {
 		const steps = p.steps.map((s, j) => {
 			return (
@@ -43,9 +44,9 @@ const Projects = ({projects}) => {
 		</Box>
 	);
 };
+export default Projects;
+// const mapStateToProps = ({projects}) => ({
+//   projects
+// });
 
-const mapStateToProps = ({projects}) => ({
-  projects
-});
-
-export default connect(mapStateToProps)(Projects);
+// export default connect(mapStateToProps)(Projects);
