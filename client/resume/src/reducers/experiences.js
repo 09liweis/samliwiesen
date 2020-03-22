@@ -39,7 +39,12 @@ const initialExperiences = [
 ];
 
 const experiences = (state = initialExperiences, action) => {
-  return state;
+	switch(action.type) {
+		case 'GET_EXPERIENCES':
+			return state;
+		default:
+			return state;
+	}
 };
 
 export default experiences;
