@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect,useSelector,useDispatch } from 'react-redux';
 import { Link,withRouter } from 'react-router-dom';
-import {setNav} from '../actions/nav.js';
+import {setNav,hoverNav} from '../actions/nav.js';
 const navs = [
 	{url:'/',tl:'home',icon:'fa fa-home'},
 	{url:'/movies',tl:'movies',icon:'fa fa-film'},
@@ -10,19 +10,34 @@ const navs = [
 	{url:'/comments',tl:'comments',icon:'fa fa-comments'},
 ];
 
-const Nav = () => {
+const getTlWithUrl = (url)=> {
+	let id;
+	navs.map((nav)=>{
+		if (nav.url == url) {
+			id = nav.tl;
+		}
+	});
+	return id;
+}
+
+const Nav = (props) => {
 	const nav = useSelector(state => state.nav);
 	const dispatch = useDispatch();
 	const {highLightPosId,highLightPosLeft,highLightPosWidth} = nav;
-	// const {location} = this.props;
-	// const pathName = location.pathname;
+	const {location} = props;
+	const tl = getTlWithUrl(location.pathname);
+	if (highLightPosId == '') {
+		setTimeout(()=>{
+			dispatch(setNav(tl));
+		},500);
+	}
 	const links = navs.map((nav)=> {
 		let navClass = 'navItem';
-		// if (nav.url == pathName) {
-		// 	navClass += ' active';
-		// }
+		if (nav.tl == tl) {
+			navClass += ' active';
+		}
 		return (
-			<Link className={navClass} id={nav.tl} key={nav.url} to={nav.url} onClick={()=>dispatch(setNav(nav.tl))}>
+			<Link className={navClass} id={nav.tl} key={nav.url} to={nav.url} onMouseEnter={()=>dispatch(hoverNav(nav.tl))} onMouseLeave={()=>dispatch(setNav(highLightPosId))} onClick={()=>dispatch(setNav(nav.tl))}>
 			{/* <Link className={navClass} id={nav.tl} key={nav.url} to={nav.url} onMouseEnter={this.navHover.bind(this,nav.tl)} onMouseLeave={this.navClick.bind(this,highLightPosId)} onClick={this.navClick.bind(this,nav.tl)}> */}
 				<i className={nav.icon}></i>
 				<span>{nav.tl}</span>
@@ -36,4 +51,4 @@ const Nav = () => {
 		</nav>
 	);
 }
-export default Nav;
+export default withRouter(Nav);
