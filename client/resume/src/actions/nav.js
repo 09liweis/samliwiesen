@@ -1,14 +1,24 @@
-export const setNav = (navId) => {
-  console.log(navId);
-  const el = document.getElementById(navId);
+export const getNavClientRect = (id) => {
+  const el = document.getElementById(id);
   const elData = el.getBoundingClientRect();
   let offset = 0;
   if (window.innerWidth >= 1200) {
     offset = (window.innerWidth - 1200)/2;
   }
-  console.log({highLightPosLeft:elData.left-offset,highLightPosWidth:elData.width});
+  return {highLightPosLeft:elData.left-offset,highLightPosWidth:elData.width}
+}
+
+export const setNav = (navId) => {
+  const {highLightPosLeft,highLightPosWidth} = getNavClientRect(navId);
   return {
     type:'SET_NAV',
-    payload:{highLightPosId:navId,highLightPosLeft:elData.left-offset,highLightPosWidth:elData.width}
+    payload:{highLightPosId:navId,highLightPosLeft,highLightPosWidth}
   };
 };
+export const hoverNav = (navId) => {
+  const {highLightPosLeft,highLightPosWidth} = getNavClientRect(navId);
+  return {
+    type:'HOVER_NAV',
+    payload:{highLightPosLeft,highLightPosWidth}
+  }
+}
