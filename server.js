@@ -16,6 +16,7 @@ blogRoute = require('./server/routes/blog'),
 commentRoute = require('./server/routes/comment'),
 SiteRoute = require('./server/routes/site'),
 newsRoute = require('./server/routes/news'),
+couponsRoute = require('./server/routes/coupons'),
 userRoute = require('./server/routes/user'),
 visualRoute = require('./server/routes/visual'),
 categoryRoute = require('./server/routes/category'),
@@ -94,6 +95,7 @@ app.use('/api/blogs', blogRoute);
 app.use('/api/comments', commentRoute);
 app.use('/api/sites', SiteRoute);
 app.use('/api/news', newsRoute);
+app.use('/api/coupons', couponsRoute);
 app.use('/api/user',userRoute);
 app.use('/api/visuals', visualRoute);
 app.use('/api/category', categoryRoute);
