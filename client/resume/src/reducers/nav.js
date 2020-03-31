@@ -3,9 +3,7 @@ const navReducer = (state = {highLightPosId:'',highLightPosLeft:0,highLightPosWi
 		case 'SET_NAV':
 			return action.payload;
 		case 'HOVER_NAV':
-			const highLightPosLeft = action.payload.highLightPosLeft;
-			const highLightPosWidth = action.payload.highLightPosWidth;
-			return {highLightPosId:state.highLightPosId,highLightPosLeft,highLightPosWidth}
+			return Object.assign({}, state, action.payload);
 		default:
 			return state;
 	}
