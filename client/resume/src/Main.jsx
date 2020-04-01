@@ -34,7 +34,6 @@ export default class Main extends React.Component {
 		return ([
 			<Provider store={store} key="provider">
 				<HashRouter key="page">
-					<Suspense fallback={<div>Loading...</div>}>
 					<div>
 						<Nav key="nav" />
 						<div id="mainContainer" className="container">
@@ -53,7 +52,6 @@ export default class Main extends React.Component {
 							</main>
 						</div>
 					</div>
-					</Suspense>
 				</HashRouter>
 			</Provider>,
 		]);
