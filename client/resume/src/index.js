@@ -24,8 +24,5 @@ console.log(`く__,.ヘヽ.　　　　/　,ー､ 〉
 　　　　　 　　　ﾄ-,/　|___./
 　　　　　 　　　'ｰ'　　!_,.:`);
 const root = document.getElementById('root');
-render(
-	<Main />,
-	root
-);
+render(<Main />,root);
 root.classList.remove('root');
