@@ -29,6 +29,3 @@ render(
 	root
 );
 root.classList.remove('root');
-// setTimeout(function() {
-	
-// }, 500);
