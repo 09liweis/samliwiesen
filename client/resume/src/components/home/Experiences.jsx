@@ -8,6 +8,9 @@ import {Box, BoxTitle, BoxBody, ExperienceDate} from '../style.jsx';
 const Experiences = () => {
 	const dispatch = useDispatch();
 	const experiences = useSelector(state => state.experiences);
+	if (experiences.length == 0) {
+		dispatch(getExperiences());
+	}
 	const exs = experiences.map((e, i) => {
 		const duties = e.duty.map((d, j) => {
 			return (
@@ -19,7 +22,7 @@ const Experiences = () => {
 		return (
 			<div className="experience" key={i}>
 				<h3>{e.company} - {e.title}</h3>
-				<ExperienceDate><i className="boxIcon fa fa-calendar" aria-hidden="true"></i>{e.date}</ExperienceDate>
+		<ExperienceDate><i className="boxIcon fa fa-calendar" aria-hidden="true"></i>{e.start_date} - {e.end_date}</ExperienceDate>
 				<ul className="list">
 					{duties}
 				</ul>
