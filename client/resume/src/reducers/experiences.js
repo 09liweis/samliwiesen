@@ -38,10 +38,10 @@ const initialExperiences = [
 	}
 ];
 
-const experiences = (state = initialExperiences, action) => {
+const experiences = (state = [], action) => {
 	switch(action.type) {
 		case 'GET_EXPERIENCES':
-			return state;
+			return action.ex;
 		default:
 			return state;
 	}
