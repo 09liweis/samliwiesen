@@ -3,6 +3,7 @@ import { ActivatedRoute, Params }   from '@angular/router';
 
 import { ExperienceService } from '../../services/experience.service';
 import { BlogService } from '../../services/blog.service';
+import { ProjectService } from '../../services/project.service';
 
 @Component({
   selector: 'app-page-list',
@@ -16,6 +17,7 @@ export class PageListComponent implements OnInit {
   constructor(
     private experienceService: ExperienceService,
     private blogService: BlogService,
+    private projectService: ProjectService,
     private route: ActivatedRoute,
   ) { }
 
@@ -29,6 +31,10 @@ export class PageListComponent implements OnInit {
         break;
       case 'blogs':
         this.blogService.getList().subscribe(exs => {
+          this.results = exs;
+        });
+      case 'projects':
+        this.projectService.getList().subscribe(exs => {
           this.results = exs;
         });
       default:
