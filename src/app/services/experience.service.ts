@@ -29,7 +29,7 @@ export class ExperienceService {
     if (experience._id != '') {
       return this.http.put(genAPI(this.endpoint + '/' + experience._id), experience, httpOptions);
     } else {
-      return this.http.post(genAPI(this.endpoint + '/' + experience._id), experience, httpOptions);
+      return this.http.post(genAPI(this.endpoint + '/'), experience, httpOptions);
     }
   }
 }
