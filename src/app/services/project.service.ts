@@ -11,23 +11,23 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ProjectService {
-  private api = genAPI('projects',true);
+  private endpoint = 'projects';
   constructor(private http: HttpClient) { }
   
   getList(): Observable<any> {
-    return this.http.get(this.api);
+    return this.http.get(genAPI(this.endpoint));
   }
   
   getDetail(id: string): Observable<any> {
-    return this.http.get(this.api + id);
+    return this.http.get(genAPI(this.endpoint+'/'+id));
   }
   
   submit(project): Observable<any> {
     if (project._id != '') {
-      return this.http.put(this.api + project._id, project, httpOptions);
+      return this.http.put(genAPI(this.endpoint + '/' + project._id), project, httpOptions);
     } else {
       delete project._id;
-      return this.http.post(this.api, project, httpOptions);
+      return this.http.post(genAPI(this.endpoint), project, httpOptions);
     }
   }
 }
