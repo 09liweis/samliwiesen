@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {Box, BoxTitle, BoxBody} from '../components/style.jsx';
 
 import '../css/blogs.css';
 
@@ -40,17 +41,15 @@ export default class Blogs extends React.Component {
 			);
 		});
 		return (
-			<div className="container">
-				<h2 className="blogs__title">Blogs</h2>
-				<div className="blogs__container">
-					<div className="blog__list">
-						{blogs}
-					</div>
-					<aside className="blog__sidebar">
-						<h2>Side bar</h2>
-					</aside>
-				</div>
-			</div>
+			<Box className="movies">
+				<BoxTitle>
+					<i className="boxIcon fa fa-film" aria-hidden="true"></i>
+					<span>Blogs</span>
+				</BoxTitle>
+				<BoxBody>
+					{blogs}
+				</BoxBody>
+			</Box>
 		);
 	}
 }
