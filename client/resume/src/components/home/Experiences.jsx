@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect,useSelector,useDispatch } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 import {getExperiences} from '../../actions/experience';
 
 import {Box, BoxTitle, BoxBody, ExperienceDate} from '../style.jsx';
