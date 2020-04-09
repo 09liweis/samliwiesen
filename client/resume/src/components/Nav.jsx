@@ -38,7 +38,6 @@ const Nav = (props) => {
 		}
 		return (
 			<Link className={navClass} id={nav.tl} key={nav.url} to={nav.url} onMouseEnter={()=>dispatch(hoverNav(nav.tl))} onClick={()=>dispatch(setNav(nav.tl))}>
-			{/* <Link className={navClass} id={nav.tl} key={nav.url} to={nav.url} onMouseEnter={this.navHover.bind(this,nav.tl)} onMouseLeave={this.navClick.bind(this,highLightPosId)} onClick={this.navClick.bind(this,nav.tl)}> */}
 				<i className={nav.icon}></i>
 				<span>{nav.tl}</span>
 			</Link>
