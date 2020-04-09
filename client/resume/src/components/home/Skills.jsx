@@ -41,8 +41,3 @@ const Skills = () => {
 	);
 };
 export default Skills;
-// const mapStateToProps = ({skills}) => ({
-//   skills
-// });
-
-// export default connect(mapStateToProps)(Skills);
