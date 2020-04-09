@@ -37,7 +37,7 @@ const Nav = (props) => {
 			navClass += ' active';
 		}
 		return (
-			<Link className={navClass} id={nav.tl} key={nav.url} to={nav.url} onMouseEnter={()=>dispatch(hoverNav(nav.tl))} onMouseLeave={()=>dispatch(setNav(highLightPosId))} onClick={()=>dispatch(setNav(nav.tl))}>
+			<Link className={navClass} id={nav.tl} key={nav.url} to={nav.url} onMouseEnter={()=>dispatch(hoverNav(nav.tl))} onClick={()=>dispatch(setNav(nav.tl))}>
 			{/* <Link className={navClass} id={nav.tl} key={nav.url} to={nav.url} onMouseEnter={this.navHover.bind(this,nav.tl)} onMouseLeave={this.navClick.bind(this,highLightPosId)} onClick={this.navClick.bind(this,nav.tl)}> */}
 				<i className={nav.icon}></i>
 				<span>{nav.tl}</span>
@@ -45,7 +45,7 @@ const Nav = (props) => {
 		)}
 	);
 	return(
-		<nav id="nav" className="box-shadow">
+		<nav id="nav" className="box-shadow" onMouseLeave={()=>dispatch(setNav(highLightPosId))}>
 			<div id="navHighlight" style={{left:highLightPosLeft,width:highLightPosWidth}}></div>
 			{links}
 		</nav>
