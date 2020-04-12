@@ -9,10 +9,6 @@ import '../css/transaction.css';
 import Transaction from '../components/Transaction.jsx';
 
 let apiDomain = 'https://samliweisen.herokuapp.com/';
-// if (window.location.host.indexOf('a09liweis') > -1) {
-//     apiDomain = 'https://samliweisen-a09liweis.c9users.io/';
-// }
-
 
 // Desktop design
 // https://dribbble.com/shots/3555301-Qonto-transactions-dashboard-V0/attachments/791018
