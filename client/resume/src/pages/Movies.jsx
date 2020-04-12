@@ -38,12 +38,10 @@ export default class Movies extends React.Component {
   }
   render() {
     const visuals = this.state.visuals.map((v) => {
-      // status += ' visual__status';
       return (
         <Movie v={v} key={v.id} />
       );
-    }
-    );
+    });
     const loading = this.state.loading;
     return (
       <Box className="movies">
