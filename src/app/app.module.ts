@@ -18,6 +18,7 @@ import { ExperienceService } from './services/experience.service';
 
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
+import { TransactionsComponent } from './pages/transactions/transactions.component';
 import { ExperienceFormComponent } from './forms/experience-form/experience-form.component';
 import { PageListComponent } from './pages/page-list/page-list.component';
 import { ProjectFormComponent } from './forms/project-form/project-form.component';
@@ -28,6 +29,7 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
   declarations: [
     AppComponent,
     HomepageComponent,
+    TransactionsComponent,
     ExperienceFormComponent,
     PageListComponent,
     ProjectFormComponent,
@@ -55,6 +57,10 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
       {
         path: ':page',
         component: PageListComponent
+      },
+      {
+        path: 'transactions',
+        component: TransactionsComponent
       },
       {
         path: 'experiences/:id',
