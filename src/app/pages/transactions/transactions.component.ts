@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { TransactionService } from '../../services/transaction.service';
 
 @Component({
-  selector: 'app-homepage',
+  selector: 'app-transactions',
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.scss']
 })
@@ -15,6 +15,7 @@ export class TransactionsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log('test');
     this.transactionService.getList().subscribe(ret => {
       this.trans = ret;
     });

@@ -1,3 +1,9 @@
-<p>
-  gallery works!
-</p>
+<div id="transactions">
+  <a class="" routerLink="/transactions/new">Add New</a>
+  <div class="transaction" *ngFor="let t of trans">
+    <div class="transaction__title">{{t.title}}</div>
+    <div class="transaction__price">{{t.price}}</div>
+    <div class="transaction__category">{{t.category}}</div>
+    <div class="transaction__date">{{t.date}}</div>
+  </div>
+</div>

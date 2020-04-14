@@ -1,0 +1,24 @@
+.transaction {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+
+  &__title {
+    flex: 2;
+  }
+
+  &__price {
+    flex: 1;
+  }
+
+  &__category {
+    flex: 1;
+  }
+
+  &__date {
+    flex: 1;
+  }
+}
