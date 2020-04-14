@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { TransactionService } from '../../services/transaction.service';
-import { Transaction } from '../../models/transaction';
+// import { Transaction } from '../../models/transaction';
 
 @Component({
   selector: 'app-transaction-form',
@@ -11,7 +11,7 @@ import { Transaction } from '../../models/transaction';
 })
 export class TransactionFormComponent implements OnInit {
   
-  public transaction: Transaction = {
+  public transaction = {
     _id: '',
     title: '',
     price: 0,
