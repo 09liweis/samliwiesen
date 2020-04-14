@@ -23,6 +23,7 @@ import { ExperienceFormComponent } from './forms/experience-form/experience-form
 import { PageListComponent } from './pages/page-list/page-list.component';
 import { ProjectFormComponent } from './forms/project-form/project-form.component';
 import { BlogFormComponent } from './forms/blog-form/blog-form.component';
+import { TransactionFormComponent } from './forms/transaction-form/transaction-form.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 
 @NgModule({
@@ -31,6 +32,7 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
     HomepageComponent,
     TransactionsComponent,
     ExperienceFormComponent,
+    TransactionFormComponent,
     PageListComponent,
     ProjectFormComponent,
     BlogFormComponent,
@@ -57,6 +59,10 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
       {
         path: 'transactions',
         component: TransactionsComponent
+      },
+      {
+        path: 'transactions/:id',
+        component: TransactionFormComponent
       },
       {
         path: ':page',
