@@ -1,4 +1,4 @@
-export class Project {
+export class Transaction {
 	constructor(
 		public _id: string,
 		public title: string,
