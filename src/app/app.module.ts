@@ -55,12 +55,12 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
         component: HomepageComponent
       },
       {
-        path: ':page',
-        component: PageListComponent
-      },
-      {
         path: 'transactions',
         component: TransactionsComponent
+      },
+      {
+        path: ':page',
+        component: PageListComponent
       },
       {
         path: 'experiences/:id',
