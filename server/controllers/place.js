@@ -1,4 +1,5 @@
 const https = require('https');
+var ObjectID = require('mongodb').ObjectID
 var Place = require('../models/place');
 var Transaction = require('../models/transaction');
 const API_KEY = 'AIzaSyA74jvNet0DufU8aoTe39dELLy2rVMeuos';
@@ -48,14 +49,21 @@ exports.place_update_random = async (req,res) =>{
 };
 
 exports.place_list = (req, res) => {
-	Place.find({}, '_id place_id icon name address lat lng rating photos types').sort('-updated_at').exec((err, places) => {
+	Place.find({}, '_id place_id icon name address lat lng rating photos types').sort('-created_at').exec((err, places) => {
 		if (err) return res.json(err);
 		res.status(200).json(places);
 	});
 };
 
 exports.place_detail = async function(req, res) {
+	const id = req.params.id;
+	if (!ObjectID.isValid(id)) {
+		return res.status(200).json({msg:'Place Id is not valid'});
+	}
 	const p = await Place.findById(req.params.id);
+	if (!p) {
+		return res.status(200).json({msg:'No Place Found'});
+	}
 	const transactions = await Transaction.find({place: p._id},'_id title price date category');
 	p.transactions = transactions
 	res.status(200).json(p);
