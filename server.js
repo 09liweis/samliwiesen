@@ -44,23 +44,23 @@ mongoose.connection.on('disconnected', function () {
 }); 
 
 app.use(function (req, res, next) {
-	const origins = ['https://what-i-watched.herokuapp.com/','https://samliweisen.herokuapp.com/','https://40be6f621cdf43b78d3827c72b7093c0.vfs.cloud9.us-east-1.amazonaws.com','http://localhost:4042','http://localhost:8081'];
-	// Website you wish to allow to connect
-	if (origins.indexOf(req.headers.origin) > -1) {
-		res.setHeader('Access-Control-Allow-Origin', req.headers.origin);   
-	}
-	if (req.query && req.query.origin && req.query.origin == 'localhost') {
-		res.setHeader('Access-Control-Allow-Origin','*');
-	}
-	// Request methods you wish to allow
-	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-	// Request headers you wish to allow
-	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-	// Set to true if you need the website to include cookies in the requests sent
-	// to the API (e.g. in case you use sessions)
-	res.setHeader('Access-Control-Allow-Credentials', true);
-	// Pass to next layer of middleware
-	next();
+  const origins = ['https://what-i-watched.herokuapp.com/','https://samliweisen.herokuapp.com/','https://40be6f621cdf43b78d3827c72b7093c0.vfs.cloud9.us-east-1.amazonaws.com','http://localhost:4042','http://localhost:8081'];
+  // Website you wish to allow to connect
+  if (origins.indexOf(req.headers.origin) > -1) {
+    res.setHeader('Access-Control-Allow-Origin', req.headers.origin);   
+  }
+  if (req.query && req.query.origin && req.query.origin == 'localhost') {
+    res.setHeader('Access-Control-Allow-Origin','*');
+  }
+  // Request methods you wish to allow
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  // Request headers you wish to allow
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  // Set to true if you need the website to include cookies in the requests sent
+  // to the API (e.g. in case you use sessions)
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  // Pass to next layer of middleware
+  next();
 });
 app.use('/assets', express.static(path.join(__dirname) + '/assets'));
 app.use('/dashboard', express.static(path.join(__dirname) + '/dashboard'));
@@ -101,6 +101,6 @@ app.use('/api/visuals', visualRoute);
 app.use('/api/category', categoryRoute);
 
 app.listen(port, () => {
-	console.log('Web server runs on: ' + port);
-	console.log(new Date());
+  console.log('Web server runs on: ' + port);
+  console.log(new Date());
 });
