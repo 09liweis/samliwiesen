@@ -38,11 +38,14 @@ exports.category_list = (req, res) => {
 };
 upsertTransaction = async (req,res) =>{
   transactionData = {
-    title: req.body.title,
     price: req.body.price,
     date: req.body.date,
     category: req.body.category
   };
+  const title = req.body.title;
+  if (title) {
+    transactionData.title = title;
+  }
   const place = req.body.place;
   let p;
   if (typeof place != 'undefined') {
