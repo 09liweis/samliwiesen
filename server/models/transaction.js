@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const TransactionSchema = new Schema({
   title: {
     type: String,
-    required: 'Title is required for transaction'
   },
   price: {
     type: Number,
