@@ -1,9 +1,9 @@
 <div id="transactions">
   <a class="" routerLink="/transactions/new">Add New</a>
-  <div class="transaction" *ngFor="let t of trans">
-    <a [routerLink]="['/transactions', t._id]" class="transaction__title">{{t.title}}</a>
-    <div class="transaction__price">{{t.price}}</div>
-    <div class="transaction__category">{{t.category}}</div>
-    <div class="transaction__date">{{t.date}}</div>
-  </div>
+  <a class="transaction" *ngFor="let t of trans" [routerLink]="['/transactions', t._id]">
+    <span class="transaction__date">{{t.date}}</span>
+    <span class="transaction__price">{{t.price}}</span>
+    <span class="transaction__category">{{t.category}}</span>
+    <span class="transaction__title">{{t.title}}</span>
+  </a>
 </div>
