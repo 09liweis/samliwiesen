@@ -14,8 +14,14 @@ export class TransactionService {
   private endpoint = 'transactions';
   constructor(private http: HttpClient) { }
   
-  getList(): Observable<any> {
-    return this.http.get(genAPI(this.endpoint));
+  getList(filters={}): Observable<any> {
+    let query = '';
+    for (let k in filters) {
+      if (filters[k]){
+        query += `&${k}=${filters[k]}`;
+      }
+    }
+    return this.http.get(genAPI(this.endpoint+query));
   }
   
   getDetail(id: string): Observable<any> {
