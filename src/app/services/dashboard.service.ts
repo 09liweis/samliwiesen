@@ -13,7 +13,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class DashboardService {
-  private api = genAPI('dashboard',true);
+  private api = genAPI('dashboard');
 
   constructor(private http: HttpClient) { }
   
