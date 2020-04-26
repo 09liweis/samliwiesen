@@ -23,6 +23,10 @@ export class TransactionService {
     }
     return this.http.get(genAPI(this.endpoint+query));
   }
+
+  getCategores(): Observable<any> {
+    return this.http.get(genAPI(this.endpoint+'/categories'));
+  }
   
   getDetail(id: string): Observable<any> {
     return this.http.get(genAPI(this.endpoint+'/'+id));
