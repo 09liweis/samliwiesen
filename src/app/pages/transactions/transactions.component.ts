@@ -9,8 +9,9 @@ import { TransactionService } from '../../services/transaction.service';
 })
 export class TransactionsComponent implements OnInit {
   public trans = [];
+  public categories = [];
   public filters = {
-    limit:30,
+    limit:'all',
     date: '',
     category: ''
   }
@@ -20,10 +21,10 @@ export class TransactionsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('test');
-    this.transactionService.getList().subscribe(ret => {
-      this.trans = ret;
-    });
+    this.getTransactions();
+    this.transactionService.getCategores().subscribe(ret=>{
+      this.categories = ret;
+    })
   }
 
   getTransactions() {
