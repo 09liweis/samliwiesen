@@ -10,53 +10,53 @@ html {
   height: 100%;
 }
 body {
-	min-height: 100%;
-	padding: 0;
-	margin: 0;
-	font-family: 'Roboto', sans-serif;
-	background-color: #edf3f7;
-	// background-attachment: fixed;
-	// background-size: cover;
-	// background-repeat: no-repeat;
-	color: #7e8282;
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #edf3f7;
+  // background-attachment: fixed;
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  color: #7e8282;
 }
 a {
 	color:#535959;
-	text-decoration: none;
-	transition: 0.3s;
-	&:hover {
-		opacity: 0.8;
-	}
+  text-decoration: none;
+  transition: 0.3s;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 .container {
-	width: 100%;
-	margin: auto;
-	min-height: 100%;
-	position: absolute;
+  width: 100%;
+  margin: auto;
+  min-height: 100%;
+  position: absolute;
 }
 .mat-form-field {
-	display: block;
-	width: 100%;
+  display: block;
+  width: 100%;
 }
 .input {
-	width: 100%;
-	padding: 10px;
-	border: none;
-	border-bottom: 1px solid #ccc;
-	margin-bottom: 10px;
-	transition: 0.4s;
-	&:focus {
-		border: none;
-		outline: none;
-		border-bottom: 1px solid green;
-	}
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+  transition: 0.4s;
+  &:focus {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid green;
+  }
 }
 .button {
-	padding:10px;
-	background-color:#aac146;
-	color:#fff;
-	display:inline-block;
-	&:hover {
-		text-decoration:none;
-	}
+  padding:10px;
+  background-color:#aac146;
+  color:#fff;
+  display:inline-block;
+  &:hover {
+    text-decoration:none;
+  }
 }
