@@ -11,16 +11,16 @@ Vue.use(VueRouter);
 
 export default new VueRouter({
 	//mode: 'history',
-	base: __dirname,
-	routes: [
-		{ path: '/', component: Visuals, name: 'home' },
-		{ path: '/page/:pageId', component: Visuals, name: 'page' },
-		{ path: '/add', component: VisualForm },
-		{ path: '/edit/:id', component: VisualForm, name: 'edit' },
-		
-		{ path: '/:id/song/add', component: SongForm, name: 'addSong' },
-		{ path: '/song/:songId/edit', component: SongForm, name: 'editSong' },
-		
-		{ path: '/:id/image/add', component: ImageForm, name: 'addImage'}
-	]
+  base: __dirname,
+  routes: [
+    { path: '/', component: Visuals, name: 'home' },
+    { path: '/page/:pageId', component: Visuals, name: 'page' },
+    { path: '/add', component: VisualForm },
+    { path: '/edit/:id', component: VisualForm, name: 'edit' },
+    
+    { path: '/:id/song/add', component: SongForm, name: 'addSong' },
+    { path: '/song/:songId/edit', component: SongForm, name: 'editSong' },
+    
+    { path: '/:id/image/add', component: ImageForm, name: 'addImage'}
+  ]
 });
