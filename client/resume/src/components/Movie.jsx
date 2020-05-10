@@ -83,10 +83,12 @@ export default class Movie extends React.Component {
     const movieHref = "/movie/" + v.id;
     return (
       <Visual>
-        <VisualContainer to={movieHref}>
+        <VisualContainer>
           <Status className={status}>{v.current_episode}/{v.episodes}</Status>
           <ReleaseDate>{v.release_date.substr(0,4)}</ReleaseDate>
-          <img className="visual__image" src={v.poster} alt={v.original_title} onError={(e)=>this.handleErrorImg(e)} />
+          <Link to={movieHref}>
+            <img className="visual__image" src={v.poster} alt={v.original_title} onError={(e)=>this.handleErrorImg(e)} />
+          </Link>
           <div className="visual__detail">
             <VisualTitle>{v.title}</VisualTitle>
             <div className="visual__ratings">
