@@ -1,4 +1,5 @@
 export const getNavClientRect = (id) => {
+  if (!id) return {highLightPosLeft:0,highLightPosWidth:0};
   const el = document.getElementById(id);
   const elData = el.getBoundingClientRect();
   let offset = 0;
