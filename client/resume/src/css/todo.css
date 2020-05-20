@@ -1,15 +1,15 @@
 .todos__title {
-	text-align: center;
-	font-size: 2em;
-	width: 100%;
-	margin-bottom: 20px;
+  text-align: center;
+  font-size: 2em;
+  width: 100%;
+  margin-bottom: 20px;
 }
 .todos__container {
-	width: 100%;
-	max-width: 624px;
-	margin: auto;
-	padding: 0 15px;
-	text-align:center;
+  width: 100%;
+  max-width: 624px;
+  margin: auto;
+  padding: 0 15px;
+  text-align:center;
 }
 .todos_error {
 	text-align: center;
