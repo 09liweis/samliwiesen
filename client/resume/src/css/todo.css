@@ -47,17 +47,17 @@
   transform: translateX(0);
 }
 .todo__statics {
-	text-align: center;
-	margin-top: 15px;
+  text-align: center;
+  margin-top: 15px;
 }
 .todo__statics span {
-	display: inline-block;
-	border-left-width: 5px;
-	border-left-style: solid;
-	padding: 10px;
-	margin-right: 15px;
-	background-color: #ffffff;
-	cursor: pointer;
+  display: inline-block;
+  border-left-width: 5px;
+  border-left-style: solid;
+  padding: 10px;
+  margin-right: 15px;
+  background-color: #ffffff;
+  cursor: pointer;
 }
 .pending {
   border-left-color: #ff000096;
@@ -69,30 +69,30 @@
   border-left-color: #8080ea;
 }
 .todo__title {
-	font-size: 1.5em;
-	border: none;
-	padding: 10px;
-	width: 100%;
+  font-size: 1.5em;
+  border: none;
+  padding: 10px;
+  width: 100%;
 }
 .todo__title:focus {
-	border: none;
-	outline: none;
+  border: none;
+  outline: none;
 }
 .todo__actions {
-	position: absolute;
-	right: 0;
-	top: 0;
-	transform: translateX(150px);
-	display: flex;
-	transition: all 0.3s ease;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateX(150px);
+  display: flex;
+  transition: all 0.3s ease;
 }
 .todo__edit,
 .todo__remove,
 .todo__complete {
-	cursor: pointer;
-	color: #ffffff;
-	padding: 10px;
-	line-height: 28px;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 10px;
+  line-height: 28px;
 }
 .todo__edit {
 	background-color:#8080ea;
