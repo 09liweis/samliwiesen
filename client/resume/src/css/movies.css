@@ -1,12 +1,12 @@
 .visual__list {
-	display: flex;
-	flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 .visual__image {
-	width: 35%;
-	vertical-align: middle;
-	border-radius: 5px 5px 0px 0px;
-	display: inline-block;
+  width: 35%;
+  vertical-align: middle;
+  border-radius: 5px 5px 0px 0px;
+  display: inline-block;
 }
 .visual__detail {
 	width: 65%;
