@@ -9,10 +9,10 @@
   display: inline-block;
 }
 .visual__detail {
-	width: 65%;
-	padding: 10px;
-	display: inline-block;
-	vertical-align: middle;
+  width: 65%;
+  padding: 10px;
+  display: inline-block;
+  vertical-align: middle;
 }
 .visual__rating {
 	margin-right: 10px;
