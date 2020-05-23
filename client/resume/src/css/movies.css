@@ -15,18 +15,18 @@
   vertical-align: middle;
 }
 .visual__rating {
-	margin-right: 10px;
+  margin-right: 10px;
 }
 .visual__rating-icon {
-	width: 20px;
-	height: 20px;
-	margin-right: 5px;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
 }
 .visual__rating-icon,
 .visual__rating-point {
-	display: inline-block;
-	vertical-align: middle;
-	color: #86643d;
+  display: inline-block;
+  vertical-align: middle;
+  color: #86643d;
 }
 .loadmore {
 	text-align:center;
