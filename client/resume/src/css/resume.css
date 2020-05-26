@@ -1,67 +1,67 @@
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 body {
-	background-image: linear-gradient(120deg, #f5e6e6 0%, #155810 100%);
-	font-family: 'Dosis', sans-serif;
-	margin: 0;
-	padding: 0;
+  background-image: linear-gradient(120deg, #f5e6e6 0%, #155810 100%);
+  font-family: 'Dosis', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 h1,h2,h3,h4 {
-	margin: 0;
-	font-family: 'Josefin Sans', sans-serif;
+  margin: 0;
+  font-family: 'Josefin Sans', sans-serif;
 }
 .list {
-	padding-left: 20px;
+  padding-left: 20px;
 }
 ul li {
-	line-height: 25px;
-	transition: 0.2s ease-in-out;
+  line-height: 25px;
+  transition: 0.2s ease-in-out;
 }
 ul li:hover {
-	transform: translateX(3px);
+  transform: translateX(3px);
 }
 .box-shadow {
-	box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
 }
 .boxIcon {
-	margin-right: 10px;
+  margin-right: 10px;
 }
 #nav {
-	position: fixed;
-	bottom: 0;
-	z-index: 1;
-	background-color: #ffffff;
-	max-width: 1200px;
-	width: 100%;
-	display:flex;
-	margin: auto;
-	padding: 10px;
-	justify-content:space-around;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  background-color: #ffffff;
+  max-width: 1200px;
+  width: 100%;
+  display:flex;
+  margin: auto;
+  padding: 10px;
+  justify-content:space-around;
 }
 #navHighlight {
-	position: absolute;
-	height:2px;
-	bottom:5px;
-	background-color: #155810;
-	transition: 0.3s;
+  position: absolute;
+  height:2px;
+  bottom:5px;
+  background-color: #155810;
+  transition: 0.3s;
 }
 @media (min-width: 768px) {
-	#nav {
-		margin-bottom: 10px;
-		position: relative;
-	}
+  #nav {
+    margin-bottom: 10px;
+    position: relative;
+  }
 }
 .navItem {
-	color: #06A763;
-	text-decoration: none;
-	transition: 0.3s ease-in;
-	font-size: 1.3em;
-	text-transform: capitalize;
+  color: #06A763;
+  text-decoration: none;
+  transition: 0.3s ease-in;
+  font-size: 1.3em;
+  text-transform: capitalize;
 }
 .navItem.active {
-	animation: bounce 0.5s ease infinite alternate;
-	color:#000;
+  animation: bounce 0.5s ease infinite alternate;
+  color:#000;
 }
 @keyframes bounce {
   100% {
@@ -69,43 +69,43 @@ ul li:hover {
   }
 }
 .navItem:hover {
-	color:#000;
+  color:#000;
 }
 .container {
-	max-width: 1200px;
-	width: 100%;
-	margin: auto;
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
 }
 #mainContainer {
-	display: flex;
-	flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 #main, #aside {
-	padding: 0 10px;
+  padding: 0 10px;
 }
 #main {
-	width: 75%;
+  width: 75%;
 }
 #aside {
-	width: 25%;
+  width: 25%;
 }
 @media (max-width: 625px) {
-	#main,
-	#aside {
-		width: 100%;
-	}
+  #main,
+  #aside {
+    width: 100%;
+  }
 }
 .experience,
 .project {
-	padding-left: 20px;
-	border-left: 3px solid #FF9C9C;
-	border-radius: 5px;
-	margin-bottom: 10px;
+  padding-left: 20px;
+  border-left: 3px solid #FF9C9C;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 .project__type {
-	font-size: 14px;
-	opacity: 0.7;
-	font-style: italic;
+  font-size: 14px;
+  opacity: 0.7;
+  font-style: italic;
 }
 .skills__group {
   margin-bottom: 10px;
@@ -115,19 +115,19 @@ ul li:hover {
 }
 
 .loading {
-	animation-name: spin;
-	animation-duration: 4000ms;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
+  animation-name: spin;
+  animation-duration: 4000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
 @keyframes spin {
-	from {
-		transform:rotate(0deg);
-	}
-	to {
-		transform:rotate(360deg);
-	}
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
 }
 #about span {
   position: relative;
