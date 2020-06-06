@@ -26,34 +26,34 @@ import Comments from './pages/Comments.jsx';
 // const Comments = lazy(() => require('./pages/Comments.jsx'));
 
 const store = createStore(reducer, compose(
-	applyMiddleware(thunk),
-	window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
+  applyMiddleware(thunk),
+  window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
 ));
 export default class Main extends React.Component {
-	render() {
-		return ([
-			<Provider store={store} key="provider">
-				<HashRouter key="page">
-					<div>
-						<Nav key="nav" />
-						<div id="mainContainer" className="container">
-							<aside id="aside">
-								<About/>
-								<Clock/>
-								<Weather/>
-							</aside>
-							<main id="main">
-								<Route exact path='/' component={Home} />
-								<Route path='/todo' component={Todo} />
-								<Route path='/movies' component={Movies} />
-								<Route path='/movie/:id' component={Movie} />
-								<Route path='/blogs' component={Blogs} />
-								<Route path='/comments' component={Comments} />
-							</main>
-						</div>
-					</div>
-				</HashRouter>
-			</Provider>,
-		]);
-	}
+  render() {
+    return ([
+      <Provider store={store} key="provider">
+        <HashRouter key="page">
+          <div>
+            <Nav key="nav" />
+            <div id="mainContainer" className="container">
+              <aside id="aside">
+                <About/>
+                <Clock/>
+                <Weather/>
+              </aside>
+              <main id="main">
+                <Route exact path='/' component={Home} />
+                <Route path='/todo' component={Todo} />
+                <Route path='/movies' component={Movies} />
+                <Route path='/movie/:id' component={Movie} />
+                <Route path='/blogs' component={Blogs} />
+                <Route path='/comments' component={Comments} />
+              </main>
+            </div>
+          </div>
+        </HashRouter>
+      </Provider>,
+    ]);
+  }
 }
