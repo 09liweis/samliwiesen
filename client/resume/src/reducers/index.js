@@ -8,11 +8,11 @@ import skills from './skills.js';
 import todos from './todos.js';
 
 export default combineReducers({
-	blogs,
-	nav,
-	projects,
-	experiences,
-	skills,
-	todos,
-	characters
+  blogs,
+  nav,
+  projects,
+  experiences,
+  skills,
+  todos,
+  characters
 });
