@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect,useSelector,useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import styled from 'styled-components';
 
@@ -14,7 +14,6 @@ const Link = styled.a`
   }
 `;
 const Projects = () => {
-// const Projects = ({projects}) => {
   const projects = useSelector(state => state.projects);
   const pros = projects.map((p, i) => {
     const steps = p.steps.map((s, j) => {
