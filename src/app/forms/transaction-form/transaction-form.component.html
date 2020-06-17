@@ -1,4 +1,4 @@
-<div class="form">
+<div class="transactionForm">
 	<h2>{{transaction._id ? 'Edit' : 'Add'}} Transaction</h2>
 	<div class="">
 		<input class="input" placeholder="Title" name="title" [(ngModel)]="transaction.title">
@@ -8,5 +8,8 @@
 		<button mat-raised-button color="primary" (click)="submit(false)">Submit</button>
 		<button mat-raised-button color="primary" (click)="submit(true)">Submit and Return</button>
 		<!-- <button *ngIf="transaction._id" mat-raised-button color="primary" (click)="delete(transaction._id)">Delete</button> -->
+	</div>
+	<div id="categories">
+		<span class="category" *ngFor="let c of categories">{{c}}</span>
 	</div>
 </div>
