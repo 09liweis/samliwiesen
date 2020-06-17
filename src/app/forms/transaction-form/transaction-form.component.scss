@@ -1,0 +1,24 @@
+.transactionForm {
+  position: relative;
+}
+#categories {
+  display: none;
+  position: absolute;
+  padding: 20px;
+  background-color: #fff;
+  width: 320px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.category {
+  display: inline-block;
+  padding: 5px;
+  margin: 0 5px 5px 0;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: 0.4;
+  &:hover {
+    background-color: red;
+    color: #fff;
+  }
+}
