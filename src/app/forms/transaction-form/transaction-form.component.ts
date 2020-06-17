@@ -55,6 +55,10 @@ export class TransactionFormComponent implements OnInit {
   toggleCategoriesForm() {
     this.categoriesForm = !this.categoriesForm;
   }
+  selectCategory(c) {
+    this.transaction.category = c;
+    this.toggleCategoriesForm();
+  }
   
   submit(back: boolean):void {
     this.transactionService.submit(this.transaction).subscribe(transaction => {
