@@ -19,6 +19,8 @@ export class TransactionFormComponent implements OnInit {
     category: '',
     place: {}
   };
+  public categories = [];
+  public categoriesForm = false;
 
   constructor(
     private transactionService: TransactionService,
@@ -45,6 +47,13 @@ export class TransactionFormComponent implements OnInit {
   
   ngAfterViewInit() {
     console.log('test');
+    this.transactionService.getCategores().subscribe(categories => {
+      this.categories = categories;
+    })
+  }
+
+  toggleCategoriesForm() {
+    this.categoriesForm = !this.categoriesForm;
   }
   
   submit(back: boolean):void {
