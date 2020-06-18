@@ -1,5 +1,6 @@
 .transactionForm {
   position: relative;
+  height: 100%;
 }
 #categories {
   position: absolute;
@@ -8,6 +9,10 @@
   width: 320px;
   top: 50%;
   transform: translateY(-50%);
+  left:0;
+  right:0;
+  margin:auto;
+  border: 1px solid #ccc;
 }
 .category {
   display: inline-block;
