@@ -33,10 +33,12 @@ export class PageListComponent implements OnInit {
         this.blogService.getList().subscribe(exs => {
           this.results = exs;
         });
+        break;
       case 'projects':
         this.projectService.getList().subscribe(exs => {
           this.results = exs;
         });
+        break;
       default:
         break;
     }
