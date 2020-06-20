@@ -46,7 +46,6 @@ export class TransactionFormComponent implements OnInit {
   }
   
   ngAfterViewInit() {
-    console.log('test');
     this.transactionService.getCategores().subscribe(categories => {
       this.categories = categories;
     })
