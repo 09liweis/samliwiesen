@@ -1,5 +1,5 @@
 <div id="transactions">
-  <div *ngIf="showTransactionForm" id="transactions__backdrop"></div>
+  <div *ngIf="showTransactionForm" (click)="toggleTransactionForm()" id="transactions__backdrop"></div>
   <app-transaction-form *ngIf="showTransactionForm"></app-transaction-form>
   <a class="" (click)="toggleTransactionForm()">Add New</a>
   <div class="transaction__filter">
