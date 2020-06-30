@@ -1,5 +1,7 @@
 <div id="transactions">
-  <a class="" routerLink="/transactions/new">Add New</a>
+  <div *ngIf="showTransactionForm" id="transactions__backdrop"></div>
+  <app-transaction-form *ngIf="showTransactionForm"></app-transaction-form>
+  <a class="" (click)="toggleTransactionForm()">Add New</a>
   <div class="transaction__filter">
     <input type="month" [(ngModel)]="filters.date" />
     <select [(ngModel)]="filters.category">
