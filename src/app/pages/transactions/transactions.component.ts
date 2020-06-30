@@ -14,7 +14,8 @@ export class TransactionsComponent implements OnInit {
     limit:'all',
     date: '',
     category: ''
-  }
+  };
+  public showTransactionForm = false;
 
   constructor(
     private transactionService: TransactionService,
@@ -25,6 +26,10 @@ export class TransactionsComponent implements OnInit {
     this.transactionService.getCategores().subscribe(ret=>{
       this.categories = ret;
     })
+  }
+
+  toggleTransactionForm() {
+    this.showTransactionForm = !this.showTransactionForm;
   }
 
   getTransactions() {
