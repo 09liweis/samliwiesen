@@ -24,3 +24,4 @@ http://www.vicinityrewards.ca/
 * Add clock reminder
 * Sticky header and navigation
 * Scroll to top
+* https://rickandmortyapi.com you know what to do
