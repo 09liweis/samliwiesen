@@ -21,7 +21,7 @@ http://www.vicinityrewards.ca/
 
 ## Todo
 * Implement function to add sub todos for each todo
+* single portfolio page
 * Add clock reminder
-* Sticky header and navigation
 * Scroll to top
 * https://rickandmortyapi.com you know what to do
