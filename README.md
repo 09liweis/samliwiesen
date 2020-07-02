@@ -8,7 +8,7 @@ Tech Stack: Nodejs, ExpressJs, MongoDB, Angular 6 for Front End CMS, react for r
 
 ## Exist Feature
 
-* Todo List [Demo link](https://samliweisen.github.io/#/todo)
+* Todo List [Demo link](https://samliweisen.herokuapp.com/#/todo)
 * Profolio Single Page (under development)
 * implement transaction dashboard
 * Implement site visite count
