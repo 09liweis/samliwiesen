@@ -10,7 +10,7 @@ Tech Stack: Nodejs, ExpressJs, MongoDB, Angular 6 for Front End CMS, react for r
 
 * Todo List [Demo link](https://samliweisen.herokuapp.com/#/todo)
 * Profolio Single Page (under development)
-* implement transaction dashboard
+* implement transaction dashboard: add, stats, map
 * Implement site visite count
 * Add snackbar for saving contents
 * Add ctrl + s / cmd + s to save content
