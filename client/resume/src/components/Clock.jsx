@@ -34,9 +34,9 @@ export default class Clock extends React.Component {
     let sec = date.getSeconds();
     sec = sec > 9 ? sec : '0' + sec;
     this.setState({
-      hour: hour,
-      min: min,
-      sec: sec
+      hour,
+      min,
+      sec,
     });
   }
   componentWillUnmount() {
