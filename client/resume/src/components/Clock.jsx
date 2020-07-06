@@ -27,9 +27,12 @@ export default class Clock extends React.Component {
   }
   tick() {
     const date = new Date();
-    const hour = date.getHours() > 9 ? date.getHours() : '0' + date.getHours();
-    const min = date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes();
-    const sec = date.getSeconds() > 9 ? date.getSeconds() : '0' + date.getSeconds();
+    let hour = date.getHours();
+    hour = hour > 9 ? hour : '0' + hour;
+    let min = date.getMinutes();
+    min = min > 9 ? min : '0' + min;
+    let sec = date.getSeconds();
+    sec = sec > 9 ? sec : '0' + sec;
     this.setState({
       hour: hour,
       min: min,
