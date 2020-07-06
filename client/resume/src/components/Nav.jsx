@@ -31,6 +31,9 @@ const Nav = (props) => {
       dispatch(setNav(tl));
     },500);
   }
+  window.addEventListener('resize', () => {
+    dispatch(setNav(tl))
+  });
   const links = navs.map((nav)=> {
     let navClass = 'navItem';
     if (nav.tl == tl) {
