@@ -11,9 +11,9 @@ export default class Clock extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      year: new Date().getFullYear(),
-      month: new Date().getMonth() + 1,
-      date: new Date().getDate(),
+      year: '',
+      month: '',
+      date: '',
       hour: '',
       min: '',
       sec: ''	
@@ -27,6 +27,11 @@ export default class Clock extends React.Component {
   }
   tick() {
     const date = new Date();
+    const year = new Date().getFullYear();
+    let month = new Date().getMonth() + 1;
+    month = month > 9 ? month: '0' + month;
+    let day = new Date().getDate();
+    day = day > 9 ? day : '0' + day;
     let hour = date.getHours();
     hour = hour > 9 ? hour : '0' + hour;
     let min = date.getMinutes();
@@ -34,6 +39,9 @@ export default class Clock extends React.Component {
     let sec = date.getSeconds();
     sec = sec > 9 ? sec : '0' + sec;
     this.setState({
+      year,
+      month,
+      day,
       hour,
       min,
       sec,
@@ -46,7 +54,7 @@ export default class Clock extends React.Component {
     }
   }
   render() {
-    const {year, month, date, hour, min, sec} = this.state;
+    const {year, month, day, hour, min, sec} = this.state;
     return (
       <Box className="experiences">
         <BoxTitle>
@@ -54,7 +62,7 @@ export default class Clock extends React.Component {
           <span>Clock</span>
         </BoxTitle>
         <BoxBody>
-          <Dates>{year}-{month > 9 ? month: '0' + month}-{date > 9 ? date : '0' + date}</Dates>
+          <Dates>{year}-{month}-{day}</Dates>
           <span>{hour} : {min} : {sec}</span>
         </BoxBody>
       </Box>
