@@ -3,10 +3,6 @@ import styled from 'styled-components';
 import axios from 'axios';
 import {Box, BoxTitle, BoxBody} from './style.jsx';
 
-const Center = styled.div`
-	display:flex;
-	align-items:center;
-`;
 const WeatherDesc = styled.div`
 	font-weight:bold;
 	text-transform:capitalize;
