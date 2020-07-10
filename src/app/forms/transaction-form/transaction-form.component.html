@@ -4,10 +4,10 @@
 		<input class="input" placeholder="Title" name="title" [(ngModel)]="transaction.title">
 		<input class="input" placeholder="Price" name="price" [(ngModel)]="transaction.price">
 		<input class="input" placeholder="Date" name="date" [(ngModel)]="transaction.date">
-		<button (click)="toggleCategoriesForm()">{{transaction.category || 'Select Category'}}</button>
+		<a class="button" (click)="toggleCategoriesForm()">{{transaction.category || 'Select Category'}}</a>
 		<br/>
-		<button mat-raised-button color="primary" (click)="submit(false)">Submit</button>
-		<button mat-raised-button color="primary" (click)="submit(true)">Submit and Return</button>
+		<a class="button" (click)="submit(false)">Submit</a>
+		<a class="button" (click)="submit(true)">Submit and Close</a>
 		<!-- <button *ngIf="transaction._id" mat-raised-button color="primary" (click)="delete(transaction._id)">Delete</button> -->
 	</div>
 	<div id="categories" *ngIf="categoriesForm">
