@@ -1,6 +1,6 @@
 <div id="transactions">
   <div *ngIf="showTransactionForm" (click)="toggleTransactionForm()" id="transactions__backdrop"></div>
-  <app-transaction-form *ngIf="showTransactionForm"></app-transaction-form>
+  <app-transaction-form [selectedId]="selectedId" *ngIf="showTransactionForm"></app-transaction-form>
   <a class="button" (click)="toggleTransactionForm()">Add New</a>
   <div class="transaction__filter">
     <input type="month" [(ngModel)]="filters.date" />
