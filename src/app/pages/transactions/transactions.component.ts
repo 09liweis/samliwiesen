@@ -10,6 +10,7 @@ import { TransactionService } from '../../services/transaction.service';
 export class TransactionsComponent implements OnInit {
   public trans = [];
   public categories = [];
+  public selectedId = '';
   public filters = {
     limit:'all',
     date: '',
