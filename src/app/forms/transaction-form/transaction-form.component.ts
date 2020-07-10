@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { TransactionService } from '../../services/transaction.service';
@@ -10,7 +10,7 @@ import { TransactionService } from '../../services/transaction.service';
   styleUrls: ['./transaction-form.component.scss']
 })
 export class TransactionFormComponent implements OnInit {
-  
+  @Input() selectedId;
   public transaction = {
     _id: '',
     title: '',
@@ -29,6 +29,7 @@ export class TransactionFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log(this.selectedId);
     if (this.route.snapshot.params['id'] != 'new') {
       this.transaction._id = this.route.snapshot.params['id'];
       this.transactionService.getDetail(this.transaction._id).subscribe(b => {
