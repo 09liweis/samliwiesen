@@ -80,20 +80,8 @@ ul li:hover {
   display: flex;
   flex-wrap: wrap;
 }
-#main, #aside {
-  padding: 0 10px;
-}
 #main {
-  width: 75%;
-}
-#aside {
-  width: 25%;
-}
-@media (max-width: 625px) {
-  #main,
-  #aside {
-    width: 100%;
-  }
+  padding: 0 10px;
 }
 .experience,
 .project {
