@@ -9,9 +9,8 @@ import reducer from './reducers';
 // import { getCharacters } from './reducer/characters/actions';
 
 import Nav from './components/Nav.jsx';
-import Clock from './components/Clock.jsx';
-import Weather from './components/Weather.jsx';
-import About from './components/About.jsx';
+
+import Widgets from './components/Widgets.jsx';
 
 import Home from './pages/Home.jsx';
 import Todo from './pages/Todo.jsx';
@@ -37,11 +36,7 @@ export default class Main extends React.Component {
           <div>
             <Nav key="nav" />
             <div id="mainContainer" className="container">
-              <aside id="aside">
-                <About/>
-                <Clock/>
-                <Weather/>
-              </aside>
+              <Widgets/>
               <main id="main">
                 <Route exact path='/' component={Home} />
                 <Route path='/todo' component={Todo} />
