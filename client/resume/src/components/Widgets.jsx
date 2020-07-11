@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import Clock from './Clock.jsx';
 import Weather from './Weather.jsx';
 import About from './About.jsx';
+import DeviceInfo from './DeviceInfo.jsx';
 
 import '../css/widgets.css';
 
@@ -15,6 +16,7 @@ const widgets = () => {
       <div className={widgetClass} id="widgetToggle" onClick={()=>setShow(true)}><i className="fa fa-angle-double-right"></i></div>
       <div id="widgets" className={widgetClass}>
         <About/>
+        <DeviceInfo/>
         <Clock/>
         <Weather/>
       </div>
