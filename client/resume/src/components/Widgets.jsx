@@ -1,16 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import Clock from './Clock.jsx';
 import Weather from './Weather.jsx';
 import About from './About.jsx';
 
+import '../css/widgets.css';
+
 const widgets = () => {
+  const [show, setShow] = useState(false);
+  const widgetClass = show ? 'active' : '';
   return (
-    <div id="widgets">
-      Wdigets
-      <About/>
-      <Clock/>
-      <Weather/>
+    <div className="widgetContainer">
+      <div id="widgetBg" className={widgetClass} onClick={()=>setShow(false)}></div>
+      <div className={widgetClass} id="widgetToggle" onClick={()=>setShow(true)}><i className="fa fa-angle-double-right"></i></div>
+      <div id="widgets" className={widgetClass}>
+        <About/>
+        <Clock/>
+        <Weather/>
+      </div>
     </div>
   );
 }
