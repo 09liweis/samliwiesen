@@ -16,7 +16,7 @@ export const Box = styled.div`
 `;
 export const BoxTitle = styled.h2`
   padding: 10px;
-  background-color: #06A763;
+  background-color: ${props => props.bgColor || '#06A763'};
   color: #ffffff;
   font-size:18px;
 `;
