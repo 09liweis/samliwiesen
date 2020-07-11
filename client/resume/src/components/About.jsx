@@ -7,7 +7,7 @@ const About = () => {
     <span key={i}>{t}</span>
   );
   return (
-    <Box className="experiences">
+    <Box className="about">
       <BoxTitle>
         <i className="boxIcon fa fa-user" aria-hidden="true"></i>
         <span>Hi I am Sam</span>
