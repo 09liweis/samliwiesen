@@ -56,7 +56,7 @@ export default class Clock extends React.Component {
   render() {
     const {year, month, day, hour, min, sec} = this.state;
     return (
-      <Box className="experiences">
+      <Box className="clock">
         <BoxTitle>
           <i className="boxIcon fa fa-clock-o" aria-hidden="true"></i>
           <span>Clock</span>
