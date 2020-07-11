@@ -95,7 +95,7 @@ export default class Weather extends React.Component {
     const {sunset,sunrise,country,loading,temp,temp_min,temp_max,city,icon,feels_like,description} = this.state;
     return (
       <Box className="weather">
-        <BoxTitle>
+        <BoxTitle bgColor={'#9d1024'}>
           <i className="boxIcon fa fa-map-marker" aria-hidden="true"></i>
           <span>Weather</span>
         </BoxTitle>
