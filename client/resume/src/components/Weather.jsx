@@ -45,6 +45,8 @@ export default class Weather extends React.Component {
         });
         this.fetchWeather(this.state.lat, this.state.lon);
       });
+    } else {
+      this.setState({loading:false});
     }
   }
   sun2Time(timestamp) {
