@@ -1,14 +1,46 @@
 import React from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import axios from 'axios';
-
 import {CSSTransition,TransitionGroup} from 'react-transition-group';
+
+import {getTodos} from '../actions/todo';
 
 import '../css/todo.css';
 const API = '/api/todos/';
 
 const Todo = () => {
-  var form,todoList,errorMsg,loading;
+  const dispatch = useDispatch();
+  const todos = useSelector(state => state.todos);
+  if (todos && todos.length === 0) {
+    dispatch(getTodos());
+  }
+  var form,errorMsg,loading;
+  const handleEdit = (idx) => {
+
+  }
+  const handleComplete = (idx) => {
+
+  }
+  const handleRemove = (idx) => {
+
+  }
+  const todoList = todos.map((todo, idx) => 
+    <CSSTransition key={todo._id} timeout={500} classNames="todoAnimation">
+      <div className={`todo ${todo.status}`}>
+        <div className="todo__title">{todo.name}</div>
+        {todo.status != 'done'?
+        <div className="todo__actions">
+          <div className="todo__edit" onClick={handleEdit(idx)}>Edit</div>
+          <div className="todo__complete" onClick={handleComplete(idx)}>{todo.status == 'pending' ? 'Working' : 'Done'}</div>
+          <div className="todo__remove" onClick={handleRemove(idx, todo._id)}>Remove</div>
+        </div>
+        :null}
+        {todo.steps.map((s,i)=>
+          <div key={i}>{s.name} - {s.status}</div>
+        )}
+      </div>
+    </CSSTransition>
+  );
   return (
     <div className="container">
       {form}
