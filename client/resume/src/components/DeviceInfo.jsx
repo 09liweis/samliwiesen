@@ -3,7 +3,6 @@ import React from 'react';
 import {Box, BoxTitle, BoxBody} from './style.jsx';
 
 const DeviceInfo = () => {
-  console.log(window.navigator);
   const nav = window.navigator;
   return (
     <Box className="device">
