@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import axios from 'axios';
 import {CSSTransition,TransitionGroup} from 'react-transition-group';
@@ -9,12 +9,14 @@ import '../css/todo.css';
 const API = '/api/todos/';
 
 const Todo = () => {
+  const [loading,setLoading] = useState(false);
+
   const dispatch = useDispatch();
   const todos = useSelector(state => state.todos);
   if (todos && todos.length === 0) {
     dispatch(getTodos());
   }
-  var form,errorMsg,loading;
+  var form,errorMsg;
   const handleEdit = (idx) => {
 
   }
