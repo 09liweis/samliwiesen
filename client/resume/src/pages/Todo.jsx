@@ -9,11 +9,11 @@ import '../css/todo.css';
 const API = '/api/todos/';
 
 const Todo = () => {
-  const [loading,setLoading] = useState(false);
   const [showForm,setShowForm] = useState(false);
   const dispatch = useDispatch();
-  const todos = useSelector(state => state.todos);
-  if (todos && todos.length === 0) {
+  const loading = false;//if use loading from useSelector, no render animation
+  const {items} = useSelector(state => state.todos);
+  if (items && items.length === 0) {
     dispatch(getTodos());
   }
   var form,errorMsg;
@@ -26,7 +26,7 @@ const Todo = () => {
   const handleRemove = (idx) => {
 
   }
-  const todoList = todos.map((todo, idx) => 
+  const todoList = items.map((todo, idx) => 
     <CSSTransition key={todo._id} timeout={500} classNames="todoAnimation">
       <div className={`todo ${todo.status}`}>
         <div className="todo__title">{todo.name}</div>
