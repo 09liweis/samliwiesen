@@ -1,7 +1,7 @@
-const todos = (state = [], action) => {
+const todos = (state = {items:[],loading:true}, action) => {
   switch (action.type) {
     case 'GET_TODOS':
-      return action.ex;
+      return {items:action.ex,loading:false};
     case 'ADD_TODO':
       return state;
     default:
