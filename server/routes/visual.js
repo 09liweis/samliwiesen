@@ -74,6 +74,10 @@ router.route('/get_imdb_id').get((req,res)=>{
       const $ = cheerio.load(body.toString());
       const title = $('span[property="v:itemreviewed"]').text();
       const douban_rating = $('strong[property="v:average"]').text();
+      const duration = $('span[property="v:runtime"]').attr('content');
+
+      const langs = body.match(/<\/span>(.*?)<br>/g);
+      console.log(langs);
 
       const matches = body.match(/tt[\d]{7,8}/g);
       let imdb_id = '';
@@ -87,7 +91,7 @@ router.route('/get_imdb_id').get((req,res)=>{
           dates.push(dateMatches[i]);
         }
       }
-      res.send({title,douban_rating,imdb_id,release_dates:dates,status:200});
+      res.send({title,duration,douban_rating,imdb_id,release_dates:dates,status:200});
     }
   });
 });
