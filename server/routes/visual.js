@@ -71,6 +71,9 @@ router.route('/get_imdb_id').get((req,res)=>{
   },
   function (error, response, body) {
     if (!error && response.statusCode == 200) {
+      const $ = cheerio.load(body.toString());
+      const title = $('span[property="v:itemreviewed"]').text();
+
       const matches = body.match(/tt[\d]{7,8}/g);
       let imdb_id = '';
       if (matches && matches.length > 0) {
@@ -83,7 +86,7 @@ router.route('/get_imdb_id').get((req,res)=>{
           dates.push(dateMatches[i]);
         }
       }
-      res.send({imdb_id,release_dates:dates,status:200});
+      res.send({title,imdb_id,release_dates:dates,status:200});
     }
   });
 });
