@@ -81,9 +81,14 @@ router.route('/get_imdb_id').get((req,res)=>{
       const douban_rating = $('strong[property="v:average"]').text();
       const duration = $('span[property="v:runtime"]').attr('content');
 
-      var langsMatch = /语言:<\/span>(.*?)<br\/>/g.exec(body.toString());
+      var langsMatch = /语言:<\/span>(.*?)<br\/>/g.exec(body);
       if (langsMatch) {
         var languages = langsMatch[1].trim().split(' / ');
+      }
+
+      var countryMatch = /制片国家\/地区:<\/span>(.*?)<br\/>/g.exec(body);
+      if (countryMatch) {
+        var countries = countryMatch[1].trim().split(' / ');
       }
 
       const matches = body.match(/tt[\d]{7,8}/g);
@@ -98,7 +103,7 @@ router.route('/get_imdb_id').get((req,res)=>{
           dates.push(dateMatches[i]);
         }
       }
-      res.send({title,duration,languages,douban_rating,imdb_id,release_dates:dates,status:200});
+      res.send({title,duration,languages,countries,douban_rating,imdb_id,release_dates:dates,status:200});
     }
   });
 });
