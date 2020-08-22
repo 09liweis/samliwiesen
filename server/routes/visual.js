@@ -97,6 +97,7 @@ router.route('/get_imdb_id').get((req,res)=>{
       if (matches && matches.length > 0) {
         imdb_id = matches[0];
       }
+
       const dateMatches = body.match(/[\d]{4}-[\d]{2}-[\d]{2}\([\u4e00-\u9fff]+\)/g);
       let dates = [];
       for (let i in dateMatches) {
@@ -104,6 +105,7 @@ router.route('/get_imdb_id').get((req,res)=>{
           dates.push(dateMatches[i]);
         }
       }
+      
       res.send({title,duration,languages,summary,countries,douban_rating,imdb_id,release_dates:dates,status:200});
     }
   });
