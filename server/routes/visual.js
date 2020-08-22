@@ -80,6 +80,7 @@ router.route('/get_imdb_id').get((req,res)=>{
       const title = $('span[property="v:itemreviewed"]').text();
       const douban_rating = $('strong[property="v:average"]').text();
       const duration = $('span[property="v:runtime"]').attr('content');
+      const summary = $('span[property="v:summary"]').text();
 
       var langsMatch = /语言:<\/span>(.*?)<br\/>/g.exec(body);
       if (langsMatch) {
@@ -103,7 +104,7 @@ router.route('/get_imdb_id').get((req,res)=>{
           dates.push(dateMatches[i]);
         }
       }
-      res.send({title,duration,languages,countries,douban_rating,imdb_id,release_dates:dates,status:200});
+      res.send({title,duration,languages,summary,countries,douban_rating,imdb_id,release_dates:dates,status:200});
     }
   });
 });
