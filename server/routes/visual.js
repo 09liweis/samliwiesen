@@ -70,14 +70,21 @@ router.route('/get_imdb_id').get((req,res)=>{
     headers
   },
   function (error, response, body) {
+    var body = body.replace(/(\r\n|\n|\r)/gm, '');
+    body = body.replace(/ +(?= )/g,'');
     if (!error && response.statusCode == 200) {
-      const $ = cheerio.load(body.toString());
+      const $ = cheerio.load(body.toString(),{
+        normalizeWhitespace:true,
+        decodeEntities:true
+      });
       const title = $('span[property="v:itemreviewed"]').text();
       const douban_rating = $('strong[property="v:average"]').text();
       const duration = $('span[property="v:runtime"]').attr('content');
 
-      const langs = body.match(/<\/span>(.*?)<br>/g);
-      console.log(langs);
+      var langsMatch = /语言:<\/span>(.*?)<br\/>/g.exec(body.toString());
+      if (langsMatch) {
+        var languages = langsMatch[1].trim().split(' / ');
+      }
 
       const matches = body.match(/tt[\d]{7,8}/g);
       let imdb_id = '';
@@ -91,7 +98,7 @@ router.route('/get_imdb_id').get((req,res)=>{
           dates.push(dateMatches[i]);
         }
       }
-      res.send({title,duration,douban_rating,imdb_id,release_dates:dates,status:200});
+      res.send({title,duration,languages,douban_rating,imdb_id,release_dates:dates,status:200});
     }
   });
 });
