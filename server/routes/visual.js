@@ -82,6 +82,25 @@ router.route('/get_imdb_id').get((req,res)=>{
       const duration = $('span[property="v:runtime"]').attr('content');
       const summary = $('span[property="v:summary"]').text();
 
+      const castMatches = $('.celebrity');
+      if (castMatches) {
+        var casts = []
+        for(var i = 0; i < castMatches.length; i++) {
+          var cast = $(castMatches[i]);
+          var avt = '';
+          var avtStyle = cast.find('div.avatar').attr('style');
+          var avtMatches = /url\((.*?)\)/g.exec(avtStyle);
+          if (avtMatches) {
+            avt = avtMatches[1];
+          }
+          casts.push({
+            name:cast.find('a.name').text(),
+            avt,
+            role:cast.find('.role').text()
+          })
+        }
+      }
+
       var websiteMatch = /官方网站:<\/span><a href="(.*?)<br>/g.exec(body);
 
       var langsMatch = /语言:<\/span>(.*?)<br\/>/g.exec(body);
@@ -108,7 +127,7 @@ router.route('/get_imdb_id').get((req,res)=>{
         }
       }
       
-      res.send({title,duration,languages,summary,countries,douban_rating,imdb_id,release_dates:dates,status:200});
+      res.send({casts,title,duration,languages,summary,countries,douban_rating,imdb_id,release_dates:dates,status:200});
     }
   });
 });
