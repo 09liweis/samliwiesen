@@ -82,6 +82,8 @@ router.route('/get_imdb_id').get((req,res)=>{
       const duration = $('span[property="v:runtime"]').attr('content');
       const summary = $('span[property="v:summary"]').text();
 
+      var websiteMatch = /官方网站:<\/span><a href="(.*?)<br>/g.exec(body);
+
       var langsMatch = /语言:<\/span>(.*?)<br\/>/g.exec(body);
       if (langsMatch) {
         var languages = langsMatch[1].trim().split(' / ');
