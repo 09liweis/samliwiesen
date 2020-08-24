@@ -92,10 +92,10 @@ router.route('/get_imdb_id').get((req,res)=>{
         var countries = countryMatch[1].trim().split(' / ');
       }
 
-      const matches = body.match(/tt[\d]{7,8}/g);
+      const imdbMatches = body.match(/tt[\d]{7,8}/g);
       let imdb_id = '';
-      if (matches && matches.length > 0) {
-        imdb_id = matches[0];
+      if (imdbMatches && imdbMatches.length > 0) {
+        imdb_id = imdbMatches[0];
       }
 
       const dateMatches = body.match(/[\d]{4}-[\d]{2}-[\d]{2}\([\u4e00-\u9fff]+\)/g);
