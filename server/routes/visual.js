@@ -133,7 +133,7 @@ router.route('/get_imdb_id').get((req,res)=>{
         }
       }
       
-      res.send({casts,title,duration,episodes,languages,summary,countries,douban_rating,imdb_id,release_dates:dates,status:200});
+      res.status(200).json({casts,title,duration,episodes,languages,summary,countries,douban_rating,imdb_id,release_dates:dates});
     }
   });
 });
