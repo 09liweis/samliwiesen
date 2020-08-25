@@ -77,6 +77,7 @@ router.route('/get_imdb_id').get((req,res)=>{
         normalizeWhitespace:true,
         decodeEntities:true
       });
+      var episodes = 1;
       const title = $('span[property="v:itemreviewed"]').text();
       const douban_rating = $('strong[property="v:average"]').text();
       const duration = $('span[property="v:runtime"]').attr('content');
@@ -103,6 +104,11 @@ router.route('/get_imdb_id').get((req,res)=>{
 
       var websiteMatch = /官方网站:<\/span><a href="(.*?)<br>/g.exec(body);
 
+      var episodesMatch = /集数:<\/span>(.*?)<br\/>/g.exec(body);
+      if (episodesMatch) {
+        episodes = parseInt(episodesMatch[1].trim());
+      }
+
       var langsMatch = /语言:<\/span>(.*?)<br\/>/g.exec(body);
       if (langsMatch) {
         var languages = langsMatch[1].trim().split(' / ');
@@ -127,7 +133,7 @@ router.route('/get_imdb_id').get((req,res)=>{
         }
       }
       
-      res.send({casts,title,duration,languages,summary,countries,douban_rating,imdb_id,release_dates:dates,status:200});
+      res.send({casts,title,duration,episodes,languages,summary,countries,douban_rating,imdb_id,release_dates:dates,status:200});
     }
   });
 });
