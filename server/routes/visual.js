@@ -60,7 +60,7 @@ router.route('/douban').get((req, res) => {
 });
 
 router.route('/get_data').get((req,res)=>{
-  const douban_id = req.query.douban_id;
+  const {douban_id} = req.query;
   if (!douban_id) {
     res.send({ok:0,msg:'No Douban Id'});
   }
