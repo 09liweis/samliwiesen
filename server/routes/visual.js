@@ -72,69 +72,71 @@ router.route('/get_data').get((req,res)=>{
   function (error, response, body) {
     var body = body.replace(/(\r\n|\n|\r)/gm, '');
     body = body.replace(/ +(?= )/g,'');
-    if (!error && response.statusCode == 200) {
-      const $ = cheerio.load(body.toString(),{
-        normalizeWhitespace:true,
-        decodeEntities:true
-      });
-      var episodes = 1;
-      const title = $('span[property="v:itemreviewed"]').text();
-      const douban_rating = $('strong[property="v:average"]').text();
-      const duration = $('span[property="v:runtime"]').attr('content');
-      const summary = $('span[property="v:summary"]').text();
-
-      const castMatches = $('.celebrity');
-      if (castMatches) {
-        var casts = []
-        for(var i = 0; i < castMatches.length; i++) {
-          var cast = $(castMatches[i]);
-          var avt = '';
-          var avtStyle = cast.find('div.avatar').attr('style');
-          var avtMatches = /url\((.*?)\)/g.exec(avtStyle);
-          if (avtMatches) {
-            avt = avtMatches[1];
-          }
-          casts.push({
-            name:cast.find('a.name').text(),
-            avt,
-            role:cast.find('.role').text()
-          })
-        }
-      }
-
-      var websiteMatch = /官方网站:<\/span><a href="(.*?)<br>/g.exec(body);
-
-      var episodesMatch = /集数:<\/span>(.*?)<br\/>/g.exec(body);
-      if (episodesMatch) {
-        episodes = parseInt(episodesMatch[1].trim());
-      }
-
-      var langsMatch = /语言:<\/span>(.*?)<br\/>/g.exec(body);
-      if (langsMatch) {
-        var languages = langsMatch[1].trim().split(' / ');
-      }
-
-      var countryMatch = /制片国家\/地区:<\/span>(.*?)<br\/>/g.exec(body);
-      if (countryMatch) {
-        var countries = countryMatch[1].trim().split(' / ');
-      }
-
-      const imdbMatches = body.match(/tt[\d]{7,8}/g);
-      let imdb_id = '';
-      if (imdbMatches && imdbMatches.length > 0) {
-        imdb_id = imdbMatches[0];
-      }
-
-      const dateMatches = body.match(/[\d]{4}-[\d]{2}-[\d]{2}\([\u4e00-\u9fff]+\)/g);
-      let dates = [];
-      for (let i in dateMatches) {
-        if (dates.indexOf(dateMatches[i]) == -1 ) {
-          dates.push(dateMatches[i]);
-        }
-      }
-      
-      res.status(200).json({casts,title,duration,episodes,languages,summary,countries,douban_rating,imdb_id,release_dates:dates});
+    const {statusCode} = response;
+    if (error || (statusCode != 200)) {
+      return res.status(statusCode).json({error});
     }
+    const $ = cheerio.load(body.toString(),{
+      normalizeWhitespace:true,
+      decodeEntities:true
+    });
+    var episodes = 1;
+    const title = $('span[property="v:itemreviewed"]').text();
+    const douban_rating = $('strong[property="v:average"]').text();
+    const duration = $('span[property="v:runtime"]').attr('content');
+    const summary = $('span[property="v:summary"]').text();
+
+    const castMatches = $('.celebrity');
+    if (castMatches) {
+      var casts = []
+      for(var i = 0; i < castMatches.length; i++) {
+        var cast = $(castMatches[i]);
+        var avt = '';
+        var avtStyle = cast.find('div.avatar').attr('style');
+        var avtMatches = /url\((.*?)\)/g.exec(avtStyle);
+        if (avtMatches) {
+          avt = avtMatches[1];
+        }
+        casts.push({
+          name:cast.find('a.name').text(),
+          avt,
+          role:cast.find('.role').text()
+        })
+      }
+    }
+
+    var websiteMatch = /官方网站:<\/span><a href="(.*?)<br>/g.exec(body);
+
+    var episodesMatch = /集数:<\/span>(.*?)<br\/>/g.exec(body);
+    if (episodesMatch) {
+      episodes = parseInt(episodesMatch[1].trim());
+    }
+
+    var langsMatch = /语言:<\/span>(.*?)<br\/>/g.exec(body);
+    if (langsMatch) {
+      var languages = langsMatch[1].trim().split(' / ');
+    }
+
+    var countryMatch = /制片国家\/地区:<\/span>(.*?)<br\/>/g.exec(body);
+    if (countryMatch) {
+      var countries = countryMatch[1].trim().split(' / ');
+    }
+
+    const imdbMatches = body.match(/tt[\d]{7,8}/g);
+    let imdb_id = '';
+    if (imdbMatches && imdbMatches.length > 0) {
+      imdb_id = imdbMatches[0];
+    }
+
+    const dateMatches = body.match(/[\d]{4}-[\d]{2}-[\d]{2}\([\u4e00-\u9fff]+\)/g);
+    let dates = [];
+    for (let i in dateMatches) {
+      if (dates.indexOf(dateMatches[i]) == -1 ) {
+        dates.push(dateMatches[i]);
+      }
+    }
+    
+    res.status(200).json({casts,title,duration,episodes,languages,summary,countries,douban_rating,imdb_id,release_dates:dates});
   });
 });
 
