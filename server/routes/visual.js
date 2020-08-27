@@ -35,30 +35,6 @@ router.route('/search').get((req,res)=>{
   });
 });
 
-router.route('/douban').get((req, res) => {
-  const douban_id = req.query.douban_id;
-  if (!douban_id) {
-    res.send({msg:'No Douban Id',ok:0});
-  }
-  request({
-    url: DOUBAN_MOVIE_API + douban_id + '?apikey='+DOUBAN_API_KEY,
-    method: 'GET',
-    headers
-  },
-  function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      const visual = JSON.parse(body);
-      const method = req.query.method;
-      if (method == 'update') {
-        // request.post('https://what-i-watched.herokuapp.com/api/visual/update').form(visual);
-        console.log('Going to implement POST to what-i-watched');
-      } else {
-        res.send(visual);
-      }
-    }
-  });
-});
-
 router.route('/get_data').get((req,res)=>{
   const {douban_id} = req.query;
   if (!douban_id) {
@@ -135,27 +111,26 @@ router.route('/get_data').get((req,res)=>{
         dates.push(dateMatches[i]);
       }
     }
-    
-    res.status(200).json({casts,title,duration,episodes,languages,summary,countries,douban_rating,imdb_id,release_dates:dates});
-  });
-});
 
-router.route('/get_imdb_rating').get((req, res) => {
-  const imdb_id = req.query.imdb_id;
-  if (!imdb_id) {
-    return res.send({ok:0,msg:'No IMDB ID'});
-  }
-  request({
-    url: IMDB_SITE + imdb_id,
-    method: 'GET',
-    headers
-  },
-  function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      const $ = cheerio.load(body.toString());
-      const imdb_rating = $('span[itemprop="ratingValue"]').text();
-      const poster = $('.poster a img').attr('src');
-      res.send({imdb_rating,poster});
+    visual = {casts,title,duration,episodes,languages,summary,countries,douban_rating,imdb_id,release_dates:dates};
+    if (imdb_id) {
+      request({
+        url: IMDB_SITE + imdb_id,
+        method: 'GET',
+        headers
+      },
+      function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          const $ = cheerio.load(body.toString());
+          const imdb_rating = $('span[itemprop="ratingValue"]').text();
+          const poster = $('.poster a img').attr('src');
+          visual.imdb_rating = imdb_rating;
+          visual.poster = poster
+          return res.status(200).json(visual);
+        }
+      });
+    } else {
+      res.status(200).json(visual);
     }
   });
 });
