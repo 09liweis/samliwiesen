@@ -82,6 +82,10 @@ router.route('/get_data').get((req,res)=>{
     }
 
     var websiteMatch = /官方网站:<\/span><a href="(.*?)<br>/g.exec(body);
+    var originalTitleMatch = /又名:<\/span>(.*?)<br\/>/g.exec(body);
+    if (originalTitleMatch) {
+      var originalTitle = originalTitleMatch[1].trim();
+    }
 
     var episodesMatch = /集数:<\/span>(.*?)<br\/>/g.exec(body);
     if (episodesMatch) {
@@ -112,7 +116,7 @@ router.route('/get_data').get((req,res)=>{
       }
     }
 
-    visual = {casts,title,duration,episodes,languages,summary,countries,douban_rating,imdb_id,release_dates:dates};
+    visual = {casts,title,originalTitle,duration,episodes,languages,summary,countries,douban_rating,imdb_id,release_dates:dates};
     if (imdb_id) {
       request({
         url: IMDB_SITE + imdb_id,
