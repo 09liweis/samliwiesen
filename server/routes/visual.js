@@ -75,6 +75,18 @@ router.route('/summary').get((req,res)=>{
       }
     }
 
+    const commentsMatch = $('.comment-item');
+    if (commentsMatch) {
+      var comments = [];
+      for (var i = 0; i < commentsMatch.length; i++) {
+        var comment = $(commentsMatch[i]);
+        comments.push({
+          text: comment.find('.short').text(),
+          author: comment.find('.comment-info a').text()
+        });
+      }
+    }
+
     const reviewsMatch = $('.main.review-item');
     if (reviewsMatch) {
       var reviews = [];
@@ -148,7 +160,22 @@ router.route('/summary').get((req,res)=>{
       }
     }
 
-    visual = {casts,title,originalTitle,duration,episodes,languages,summary,countries,douban_rating,imdb_id,release_dates:dates,recommends,reviews};
+    visual = {
+      casts,
+      title,
+      originalTitle,
+      duration,
+      episodes,
+      languages,
+      summary,
+      countries,
+      douban_rating,
+      imdb_id,
+      release_dates:dates,
+      recommends,
+      reviews,
+      comments
+    };
     if (imdb_id) {
       request({
         url: IMDB_SITE + imdb_id,
