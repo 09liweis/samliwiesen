@@ -81,7 +81,8 @@ router.route('/summary').get((req,res)=>{
       for (var i = 0; i < reviewsMatch.length; i++) {
         var review = $(reviewsMatch[i]);
         reviews.push({
-          title: review.find('h2 a').text()
+          title: review.find('h2 a').text(),
+          content: review.find('.short-content').text()
         });
       }
     }
