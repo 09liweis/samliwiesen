@@ -59,7 +59,7 @@ router.route('/get_data').get((req,res)=>{
     var episodes = 1;
     const title = $('span[property="v:itemreviewed"]').text();
     const douban_rating = $('strong[property="v:average"]').text();
-    const duration = $('span[property="v:runtime"]').attr('content');
+    var duration = $('span[property="v:runtime"]').attr('content');
     const summary = $('span[property="v:summary"]').text();
 
     const castMatches = $('.celebrity');
@@ -90,6 +90,13 @@ router.route('/get_data').get((req,res)=>{
     var episodesMatch = /集数:<\/span>(.*?)<br\/>/g.exec(body);
     if (episodesMatch) {
       episodes = parseInt(episodesMatch[1].trim());
+      var durationMatch = /单集片长:<\/span>(.*?)<br\/>/g.exec(body);
+      if (durationMatch) {
+        duration = durationMatch[1].trim();
+        if (/分钟/.test(duration)) {
+          duration = duration.replace('分钟','');
+        }
+      }
     }
 
     var langsMatch = /语言:<\/span>(.*?)<br\/>/g.exec(body);
