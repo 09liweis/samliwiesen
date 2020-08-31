@@ -62,6 +62,19 @@ router.route('/summary').get((req,res)=>{
     var duration = $('span[property="v:runtime"]').attr('content');
     const summary = $('span[property="v:summary"]').text().trim();
 
+    const recommendsMatch = $('.recommendations-bd dl');
+    if (recommendsMatch) {
+      var recommends = [];
+      for (var i = 0; i < recommendsMatch.length; i++) {
+        var recommend = $(recommendsMatch[i]);
+        recommends.push({
+          img: recommend.find('dt img').attr('src'),
+          title: recommend.find('dd a').text(),
+          url: recommend.find('dd a').attr('href')
+        });
+      }
+    }
+
     const castMatches = $('.celebrity');
     if (castMatches) {
       var casts = []
@@ -123,7 +136,7 @@ router.route('/summary').get((req,res)=>{
       }
     }
 
-    visual = {casts,title,originalTitle,duration,episodes,languages,summary,countries,douban_rating,imdb_id,release_dates:dates};
+    visual = {casts,title,originalTitle,duration,episodes,languages,summary,countries,douban_rating,imdb_id,release_dates:dates,recommends};
     if (imdb_id) {
       request({
         url: IMDB_SITE + imdb_id,
