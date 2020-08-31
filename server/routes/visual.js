@@ -60,7 +60,7 @@ router.route('/summary').get((req,res)=>{
     const title = $('span[property="v:itemreviewed"]').text();
     const douban_rating = $('strong[property="v:average"]').text();
     var duration = $('span[property="v:runtime"]').attr('content');
-    const summary = $('span[property="v:summary"]').text();
+    const summary = $('span[property="v:summary"]').text().trim();
 
     const castMatches = $('.celebrity');
     if (castMatches) {
