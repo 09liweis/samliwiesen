@@ -3,12 +3,15 @@
   <app-transaction-form [selectedId]="selectedId" *ngIf="showTransactionForm"></app-transaction-form>
   <a class="button" (click)="toggleTransactionForm()">Add New</a>
   <div class="transaction__filter">
-    <input type="month" [(ngModel)]="filters.date" />
+    <input type="month" [(ngModel)]="filters.date" placeholder="2020-08" />
     <select [(ngModel)]="filters.category">
       <option value="">Select Category</option>
       <option *ngFor="let c of categories" value={{c}}>{{c}}</option>
     </select>
     <a class="filter__confirm" (click)="getTransactions()">Filter</a>
+  </div>
+  <div class="stats">
+    <div class="total">Total: ${{total}}</div>
   </div>
   <a class="transaction" *ngFor="let t of trans" [routerLink]="['/transactions', t._id]">
     <span class="transaction__date">{{t.date}}</span>

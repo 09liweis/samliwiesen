@@ -11,6 +11,7 @@ export class TransactionsComponent implements OnInit {
   public trans = [];
   public categories = [];
   public selectedId = '';
+  public total = 0;
   public filters = {
     limit:'all',
     date: '',
@@ -34,9 +35,13 @@ export class TransactionsComponent implements OnInit {
   }
 
   getTransactions() {
-    console.log(this.filters);
     this.transactionService.getList(this.filters).subscribe(ret=>{
       this.trans = ret;
+      this.total = 0;
+      for (let i = 0; i < ret.length; i++) {
+        const transaction = ret[i];
+        this.total += Math.abs(transaction.price);
+      }
     });
   }
 }
