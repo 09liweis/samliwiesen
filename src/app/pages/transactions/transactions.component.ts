@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {getToday} from '../../helpers';
 import { TransactionService } from '../../services/transaction.service';
 
 @Component({
@@ -24,7 +24,9 @@ export class TransactionsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getTransactions();
+    const {year,m} = getToday();
+    this.filters.date = `${year}-${m}`;
+    this.getTransactions(this.filters);
     this.transactionService.getCategores().subscribe(ret=>{
       this.categories = ret;
     })
@@ -34,8 +36,8 @@ export class TransactionsComponent implements OnInit {
     this.showTransactionForm = !this.showTransactionForm;
   }
 
-  getTransactions() {
-    this.transactionService.getList(this.filters).subscribe(ret=>{
+  getTransactions(filters) {
+    this.transactionService.getList(filters).subscribe(ret=>{
       this.trans = ret;
       this.total = 0;
       for (let i = 0; i < ret.length; i++) {
