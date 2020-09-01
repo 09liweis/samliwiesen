@@ -15,13 +15,7 @@ export class TransactionService {
   constructor(private http: HttpClient) { }
   
   getList(filters={}): Observable<any> {
-    let query = '';
-    for (let k in filters) {
-      if (filters[k]){
-        query += `&${k}=${filters[k]}`;
-      }
-    }
-    return this.http.get(genAPI(this.endpoint+query));
+    return this.http.post(genAPI(this.endpoint),filters);
   }
 
   getCategores(): Observable<any> {
