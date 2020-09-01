@@ -3,7 +3,7 @@ var Place = require('../models/place');
 
 exports.transaction_list = (req, res) => {
   let filter = {};
-  const {category,date,place_id,limit,page} = req.query;
+  const {category,date,place_id,limit,page} = req.body;
   let opt = {limit:30};
   if (limit) {
     if (limit != 'all') {
