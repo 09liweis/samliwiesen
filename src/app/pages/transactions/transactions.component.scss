@@ -1,5 +1,5 @@
-#transactions {
-  &__backdrop {
+.transactions {
+  .backdrop {
     position: fixed;
     top: 0;
     width: 100%;
@@ -9,8 +9,11 @@
     right:0;
     z-index: 1;
   }
-  &__stats {
-    margin: 10px 0;
+  .filters {
+    margin-top: 10px;
+  }
+  .stats {
+    margin-top: 10px;
     display: flex;
   }
 }

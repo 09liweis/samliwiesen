@@ -1,13 +1,19 @@
-<div id="transactions">
-  <div *ngIf="showTransactionForm" (click)="toggleTransactionForm()" id="transactions__backdrop"></div>
+<div class="transactions">
+  <div *ngIf="showTransactionForm" (click)="toggleTransactionForm()" class="backdrop"></div>
   <app-transaction-form [selectedId]="selectedId" *ngIf="showTransactionForm"></app-transaction-form>
   <a class="button" (click)="toggleTransactionForm()">Add New</a>
-  <div class="transaction__filter">
-    <input type="month" [(ngModel)]="filters.date" placeholder="2020-08" />
-    <select [(ngModel)]="filters.category">
-      <option value="">Select Category</option>
-      <option *ngFor="let c of categories" value={{c}}>{{c}}</option>
-    </select>
+  <div class="filters">
+    <div class="filter">
+      <label>Date</label>
+      <input type="month" [(ngModel)]="filters.date" placeholder="2020-08" />
+    </div>
+    <div class="filter">
+      <label>Category</label>
+      <select [(ngModel)]="filters.category">
+        <option value="">Select Category</option>
+        <option *ngFor="let c of categories" value={{c}}>{{c}}</option>
+      </select>
+    </div>
     <a class="filter__confirm" (click)="getTransactions(filters)">Filter</a>
   </div>
   <div class="stats">
