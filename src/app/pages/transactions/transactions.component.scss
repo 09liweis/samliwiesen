@@ -11,8 +11,24 @@
   }
   .filters {
     margin-top: 20px;
-    .filter {
-      margin-top: 10px;
+  }
+  .filter {
+    margin-top: 10px;
+  }
+  .category {
+    border-radius: 5px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid;
+    transition: .3s;
+    cursor: pointer;
+    background-color: #fff;
+    color: #aac146;
+    &:hover,&.selected {
+      background-color: #aac146;
+      color: #fff;
     }
   }
   .stats {

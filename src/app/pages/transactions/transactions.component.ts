@@ -13,10 +13,13 @@ export class TransactionsComponent implements OnInit {
   public selectedId = '';
   public total = 0;
   public loading = false;
+  public categoryTp = '$in';
   public filters = {
     limit:'all',
     date: '',
-    category: ''
+    category: {
+      '$in':[]
+    }
   };
   public showTransactionForm = false;
 
@@ -33,14 +36,40 @@ export class TransactionsComponent implements OnInit {
     })
   }
 
+  toggleCategory() {
+    if (this.categoryTp == '$in') {
+      delete this.filters.category['$in'];
+      this.filters.category['$nin'] = [];
+      this.categoryTp = '$nin';
+    } else {
+      delete this.filters.category['$nin'];
+      this.filters.category['$in'] = [];
+      this.categoryTp = '$in'
+    }
+  }
+
+  selectCategory(c) {
+    const key = this.categoryTp;
+    const idx = this.filters.category[key].indexOf(c);
+    if (idx > -1) {
+      this.filters.category[key].splice(idx,1);
+    } else {
+      this.filters.category[key].push(c);
+    }
+  }
+
   toggleTransactionForm() {
     this.showTransactionForm = !this.showTransactionForm;
   }
 
   getTransactions(filters) {
+    var opt = Object.assign({},filters);
+    if (opt.category[this.categoryTp].length == 0) {
+      delete opt.category;
+    }
     this.loading = true;
     this.trans = [];
-    this.transactionService.getList(filters).subscribe(ret=>{
+    this.transactionService.getList(opt).subscribe(ret=>{
       this.loading = false;
       this.trans = ret;
       this.total = 0;

@@ -9,10 +9,10 @@
     </div>
     <div class="filter">
       <label>Category</label>
-      <select [(ngModel)]="filters.category">
-        <option value="">Select Category</option>
-        <option *ngFor="let c of categories" value={{c}}>{{c}}</option>
-      </select>
+      <br/>
+      <span (click)="toggleCategory()">{{(categoryTp == '$in')?'Include':'Exclude'}}</span>
+      <br/>
+      <span class="category {{filters.category[categoryTp].indexOf(c) > -1 ? 'selected': ''}}" *ngFor="let c of categories" (click)=selectCategory(c)>{{c}}</span>
     </div>
     <button class="filter" (click)="getTransactions(filters)">Filter</button>
   </div>
