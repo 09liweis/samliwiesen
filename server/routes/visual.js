@@ -27,6 +27,26 @@ function getAvtUrl(element) {
   return avt;
 }
 
+function getCast(cast,$) {
+  const worksMatch = cast.find('.works a');
+  let works = [];
+  if (worksMatch) {
+    for (let i = 0; i < worksMatch.length; i++) {
+      const work = $(worksMatch[i]);
+      works.push({
+        url: work.attr('href'),
+        tl:work.attr('title')
+      })
+    }
+  }
+  return {
+    name:cast.find('a.name').text(),
+    avt:getAvtUrl(cast),
+    role:cast.find('.role').text(),
+    works
+  }
+}
+
 router.route('/search').get((req,res)=>{
   const keyword = req.query.keyword;
   if (!keyword) {
@@ -51,7 +71,6 @@ router.route('/celebrities').post((req,res)=>{
     return res.status(400).json({msg:'No Douban Id'});
   }
   const url = DOUBAN_SITE + douban_id + '/celebrities';
-  console.log(url);
   request({
     url,
     method: 'POST',
@@ -80,10 +99,7 @@ router.route('/celebrities').post((req,res)=>{
       let celebrities = [];
       for (let j = 0; j < celebritiesMatch.length; j++) {
         const celebrity = $(celebritiesMatch[j]);
-        var avt = getAvtUrl(celebrity);
-        celebrities.push({
-          avt
-        })
+        celebrities.push(getCast(celebrity,$));
       }
       casts.push({
         tl:castTl,
@@ -163,12 +179,7 @@ router.route('/summary').get((req,res)=>{
       var casts = []
       for(var i = 0; i < castMatches.length; i++) {
         var cast = $(castMatches[i]);
-        var avt = getAvtUrl(cast);
-        casts.push({
-          name:cast.find('a.name').text(),
-          avt,
-          role:cast.find('.role').text()
-        })
+        casts.push(getCast(cast,$));
       }
     }
 
