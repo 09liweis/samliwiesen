@@ -35,6 +35,50 @@ router.route('/search').get((req,res)=>{
   });
 });
 
+router.route('/celebrities').post((req,res)=>{
+  const {douban_id} = req.body
+  if (!douban_id) {
+    return res.status(400).json({msg:'No Douban Id'});
+  }
+  const url = DOUBAN_SITE + douban_id + '/celebrities';
+  console.log(url);
+  request({
+    url,
+    method: 'POST',
+    headers,
+    json:{
+      douban_id
+    }
+  },
+  function (error, response, body) {
+    var body = body.replace(/(\r\n|\n|\r)/gm, '');
+    body = body.replace(/ +(?= )/g,'');
+    const {statusCode} = response;
+    if (error && statusCode != 200) {
+      return res.status(statusCode).json({error});
+    }
+    const $ = cheerio.load(body.toString(),{
+      normalizeWhitespace:true,
+      decodeEntities:true
+    });
+    const castsMatch = $('.list-wrapper');
+    let casts = [];
+    for (let i = 0; i < castsMatch.length; i++) {
+      const castSection = $(castsMatch[i]);
+      let castTl = castSection.find('h2').text()
+      const celebrities = castSection.find('.celebrity');
+      for (let j = 0; j < celebrities.length; j++) {
+        const celebrity = $(celebrities[j]);
+        console.log(celebrity)
+      }
+      cast = {
+        tl:castTl
+      }
+    }
+    res.status(200).json({ok:1});
+  });
+});
+
 router.route('/summary').get((req,res)=>{
   const {douban_id} = req.query;
   if (!douban_id) {
