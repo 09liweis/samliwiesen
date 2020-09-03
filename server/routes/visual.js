@@ -17,6 +17,16 @@ const DOUBAN_MOVIE_API = 'https://api.douban.com/v2/movie/subject/';
 const DOUBAN_API_KEY = '0df993c66c0c636e29ecbb5344252a4a';
 const IMDB_SITE = 'https://www.imdb.com/title/';
 
+function getAvtUrl(element) {
+  var avtStyle = element.find('div.avatar').attr('style');
+  var avtMatches = /url\((.*?)\)/g.exec(avtStyle);
+  let avt = '';
+  if (avtMatches) {
+    avt = avtMatches[1];
+  }
+  return avt;
+}
+
 router.route('/search').get((req,res)=>{
   const keyword = req.query.keyword;
   if (!keyword) {
@@ -69,7 +79,7 @@ router.route('/celebrities').post((req,res)=>{
       const celebrities = castSection.find('.celebrity');
       for (let j = 0; j < celebrities.length; j++) {
         const celebrity = $(celebrities[j]);
-        console.log(celebrity)
+        var avt = getAvtUrl(celebrity);
       }
       cast = {
         tl:castTl
@@ -148,12 +158,7 @@ router.route('/summary').get((req,res)=>{
       var casts = []
       for(var i = 0; i < castMatches.length; i++) {
         var cast = $(castMatches[i]);
-        var avt = '';
-        var avtStyle = cast.find('div.avatar').attr('style');
-        var avtMatches = /url\((.*?)\)/g.exec(avtStyle);
-        if (avtMatches) {
-          avt = avtMatches[1];
-        }
+        var avt = getAvtUrl(cast);
         casts.push({
           name:cast.find('a.name').text(),
           avt,
