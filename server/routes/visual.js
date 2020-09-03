@@ -76,16 +76,21 @@ router.route('/celebrities').post((req,res)=>{
     for (let i = 0; i < castsMatch.length; i++) {
       const castSection = $(castsMatch[i]);
       let castTl = castSection.find('h2').text()
-      const celebrities = castSection.find('.celebrity');
-      for (let j = 0; j < celebrities.length; j++) {
-        const celebrity = $(celebrities[j]);
+      const celebritiesMatch = castSection.find('.celebrity');
+      let celebrities = [];
+      for (let j = 0; j < celebritiesMatch.length; j++) {
+        const celebrity = $(celebritiesMatch[j]);
         var avt = getAvtUrl(celebrity);
+        celebrities.push({
+          avt
+        })
       }
-      cast = {
-        tl:castTl
-      }
+      casts.push({
+        tl:castTl,
+        celebrities
+      })
     }
-    res.status(200).json({ok:1});
+    res.status(200).json(casts);
   });
 });
 
