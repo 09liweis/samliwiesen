@@ -13,16 +13,7 @@
   z-index: 2;
 }
 #categories {
-  position: absolute;
-  padding: 20px;
-  background-color: #fff;
-  width: 320px;
-  top: 50%;
-  transform: translateY(-50%);
-  left:0;
-  right:0;
-  margin:auto;
-  border: 1px solid #ccc;
+  margin: 10px 0;
 }
 .category {
   display: inline-block;

@@ -1,17 +1,16 @@
 <div class="transactionForm">
-	<h2>{{transaction._id ? 'Edit' : 'Add'}} Transaction</h2>
-	<div class="">
-		<input class="input" placeholder="Title" name="title" [(ngModel)]="transaction.title">
-		<input class="input" placeholder="Price" name="price" [(ngModel)]="transaction.price">
-		<input class="input" placeholder="Date" name="date" [(ngModel)]="transaction.date">
-		<a class="button" (click)="toggleCategoriesForm()">{{transaction.category || 'Select Category'}}</a>
-		<br/>
-		<a class="button" (click)="submit(false)">Submit</a>
-		<a class="button" (click)="submit(true)">Submit and Close</a>
-		<!-- <button *ngIf="transaction._id" mat-raised-button color="primary" (click)="delete(transaction._id)">Delete</button> -->
-	</div>
-	<div id="categories" *ngIf="categoriesForm">
-		<input class="input" placeholder="Category" name="category" [(ngModel)]="transaction.category">
-		<span class="category" *ngFor="let c of categories" (click)="selectCategory(c)">{{c}}</span>
-	</div>
+  <h2>{{transaction._id ? 'Edit' : 'Add'}} Transaction</h2>
+  <div class="">
+    <input class="input" placeholder="Title" name="title" [(ngModel)]="transaction.title">
+    <input class="input" placeholder="Price" name="price" [(ngModel)]="transaction.price">
+    <input class="input" placeholder="Date" name="date" [(ngModel)]="transaction.date">
+    <div id="categories">
+      <input class="input" placeholder="Category" name="category" [(ngModel)]="transaction.category">
+      <span class="category" *ngFor="let c of categories" (click)="selectCategory(c)">{{c}}</span>
+    </div>
+    <br/>
+    <a class="button" (click)="submit(false)">Submit</a>
+    <a class="button" (click)="submit(true)">Submit and Close</a>
+    <!-- <button *ngIf="transaction._id" mat-raised-button color="primary" (click)="delete(transaction._id)">Delete</button> -->
+  </div>
 </div>

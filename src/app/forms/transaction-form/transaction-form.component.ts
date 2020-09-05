@@ -11,6 +11,7 @@ import { TransactionService } from '../../services/transaction.service';
 })
 export class TransactionFormComponent implements OnInit {
   @Input() selectedId;
+  @Input() categories;
   public transaction = {
     _id: '',
     title: '',
@@ -19,8 +20,6 @@ export class TransactionFormComponent implements OnInit {
     category: '',
     place: {}
   };
-  public categories = [];
-  public categoriesForm = false;
 
   constructor(
     private transactionService: TransactionService,
@@ -47,17 +46,10 @@ export class TransactionFormComponent implements OnInit {
   }
   
   ngAfterViewInit() {
-    this.transactionService.getCategores().subscribe(categories => {
-      this.categories = categories;
-    })
   }
 
-  toggleCategoriesForm() {
-    this.categoriesForm = !this.categoriesForm;
-  }
   selectCategory(c) {
     this.transaction.category = c;
-    this.toggleCategoriesForm();
   }
   
   submit(back: boolean):void {
