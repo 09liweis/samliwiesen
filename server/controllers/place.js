@@ -1,4 +1,5 @@
 const https = require('https');
+var request = require('request');
 var ObjectID = require('mongodb').ObjectID
 var Place = require('../models/place');
 var Transaction = require('../models/transaction');
@@ -89,3 +90,31 @@ exports.place_upsert = async function(req, res) {
   }
   res.status(200).json(p);
 };
+
+const headers = {
+  'Accept-Language': 'zh-CN,zh;q=0.8',
+  'Accept-Charset': 'utf-8, iso-8859-1;q=0.5'
+};
+
+//https://developers.google.com/places/web-service/search#PlaceSearchRequests
+exports.search_google = async function(req, res) {
+  const {name,lat,lng} = req.body
+  //&radius=1500&type=restaurant
+  const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=50000&name=${encodeURIComponent(name)}&key=${API_KEY}`;
+  console.log(url);
+  request({
+    url,
+    method: 'GET',
+    headers
+  },
+  function (error, response, body) {
+    const {statusCode} = response;
+    if (!error && statusCode == 200) {
+      const results = JSON.parse(body);
+      console.log(statusCode);
+      return res.status(statusCode).send(results);
+    } else {
+      res.status(200).json({ok:1});
+    }
+  });
+}

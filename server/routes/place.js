@@ -12,4 +12,7 @@ router.route('/update_random').get(PlaceController.place_update_random);
 router.route('/:id')
 .get(PlaceController.place_detail);
 
+router.route('/search_google')
+.post(PlaceController.search_google);
+
 module.exports = router;
