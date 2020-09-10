@@ -186,7 +186,7 @@ router.route('/summary').get((req,res)=>{
     var websiteMatch = /官方网站:<\/span><a href="(.*?)<br>/g.exec(body);
     var originalTitleMatch = /又名:<\/span>(.*?)<br\/>/g.exec(body);
     if (originalTitleMatch) {
-      var originalTitle = originalTitleMatch[1].trim();
+      var original_title = originalTitleMatch[1].trim();
     }
 
     var episodesMatch = /集数:<\/span>(.*?)<br\/>/g.exec(body);
@@ -228,7 +228,7 @@ router.route('/summary').get((req,res)=>{
     visual = {
       casts,
       title,
-      originalTitle,
+      original_title,
       duration,
       episodes,
       languages,
