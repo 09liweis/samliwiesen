@@ -11,19 +11,22 @@
         </div>
       </div>
       <div class="input-form" style="width:50%;">
-        <label>{{currentField}}</label>
-        <input v-model="currentVal"/>
-        <a @click="updateField(currentField)">Update</a>
+        <div class="input-form-group">
+          <label>{{currentField}}</label>
+          <input v-model="currentVal"/>
+          <a @click="updateField(currentField)">Update</a>
+        </div>
         <div v-if="currentField == 'release_date'">
           <div v-for="d in release_dates" :key="d" @click="currentVal = d.substring(0, 10)">{{d}}</div>
         </div>
         <div style="display:flex;" v-if="currentField == 'poster' && posters.length > 0">
           <img style="width:33%;" v-for="p in posters" :key="p" :src="p" @click="currentVal=p"/>
         </div>
+        <div v-if="loading">Loading</div>
+        <button v-on:click="handleSubmit">Submit</button>
       </div>
     </div>
     <!-- <mu-raised-button label="Add Image" class="demo-raised-button" primary v-on:click="gotoAddImage()" /> -->
-    <button v-on:click="handleSubmit">Submit</button>
     
     <!-- <div class="songs">
       <mu-raised-button label="Add Song" class="demo-raised-button" primary v-on:click="gotoAddSong()" />
@@ -42,6 +45,7 @@ export default {
     return {
       currentField:'douban_id',
       currentVal:'',
+      loading:false,
       posters: [],
       searchOpen: false,
       searchs: [],
@@ -137,63 +141,24 @@ export default {
     // 	});
     // },
     renderDouban() {
-      if (this.visual.douban_id == '') {
+      const {douban_id} = this.visual;
+      if (douban_id == '') {
         alert('Empty douban id');
         return;
       }
-      this.getImdbId();
-      this.$http.jsonp('https://api.douban.com/v2/movie/subject/' + this.visual.douban_id + '?apikey=0df993c66c0c636e29ecbb5344252a4a').then(res => {
+      var api = '/api/visuals/summary?douban_id='+douban_id
+      this.loading = true;
+      this.$http.get(api).then(res => {
         const douban = res.body;
-        if (this.visual.summary == '') {
-          this.visual.summary = douban.summary;
-        }
-        this.release_dates = douban.pubdates;
-        this.posters = [];
-        if (this.visual.poster) {
-          this.posters.push(this.visual.poster);
-        }
-        this.posters.push(douban.images.large);
-        
-        this.visual.title = douban.title;
-        if (!this.visual.original_title) {
-          this.visual.original_title = douban.original_title;
-        }
-        this.visual.douban_rating = douban.rating.average;
-        if (douban.episodes_count) {
-          this.visual.episodes = douban.episodes_count;
+        this.loading = false;
+        this.visual = Object.assign(this.visual,douban);
+        if (douban.episodes > 1) {
           this.visual.visual_type = 'tv';
         }
-        if (douban.countries) {
-          this.visual.countries = douban.countries;
-        }
-        if (douban.languages) {
-          this.visual.languages = douban.languages;
-        }
-        if (douban.durations && douban.durations.length > 0) {
-          const duration = douban.durations[0];
-          this.visual.duration = duration.slice(0,duration.length - 2);
-        }
-        this.visual.website = douban.website;
-      }, res => {
-        //error
-      });
-    },
-    getImdbId() {
-      const options = {
-        params: {
-          douban_id: this.visual.douban_id
-        }
-      };
-      // const api = this.$store.state.api.visualImdb;
-      const api = '/api/visuals/get_imdb_id';
-      this.$http.get(api, options).then(res => {
-        if (res.body.imdb_id) {
-          this.visual.imdb_id = res.body.imdb_id;    
-        }
-        // this.release_dates = res.body.release_dates;
+        this.release_dates = douban.release_dates;
         this.renderIMDB();
       }, res => {
-          
+        //error
       });
     },
     renderIMDB() {
