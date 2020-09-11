@@ -10,13 +10,13 @@
 		</div>
     <div class="table" v-if="resultVisuals.length > 0">
       <div class="table__head">
-        <div>Poster</div>
-        <div>Title</div>
-        <div>Country/Language</div>
-        <div>Ratings</div>
-        <div>Progress</div>
-        <div>Release Date</div>
-        <div>Actions</div>
+        <div class="table__headCol tablet">Poster</div>
+        <div class="table__headCol">Title</div>
+        <div class="table__headCol desktop">Country/Language</div>
+        <div class="table__headCol">Ratings</div>
+        <div class="table__headCol">Progress</div>
+        <div class="table__headCol desktop">Release Date</div>
+        <div class="table__headCol">Actions</div>
       </div>
       <Visual v-for="v in resultVisuals" :key="v.id" v-bind:v="v" v-bind:getVisuals="getVisuals"></Visual>
     </div>
@@ -117,12 +117,13 @@ export default {
 	text-align: left;
 	border-radius: 10px;
 }
-.table th {
-	padding: 10px;
+.table__head {
+  display: flex;
 }
-.table__head th {
-	background:#36304a;
-	color: #ffffff;
+.table__head .table__headCol {
+  transition: 0.3s;
+  padding: 5px;
+  flex:1;
 }
 .table tbody tr {
 	color: #808080;
@@ -162,5 +163,19 @@ export default {
 .pagination__link.active {
 	background: #ff4081;
 	color: #ffffff;
+}
+.tablet,
+.desktop {
+  display: none;
+}
+@media (min-width: 768px) {
+  .tablet {
+    display: block;
+  }
+}
+@media (min-width:1024px) {
+  .desktop {
+    display: block;
+  }
 }
 </style>

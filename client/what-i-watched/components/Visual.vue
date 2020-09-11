@@ -1,13 +1,13 @@
 <template>
   <div class="visual">
-    <div>
+    <div class="tablet">
       <img class="visual__poster" :src="v.poster" referrerpolicy ="never" />
     </div>
     <div class="visual__col title">
       <h3 class="visual__title">{{v.title}} <a v-if="v.website" :href="getWebsite(v.website)" target="_blank">Website</a></h3>
       <h3 class="visual__title" v-if="v.title != v.original_title">{{v.original_title}}</h3>
     </div>
-    <div>
+    <div class="desktop">
       <div>{{v.countries.join(',')}}</div>
       <div>{{v.languages.join(',')}}</div>
     </div>
@@ -33,7 +33,7 @@
         <mu-linear-progress mode="determinate" :value="(v.current_episode/v.episodes) * 100"/>
       </div>
     </div>
-    <div class="visual__col release_date">
+    <div class="visual__col release_date desktop">
       <span>{{v.release_date}}</span>
       <div v-if="v.duration">{{v.duration}} mins</div>
     </div>
@@ -79,6 +79,12 @@ export default {
 <style>
 .visual {
   border-top: 1px solid #bfbaba;
+  display: flex;
+}
+.visual > div {
+  flex:1;
+  padding: 10px;
+  transition: 0.3s;
 }
 .visual__poster {
   border-radius: 4px;
