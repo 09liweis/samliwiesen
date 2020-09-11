@@ -1,17 +1,17 @@
 <template>
-  <tr class="visual">
-    <th>
+  <div class="visual">
+    <div>
       <img class="visual__poster" :src="v.poster" referrerpolicy ="never" />
-    </th>
-    <th class="visual__col title">
+    </div>
+    <div class="visual__col title">
       <h3 class="visual__title">{{v.title}} <a v-if="v.website" :href="getWebsite(v.website)" target="_blank">Website</a></h3>
       <h3 class="visual__title" v-if="v.title != v.original_title">{{v.original_title}}</h3>
-    </th>
-    <th>
+    </div>
+    <div>
       <div>{{v.countries.join(',')}}</div>
       <div>{{v.languages.join(',')}}</div>
-    </th>
-    <th class="visual__col ratings">
+    </div>
+    <div class="visual__col ratings">
       <div class="visual__ratings">
         <a class="visual__rating link" v-bind:href="getLink(v.douban_id, 'douban')" target="_blank">
           <img class="visual__rating icon" src="https://img3.doubanio.com/f/talion/2f3c0bc0f35b031d4535fd993ae3936f4e40e6c8/pics/icon/dou32.png" alt="douban icon" />
@@ -26,24 +26,24 @@
           <span class="visual__rating">{{v.rotten_rating}}</span>
         </a>
       </div>
-    </th>
-    <th class="visual__col progress">
+    </div>
+    <div class="visual__col progress">
       <span class="visual__progress-episodes">{{v.current_episode}} / {{v.episodes}}</span>
       <div class="visual__progress">
         <mu-linear-progress mode="determinate" :value="(v.current_episode/v.episodes) * 100"/>
       </div>
-    </th>
-    <th class="visual__col release_date">
+    </div>
+    <div class="visual__col release_date">
       <span>{{v.release_date}}</span>
       <div v-if="v.duration">{{v.duration}} mins</div>
-    </th>
-    <th class="visual__col actions">
+    </div>
+    <div class="visual__col actions">
       <div class="visual__action">
         <router-link :to="{ name: 'edit', params: { id: v.id }}">Edit</router-link>
         <a class="visual__increaseepisode" v-if="v.episodes != v.current_episode" v-on:click="increaseEpisode(v)">+ 1 ep</a>
       </div>
-    </th>
-  </tr>
+    </div>
+  </div>
 </template>
 <script>
 export default {

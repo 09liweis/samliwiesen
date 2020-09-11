@@ -8,20 +8,18 @@
 		<div class="filters">
 			<button v-on:click="filter()">Not Started</button>
 		</div>
-		<table class="table" v-if="resultVisuals.length > 0">
-			<tr class="table__head">
-				<th>Poster</th>
-				<th>Title</th>
-				<th>Country/Language</th>
-				<th>Ratings</th>
-				<th>Progress</th>
-				<th>Release Date</th>
-				<th>Actions</th>
-			</tr>
-			<tbody>
-				<Visual v-for="v in resultVisuals" :key="v.id" v-bind:v="v" v-bind:getVisuals="getVisuals"></Visual>
-			</tbody>
-		</table>
+    <div class="table" v-if="resultVisuals.length > 0">
+      <div class="table__head">
+        <div>Poster</div>
+        <div>Title</div>
+        <div>Country/Language</div>
+        <div>Ratings</div>
+        <div>Progress</div>
+        <div>Release Date</div>
+        <div>Actions</div>
+      </div>
+      <Visual v-for="v in resultVisuals" :key="v.id" v-bind:v="v" v-bind:getVisuals="getVisuals"></Visual>
+    </div>
 		<transition-group v-if="list.length > 0" name="visual" class="" appear>
 		</transition-group>
 		<div class="paginations" v-if="total != 0">
