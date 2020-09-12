@@ -12,10 +12,9 @@
       <div class="table__head">
         <div class="table__headCol tablet">Poster</div>
         <div class="table__headCol">Title</div>
-        <div class="table__headCol desktop">Country/Language</div>
+        <div class="table__headCol desktop">Country/Language/Release Date</div>
         <div class="table__headCol">Ratings</div>
         <div class="table__headCol">Progress</div>
-        <div class="table__headCol desktop">Release Date</div>
         <div class="table__headCol">Actions</div>
       </div>
       <Visual v-for="v in resultVisuals" :key="v.id" v-bind:v="v" v-bind:getVisuals="getVisuals"></Visual>

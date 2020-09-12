@@ -10,6 +10,8 @@
     <div class="desktop">
       <div>{{v.countries.join(',')}}</div>
       <div>{{v.languages.join(',')}}</div>
+      <span>{{v.release_date}}</span>
+      <div v-if="v.duration">{{v.duration}} mins</div>
     </div>
     <div class="visual__col ratings">
       <div class="visual__ratings">
@@ -32,10 +34,6 @@
       <div class="visual__progress">
         <mu-linear-progress mode="determinate" :value="(v.current_episode/v.episodes) * 100"/>
       </div>
-    </div>
-    <div class="visual__col release_date desktop">
-      <span>{{v.release_date}}</span>
-      <div v-if="v.duration">{{v.duration}} mins</div>
     </div>
     <div class="visual__col actions">
       <div class="visual__action">
