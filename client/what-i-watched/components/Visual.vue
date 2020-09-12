@@ -13,7 +13,7 @@
       <span>{{v.release_date}}</span>
       <div v-if="v.duration">{{v.duration}} mins</div>
     </div>
-    <div class="visual__col ratings">
+    <div class="visual__col progress">
       <div class="visual__ratings">
         <a class="visual__rating link" v-bind:href="getLink(v.douban_id, 'douban')" target="_blank">
           <img class="visual__rating icon" src="https://img3.doubanio.com/f/talion/2f3c0bc0f35b031d4535fd993ae3936f4e40e6c8/pics/icon/dou32.png" alt="douban icon" />
@@ -28,8 +28,6 @@
           <span class="visual__rating">{{v.rotten_rating}}</span>
         </a>
       </div>
-    </div>
-    <div class="visual__col progress">
       <span class="visual__progress-episodes">{{v.current_episode}} / {{v.episodes}}</span>
       <div class="visual__progress">
         <mu-linear-progress mode="determinate" :value="(v.current_episode/v.episodes) * 100"/>

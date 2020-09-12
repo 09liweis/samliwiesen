@@ -13,8 +13,7 @@
         <div class="table__headCol tablet">Poster</div>
         <div class="table__headCol">Title</div>
         <div class="table__headCol desktop">Country/Language/Release Date</div>
-        <div class="table__headCol">Ratings</div>
-        <div class="table__headCol">Progress</div>
+        <div class="table__headCol">Ratings/Progress</div>
         <div class="table__headCol">Actions</div>
       </div>
       <Visual v-for="v in resultVisuals" :key="v.id" v-bind:v="v" v-bind:getVisuals="getVisuals"></Visual>
@@ -120,6 +119,7 @@ export default {
   display: flex;
 }
 .table__head .table__headCol {
+	font-weight: bold;
   transition: 0.3s;
   padding: 5px;
   flex:1;
