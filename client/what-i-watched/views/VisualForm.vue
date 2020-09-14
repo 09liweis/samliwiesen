@@ -146,9 +146,9 @@ export default {
         alert('Empty douban id');
         return;
       }
-      var api = '/api/visuals/summary?douban_id='+douban_id
+      var api = '/api/visuals/summary';
       this.loading = true;
-      this.$http.get(api).then(res => {
+      this.$http.post(api,{douban_id}).then(res => {
         const douban = res.body;
         this.loading = false;
         var checkFields = ['poster','title','original_title'];
