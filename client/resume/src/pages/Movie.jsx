@@ -10,12 +10,24 @@ const Poster = styled.img`
   border-radius: 10px;
 `;
 
+const Casts = styled.div`
+  display: flex;
+  .cast {
+    width: 90px;
+    margin-right: 10px;
+    text-align: center;
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+  }
+`;
+
 const Movie = (props) => {
-  const [visual,setVisual] = useState({id:props.match.params.id});
+  const [visual,setVisual] = useState({casts:[],id:props.match.params.id});
   const [loading,setLoading] = useState(true);
   function getSummary(douban_id,cb) {
     axios.post('/api/visuals/summary',{douban_id}).then((res) => {
-      console.log(res);
       return cb(res);
     });
   }
@@ -24,8 +36,8 @@ const Movie = (props) => {
       const {douban_id} = res.data.result;
       let v = res.data.result;
       getSummary(douban_id,(res)=> {
-        if (res && res.douban_rating) {
-          v = Object.assign(v,res);
+        if (res && res.data && res.data.douban_rating) {
+          v = Object.assign(v,res.data);
         }
         setVisual(v);
         setLoading(false);
@@ -43,8 +55,20 @@ const Movie = (props) => {
         <div className="">Loading</div>:
         <div style={{position:'relative'}}>
           <Poster src={visual.poster} />
-          <div style={{marginTop: '-20px'}}>
+          <div style={{padding:'20px 10px 10px',marginTop:'-20px',backgroundColor:'#ccc',border:'1px solid',borderRadius:'10px'}}>
+            <h2>{visual.title}</h2>
+            <div>{visual.release_date} {visual.duration}min</div>
             <div className="visual__rating">{visual.douban_rating}</div>
+            <p>{visual.summary}</p>
+            <Casts>
+              {visual.casts.map((c)=>
+                <div className="cast">
+                  <img src={'https://images.weserv.nl/?url='+c.avt} />
+                  <span>{c.name}</span>
+                  <span>{c.role}</span>
+                </div>
+              )}
+            </Casts>
           </div>
         </div>
         }
