@@ -110,8 +110,8 @@ router.route('/celebrities').post((req,res)=>{
   });
 });
 
-router.route('/summary').get((req,res)=>{
-  const {douban_id} = req.query;
+router.route('/summary').post((req,res)=>{
+  const {douban_id} = req.body;
   if (!douban_id) {
     res.send({ok:0,msg:'No Douban Id'});
   }
