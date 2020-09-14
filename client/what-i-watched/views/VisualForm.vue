@@ -151,8 +151,12 @@ export default {
       this.$http.get(api).then(res => {
         const douban = res.body;
         this.loading = false;
-        if (this.visual.poster) {
-          delete douban.poster;
+        var checkFields = ['poster','title','original_title'];
+        for (let i = 0; i < checkFields.length; i++) {
+          const fld = checkFields[i];
+          if (this.visual[fld]) {
+            delete douban[fld];
+          }
         }
         this.visual = Object.assign(this.visual,douban);
         if (douban.episodes > 1) {
