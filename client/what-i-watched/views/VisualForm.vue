@@ -151,6 +151,9 @@ export default {
       this.$http.get(api).then(res => {
         const douban = res.body;
         this.loading = false;
+        if (this.visual.poster) {
+          delete douban.poster;
+        }
         this.visual = Object.assign(this.visual,douban);
         if (douban.episodes > 1) {
           this.visual.visual_type = 'tv';
