@@ -60,7 +60,7 @@ ul li:hover {
   text-transform: capitalize;
 }
 .navItem.active {
-  animation: bounce 0.5s ease infinite alternate;
+  /* animation: bounce 0.5s ease infinite alternate; */
   color:#000;
 }
 @keyframes bounce {

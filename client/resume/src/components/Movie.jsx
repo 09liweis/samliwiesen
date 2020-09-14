@@ -41,7 +41,10 @@ const Visual = styled.div`
   margin-bottom: 15px;
   transition: 0.3s;
   &:hover {
-    transform: translateY(-3%);
+    transform: translateX(2px);
+  }
+  @media (min-width: 426px) {
+    width: 50%;
   }
   @media (min-width: 570px) {
     width: 33.333%;
