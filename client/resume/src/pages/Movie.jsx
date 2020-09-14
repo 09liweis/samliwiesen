@@ -69,6 +69,19 @@ const Movie = (props) => {
                 </div>
               )}
             </Casts>
+            <div className="comments">
+              {visual.comments.map((c)=>
+                <div className="comment">{c.author}: {c.text}</div>
+              )}
+            </div>
+            <div className="reviews">
+              {visual.reviews.map((r)=>
+                <div className="review">
+                  <h5>{r.title}</h5>
+                  <p>{r.content}</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
         }
