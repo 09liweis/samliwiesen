@@ -47,7 +47,7 @@ const Visual = styled.div`
     width: 33.333%;
   }
   @media (min-width: 768px) {
-    width: 25%;
+    width: 20%;
   }
 `;
 const VisualTitle = styled.h3`
