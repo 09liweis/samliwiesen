@@ -184,15 +184,6 @@ export default {
           this.posters.push(res.body.Poster);
         }
       });
-      const api = '/api/visuals/get_imdb_rating?imdb_id='+this.visual.imdb_id;
-      // 'https://what-i-watched.herokuapp.com/api/get_imdb_detail?imdb_id='+this.visual.imdb_id
-      this.$http.get(api).then(res => {
-        if (res.status == 200) {
-          if (res.body.imdb_rating) {
-            this.visual.imdb_rating = res.body.imdb_rating;
-          }
-        }
-      });
     },
     getSongs(visual_id) {
       this.$http.get(this.$store.state.api.songList + '?visual_id=' + visual_id).then((res) => {
