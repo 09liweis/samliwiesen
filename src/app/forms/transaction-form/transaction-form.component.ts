@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { ViewChild, Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { TransactionService } from '../../services/transaction.service';
@@ -22,6 +22,8 @@ export class TransactionFormComponent implements OnInit {
     category: '',
     place: {}
   };
+  autocompleteInput: string;
+  @ViewChild('addresstext') addresstext: any;
   public map = null;
   public mapOption = {
     center:null,
@@ -75,6 +77,17 @@ export class TransactionFormComponent implements OnInit {
   }
   
   ngAfterViewInit() {
+    this.getPlaceAutocomplete();
+  }
+
+  private getPlaceAutocomplete() {
+    const autocomplete = new google.maps.places.Autocomplete(
+      this.addresstext.nativeElement,
+      {types: ['establishment']}// 'establishment' / 'address' / 'geocode'
+    );
+    google.maps.event.addListener(autocomplete, 'place_changed', () => {
+      const place = autocomplete.getPlace();
+    });
   }
 
   selectCategory(c) {
