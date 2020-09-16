@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { TransactionService } from '../../services/transaction.service';
+import { PlaceService } from '../../services/place.service';
+import { } from 'googlemaps';
 // import { Transaction } from '../../models/transaction';
 
 @Component({
@@ -20,9 +22,15 @@ export class TransactionFormComponent implements OnInit {
     category: '',
     place: {}
   };
+  public map = null;
+  public mapOption = {
+    center:null,
+    zoom:10
+  }
 
   constructor(
     private transactionService: TransactionService,
+    private placeService: PlaceService,
     private route: ActivatedRoute,
     private router: Router,
   ) { }
@@ -30,10 +38,10 @@ export class TransactionFormComponent implements OnInit {
   ngOnInit() {
     console.log(this.selectedId);
     if (this.route.snapshot.params['id'] != 'new') {
-      this.transaction._id = this.route.snapshot.params['id'];
-      this.transactionService.getDetail(this.transaction._id).subscribe(b => {
-        this.transaction = b;
-      })
+      // this.transaction._id = this.route.snapshot.params['id'];
+      // this.transactionService.getDetail(this.transaction._id).subscribe(b => {
+      //   this.transaction = b;
+      // })
     } else {
       const now = new Date();
       const year = now.getFullYear();
@@ -43,6 +51,27 @@ export class TransactionFormComponent implements OnInit {
       const d = day > 9 ? day : `0${day}`;
       this.transaction.date = `${year}-${m}-${d}`;
     }
+    // this.searchPlaces('axd');
+    this.initMap();
+  }
+
+  initMap():void {
+    this.map = new google.maps.Map(document.getElementById("map"), {
+      center: { lat: -34.397, lng: 150.644 },
+      zoom: 13
+    });
+    navigator.geolocation.getCurrentPosition(({coords})=>{
+      const {latitude,longitude} = coords;
+      this.mapOption.center = {lat:latitude,lng:longitude};
+      this.map.setCenter(this.mapOption.center);
+    },
+    (err)=>{
+
+    },{
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    });
   }
   
   ngAfterViewInit() {
@@ -60,6 +89,12 @@ export class TransactionFormComponent implements OnInit {
       if (back) {
         this.router.navigate(['/']); 
       }
+    });
+  }
+
+  searchPlaces(name){
+    this.placeService.getList(name).subscribe(places=>{
+      console.log(places);
     });
   }
   
