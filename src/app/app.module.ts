@@ -62,7 +62,7 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
       },
       {
         path: 'transactions/:id',
-        component: TransactionFormComponent
+        component: TransactionsComponent
       },
       {
         path: ':page',
