@@ -8,6 +8,12 @@
       <input class="input" placeholder="Category" name="category" [(ngModel)]="transaction.category">
       <span class="category" *ngFor="let c of categories" (click)="selectCategory(c)">{{c}}</span>
     </div>
+    <input class="input"
+      #addresstext
+      type="text"
+      [(ngModel)]="autocompleteInput"
+      style="width: 100%"
+      >
     <div id="map"></div>
     <br/>
     <a class="button" (click)="submit(false)">Submit</a>
