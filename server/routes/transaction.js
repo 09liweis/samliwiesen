@@ -4,7 +4,9 @@ var router = express.Router();
 const TransactionController = require('../controllers/transaction.js');
 
 router.route('/')
-.post(TransactionController.transaction_list)
+.post(TransactionController.transaction_list);
+
+router.route('/new')
 .post(TransactionController.transaction_new);
 
 router.route('/categories')
