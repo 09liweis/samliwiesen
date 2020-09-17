@@ -60,7 +60,6 @@ upsertTransaction = async (req,res) =>{
     transactionData.place = p._id;
   }
   let transaction;
-  console.log(id);
   if (id) {
     transaction = transactionData;
     transaction.update_at = new Date();
@@ -74,7 +73,6 @@ upsertTransaction = async (req,res) =>{
     transaction.save(function(err, t) {
       handleError(res, err);
       t.place = p;
-      console.log('return', t);
       res.json(t);
     });
   }
