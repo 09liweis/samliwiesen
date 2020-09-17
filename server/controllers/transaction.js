@@ -37,16 +37,13 @@ exports.category_list = (req, res) => {
   });
 };
 upsertTransaction = async (req,res) =>{
+  const {id,price,date,category,place,title} = req.body;
   transactionData = {
-    price: req.body.price,
-    date: req.body.date,
-    category: req.body.category
+    price,
+    date,
+    category,
+    title
   };
-  const title = req.body.title;
-  if (title) {
-    transactionData.title = title;
-  }
-  const place = req.body.place;
   let p;
   if (typeof place != 'undefined') {
     p = await Place.findOne({place_id: place.place_id});
@@ -63,11 +60,11 @@ upsertTransaction = async (req,res) =>{
     transactionData.place = p._id;
   }
   let transaction;
-  console.log(transactionData);
-  if (req.params.id) {
+  console.log(id);
+  if (id) {
     transaction = transactionData;
     transaction.update_at = new Date();
-    Transaction.findOneAndUpdate({_id: req.params.id}, transaction, {returnNewDocument: true,upsert: true},(err, t)=>{
+    Transaction.findOneAndUpdate({_id: id}, transaction, {returnNewDocument: true,upsert: true},(err, t)=>{
       console.error(err);
       t.place = p;
       res.json(t);
