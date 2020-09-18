@@ -3,8 +3,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { TransactionService } from '../../services/transaction.service';
 import { PlaceService } from '../../services/place.service';
-import { } from 'googlemaps';
 // import { Transaction } from '../../models/transaction';
+
+declare var google;
 
 @Component({
   selector: 'app-transaction-form',
@@ -87,6 +88,15 @@ export class TransactionFormComponent implements OnInit {
     );
     google.maps.event.addListener(autocomplete, 'place_changed', () => {
       const place = autocomplete.getPlace();
+      const {place_id,formatted_address,name,geometry} = place;
+      this.transaction.place = {
+        place_id,
+        name,
+        address:formatted_address,
+        lat:geometry.location.lat(),
+        lng:geometry.location.lng(),
+      };
+      this.submit(false);
     });
   }
 

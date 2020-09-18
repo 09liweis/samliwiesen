@@ -31,7 +31,7 @@ export class TransactionService {
       return this.http.put(genAPI(this.endpoint + '/' + transaction._id), transaction, httpOptions);
     } else {
       delete transaction._id;
-      return this.http.post(genAPI(this.endpoint), transaction, httpOptions);
+      return this.http.post(genAPI(this.endpoint + '/new'), transaction, httpOptions);
     }
   }
 }
