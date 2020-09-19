@@ -117,12 +117,11 @@ router.route('/summary').post((req,res)=>{
     headers
   },
   function (error, response, body) {
-    var body = body.replace(/(\r\n|\n|\r)/gm, '');
-    body = body.replace(/ +(?= )/g,'');
     const {statusCode} = response;
     if (error || (statusCode != 200)) {
       return res.status(statusCode).json({error});
     }
+    var body = body.replace(/(\r\n|\n|\r)/gm, '').replace(/ +(?= )/g,'');
     const $ = cheerio.load(body.toString(),{
       normalizeWhitespace:true,
       decodeEntities:true
@@ -222,16 +221,17 @@ router.route('/summary').post((req,res)=>{
     }
 
     visual = {
-      casts,
+      douban_id,
       title,
       original_title,
+      douban_rating,
+      imdb_id,
       duration,
       episodes,
       languages,
-      summary,
       countries,
-      douban_rating,
-      imdb_id,
+      summary,
+      casts,
       release_dates:dates,
       recommends,
       reviews,
