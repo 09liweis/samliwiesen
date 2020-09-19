@@ -187,12 +187,13 @@ router.route('/summary').post((req,res)=>{
     var episodesMatch = /集数:<\/span>(.*?)<br\/>/g.exec(body);
     if (episodesMatch) {
       episodes = parseInt(episodesMatch[1].trim());
-      var durationMatch = /单集片长:<\/span>(.*?)<br\/>/g.exec(body);
-      if (durationMatch) {
-        duration = durationMatch[1].trim();
-        if (/分钟/.test(duration)) {
-          duration = duration.replace('分钟','');
-        }
+    }
+
+    var durationMatch = /单集片长:<\/span>(.*?)<br\/>/g.exec(body);
+    if (durationMatch) {
+      duration = durationMatch[1].trim();
+      if (/分钟/.test(duration)) {
+        duration = duration.replace('分钟','');
       }
     }
 
