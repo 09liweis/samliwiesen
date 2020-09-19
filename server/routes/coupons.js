@@ -1,9 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-var Xray = require('x-ray');
-var x = Xray();
-
 var request = require('request');
 var cheerio = require('cheerio');
 const stores = {
