@@ -77,12 +77,11 @@ router.route('/celebrities').post((req,res)=>{
     }
   },
   function (error, response, body) {
-    var body = body.replace(/(\r\n|\n|\r)/gm, '');
-    body = body.replace(/ +(?= )/g,'');
     const {statusCode} = response;
     if (error && statusCode != 200) {
       return res.status(statusCode).json({error});
     }
+    var body = body.replace(/(\r\n|\n|\r)/gm, '').replace(/ +(?= )/g,'');
     const $ = cheerio.load(body.toString(),{
       normalizeWhitespace:true,
       decodeEntities:true
