@@ -1,6 +1,6 @@
 <div class="transactions">
   <div *ngIf="showTransactionForm" (click)="toggleTransactionForm()" class="backdrop"></div>
-  <app-transaction-form [selectedId]="selectedId" [categories]="categories" *ngIf="showTransactionForm"></app-transaction-form>
+  <app-transaction-form [toggleTransactionForm]="toggleTransactionForm" [selectedId]="selectedId" [categories]="categories" *ngIf="showTransactionForm"></app-transaction-form>
   <a class="button" (click)="toggleTransactionForm()">Add New</a>
   <div class="filters">
     <div class="filter">

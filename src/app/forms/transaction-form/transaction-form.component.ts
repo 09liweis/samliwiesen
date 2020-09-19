@@ -1,5 +1,4 @@
 import { ViewChild, Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { TransactionService } from '../../services/transaction.service';
 import { PlaceService } from '../../services/place.service';
@@ -15,6 +14,7 @@ declare var google;
 export class TransactionFormComponent implements OnInit {
   @Input() selectedId;
   @Input() categories;
+  @Input() toggleTransactionForm;
   public transaction = {
     _id: '',
     title: '',
@@ -34,13 +34,11 @@ export class TransactionFormComponent implements OnInit {
   constructor(
     private transactionService: TransactionService,
     private placeService: PlaceService,
-    private route: ActivatedRoute,
-    private router: Router,
   ) { }
 
   ngOnInit() {
     console.log(this.selectedId);
-    if (this.route.snapshot.params['id'] != 'new') {
+    if (this.selectedId) {
       // this.transaction._id = this.route.snapshot.params['id'];
       // this.transactionService.getDetail(this.transaction._id).subscribe(b => {
       //   this.transaction = b;
@@ -110,7 +108,7 @@ export class TransactionFormComponent implements OnInit {
         alert('保存成功啦～～～～')
       }
       if (back) {
-        this.router.navigate(['/']); 
+        this.toggleTransactionForm();
       }
     });
   }

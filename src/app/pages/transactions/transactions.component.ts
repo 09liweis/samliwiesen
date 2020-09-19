@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import {getToday} from '../../helpers';
 import { TransactionService } from '../../services/transaction.service';
 
@@ -25,6 +26,8 @@ export class TransactionsComponent implements OnInit {
 
   constructor(
     private transactionService: TransactionService,
+    private route: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -33,7 +36,12 @@ export class TransactionsComponent implements OnInit {
     this.getTransactions(this.filters);
     this.transactionService.getCategores().subscribe(ret=>{
       this.categories = ret;
-    })
+    });
+    const tId = this.route.snapshot.params['id'];
+    if (tId) {
+      this.selectedId = tId;
+      this.toggleTransactionForm();
+    }
   }
 
   toggleCategory() {
