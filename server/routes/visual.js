@@ -127,7 +127,7 @@ router.route('/summary').post((req,res)=>{
     var episodes = 1;
     const title = $('span[property="v:itemreviewed"]').text();
     const douban_rating = $('strong[property="v:average"]').text();
-    var duration = $('span[property="v:runtime"]').attr('content');
+    let duration = $('span[property="v:runtime"]').attr('content');
     const summary = $('span[property="v:summary"]').text().trim();
     const douban_vote_count = $('span[property="v:votes"]').text();
 
