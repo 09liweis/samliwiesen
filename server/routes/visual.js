@@ -10,8 +10,6 @@ const headers = {
 };
 const DOUBAN_SEARCH_API = 'https://movie.douban.com/j/subject_suggest?q=';
 const DOUBAN_SITE = 'https://movie.douban.com/subject/';
-const DOUBAN_MOVIE_API = 'https://api.douban.com/v2/movie/subject/';
-const DOUBAN_API_KEY = '0df993c66c0c636e29ecbb5344252a4a';
 const IMDB_SITE = 'https://www.imdb.com/title/';
 
 function getAvtUrl(element) {
@@ -131,6 +129,7 @@ router.route('/summary').post((req,res)=>{
     const douban_rating = $('strong[property="v:average"]').text();
     var duration = $('span[property="v:runtime"]').attr('content');
     const summary = $('span[property="v:summary"]').text().trim();
+    const douban_vote_count = $('span[property="v:votes"]').text();
 
     const recommendsMatch = $('.recommendations-bd dl');
     if (recommendsMatch) {
@@ -226,6 +225,7 @@ router.route('/summary').post((req,res)=>{
       title,
       original_title,
       douban_rating,
+      douban_vote_count,
       imdb_id,
       duration,
       episodes,
