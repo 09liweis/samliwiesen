@@ -166,7 +166,10 @@ router.route('/summary').post((req,res)=>{
         var review = $(reviewsMatch[i]);
         reviews.push({
           title: review.find('h2 a').text(),
-          content: review.find('.short-content').text()
+          content: review.find('.short-content').text(),
+          author: review.find('.name').text(),
+          rating: review.find('.main-title-rating').attr('class'),
+          date: review.find('.main-meta').text()
         });
       }
     }
