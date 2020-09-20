@@ -159,6 +159,30 @@ router.route('/summary').post((req,res)=>{
       }
     }
 
+    const photosMatch = $('.related-pic-bd li');
+    if (photosMatch) {
+      var photos = [];
+      for (let i = 0; i < photosMatch.length; i++) {
+        const media = $(photosMatch[i]);
+        let tp = 'photo';
+        let src = media.find('img').attr('src');
+        let href = media.find('a').attr('href');
+        if (media.attr('class') == 'label-trailer') {
+          tp = 'trailer';
+          var imgStyle = media.find('a').attr('style');
+          var imgMatches = /url\((.*?)\)/g.exec(imgStyle);
+          if (imgMatches) {
+            src = imgMatches[1];
+          }
+        }
+        photos.push({
+          tp,
+          src,
+          href
+        })
+      }
+    }
+
     const reviewsMatch = $('.main.review-item');
     if (reviewsMatch) {
       var reviews = [];
@@ -235,6 +259,7 @@ router.route('/summary').post((req,res)=>{
       imdb_id,
       duration,
       episodes,
+      photos,
       languages,
       countries,
       summary,
