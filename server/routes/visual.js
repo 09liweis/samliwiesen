@@ -247,10 +247,9 @@ router.route('/summary').post((req,res)=>{
       function (error, response, body) {
         if (!error && response.statusCode == 200) {
           const $ = cheerio.load(body.toString());
-          const imdb_rating = $('span[itemprop="ratingValue"]').text();
-          const poster = $('.poster a img').attr('src');
-          visual.imdb_rating = imdb_rating;
-          visual.poster = poster
+          visual.imdb_rating = $('span[itemprop="ratingValue"]').text();
+          visual.imdb_rating_count = $('span[itemprop="ratingCount"]').text();
+          visual.poster = $('.poster a img').attr('src');
           return res.status(200).json(visual);
         }
       });
