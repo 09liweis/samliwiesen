@@ -151,7 +151,9 @@ router.route('/summary').post((req,res)=>{
         var comment = $(commentsMatch[i]);
         comments.push({
           text: comment.find('.short').text(),
-          author: comment.find('.comment-info a').text()
+          author: comment.find('.comment-info a').text(),
+          date: comment.find('.comment-time').text(),
+          rating: comment.find('.rating').attr('class')
         });
       }
     }
