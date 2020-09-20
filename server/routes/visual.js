@@ -153,7 +153,8 @@ router.route('/summary').post((req,res)=>{
           text: comment.find('.short').text(),
           author: comment.find('.comment-info a').text(),
           date: comment.find('.comment-time').text(),
-          rating: comment.find('.rating').attr('class')
+          rating: comment.find('.rating').attr('class'),
+          vote: comment.find('.votes').text()
         });
       }
     }
