@@ -183,6 +183,19 @@ router.route('/summary').post((req,res)=>{
       }
     }
 
+    const awardsMatch = $('.award');
+    if (awardsMatch) {
+      var awards = [];
+      for (let i = 0; i < awardsMatch.length; i++) {
+        const award = $(awardsMatch[i]);
+        awards.push({
+          nm: award.find('li:first-child a').text(),
+          award: award.find('li:nth-child(2)').text()
+        })
+        
+      }
+    }
+
     const reviewsMatch = $('.main.review-item');
     if (reviewsMatch) {
       var reviews = [];
@@ -260,6 +273,7 @@ router.route('/summary').post((req,res)=>{
       duration,
       episodes,
       photos,
+      awards,
       languages,
       countries,
       summary,
