@@ -179,7 +179,7 @@ router.route('/summary').post((req,res)=>{
           tp,
           src,
           href
-        })
+        });
       }
     }
 
@@ -191,8 +191,7 @@ router.route('/summary').post((req,res)=>{
         awards.push({
           nm: award.find('li:first-child a').text(),
           award: award.find('li:nth-child(2)').text()
-        })
-        
+        });
       }
     }
 
@@ -220,7 +219,13 @@ router.route('/summary').post((req,res)=>{
       }
     }
 
-    var websiteMatch = /官方网站:<\/span><a href="(.*?)<br>/g.exec(body);
+    var websiteMatch = /官方网站:<\/span>(.*?)<br\/>/g.exec(body);
+    if (websiteMatch) {
+      var website = $(websiteMatch[1]).text().trim();
+      if (website.indexOf('http') == -1) {
+        website = `http://${website}`;
+      }
+    }
     var originalTitleMatch = /又名:<\/span>(.*?)<br\/>/g.exec(body);
     if (originalTitleMatch) {
       var original_title = originalTitleMatch[1].trim();
@@ -270,6 +275,7 @@ router.route('/summary').post((req,res)=>{
       douban_rating,
       douban_vote_count,
       imdb_id,
+      website,
       duration,
       episodes,
       photos,
