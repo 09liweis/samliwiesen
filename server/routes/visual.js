@@ -8,7 +8,6 @@ const headers = {
   'Accept-Language': 'zh-CN,zh;q=0.8',
   'Accept-Charset': 'utf-8, iso-8859-1;q=0.5'
 };
-const DOUBAN_SEARCH_API = 'https://movie.douban.com/j/subject_suggest?q=';
 const DOUBAN_SITE = 'https://movie.douban.com/subject/';
 const IMDB_SITE = 'https://www.imdb.com/title/';
 
@@ -42,21 +41,39 @@ function getCast(cast,$) {
   }
 }
 
-router.route('/search').get((req,res)=>{
-  const keyword = req.query.keyword;
+router.route('/search').post((req,res)=>{
+  const {keyword} = req.body;
   if (!keyword) {
-    res.send({ok:0,msg:'No Keyword'});
+    res.status(400).json({ok:0,msg:'No Keyword'});
   }
+  const url = `https://m.douban.com/search/?query=${keyword}&type=movie`;
   request({
-    url: DOUBAN_SEARCH_API+keyword,
+    url,
     method: 'GET',
     headers
   },
   function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      const results = JSON.parse(body);
-      res.send(results);
+    const {statusCode} = response;
+    if (error || statusCode != 200) {
+      return res.status(statusCode).json(error);
     }
+    var body = body.replace(/(\r\n|\n|\r)/gm, '').replace(/ +(?= )/g,'');
+    const $ = cheerio.load(body.toString(),{
+      normalizeWhitespace:true,
+      decodeEntities:true
+    });
+    const results = $('.search_results_subjects a');
+    let visuals = [];
+    if (results) {
+      for (let i = 0; i < results.length; i++) {
+        const visual = $(results[i]);
+        visuals.push({
+          poster: visual.find('img').attr('src'),
+          name: visual.find('.subject-title').text()
+        });
+      }
+    }
+    res.status(200).json(visuals);
   });
 });
 
