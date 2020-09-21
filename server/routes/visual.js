@@ -41,6 +41,15 @@ function getCast(cast,$) {
   }
 }
 
+function getCheerio(body) {
+  var body = body.replace(/(\r\n|\n|\r)/gm, '').replace(/ +(?= )/g,'');
+  const $ = cheerio.load(body.toString(),{
+    normalizeWhitespace:true,
+    decodeEntities:true
+  });
+  return $;
+}
+
 router.route('/search').post((req,res)=>{
   const {keyword} = req.body;
   if (!keyword) {
@@ -57,11 +66,7 @@ router.route('/search').post((req,res)=>{
     if (error || statusCode != 200) {
       return res.status(statusCode).json(error);
     }
-    var body = body.replace(/(\r\n|\n|\r)/gm, '').replace(/ +(?= )/g,'');
-    const $ = cheerio.load(body.toString(),{
-      normalizeWhitespace:true,
-      decodeEntities:true
-    });
+    const $ = getCheerio(body);
     const results = $('.search_results_subjects a');
     let visuals = [];
     if (results) {
@@ -99,11 +104,7 @@ router.route('/celebrities').post((req,res)=>{
     if (error && statusCode != 200) {
       return res.status(statusCode).json({error});
     }
-    var body = body.replace(/(\r\n|\n|\r)/gm, '').replace(/ +(?= )/g,'');
-    const $ = cheerio.load(body.toString(),{
-      normalizeWhitespace:true,
-      decodeEntities:true
-    });
+    const $ = getCheerio(body);
     const castsMatch = $('.list-wrapper');
     let casts = [];
     for (let i = 0; i < castsMatch.length; i++) {
@@ -139,11 +140,7 @@ router.route('/summary').post((req,res)=>{
     if (error || (statusCode != 200)) {
       return res.status(statusCode).json({error});
     }
-    var body = body.replace(/(\r\n|\n|\r)/gm, '').replace(/ +(?= )/g,'');
-    const $ = cheerio.load(body.toString(),{
-      normalizeWhitespace:true,
-      decodeEntities:true
-    });
+    const $ = getCheerio(body);
     var episodes = 1;
     const title = $('span[property="v:itemreviewed"]').text();
     const douban_rating = $('strong[property="v:average"]').text();
