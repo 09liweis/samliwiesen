@@ -67,9 +67,12 @@ router.route('/search').post((req,res)=>{
     if (results) {
       for (let i = 0; i < results.length; i++) {
         const visual = $(results[i]);
+        const [a,movie,subject,douban_id,b] = visual.attr('href').split('/');
         visuals.push({
+          douban_id,
           poster: visual.find('img').attr('src'),
-          name: visual.find('.subject-title').text()
+          name: visual.find('.subject-title').text(),
+          rating: visual.find('.rating span:nth-child(2)').text()
         });
       }
     }
