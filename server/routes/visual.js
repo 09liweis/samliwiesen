@@ -55,7 +55,7 @@ router.route('/search').post((req,res)=>{
   if (!keyword) {
     res.status(400).json({ok:0,msg:'No Keyword'});
   }
-  const url = `https://m.douban.com/search/?query=${keyword}&type=movie`;
+  const url = `https://m.douban.com/search/?query=${encodeURIComponent(keyword)}&type=movie`;
   request({
     url,
     method: 'GET',
