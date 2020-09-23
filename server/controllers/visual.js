@@ -48,22 +48,31 @@ function getCast(cast,$) {
   }
 }
 
+function sendRequest(url,method,cb) {
+  var opt = {url,method,headers};
+  if (method == 'POST'){
+    // opt.json = {douban_id}
+    // json:{
+    //   douban_id
+    // }
+    //for post method
+  }
+  request(opt, function (error, response, body) {
+    const {statusCode} = response;
+    if (error || statusCode != 200) {
+      return res.status(statusCode).json(error);
+    }
+    return cb(statusCode,body);
+  });
+}
+
 exports.search = (req, res) => {
   const {keyword} = req.body;
   if (!keyword) {
     res.status(400).json({ok:0,msg:'No Keyword'});
   }
   const url = `https://m.douban.com/search/?query=${encodeURIComponent(keyword)}&type=movie`;
-  request({
-    url,
-    method: 'GET',
-    headers
-  },
-  function (error, response, body) {
-    const {statusCode} = response;
-    if (error || statusCode != 200) {
-      return res.status(statusCode).json(error);
-    }
+  sendRequest(url,'GET',function(statusCode,body) {
     const $ = getCheerio(body);
     const results = $('.search_results_subjects a');
     let visuals = [];
@@ -79,7 +88,7 @@ exports.search = (req, res) => {
         });
       }
     }
-    res.status(200).json(visuals);
+    res.status(statusCode).json(visuals);
   });
 }
 
@@ -88,20 +97,8 @@ exports.getCelebrities = (req,res)=>{
   if (!douban_id) {
     return res.status(400).json({msg:'No Douban Id'});
   }
-  const url = DOUBAN_SITE + douban_id + '/celebrities';
-  request({
-    url,
-    method: 'POST',
-    headers,
-    json:{
-      douban_id
-    }
-  },
-  function (error, response, body) {
-    const {statusCode} = response;
-    if (error && statusCode != 200) {
-      return res.status(statusCode).json({error});
-    }
+  const douban_url = DOUBAN_SITE + douban_id + '/celebrities';
+  sendRequest(douban_url,'GET',function(statusCode,body) {
     const $ = getCheerio(body);
     const castsMatch = $('.list-wrapper');
     let casts = [];
@@ -119,7 +116,7 @@ exports.getCelebrities = (req,res)=>{
         celebrities
       })
     }
-    res.status(200).json(casts);
+    res.status(statusCode).json(casts);
   });
 }
 
@@ -129,16 +126,7 @@ exports.getSummary = (req,res)=>{
     res.send({ok:0,msg:'No Douban Id'});
   }
   douban_url = DOUBAN_SITE + douban_id;
-  request({
-    url: douban_url,
-    method: 'GET',
-    headers
-  },
-  function (error, response, body) {
-    const {statusCode} = response;
-    if (error || (statusCode != 200)) {
-      return res.status(statusCode).json({error});
-    }
+  sendRequest(douban_url,'GET',function(statusCode,body) {
     const $ = getCheerio(body);
     var episodes = 1;
     const title = $('span[property="v:itemreviewed"]').text();
@@ -322,7 +310,7 @@ exports.getSummary = (req,res)=>{
         }
       });
     } else {
-      res.status(200).json(visual);
+      res.status(statusCode).json(visual);
     }
   });
 }
