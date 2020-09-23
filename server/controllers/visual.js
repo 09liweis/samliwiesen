@@ -128,8 +128,9 @@ exports.getSummary = (req,res)=>{
   if (!douban_id) {
     res.send({ok:0,msg:'No Douban Id'});
   }
+  douban_url = DOUBAN_SITE + douban_id;
   request({
-    url: DOUBAN_SITE + douban_id,
+    url: douban_url,
     method: 'GET',
     headers
   },
@@ -285,6 +286,7 @@ exports.getSummary = (req,res)=>{
 
     visual = {
       douban_id,
+      douban_url,
       title,
       original_title,
       douban_rating,
