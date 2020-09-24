@@ -9,4 +9,6 @@ router.route('/celebrities').post(VisualController.getCelebrities);
 
 router.route('/summary').post(VisualController.getSummary);
 
+router.route('/photos').post(VisualController.getPhotos);
+
 module.exports = router;
