@@ -144,7 +144,8 @@ exports.getPhotos = (req,resp) => {
           var photo_id = href[5];
         }
         photos.push({
-          src: photo.find('img').attr('src'),
+          thumb: photo.find('img').attr('src'),
+          origin: `https://img9.doubanio.com/view/photo/l/public/p${photo_id}.jpg`,
           name: photo.find('.name').text().trim(),
           prop: photo.find('.prop').text().trim(),
           photo_id
