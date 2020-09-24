@@ -166,6 +166,8 @@ exports.getPhoto = (req, resp) => {
     const $ = getCheerio(body);
     const commentsMatch = $('.comment-item');
     let comments = [];
+    const uploader = $('.poster-info li:nth-child(5) a').text();
+    const upload_date = $('.poster-info li:nth-child(6)').text();
     if (commentsMatch) {
       for (let i = 0; i < commentsMatch.length; i++) {
         const comment = $(commentsMatch[i]);
@@ -177,7 +179,7 @@ exports.getPhoto = (req, resp) => {
         });
       }
     }
-    resp.status(statusCode).json({comments});
+    resp.status(statusCode).json({uploader,upload_date,comments});
   });
 }
 
