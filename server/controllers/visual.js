@@ -170,7 +170,8 @@ exports.getPhoto = (req, resp) => {
       for (let i = 0; i < commentsMatch.length; i++) {
         const comment = $(commentsMatch[i]);
         comments.push({
-          pic:comment.find('img').attr('src')
+          pic:comment.find('img').attr('src'),
+          date: comment.find('.author span').text()
         });
       }
     }
