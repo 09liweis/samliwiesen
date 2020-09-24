@@ -156,6 +156,10 @@ exports.getPhotos = (req,resp) => {
   });
 }
 
+exports.getPhoto = (req, resp) => {
+  
+}
+
 exports.getSummary = (req,res)=>{
   const {douban_id} = req.body;
   if (!douban_id) {
