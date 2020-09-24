@@ -172,7 +172,8 @@ exports.getPhoto = (req, resp) => {
         comments.push({
           pic:comment.find('img').attr('src'),
           date: comment.find('.author span').text(),
-          author: comment.find('.author a').text()
+          author: comment.find('.author a').text(),
+          content: comment.find('p').text()
         });
       }
     }
