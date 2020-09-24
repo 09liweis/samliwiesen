@@ -121,19 +121,37 @@ exports.getCelebrities = (req,res)=>{
 }
 
 exports.getPhotos = (req,resp) => {
-  const {douban_id} = req.body;
+  var {douban_id,start} = req.body;
   if (!douban_id) {
     return resp.status(400).json({msg:'No Douban Id'});
   }
   douban_url = `https://movie.douban.com/subject/${douban_id}/photos?type=S`;
+  if (start) {
+    douban_url += `&start=${start}`;
+  }
   sendRequest(douban_url, 'GET', (statusCode, body) => {
     const $ = getCheerio(body);
-    const photosMatch = $('.poster-col3');
+    const photosMatch = $('.poster-col3 li');
     var photos = [];
-    if (photosMatch) {
-
+    if (!start) {
+      start = 0;
     }
-    resp.status(statusCode).json(photos);
+    if (photosMatch) {
+      for (let i = 0; i < photosMatch.length; i++) {
+        const photo = $(photosMatch[i]);
+        const href = photo.find('a').attr('href').split('/');
+        if (href && href.length > 5) {
+          var photo_id = href[5];
+        }
+        photos.push({
+          src: photo.find('img').attr('src'),
+          name: photo.find('.name').text().trim(),
+          prop: photo.find('.prop').text().trim(),
+          photo_id
+        })
+      }
+    }
+    resp.status(statusCode).json({photos,start});
   });
 }
 
