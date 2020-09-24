@@ -120,6 +120,23 @@ exports.getCelebrities = (req,res)=>{
   });
 }
 
+exports.getPhotos = (req,resp) => {
+  const {douban_id} = req.body;
+  if (!douban_id) {
+    return resp.status(400).json({msg:'No Douban Id'});
+  }
+  douban_url = `https://movie.douban.com/subject/${douban_id}/photos?type=S`;
+  sendRequest(douban_url, 'GET', (statusCode, body) => {
+    const $ = getCheerio(body);
+    const photosMatch = $('.poster-col3');
+    var photos = [];
+    if (photosMatch) {
+
+    }
+    resp.status(statusCode).json(photos);
+  });
+}
+
 exports.getSummary = (req,res)=>{
   const {douban_id} = req.body;
   if (!douban_id) {
