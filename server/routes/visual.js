@@ -11,4 +11,6 @@ router.route('/summary').post(VisualController.getSummary);
 
 router.route('/photos').post(VisualController.getPhotos);
 
+router.route('/photo').post(VisualController.getPhoto);
+
 module.exports = router;
