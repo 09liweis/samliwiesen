@@ -157,7 +157,25 @@ exports.getPhotos = (req,resp) => {
 }
 
 exports.getPhoto = (req, resp) => {
-  
+  const {photo_id} = req.body;
+  if (!photo_id) {
+    return resp.json({ok:0,msg:'No Photo Id'});
+  }
+  const douban_url = `https://movie.douban.com/photos/photo/${photo_id}`;
+  sendRequest(douban_url,'GET',(statusCode,body) => {
+    const $ = getCheerio(body);
+    const commentsMatch = $('.comment-item');
+    let comments = [];
+    if (commentsMatch) {
+      for (let i = 0; i < commentsMatch.length; i++) {
+        const comment = $(commentsMatch[i]);
+        comments.push({
+          pic:comment.find('img').attr('src')
+        });
+      }
+    }
+    resp.status(statusCode).json({comments});
+  });
 }
 
 exports.getSummary = (req,res)=>{
