@@ -121,11 +121,15 @@ exports.getCelebrities = (req,res)=>{
 }
 
 exports.getPhotos = (req,resp) => {
-  var {douban_id,start} = req.body;
+  //type S -> 剧照, R -> Poster
+  var {douban_id,start,type} = req.body;
   if (!douban_id) {
     return resp.status(400).json({msg:'No Douban Id'});
   }
-  douban_url = `https://movie.douban.com/subject/${douban_id}/photos?type=S`;
+  if (!type) {
+    type = 'S';
+  }
+  douban_url = `https://movie.douban.com/subject/${douban_id}/photos?type=${type}`;
   if (start) {
     douban_url += `&start=${start}`;
   }
