@@ -239,6 +239,15 @@ exports.getSummary = (req,res)=>{
     const summary = $('span[property="v:summary"]').text().trim();
     const douban_vote_count = $('span[property="v:votes"]').text();
 
+    const genresMatch = $('span[property="v:genre"]');
+    if (genresMatch) {
+      var genres = [];
+      for (let i = 0; i < genresMatch.length; i++) {
+        const genre = $(genresMatch[i]);
+        genres.push(genre.text());
+      }
+    }
+
     const recommendsMatch = $('.recommendations-bd dl');
     if (recommendsMatch) {
       var recommends = [];
@@ -371,6 +380,7 @@ exports.getSummary = (req,res)=>{
       douban_poster,
       douban_rating,
       douban_vote_count,
+      genres,
       imdb_id,
       website,
       duration,
