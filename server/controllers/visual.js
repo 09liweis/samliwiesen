@@ -6,7 +6,8 @@ const IMDB_SITE = 'https://www.imdb.com/title/';
 
 const headers = {
   'Accept-Language': 'zh-CN,zh;q=0.8',
-  'Accept-Charset': 'utf-8, iso-8859-1;q=0.5'
+  'Accept-Charset': 'utf-8, iso-8859-1;q=0.5',
+  'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36'
 };
 
 function getCheerio(body) {
@@ -77,7 +78,10 @@ function sendRequest(url,method,cb) {
     //for post method
   }
   request(opt, function (error, response, body) {
-    const {statusCode} = response;
+    var statusCode = 200;
+    if (response) {
+      statusCode = response.statusCode;
+    }
     if (error || statusCode != 200) {
       return res.status(statusCode).json(error);
     }
