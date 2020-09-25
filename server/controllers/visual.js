@@ -57,6 +57,7 @@ function getVisualComments($) {
       comments.push({
         text: comment.find('.short').text(),
         author: comment.find('.comment-info a').text(),
+        avt: comment.find('img').attr('src'),
         date: comment.find('.comment-time').text(),
         rating: comment.find('.rating').attr('class'),
         vote: comment.find('.votes').text()
@@ -213,7 +214,7 @@ exports.getComments = (req, resp) => {
   const douban_url = `https://movie.douban.com/subject/${douban_id}/comments`;
   sendRequest(douban_url,'GET',(statusCode,body) => {
     const $ = getCheerio(body);
-    comments = [];
+    const comments = getVisualComments($);
     return resp.status(statusCode).json({comments});
   })
 }
