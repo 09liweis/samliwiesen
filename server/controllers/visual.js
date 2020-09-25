@@ -48,6 +48,24 @@ function getCast(cast,$) {
   }
 }
 
+function getVisualComments($) {
+  const commentsMatch = $('.comment-item');
+  var comments = [];
+  if (commentsMatch) {
+    for (var i = 0; i < commentsMatch.length; i++) {
+      var comment = $(commentsMatch[i]);
+      comments.push({
+        text: comment.find('.short').text(),
+        author: comment.find('.comment-info a').text(),
+        date: comment.find('.comment-time').text(),
+        rating: comment.find('.rating').attr('class'),
+        vote: comment.find('.votes').text()
+      });
+    }
+  }
+  return comments;
+}
+
 function sendRequest(url,method,cb) {
   var opt = {url,method,headers};
   if (method == 'POST'){
@@ -228,20 +246,7 @@ exports.getSummary = (req,res)=>{
       }
     }
 
-    const commentsMatch = $('.comment-item');
-    if (commentsMatch) {
-      var comments = [];
-      for (var i = 0; i < commentsMatch.length; i++) {
-        var comment = $(commentsMatch[i]);
-        comments.push({
-          text: comment.find('.short').text(),
-          author: comment.find('.comment-info a').text(),
-          date: comment.find('.comment-time').text(),
-          rating: comment.find('.rating').attr('class'),
-          vote: comment.find('.votes').text()
-        });
-      }
-    }
+    const comments = getVisualComments($);
 
     const photosMatch = $('.related-pic-bd li');
     if (photosMatch) {
