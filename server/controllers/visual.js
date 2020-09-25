@@ -187,6 +187,19 @@ exports.getPhoto = (req, resp) => {
   });
 }
 
+exports.getComments = (req, resp) => {
+  const {douban_id} = req.body;
+  if (!douban_id) {
+    return resp.status(400).json('No Douban Id');
+  }
+  const douban_url = `https://movie.douban.com/subject/${douban_id}/comments`;
+  sendRequest(douban_url,'GET',(statusCode,body) => {
+    const $ = getCheerio(body);
+    comments = [];
+    return resp.status(statusCode).json({comments});
+  })
+}
+
 exports.getSummary = (req,res)=>{
   const {douban_id} = req.body;
   if (!douban_id) {
