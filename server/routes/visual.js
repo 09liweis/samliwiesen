@@ -13,4 +13,6 @@ router.route('/photos').post(VisualController.getPhotos);
 
 router.route('/photo').post(VisualController.getPhoto);
 
+router.route('/comments').post(VisualController.getComments);
+
 module.exports = router;
