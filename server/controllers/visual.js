@@ -233,6 +233,7 @@ exports.getSummary = (req,res)=>{
     const $ = getCheerio(body);
     var episodes = 1;
     const title = $('span[property="v:itemreviewed"]').text();
+    const douban_poster = $('img[rel="v:image"]').attr('src');
     const douban_rating = $('strong[property="v:average"]').text();
     let duration = $('span[property="v:runtime"]').attr('content');
     const summary = $('span[property="v:summary"]').text().trim();
@@ -367,6 +368,7 @@ exports.getSummary = (req,res)=>{
       douban_url,
       title,
       original_title,
+      douban_poster,
       douban_rating,
       douban_vote_count,
       imdb_id,
