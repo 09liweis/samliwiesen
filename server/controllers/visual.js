@@ -332,7 +332,7 @@ exports.getSummary = (req,res)=>{
     }
     var originalTitleMatch = /又名:<\/span>(.*?)<br\/>/g.exec(body);
     if (originalTitleMatch) {
-      var original_title = originalTitleMatch[1].trim();
+      var original_title = originalTitleMatch[1].trim().split(' / ');
     }
 
     var episodesMatch = /集数:<\/span>(.*?)<br\/>/g.exec(body);
