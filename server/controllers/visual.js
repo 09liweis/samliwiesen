@@ -396,17 +396,17 @@ exports.getSummary = (req,res)=>{
       comments,
       imdb_id,
     };
-    if (imdb_id) {
-      url = IMDB_SITE + imdb_id
-      sendRequest(url,'GET',function(statusCode,body) {
-        const $ = getCheerio(body);
-        visual.imdb_rating = $('span[itemprop="ratingValue"]').text();
-        visual.imdb_rating_count = $('span[itemprop="ratingCount"]').text();
-        visual.poster = $('.poster a img').attr('src');
-        return res.status(statusCode).json(visual);
-      });
-    } else {
-      res.status(statusCode).json(visual);
+    if (!imdb_id) {
+      return res.status(statusCode).json(visual);
     }
+    //handle scraping imdb data
+    url = IMDB_SITE + imdb_id
+    sendRequest(url,'GET',function(statusCode,body) {
+      const $ = getCheerio(body);
+      visual.imdb_rating = $('span[itemprop="ratingValue"]').text();
+      visual.imdb_rating_count = $('span[itemprop="ratingCount"]').text();
+      visual.poster = $('.poster a img').attr('src');
+      return res.status(statusCode).json(visual);
+    });
   });
 }
