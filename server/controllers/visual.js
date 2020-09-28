@@ -403,6 +403,7 @@ exports.getSummary = (req,res)=>{
     url = IMDB_SITE + imdb_id
     sendRequest(url,'GET',function(statusCode,body) {
       const $ = getCheerio(body);
+      visual.imdb_title = $('.title_wrapper h1').text().trim();
       visual.imdb_rating = $('span[itemprop="ratingValue"]').text();
       visual.imdb_rating_count = $('span[itemprop="ratingCount"]').text();
       visual.poster = $('.poster a img').attr('src');
