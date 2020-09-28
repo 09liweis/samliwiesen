@@ -215,7 +215,7 @@ exports.getComments = (req, resp) => {
   if (!douban_id) {
     return resp.status(400).json('No Douban Id');
   }
-  const douban_url = `https://movie.douban.com/subject/${douban_id}/comments`;
+  const douban_url = `${DOUBAN_SITE}${douban_id}/comments`;
   sendRequest(douban_url,'GET',(statusCode,body) => {
     const $ = getCheerio(body);
     const comments = getVisualComments($);
@@ -397,19 +397,13 @@ exports.getSummary = (req,res)=>{
       comments
     };
     if (imdb_id) {
-      request({
-        url: IMDB_SITE + imdb_id,
-        method: 'GET',
-        headers
-      },
-      function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-          const $ = cheerio.load(body.toString());
-          visual.imdb_rating = $('span[itemprop="ratingValue"]').text();
-          visual.imdb_rating_count = $('span[itemprop="ratingCount"]').text();
-          visual.poster = $('.poster a img').attr('src');
-          return res.status(200).json(visual);
-        }
+      url = IMDB_SITE + imdb_id
+      sendRequest(url,'GET',function(statusCode,body) {
+        const $ = getCheerio(body);
+        visual.imdb_rating = $('span[itemprop="ratingValue"]').text();
+        visual.imdb_rating_count = $('span[itemprop="ratingCount"]').text();
+        visual.poster = $('.poster a img').attr('src');
+        return res.status(statusCode).json(visual);
       });
     } else {
       res.status(statusCode).json(visual);
