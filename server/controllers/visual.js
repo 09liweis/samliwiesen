@@ -381,7 +381,6 @@ exports.getSummary = (req,res)=>{
       douban_rating,
       douban_vote_count,
       genres,
-      imdb_id,
       website,
       duration,
       episodes,
@@ -394,7 +393,8 @@ exports.getSummary = (req,res)=>{
       release_dates:dates,
       recommends,
       reviews,
-      comments
+      comments,
+      imdb_id,
     };
     if (imdb_id) {
       url = IMDB_SITE + imdb_id
