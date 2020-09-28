@@ -68,7 +68,7 @@ function getVisualComments($) {
   return comments;
 }
 
-function sendRequest(url,method,cb) {
+function sendRequest(url,method,resp,cb) {
   var opt = {url,method,headers};
   if (method == 'POST'){
     // opt.json = {douban_id}
@@ -83,19 +83,19 @@ function sendRequest(url,method,cb) {
       statusCode = response.statusCode;
     }
     if (error || statusCode != 200) {
-      return res.status(statusCode).json(error);
+      return resp.status(statusCode).json(error);
     }
     return cb(statusCode,body);
   });
 }
 
-exports.search = (req, res) => {
+exports.search = (req, resp) => {
   const {keyword} = req.body;
   if (!keyword) {
-    res.status(400).json({ok:0,msg:'No Keyword'});
+    resp.status(400).json({ok:0,msg:'No Keyword'});
   }
   const url = `https://m.douban.com/search/?query=${encodeURIComponent(keyword)}&type=movie`;
-  sendRequest(url,'GET',function(statusCode,body) {
+  sendRequest(url,'GET',resp,function(statusCode,body) {
     const $ = getCheerio(body);
     const results = $('.search_results_subjects a');
     let visuals = [];
@@ -111,17 +111,17 @@ exports.search = (req, res) => {
         });
       }
     }
-    res.status(statusCode).json(visuals);
+    resp.status(statusCode).json(visuals);
   });
 }
 
-exports.getCelebrities = (req,res)=>{
+exports.getCelebrities = (req,resp)=>{
   const {douban_id} = req.body
   if (!douban_id) {
-    return res.status(400).json({msg:'No Douban Id'});
+    return resp.status(400).json({msg:'No Douban Id'});
   }
   const douban_url = DOUBAN_SITE + douban_id + '/celebrities';
-  sendRequest(douban_url,'GET',function(statusCode,body) {
+  sendRequest(douban_url,'GET',resp,function(statusCode,body) {
     const $ = getCheerio(body);
     const castsMatch = $('.list-wrapper');
     let casts = [];
@@ -139,7 +139,7 @@ exports.getCelebrities = (req,res)=>{
         celebrities
       })
     }
-    res.status(statusCode).json(casts);
+    resp.status(statusCode).json(casts);
   });
 }
 
@@ -156,7 +156,7 @@ exports.getPhotos = (req,resp) => {
   if (start) {
     douban_url += `&start=${start}`;
   }
-  sendRequest(douban_url, 'GET', (statusCode, body) => {
+  sendRequest(douban_url, 'GET', resp, (statusCode, body) => {
     const $ = getCheerio(body);
     const photosMatch = $('.poster-col3 li');
     var photos = [];
@@ -189,7 +189,7 @@ exports.getPhoto = (req, resp) => {
     return resp.json({ok:0,msg:'No Photo Id'});
   }
   const douban_url = `https://movie.douban.com/photos/photo/${photo_id}`;
-  sendRequest(douban_url,'GET',(statusCode,body) => {
+  sendRequest(douban_url,'GET',resp,(statusCode,body) => {
     const $ = getCheerio(body);
     const commentsMatch = $('.comment-item');
     let comments = [];
@@ -216,20 +216,20 @@ exports.getComments = (req, resp) => {
     return resp.status(400).json('No Douban Id');
   }
   const douban_url = `${DOUBAN_SITE}${douban_id}/comments`;
-  sendRequest(douban_url,'GET',(statusCode,body) => {
+  sendRequest(douban_url,'GET', resp, (statusCode,body) => {
     const $ = getCheerio(body);
     const comments = getVisualComments($);
     return resp.status(statusCode).json({comments});
   })
 }
 
-exports.getSummary = (req,res)=>{
+exports.getSummary = (req,resp)=>{
   const {douban_id} = req.body;
   if (!douban_id) {
-    res.send({ok:0,msg:'No Douban Id'});
+    resp.send({ok:0,msg:'No Douban Id'});
   }
   douban_url = DOUBAN_SITE + douban_id;
-  sendRequest(douban_url,'GET',function(statusCode,body) {
+  sendRequest(douban_url,'GET',resp,function(statusCode,body) {
     const $ = getCheerio(body);
     var episodes = 1;
     const title = $('span[property="v:itemreviewed"]').text();
@@ -397,17 +397,17 @@ exports.getSummary = (req,res)=>{
       imdb_id,
     };
     if (!imdb_id) {
-      return res.status(statusCode).json(visual);
+      return resp.status(statusCode).json(visual);
     }
     //handle scraping imdb data
     url = IMDB_SITE + imdb_id
-    sendRequest(url,'GET',function(statusCode,body) {
+    sendRequest(url,'GET',resp,function(statusCode,body) {
       const $ = getCheerio(body);
       visual.imdb_title = $('.title_wrapper h1').text().trim();
       visual.imdb_rating = $('span[itemprop="ratingValue"]').text();
       visual.imdb_rating_count = $('span[itemprop="ratingCount"]').text();
       visual.poster = $('.poster a img').attr('src');
-      return res.status(statusCode).json(visual);
+      return resp.status(statusCode).json(visual);
     });
   });
 }
