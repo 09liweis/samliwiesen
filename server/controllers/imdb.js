@@ -15,7 +15,8 @@ exports.getImdbBoxOffice = (req,resp) => {
           title: movie.find('.titleColumn a').text(),
           poster: movie.find('.posterColumn img').attr('src'),
           weekend,
-          gross
+          gross,
+          weeks: movie.find('.weeksColumn').text()
         });
       }
     }
