@@ -10,9 +10,12 @@ exports.getImdbBoxOffice = (req,resp) => {
     if (chart) {
       for (let i = 0; i < chart.length; i++) {
         const movie = $(chart[i]);
+        const [weekend,gross] = movie.find('.ratingColumn').text().trim().split('  ');
         movies.push({
           title: movie.find('.titleColumn a').text(),
-          poster: movie.find('.posterColumn img').attr('src')
+          poster: movie.find('.posterColumn img').attr('src'),
+          weekend,
+          gross
         });
       }
     }
