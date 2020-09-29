@@ -1,18 +1,7 @@
-var cheerio = require('cheerio');
-
-const {sendRequest} = require('../helpers/request');
+const {sendRequest,getCheerio} = require('../helpers/request');
 
 const DOUBAN_SITE = 'https://movie.douban.com/subject/';
 const IMDB_SITE = 'https://www.imdb.com/title/';
-
-function getCheerio(body) {
-  var body = body.replace(/(\r\n|\n|\r)/gm, '').replace(/ +(?= )/g,'');
-  const $ = cheerio.load(body.toString(),{
-    normalizeWhitespace:true,
-    decodeEntities:true
-  });
-  return $;
-}
 
 function getAvtUrl(element) {
   var avtStyle = element.find('div.avatar').attr('style');
