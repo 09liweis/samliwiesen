@@ -1,4 +1,14 @@
 var request = require('request');
+var cheerio = require('cheerio');
+
+exports.getCheerio = (body) => {
+  var body = body.replace(/(\r\n|\n|\r)/gm, '').replace(/ +(?= )/g,'');
+  const $ = cheerio.load(body.toString(),{
+    normalizeWhitespace:true,
+    decodeEntities:true
+  });
+  return $;
+}
 
 const headers = {
   'Accept-Language': 'zh-CN,zh;q=0.8',
