@@ -187,8 +187,8 @@ exports.getSummary = (req,resp)=>{
     resp.send({ok:0,msg:'No Douban Id'});
   }
   douban_url = DOUBAN_SITE + douban_id;
-  sendRequest(douban_url,'GET',resp,function(statusCode,body) {
-    const $ = getCheerio(body);
+  sendRequest(douban_url,'GET',resp,function(statusCode,$) {
+    var body = $.html();
     var episodes = 1;
     const title = $('span[property="v:itemreviewed"]').text();
     const douban_poster = $('img[rel="v:image"]').attr('src');
