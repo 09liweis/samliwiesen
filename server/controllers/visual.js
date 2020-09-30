@@ -58,8 +58,7 @@ exports.search = (req, resp) => {
     resp.status(400).json({ok:0,msg:'No Keyword'});
   }
   const url = `https://m.douban.com/search/?query=${encodeURIComponent(keyword)}&type=movie`;
-  sendRequest(url,'GET',resp,function(statusCode,body) {
-    const $ = getCheerio(body);
+  sendRequest(url,'GET',resp,function(statusCode,$) {
     const results = $('.search_results_subjects a');
     let visuals = [];
     if (results) {
