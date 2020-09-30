@@ -117,8 +117,7 @@ exports.getPhotos = (req,resp) => {
   if (start) {
     douban_url += `&start=${start}`;
   }
-  sendRequest(douban_url, 'GET', resp, (statusCode, body) => {
-    const $ = getCheerio(body);
+  sendRequest(douban_url, 'GET', resp, (statusCode, $) => {
     const photosMatch = $('.poster-col3 li');
     var photos = [];
     if (!start) {
