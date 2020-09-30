@@ -149,8 +149,7 @@ exports.getPhoto = (req, resp) => {
     return resp.json({ok:0,msg:'No Photo Id'});
   }
   const douban_url = `https://movie.douban.com/photos/photo/${photo_id}`;
-  sendRequest(douban_url,'GET',resp,(statusCode,body) => {
-    const $ = getCheerio(body);
+  sendRequest(douban_url,'GET',resp,(statusCode,$) => {
     const commentsMatch = $('.comment-item');
     let comments = [];
     const uploader = $('.poster-info li:nth-child(5) a').text();
