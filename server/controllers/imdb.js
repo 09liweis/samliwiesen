@@ -1,4 +1,4 @@
-const {sendRequest,getCheerio} = require('../helpers/request');
+const {sendRequest} = require('../helpers/request');
 
 const IMDB_BOXOFFICE = 'https://www.imdb.com/chart/boxoffice';
 
