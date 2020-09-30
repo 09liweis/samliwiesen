@@ -175,8 +175,7 @@ exports.getComments = (req, resp) => {
     return resp.status(400).json('No Douban Id');
   }
   const douban_url = `${DOUBAN_SITE}${douban_id}/comments`;
-  sendRequest(douban_url,'GET', resp, (statusCode,body) => {
-    const $ = getCheerio(body);
+  sendRequest(douban_url,'GET', resp, (statusCode,$) => {
     const comments = getVisualComments($);
     return resp.status(statusCode).json({comments});
   })
