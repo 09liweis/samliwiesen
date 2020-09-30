@@ -83,8 +83,7 @@ exports.getCelebrities = (req,resp)=>{
     return resp.status(400).json({msg:'No Douban Id'});
   }
   const douban_url = DOUBAN_SITE + douban_id + '/celebrities';
-  sendRequest(douban_url,'GET',resp,function(statusCode,body) {
-    const $ = getCheerio(body);
+  sendRequest(douban_url,'GET',resp,function(statusCode,$) {
     const castsMatch = $('.list-wrapper');
     let casts = [];
     for (let i = 0; i < castsMatch.length; i++) {
