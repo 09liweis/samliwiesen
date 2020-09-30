@@ -1,7 +1,7 @@
 var request = require('request');
 var cheerio = require('cheerio');
 
-exports.getCheerio = (body) => {
+exports.getCheerio = getCheerio = (body) => {
   var body = body.replace(/(\r\n|\n|\r)/gm, '').replace(/ +(?= )/g,'');
   const $ = cheerio.load(body.toString(),{
     normalizeWhitespace:true,
@@ -33,6 +33,7 @@ exports.sendRequest = (url,method,resp,cb) => {
     if (error || statusCode != 200) {
       return resp.status(statusCode).json(error);
     }
-    return cb(statusCode,body);
+    var $ = getCheerio(body);
+    return cb(statusCode,$);
   });
 }
