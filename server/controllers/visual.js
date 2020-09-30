@@ -359,8 +359,7 @@ exports.getSummary = (req,resp)=>{
     }
     //handle scraping imdb data
     url = IMDB_SITE + imdb_id
-    sendRequest(url,'GET',resp,function(statusCode,body) {
-      const $ = getCheerio(body);
+    sendRequest(url,'GET',resp,function(statusCode,$) {
       visual.imdb_title = $('.title_wrapper h1').text().trim();
       visual.imdb_rating = $('span[itemprop="ratingValue"]').text();
       visual.imdb_rating_count = $('span[itemprop="ratingCount"]').text();
