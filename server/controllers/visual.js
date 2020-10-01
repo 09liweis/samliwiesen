@@ -59,7 +59,7 @@ exports.search = (req, resp) => {
     return resp.status(400).json({msg:'No Keyword'});
   }
   const url = `https://m.douban.com/search/?query=${encodeURIComponent(keyword)}&type=movie`;
-  sendRequest(url,'GET',resp,function(statusCode,$) {
+  sendRequest(url,'GET',resp,function(statusCode,$,body) {
     const results = $('.search_results_subjects a');
     let visuals = [];
     if (results) {
@@ -84,7 +84,7 @@ exports.getCelebrities = (req,resp)=>{
     return resp.status(400).json({msg:'No Douban Id'});
   }
   const douban_url = `${DOUBAN_SITE}${douban_id}/celebrities`;
-  sendRequest(douban_url,'GET',resp,function(statusCode,$) {
+  sendRequest(douban_url,'GET',resp,function(statusCode,$,body) {
     const castsMatch = $('.list-wrapper');
     let casts = [];
     for (let i = 0; i < castsMatch.length; i++) {
@@ -150,7 +150,7 @@ exports.getPhoto = (req, resp) => {
     return resp.json({msg:'No Photo Id'});
   }
   const douban_url = `https://movie.douban.com/photos/photo/${photo_id}`;
-  sendRequest(douban_url,'GET',resp,(statusCode,$) => {
+  sendRequest(douban_url,'GET',resp,(statusCode,$,body) => {
     const commentsMatch = $('.comment-item');
     let comments = [];
     const uploader = $('.poster-info li:nth-child(5) a').text();
@@ -176,7 +176,7 @@ exports.getComments = (req, resp) => {
     return resp.status(400).json('No Douban Id');
   }
   const douban_url = `${DOUBAN_SITE}${douban_id}/comments`;
-  sendRequest(douban_url,'GET', resp, (statusCode,$) => {
+  sendRequest(douban_url,'GET', resp, (statusCode,$,body) => {
     const comments = getVisualComments($);
     return resp.status(statusCode).json({comments});
   })
@@ -188,8 +188,7 @@ exports.getSummary = (req,resp)=>{
     resp.send({ok:0,msg:'No Douban Id'});
   }
   douban_url = DOUBAN_SITE + douban_id;
-  sendRequest(douban_url,'GET',resp,function(statusCode,$) {
-    var body = $.html();
+  sendRequest(douban_url,'GET',resp,function(statusCode,$,body) {
     var episodes = 1;
     const title = $('span[property="v:itemreviewed"]').text();
     const douban_poster = $('img[rel="v:image"]').attr('src');
@@ -360,7 +359,7 @@ exports.getSummary = (req,resp)=>{
     }
     //handle scraping imdb data
     url = IMDB_SITE + imdb_id
-    sendRequest(url,'GET',resp,function(statusCode,$) {
+    sendRequest(url,'GET',resp,function(statusCode,$,body) {
       visual.imdb_title = $('.title_wrapper h1').text().trim();
       visual.imdb_rating = $('span[itemprop="ratingValue"]').text();
       visual.imdb_rating_count = $('span[itemprop="ratingCount"]').text();
