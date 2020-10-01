@@ -182,6 +182,10 @@ exports.getComments = (req, resp) => {
   })
 }
 
+exports.getReviews = (req,resp) => {
+  return resp.status(200).json('ok');
+}
+
 exports.getSummary = (req,resp)=>{
   let {douban_id} = req.body;
   if (douban_id) {
