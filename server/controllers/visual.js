@@ -47,7 +47,7 @@ function getVisualComments($) {
         text: comment.find('.short').text(),
         author: comment.find('.comment-info a').text(),
         avt: comment.find('img').attr('src'),
-        date: comment.find('.comment-time').text(),
+        date: comment.find('.comment-time').text().trim(),
         rating,
         vote: comment.find('.votes').text()
       });
