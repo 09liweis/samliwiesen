@@ -67,7 +67,9 @@ function getVisualReviews($) {
         content: review.find('.short-content').text(),
         author: review.find('.name').text(),
         rating,
-        date: review.find('.main-meta').text()
+        date: review.find('.main-meta').text(),
+        usefull_count: review.find('.action-btn.up span').text().trim(),
+        useless_count: review.find('.action-btn.down span').text().trim()
       });
     }
   }
