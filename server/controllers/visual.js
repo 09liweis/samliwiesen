@@ -147,7 +147,7 @@ exports.getPhotos = (req,resp) => {
 exports.getPhoto = (req, resp) => {
   const {photo_id} = req.body;
   if (!photo_id) {
-    return resp.json({ok:0,msg:'No Photo Id'});
+    return resp.json({msg:'No Photo Id'});
   }
   const douban_url = `https://movie.douban.com/photos/photo/${photo_id}`;
   sendRequest(douban_url,'GET',resp,(statusCode,$) => {
