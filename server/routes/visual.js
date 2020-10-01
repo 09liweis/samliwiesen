@@ -16,6 +16,8 @@ router.route('/photo').post(VisualController.getPhoto);
 
 router.route('/comments').post(VisualController.getComments);
 
+router.route('/reviews').post(VisualController.getReviews);
+
 router.route('/imdb_boxoffice').post(getImdbBoxOffice);
 
 module.exports = router;
