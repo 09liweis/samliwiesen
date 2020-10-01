@@ -52,6 +52,24 @@ function getVisualComments($) {
   return comments;
 }
 
+function getVisualReviews($) {
+  const reviewsMatch = $('.main.review-item');
+  var reviews = [];
+  if (reviewsMatch) {
+    for (var i = 0; i < reviewsMatch.length; i++) {
+      var review = $(reviewsMatch[i]);
+      reviews.push({
+        title: review.find('h2 a').text(),
+        content: review.find('.short-content').text(),
+        author: review.find('.name').text(),
+        rating: review.find('.main-title-rating').attr('class'),
+        date: review.find('.main-meta').text()
+      });
+    }
+  }
+  return reviews;
+}
+
 exports.search = (req, resp) => {
   let {keyword} = req.body;
   keyword = keyword.trim();
@@ -183,7 +201,15 @@ exports.getComments = (req, resp) => {
 }
 
 exports.getReviews = (req,resp) => {
-  return resp.status(200).json('ok');
+  let {douban_id} = req.body;
+  if (!douban_id) {
+    return resp.status(400).json('No Douban Id');
+  }
+  const douban_url = `${DOUBAN_SITE}${douban_id}/reviews`;
+  sendRequest(douban_url,'GET',resp,(statusCode,$,body) => {
+    const reviews = getVisualReviews($);
+    return resp.status(statusCode).json({reviews});
+  });
 }
 
 exports.getSummary = (req,resp)=>{
@@ -264,20 +290,7 @@ exports.getSummary = (req,resp)=>{
       }
     }
 
-    const reviewsMatch = $('.main.review-item');
-    if (reviewsMatch) {
-      var reviews = [];
-      for (var i = 0; i < reviewsMatch.length; i++) {
-        var review = $(reviewsMatch[i]);
-        reviews.push({
-          title: review.find('h2 a').text(),
-          content: review.find('.short-content').text(),
-          author: review.find('.name').text(),
-          rating: review.find('.main-title-rating').attr('class'),
-          date: review.find('.main-meta').text()
-        });
-      }
-    }
+    const reviews = getVisualReviews($);
 
     const castMatches = $('.celebrity');
     if (castMatches) {
