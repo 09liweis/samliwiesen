@@ -53,9 +53,10 @@ function getVisualComments($) {
 }
 
 exports.search = (req, resp) => {
-  const {keyword} = req.body;
+  let {keyword} = req.body;
+  keyword = keyword.trim();
   if (!keyword) {
-    resp.status(400).json({msg:'No Keyword'});
+    return resp.status(400).json({msg:'No Keyword'});
   }
   const url = `https://m.douban.com/search/?query=${encodeURIComponent(keyword)}&type=movie`;
   sendRequest(url,'GET',resp,function(statusCode,$) {
