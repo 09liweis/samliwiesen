@@ -34,6 +34,6 @@ exports.sendRequest = (url,method,resp,cb) => {
       return resp.status(statusCode).json(error);
     }
     var $ = getCheerio(body);
-    return cb(statusCode,$);
+    return cb(statusCode,$,body);
   });
 }
