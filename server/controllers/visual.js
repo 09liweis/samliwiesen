@@ -183,9 +183,12 @@ exports.getComments = (req, resp) => {
 }
 
 exports.getSummary = (req,resp)=>{
-  const {douban_id} = req.body;
+  let {douban_id} = req.body;
+  if (douban_id) {
+    douban_id = douban_id.trim();
+  }
   if (!douban_id) {
-    resp.send({ok:0,msg:'No Douban Id'});
+    return resp.status(400).json({msg:'No Douban Id'});
   }
   douban_url = DOUBAN_SITE + douban_id;
   sendRequest(douban_url,'GET',resp,function(statusCode,$,body) {
@@ -290,7 +293,7 @@ exports.getSummary = (req,resp)=>{
     }
     var originalTitleMatch = /又名:<\/span>(.*?)<br\/>/g.exec(body);
     if (originalTitleMatch) {
-      var original_title = originalTitleMatch[1].trim().split(' / ');
+      var original_title = originalTitleMatch[1].trim();
     }
 
     var episodesMatch = /集数:<\/span>(.*?)<br\/>/g.exec(body);
