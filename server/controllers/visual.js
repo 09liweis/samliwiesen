@@ -66,6 +66,7 @@ function getVisualReviews($) {
         title: review.find('h2 a').text(),
         content: review.find('.short-content').text(),
         author: review.find('.name').text(),
+        avt: review.find('.avator img').attr('src'),
         rating,
         date: review.find('.main-meta').text(),
         usefull_count: review.find('.action-btn.up span').text().trim(),
