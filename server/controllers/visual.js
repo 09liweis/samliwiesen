@@ -58,11 +58,15 @@ function getVisualReviews($) {
   if (reviewsMatch) {
     for (var i = 0; i < reviewsMatch.length; i++) {
       var review = $(reviewsMatch[i]);
+      var rating = review.find('.main-title-rating').attr('class');
+      if (typeof rating == 'string') {
+        rating = rating.replace('main-title-rating','').replace('allstar','').trim();
+      }
       reviews.push({
         title: review.find('h2 a').text(),
         content: review.find('.short-content').text(),
         author: review.find('.name').text(),
-        rating: review.find('.main-title-rating').attr('class'),
+        rating,
         date: review.find('.main-meta').text()
       });
     }
