@@ -1,4 +1,4 @@
-const {sendRequest,getCheerio} = require('../helpers/request');
+const {sendRequest} = require('../helpers/request');
 
 const DOUBAN_SITE = 'https://movie.douban.com/subject/';
 const IMDB_SITE = 'https://www.imdb.com/title/';
