@@ -7,6 +7,10 @@ function getImdbUrl(imdb_id) {
   return `${IMDB_SITE}${imdb_id}`;
 }
 
+function getDoubanUrl(douban_id) {
+  return `${DOUBAN_SITE}${douban_id}`;
+}
+
 function getAvtUrl(element) {
   var avtStyle = element.find('div.avatar').attr('style');
   var avtMatches = /url\((.*?)\)/g.exec(avtStyle);
@@ -236,7 +240,7 @@ exports.getSummary = (req,resp)=>{
   if (!douban_id) {
     return resp.status(400).json({msg:'No Douban Id'});
   }
-  douban_url = DOUBAN_SITE + douban_id;
+  douban_url = getDoubanUrl(douban_id);
   sendRequest(douban_url,'GET',resp,function(statusCode,$,body) {
     var episodes = 1;
     const title = $('span[property="v:itemreviewed"]').text();
