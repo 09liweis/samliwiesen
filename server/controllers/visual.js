@@ -7,8 +7,12 @@ function getImdbUrl(imdb_id) {
   return `${IMDB_SITE}${imdb_id}`;
 }
 
-function getDoubanUrl(douban_id) {
-  return `${DOUBAN_SITE}${douban_id}`;
+function getDoubanUrl(douban_id,opt={}) {
+  let apiName = '';
+  if (opt && opt.apiName) {
+    apiName = opt.apiName;
+  }
+  return `${DOUBAN_SITE}${douban_id}/${apiName}`;
 }
 
 function getAvtUrl(element) {
