@@ -1,5 +1,6 @@
 import { ViewChild, Component, OnInit, Input } from '@angular/core';
 
+import { getToday } from '../../helpers';
 import { TransactionService } from '../../services/transaction.service';
 import { PlaceService } from '../../services/place.service';
 // import { Transaction } from '../../models/transaction';
@@ -44,12 +45,7 @@ export class TransactionFormComponent implements OnInit {
       //   this.transaction = b;
       // })
     } else {
-      const now = new Date();
-      const year = now.getFullYear();
-      const month = now.getMonth();
-      const m = month > 9 ? month : `0${month + 1}`;
-      const day = now.getDate();
-      const d = day > 9 ? day : `0${day}`;
+      const {year,m,d} = getToday();
       this.transaction.date = `${year}-${m}-${d}`;
     }
     // this.searchPlaces('axd');
