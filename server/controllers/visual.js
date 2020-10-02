@@ -3,6 +3,10 @@ const {sendRequest} = require('../helpers/request');
 const DOUBAN_SITE = 'https://movie.douban.com/subject/';
 const IMDB_SITE = 'https://www.imdb.com/title/';
 
+function getImdbUrl(imdb_id) {
+  return `${IMDB_SITE}${imdb_id}`;
+}
+
 function getAvtUrl(element) {
   var avtStyle = element.find('div.avatar').attr('style');
   var avtMatches = /url\((.*?)\)/g.exec(avtStyle);
@@ -390,7 +394,7 @@ exports.getSummary = (req,resp)=>{
       return resp.status(statusCode).json(visual);
     }
     //handle scraping imdb data
-    url = IMDB_SITE + imdb_id
+    url = getImdbUrl(imdb_id);
     sendRequest(url,'GET',resp,function(statusCode,$,body) {
       visual.imdb_title = $('.title_wrapper h1').text().trim();
       visual.imdb_rating = $('span[itemprop="ratingValue"]').text();
