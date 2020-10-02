@@ -125,7 +125,7 @@ exports.getCelebrities = (req,resp)=>{
   if (!douban_id) {
     return resp.status(400).json({msg:'No Douban Id'});
   }
-  const douban_url = `${DOUBAN_SITE}${douban_id}/celebrities`;
+  const douban_url = getDoubanUrl(douban_id,{apiName:'celebrities'});
   sendRequest(douban_url,'GET',resp,function(statusCode,$,body) {
     const castsMatch = $('.list-wrapper');
     let casts = [];
@@ -143,7 +143,7 @@ exports.getCelebrities = (req,resp)=>{
         celebrities
       })
     }
-    resp.status(statusCode).json(casts);
+    resp.status(statusCode).json({douban_url,casts});
   });
 }
 
