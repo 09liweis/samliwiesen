@@ -71,21 +71,23 @@ export default class Transactions extends React.Component {
     const {href} = location;
     let [host,search] = href.split('?');
     let filters = {};
-    search = search.split('&');
-    const searchLength = search.length;
-    if (searchLength) {
-      for (let i = 0; i < searchLength; i++) {
-        const queryString = search[i];
-        let [key,val] = queryString.split('=');
-        if (key == 'cin') {
-          val = val.split('.');
-          filters.category = {'$in':val};
-        } else {
-          filters[key] = val;
+    if (search) {
+      search = search.split('&');
+      const searchLength = search.length;
+      if (searchLength) {
+        for (let i = 0; i < searchLength; i++) {
+          const queryString = search[i];
+          let [key,val] = queryString.split('=');
+          if (key == 'cin') {
+            val = val.split('.');
+            filters.category = {'$in':val};
+          } else {
+            filters[key] = val;
+          }
         }
       }
-      return filters;
     }
+    return filters;
   }
   getList() {
     const getListApi = this.state.api.list;
