@@ -156,7 +156,7 @@ exports.getPhotos = (req,resp) => {
   if (!type) {
     type = 'S';
   }
-  douban_url = `${DOUBAN_SITE}${douban_id}/photos?type=${type}`;
+  douban_url = `${getDoubanUrl(douban_id,{apiName:'photos'})}?type=${type}`;
   if (start) {
     douban_url += `&start=${start}`;
   }
