@@ -16,6 +16,7 @@ exports.transaction_list = (req, res) => {
     opt.skip = parseInt(page)*opt.limit;
   }
   if (category) {
+    //{'$in':[],'$nin':[]}
     filter.category = category;
   }
   if (place_id) {
