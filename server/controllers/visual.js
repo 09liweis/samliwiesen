@@ -149,7 +149,8 @@ exports.getCelebrities = (req,resp)=>{
 
 exports.getPhotos = (req,resp) => {
   //type S -> 剧照, R -> Poster
-  var {douban_id,start,type} = req.body;
+  var limit = 30;
+  var {douban_id,page,type} = req.body;
   if (!douban_id) {
     return resp.status(400).json({msg:'No Douban Id'});
   }
@@ -157,14 +158,14 @@ exports.getPhotos = (req,resp) => {
     type = 'S';
   }
   douban_url = `${getDoubanUrl(douban_id,{apiName:'photos'})}?type=${type}`;
-  if (start) {
-    douban_url += `&start=${start}`;
+  if (page) {
+    douban_url += `&start=${page*limit}`;
   }
   sendRequest(douban_url, 'GET', resp, (statusCode, $) => {
     const photosMatch = $('.poster-col3 li');
     var photos = [];
-    if (!start) {
-      start = 0;
+    if (!page) {
+      page = 1;
     }
     if (photosMatch) {
       for (let i = 0; i < photosMatch.length; i++) {
@@ -182,7 +183,7 @@ exports.getPhotos = (req,resp) => {
         })
       }
     }
-    resp.status(statusCode).json({photos,start});
+    resp.status(statusCode).json({photos,page});
   });
 }
 
