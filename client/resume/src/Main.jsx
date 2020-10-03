@@ -18,6 +18,7 @@ import Movies from './pages/Movies.jsx';
 import Movie from './pages/Movie.jsx';
 import Blogs from './pages/Blogs.jsx';
 import Comments from './pages/Comments.jsx';
+import Transactions from './pages/Transactions.jsx';
 // const Home = lazy(() => require('./pages/Home.jsx'));
 // const Movies = lazy(() => require('./pages/Movies.jsx'));
 // const Todo = lazy(() => require('./pages/Todo.jsx'));
@@ -44,6 +45,7 @@ export default class Main extends React.Component {
                 <Route path='/movie/:id' component={Movie} />
                 <Route path='/blogs' component={Blogs} />
                 <Route path='/comments' component={Comments} />
+                <Route path='/transactions' component={Transactions} />
               </main>
             </div>
           </div>
