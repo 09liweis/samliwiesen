@@ -229,7 +229,7 @@ exports.getReviews = (req,resp) => {
   if (!douban_id) {
     return resp.status(400).json('No Douban Id');
   }
-  const douban_url = `${DOUBAN_SITE}${douban_id}/reviews`;
+  const douban_url = getDoubanUrl(douban_id,{apiName:'reviews'});
   sendRequest(douban_url,'GET',resp,(statusCode,$,body) => {
     const reviews = getVisualReviews($);
     return resp.status(statusCode).json({reviews});
