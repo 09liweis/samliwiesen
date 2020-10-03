@@ -67,9 +67,30 @@ export default class Transactions extends React.Component {
   componentDidMount() {
     this.getList();
   }
+  getFilters() {
+    const {href} = location;
+    let [host,search] = href.split('?');
+    let filters = {};
+    search = search.split('&');
+    const searchLength = search.length;
+    if (searchLength) {
+      for (let i = 0; i < searchLength; i++) {
+        const queryString = search[i];
+        let [key,val] = queryString.split('=');
+        if (key == 'cin') {
+          val = val.split('.');
+          filters.category = {'$in':val};
+        } else {
+          filters[key] = val;
+        }
+      }
+      return filters;
+    }
+  }
   getList() {
     const getListApi = this.state.api.list;
-    axios.post(getListApi,{}).then((res) => {
+    const filters = this.getFilters();
+    axios.post(getListApi,filters).then((res) => {
       this.setState({
         transactions: res.data
       });
