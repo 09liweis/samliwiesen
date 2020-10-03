@@ -217,7 +217,7 @@ exports.getComments = (req, resp) => {
   if (!douban_id) {
     return resp.status(400).json('No Douban Id');
   }
-  const douban_url = `${DOUBAN_SITE}${douban_id}/comments`;
+  const douban_url = `${getDoubanUrl(douban_id,{apiName:'comments'})}`;
   sendRequest(douban_url,'GET', resp, (statusCode,$,body) => {
     const comments = getVisualComments($);
     return resp.status(statusCode).json({comments});
