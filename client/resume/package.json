@@ -21,7 +21,6 @@
     "react": "^16.12.0",
     "react-dom": "^16.1.1",
     "react-flatpickr": "^3.6.4",
-    "react-places-autocomplete": "^7.1.1",
     "react-redux": "^7.2.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
