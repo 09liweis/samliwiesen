@@ -60,6 +60,7 @@ export default class Transactions extends React.Component {
       api: {
         list: '/api/transactions/',
       },
+      filters:{},
       transactions: [],
     };
     this.getList = this.getList.bind(this);
@@ -94,12 +95,13 @@ export default class Transactions extends React.Component {
     const filters = this.getFilters();
     axios.post(getListApi,filters).then((res) => {
       this.setState({
-        transactions: res.data
+        transactions: res.data,
+        filters
       });
     });
   }
   render() {
-    const {icons} = this.state;
+    const {icons,filters} = this.state;
     let spend = 0.0;
     const ts = this.state.transactions.map((t) => {
       if (t.price < 0) {
@@ -111,7 +113,9 @@ export default class Transactions extends React.Component {
     });
     return (
       <section id="transactions" className="container">
-        <h1 className="transactions__title">Transactions</h1>
+        <h1 className="transactions__title">
+          <span>Date: {filters.date}</span>
+        </h1>
         <h2 className="transaction__price credit">Total Spend: ${Math.abs(spend).toFixed(2)}</h2>
         <div className="transaction__list">
         {ts}
