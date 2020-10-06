@@ -94,6 +94,10 @@ function getVisualReviews($) {
   return reviews;
 }
 
+exports.inTheatre = (req,resp) => {
+  resp.status(200).json({ok:1});
+}
+
 exports.search = (req, resp) => {
   let {keyword} = req.body;
   keyword = keyword.trim();
