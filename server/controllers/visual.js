@@ -104,7 +104,8 @@ exports.inTheatre = (req,resp) => {
         const item = $(listItems[i]);
         movies.push({
           douban_id: item.attr('id'),
-          poster: item.find('img').attr('src')
+          poster: item.find('img').attr('src'),
+          title: item.attr('data-title')
         })
       }
     }
