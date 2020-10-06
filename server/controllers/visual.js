@@ -95,7 +95,20 @@ function getVisualReviews($) {
 }
 
 exports.inTheatre = (req,resp) => {
-  resp.status(200).json({ok:1});
+  const url = 'https://movie.douban.com/cinema/nowplaying/guangzhou/';
+  sendRequest(url,'GET',resp,function(statusCode,$,body) {
+    const listItems = $('.list-item');
+    var movies = [];
+    if (listItems) {
+      for (let i = 0; i < listItems.length; i++) {
+        const item = $(listItems[i]);
+        movies.push({
+          douban_id: item.attr('id')
+        })
+      }
+    }
+    resp.status(statusCode).json({movies});
+  });
 }
 
 exports.search = (req, resp) => {
