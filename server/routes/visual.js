@@ -6,6 +6,8 @@ const {getImdbBoxOffice} = require('../controllers/imdb.js');
 
 router.route('/search').post(VisualController.search);
 
+router.route('/in_theatre').post(VisualController.inTheatre);
+
 router.route('/celebrities').post(VisualController.getCelebrities);
 
 router.route('/summary').post(VisualController.getSummary);
