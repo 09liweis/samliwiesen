@@ -108,7 +108,8 @@ exports.inTheatre = (req,resp) => {
           title: item.attr('data-title'),
           release_date:item.attr('data-release'),
           actors:item.attr('data-actors'),
-          director:item.attr('data-director')
+          director:item.attr('data-director'),
+          score: item.attr('data-score')
         })
       }
     }
