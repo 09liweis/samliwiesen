@@ -107,7 +107,8 @@ exports.inTheatre = (req,resp) => {
           poster: item.find('img').attr('src'),
           title: item.attr('data-title'),
           release_date:item.attr('data-release'),
-          actors:item.attr('data-actors')
+          actors:item.attr('data-actors'),
+          director:item.attr('data-director')
         })
       }
     }
