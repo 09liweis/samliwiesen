@@ -106,7 +106,8 @@ exports.inTheatre = (req,resp) => {
           douban_id: item.attr('id'),
           poster: item.find('img').attr('src'),
           title: item.attr('data-title'),
-          release_date:item.attr('data-release')
+          release_date:item.attr('data-release'),
+          actors:item.attr('data-actors')
         })
       }
     }
