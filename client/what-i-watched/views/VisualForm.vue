@@ -151,14 +151,9 @@ export default {
       this.$http.post(api,{douban_id}).then(res => {
         const douban = res.body;
         this.loading = false;
-        var checkFields = ['poster','title','original_title'];
-        for (let i = 0; i < checkFields.length; i++) {
-          const fld = checkFields[i];
-          if (this.visual[fld]) {
-            delete douban[fld];
-          }
+        for (const [key, value] of Object.entries(this.visual)) {
+          this.visual[key] = douban[key];
         }
-        this.visual = Object.assign(this.visual,douban);
         if (douban.episodes > 1) {
           this.visual.visual_type = 'tv';
         }
