@@ -95,7 +95,11 @@ function getVisualReviews($) {
 }
 
 exports.inTheatre = (req,resp) => {
-  const url = 'https://movie.douban.com/cinema/nowplaying/guangzhou/';
+  let {city} = req.body;
+  if (!city) {
+    city = 'guangzhou';
+  }
+  const url = `https://movie.douban.com/cinema/nowplaying/${city}/`;
   sendRequest(url,'GET',resp,function(statusCode,$,body) {
     const listItems = $('.list-item');
     var movies = [];
@@ -115,7 +119,7 @@ exports.inTheatre = (req,resp) => {
         })
       }
     }
-    resp.status(statusCode).json({movies});
+    resp.status(statusCode).json({city,movies});
   });
 }
 
