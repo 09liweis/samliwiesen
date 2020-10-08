@@ -96,6 +96,7 @@ function getVisualReviews($) {
 
 exports.inTheatre = (req,resp) => {
   let {city} = req.body;
+  city = city.trim();
   if (!city) {
     city = 'guangzhou';
   }
