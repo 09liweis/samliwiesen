@@ -146,7 +146,7 @@ exports.search = (req, resp) => {
         });
       }
     }
-    resp.status(statusCode).json(visuals);
+    resp.status(statusCode).json({visuals});
   });
 }
 
