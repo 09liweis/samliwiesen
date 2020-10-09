@@ -108,17 +108,14 @@ exports.inTheatre = (req,resp) => {
       dataNames = ['title','release','actors','director','score','duration','category'];
       for (let i = 0; i < listItems.length; i++) {
         const item = $(listItems[i]);
-        movies.push({
+        var movie = {
           douban_id: item.attr('id'),
           poster: item.find('img').attr('src'),
-          title: item.attr('data-title'),
-          release_date:item.attr('data-release'),
-          actors:item.attr('data-actors'),
-          director:item.attr('data-director'),
-          score: item.attr('data-score'),
-          duration: item.attr('data-duration'),
-          category: item.attr('data-category')
+        };
+        dataNames.forEach(name => {
+          movie[name] = item.attr(`data-${name}`);
         });
+        movies.push(movie);
       }
     }
     resp.status(statusCode).json({city,movies});
