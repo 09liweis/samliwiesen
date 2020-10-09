@@ -105,6 +105,7 @@ exports.inTheatre = (req,resp) => {
     const listItems = $('.list-item');
     var movies = [];
     if (listItems) {
+      dataNames = ['title','release','actors','director','score','duration','category'];
       for (let i = 0; i < listItems.length; i++) {
         const item = $(listItems[i]);
         movies.push({
@@ -117,7 +118,7 @@ exports.inTheatre = (req,resp) => {
           score: item.attr('data-score'),
           duration: item.attr('data-duration'),
           category: item.attr('data-category')
-        })
+        });
       }
     }
     resp.status(statusCode).json({city,movies});
