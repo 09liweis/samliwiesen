@@ -215,7 +215,7 @@ exports.getPhotos = (req,resp) => {
   });
 }
 
-exports.getPhoto = (req, resp) => {
+exports.getPhotoDetail = (req, resp) => {
   const {photo_id} = req.body;
   if (!photo_id) {
     return resp.json({msg:'No Photo Id'});

@@ -14,7 +14,7 @@ router.route('/summary').post(VisualController.getSummary);
 
 router.route('/photos').post(VisualController.getPhotos);
 
-router.route('/photo').post(VisualController.getPhoto);
+router.route('/photo').post(VisualController.getPhotoDetail);
 
 router.route('/comments').post(VisualController.getComments);
 
