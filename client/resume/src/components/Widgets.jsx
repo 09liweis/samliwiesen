@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import Clock from './Clock.jsx';
+// import Clock from './Clock.jsx';
 import Weather from './Weather.jsx';
 import About from './About.jsx';
 import DeviceInfo from './DeviceInfo.jsx';
@@ -17,7 +17,7 @@ const widgets = () => {
       <div id="widgets" className={widgetClass}>
         <About/>
         <DeviceInfo/>
-        <Clock/>
+        {/* <Clock/> */}
         <Weather/>
       </div>
     </div>
