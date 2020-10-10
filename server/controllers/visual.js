@@ -152,7 +152,7 @@ exports.search = (req, resp) => {
 exports.getCelebrities = (req,resp)=>{
   const {douban_id} = req.body
   if (!douban_id) {
-    return resp.status(400).json({msg:'No Douban Id'});
+    return resp.status(400).json({msg:MISSING_DOUBAN_ID});
   }
   const douban_url = getDoubanUrl(douban_id,{apiName:'celebrities'});
   sendRequest(douban_url,'GET',resp,function(statusCode,$,body) {
@@ -181,7 +181,7 @@ exports.getPhotos = (req,resp) => {
   var limit = 30;
   var {douban_id,page,type} = req.body;
   if (!douban_id) {
-    return resp.status(400).json({msg:'No Douban Id'});
+    return resp.status(400).json({msg:MISSING_DOUBAN_ID});
   }
   if (!type) {
     type = 'S';
@@ -245,7 +245,7 @@ exports.getPhotoDetail = (req, resp) => {
 exports.getComments = (req, resp) => {
   const {douban_id} = req.body;
   if (!douban_id) {
-    return resp.status(400).json('No Douban Id');
+    return resp.status(400).json({msg:MISSING_DOUBAN_ID});
   }
   const douban_url = getDoubanUrl(douban_id,{apiName:'comments'});
   sendRequest(douban_url,'GET', resp, (statusCode,$,body) => {
@@ -257,7 +257,7 @@ exports.getComments = (req, resp) => {
 exports.getReviews = (req,resp) => {
   let {douban_id} = req.body;
   if (!douban_id) {
-    return resp.status(400).json('No Douban Id');
+    return resp.status(400).json({msg:MISSING_DOUBAN_ID});
   }
   const douban_url = getDoubanUrl(douban_id,{apiName:'reviews'});
   sendRequest(douban_url,'GET',resp,(statusCode,$,body) => {
@@ -272,7 +272,7 @@ exports.getSummary = (req,resp)=>{
     douban_id = douban_id.trim();
   }
   if (!douban_id) {
-    return resp.status(400).json({msg:'No Douban Id'});
+    return resp.status(400).json({msg:MISSING_DOUBAN_ID});
   }
   douban_url = getDoubanUrl(douban_id);
   sendRequest(douban_url,'GET',resp,function(statusCode,$,body) {
