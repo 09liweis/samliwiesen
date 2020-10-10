@@ -2,6 +2,7 @@ const {sendRequest} = require('../helpers/request');
 
 const DOUBAN_SITE = 'https://movie.douban.com/subject/';
 const IMDB_SITE = 'https://www.imdb.com/title/';
+const MISSING_DOUBAN_ID = 'Missing Douban Id';
 
 function getImdbUrl(imdb_id) {
   return `${IMDB_SITE}${imdb_id}`;
