@@ -170,7 +170,7 @@ exports.getCelebrities = (req,resp)=>{
       casts.push({
         tl:castTl,
         celebrities
-      })
+      });
     }
     resp.status(statusCode).json({douban_url,casts});
   });
