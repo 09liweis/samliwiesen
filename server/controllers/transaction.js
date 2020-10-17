@@ -4,7 +4,7 @@ var Place = require('../models/place');
 exports.transaction_list = (req, res) => {
   let filter = {};
   const {category,date,place_id,limit,page} = req.body;
-  let opt = {limit:30};
+  let opt = {limit:10};
   if (limit) {
     if (limit != 'all') {
       opt.limit = parseInt(limit);
