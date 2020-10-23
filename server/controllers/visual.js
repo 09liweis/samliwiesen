@@ -178,6 +178,11 @@ exports.getCelebrities = (req,resp)=>{
 
 exports.getPhotos = (req,resp) => {
   //type S -> 剧照, R -> Poster
+  const types = {
+    S:'剧照',
+    R:'海报',
+    W:'壁纸'
+  }
   var limit = 30;
   var {douban_id,page,type} = req.body;
   if (!douban_id) {
@@ -213,7 +218,7 @@ exports.getPhotos = (req,resp) => {
         })
       }
     }
-    resp.status(statusCode).json({title,photos,page});
+    resp.status(statusCode).json({title,photos,types,page});
   });
 }
 
