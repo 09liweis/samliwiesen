@@ -192,6 +192,7 @@ exports.getPhotos = (req,resp) => {
   }
   sendRequest(douban_url, 'GET', resp, (statusCode, $) => {
     const photosMatch = $('.poster-col3 li');
+    const title = $('#content h1').text();
     var photos = [];
     if (!page) {
       page = 1;
@@ -212,7 +213,7 @@ exports.getPhotos = (req,resp) => {
         })
       }
     }
-    resp.status(statusCode).json({photos,page});
+    resp.status(statusCode).json({title,photos,page});
   });
 }
 
