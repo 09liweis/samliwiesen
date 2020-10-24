@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
 import { useSelector,useDispatch } from 'react-redux';
-import axios from 'axios';
 import {CSSTransition,TransitionGroup} from 'react-transition-group';
 
 import {getTodos} from '../actions/todo';
 
 import '../css/todo.css';
-const API = '/api/todos/';
 
 const Todo = () => {
   const [showForm,setShowForm] = useState(false);
