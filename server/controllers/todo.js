@@ -17,7 +17,7 @@ exports.todo_list = (req, res) => {
   if (limit) {
     options.limit = parseInt(limit);
   }
-  Todo.find(query, '_id name date status', options).sort('-created_at').exec((err, todos) => {
+  Todo.find(query, '_id name date steps status', options).sort('-created_at').exec((err, todos) => {
     handleError(res, err);
     res.status(200).json(todos);
   });
