@@ -85,6 +85,23 @@ exports.todo_delete = (req, res) => {
   });
 };
 
+exports.updateStep = (req,resp) => {
+  const todoId = req.params.id;
+  let step = req.body;
+  if (!step.name) {
+    return resp.status(400).json({msg: 'Missing step name'});
+  }
+  if (!step.status) {
+    step.status = 'pending';
+  }
+  Todo.update({_id:todoId},{$push:{steps:step}},(err,todo) => {
+    if (err) {
+      return resp.status(400).json({err});
+    }
+    resp.status(200).json({msg:'Update Success'});
+  });
+}
+
 
 function handleError(res, err) {
   if (err) {
