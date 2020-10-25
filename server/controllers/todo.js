@@ -87,17 +87,34 @@ exports.todo_delete = (req, res) => {
 
 exports.updateStep = (req,resp) => {
   const todoId = req.params.id;
-  let {step} = req.body;
+  let {step,mode} = req.body;
   if (!step.name) {
     return resp.status(400).json({msg: 'Missing step name'});
   }
   if (!step.status) {
     step.status = 'pending';
   }
-  Todo.update({_id:todoId},{$push:{steps:step}},(err,todo) => {
+  if (!mode) {
+    mode = 'add';
+  }
+  let update = {};
+  switch (mode) {
+    case 'add':
+      update['$push'] = {steps:step};
+      break;
+    case 'delete':
+      update['$pull'] = {steps:{_id:step._id}}
+      break;
+    case 'update':
+      break;
+    default:
+      break;
+  }
+  Todo.findOneAndUpdate({_id:todoId},update,{returnNewDocument:true},(err,todo) => {
     if (err) {
       return resp.status(400).json({err});
     }
+    console.log(todo);
     resp.status(200).json({msg:'Update Success'});
   });
 }
