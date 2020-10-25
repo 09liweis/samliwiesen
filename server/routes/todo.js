@@ -12,4 +12,7 @@ router.route('/:id')
 .put(TodoController.todo_update)
 .delete(TodoController.todo_delete);
 
+router.route('/:id/update_step')
+.post(TodoController.updateStep)
+
 module.exports = router;
