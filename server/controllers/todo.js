@@ -87,7 +87,7 @@ exports.todo_delete = (req, res) => {
 
 exports.updateStep = (req,resp) => {
   const todoId = req.params.id;
-  let step = req.body;
+  let {step} = req.body;
   if (!step.name) {
     return resp.status(400).json({msg: 'Missing step name'});
   }
