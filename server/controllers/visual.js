@@ -56,14 +56,17 @@ function getVisualComments($) {
       if (typeof rating == 'string') {
         rating = rating.replace('rating','').replace('allstar','').trim();
       }
-      comments.push({
-        text: comment.find('.short').text(),
-        author: comment.find('.comment-info a').text(),
-        avt: comment.find('img').attr('src'),
-        date: comment.find('.comment-time').text().trim(),
-        rating,
-        vote: comment.find('.votes').text()
-      });
+      const text = comment.find('.short').text();
+      if (text) {
+        comments.push({
+          text,
+          author: comment.find('.comment-info a').text(),
+          avt: comment.find('img').attr('src'),
+          date: comment.find('.comment-time').text().trim(),
+          rating,
+          vote: comment.find('.votes').text()
+        });
+      }
     }
   }
   return comments;
