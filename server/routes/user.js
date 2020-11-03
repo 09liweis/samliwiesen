@@ -4,8 +4,9 @@ const router = express.Router();
 const UserController = require('../controllers/user.js');
 
 router.route('/')
-.get(UserController.list)
-.post(UserController.add);
+.get(UserController.list);
+
+router.route('/register').post(UserController.register);
 
 // router.route('/:id')
 // .get(BlogController.blog_detail)
