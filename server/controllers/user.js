@@ -20,6 +20,9 @@ exports.register = async (req,res)=>{
     res.status(200).json({msg});
   }
 }
+exports.login = (req, resp) => {
+  
+}
 function handleError(res, err) {
   if (err) {
     res.send(err);
