@@ -6,7 +6,7 @@ exports.list = (req, res) => {
     res.json(users);
   });
 };
-exports.add = async (req,res)=>{
+exports.register = async (req,res)=>{
   const body = req.body;
   const eml = body.eml;
   let user = await User.findOne({eml})
@@ -16,7 +16,7 @@ exports.add = async (req,res)=>{
     return res.status(200).json({msg});
   } else {
     user = new User(body);
-    // await user.save()
+    await user.save()
     res.status(200).json({msg});
   }
 }
