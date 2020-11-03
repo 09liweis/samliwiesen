@@ -7,6 +7,7 @@ router.route('/')
 .get(UserController.list);
 
 router.route('/register').post(UserController.register);
+router.route('/login').post(UserController.login);
 
 // router.route('/:id')
 // .get(BlogController.blog_detail)
