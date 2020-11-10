@@ -3,6 +3,7 @@ const router = express.Router();
 
 const VisualController = require('../controllers/visual.js');
 const {getImdbBoxOffice} = require('../controllers/imdb.js');
+const {getSubjects} = require('../controllers/douban.js');
 
 router.route('/search').post(VisualController.search);
 
@@ -21,5 +22,7 @@ router.route('/comments').post(VisualController.getComments);
 router.route('/reviews').post(VisualController.getReviews);
 
 router.route('/imdb_boxoffice').post(getImdbBoxOffice);
+
+router.route('/douban').post(getSubjects);
 
 module.exports = router;
