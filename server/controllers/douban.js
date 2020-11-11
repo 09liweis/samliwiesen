@@ -7,6 +7,8 @@ exports.getSubjects = (req, resp) => {
   }
   if (!tag) {
     tag = encodeURIComponent('热门');
+  } else {
+    tag = encodeURIComponent(tag);
   }
   if (!page_start) {
     page_start = 0;
