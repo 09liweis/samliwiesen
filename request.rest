@@ -31,7 +31,8 @@ POST http://localhost:8081/api/visuals/douban HTTP/1.1
 Content-Type: application/json
 
 {
-  
+  "limit": 30,
+  "page": 1
 }
 
 ###
