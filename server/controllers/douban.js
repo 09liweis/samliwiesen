@@ -1,7 +1,15 @@
 const {sendRequest} = require('../helpers/request');
 
 exports.getTags = (req, resp) => {
-  
+  var {type} = req.body;
+  if (!type) {
+    type = 'movie';
+  }
+  const url = `https://movie.douban.com/j/search_tags?type=${type}&source=`;
+  sendRequest(url,'GET',resp,(statusCode,$,body) => {
+    var tags = JSON.parse(body).tags;
+    resp.status(statusCode).json({type,tags});
+  });
 }
 
 exports.getSubjects = (req, resp) => {
