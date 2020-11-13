@@ -1,5 +1,9 @@
 const {sendRequest} = require('../helpers/request');
 
+exports.getTags = (req, resp) => {
+  
+}
+
 exports.getSubjects = (req, resp) => {
   var {type,tag,page,limit} = req.body;
   if (!type) {
