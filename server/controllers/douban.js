@@ -52,10 +52,11 @@ exports.getPhotos = (req,resp) => {
   if (!type) {
     type = 'S';
   }
-  douban_url = `${getDoubanUrl(douban_id,{apiName:'photos'})}?type=${type}`;
-  if (page) {
-    douban_url += `&start=${page*limit}`;
+  if (!page) {
+    page = 1
   }
+  var douban_url = `${getDoubanUrl(douban_id,{apiName:'photos'})}?type=${type}`;
+  douban_url += `&start=${(page - 1)*limit}`;
   sendRequest(douban_url, 'GET', resp, (statusCode, $) => {
     const photosMatch = $('.poster-col3 li');
     const title = $('#content h1').text();
