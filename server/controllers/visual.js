@@ -1,19 +1,11 @@
 const {sendRequest} = require('../helpers/request');
+const {getDoubanUrl} = require('../helpers/douban');
 
-const DOUBAN_SITE = 'https://movie.douban.com/subject/';
 const IMDB_SITE = 'https://www.imdb.com/title/';
 const MISSING_DOUBAN_ID = 'Missing Douban Id';
 
 function getImdbUrl(imdb_id) {
   return `${IMDB_SITE}${imdb_id}`;
-}
-
-function getDoubanUrl(douban_id,opt={}) {
-  let apiName = '';
-  if (opt && opt.apiName) {
-    apiName = opt.apiName;
-  }
-  return `${DOUBAN_SITE}${douban_id}/${apiName}`;
 }
 
 function getAvtUrl(element) {
