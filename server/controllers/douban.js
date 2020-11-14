@@ -1,4 +1,5 @@
 const {sendRequest} = require('../helpers/request');
+const {getDoubanUrl} = require('../helpers/douban');
 
 exports.getTags = (req, resp) => {
   var {type} = req.body;
@@ -78,6 +79,6 @@ exports.getPhotos = (req,resp) => {
         })
       }
     }
-    resp.status(statusCode).json({title,photos,types,page});
+    resp.status(statusCode).json({title,photos,types,page,type});
   });
 }
