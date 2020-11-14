@@ -179,52 +179,6 @@ exports.getCelebrities = (req,resp)=>{
   });
 }
 
-exports.getPhotos = (req,resp) => {
-  //type S -> 剧照, R -> Poster
-  const types = {
-    S:'剧照',
-    R:'海报',
-    W:'壁纸'
-  }
-  var limit = 30;
-  var {douban_id,page,type} = req.body;
-  if (!douban_id) {
-    return resp.status(400).json({msg:MISSING_DOUBAN_ID});
-  }
-  if (!type) {
-    type = 'S';
-  }
-  douban_url = `${getDoubanUrl(douban_id,{apiName:'photos'})}?type=${type}`;
-  if (page) {
-    douban_url += `&start=${page*limit}`;
-  }
-  sendRequest(douban_url, 'GET', resp, (statusCode, $) => {
-    const photosMatch = $('.poster-col3 li');
-    const title = $('#content h1').text();
-    var photos = [];
-    if (!page) {
-      page = 1;
-    }
-    if (photosMatch) {
-      for (let i = 0; i < photosMatch.length; i++) {
-        const photo = $(photosMatch[i]);
-        const href = photo.find('a').attr('href').split('/');
-        if (href && href.length > 5) {
-          var photo_id = href[5];
-        }
-        photos.push({
-          thumb: photo.find('img').attr('src'),
-          origin: `https://img9.doubanio.com/view/photo/l/public/p${photo_id}.jpg`,
-          name: photo.find('.name').text().trim(),
-          prop: photo.find('.prop').text().trim(),
-          photo_id
-        })
-      }
-    }
-    resp.status(statusCode).json({title,photos,types,page});
-  });
-}
-
 exports.getPhotoDetail = (req, resp) => {
   const {photo_id} = req.body;
   if (!photo_id) {
