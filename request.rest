@@ -7,15 +7,17 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:8081/api/todos/5f93a447d99ebe000466e661/update_step HTTP/1.1
+POST http://localhost:8081/api/todos/5f98c9331870690004b71300/update_step HTTP/1.1
 Content-Type: application/json
 
 {
   "step": {
-    "_id": "5f94fe5b8701940004c4a6c9",
-    "name": "add more step"
+    "_id": "5f9b75825013b70004968300",
+    "status": "working",
+    "name": "影视演员列表页面",
+    "idx": 3
   },
-  "mode": "delete"
+  "mode": "update"
 }
 
 ###
