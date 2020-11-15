@@ -3,13 +3,15 @@ const router = express.Router();
 
 const VisualController = require('../controllers/visual.js');
 const {getImdbBoxOffice} = require('../controllers/imdb.js');
-const {getSubjects,getTags,getPhotos} = require('../controllers/douban.js');
+const {getSubjects,getTags,getPhotos,getCast} = require('../controllers/douban.js');
 
 router.route('/search').post(VisualController.search);
 
 router.route('/in_theatre').post(VisualController.inTheatre);
 
 router.route('/celebrities').post(VisualController.getCelebrities);
+
+router.route('/cast').post(getCast);
 
 router.route('/summary').post(VisualController.getSummary);
 
