@@ -88,8 +88,11 @@ exports.getCast = (req, resp) => {
   const {cast_id} = req.body;
   const url = `https://movie.douban.com/celebrity/${cast_id}`;
   sendRequest(url,'GET',resp,(statusCode,$,body) => {
-    const name = $('h1').text();
-    const poster = $('#headline img').attr('src');
-    resp.status(statusCode).json({cast_id,name,poster});
+    resp.status(statusCode).json({
+      cast_id,
+      name: $('h1').text(),
+      poster: $('#headline img').attr('src'),
+      intro: $('#intro .all.hidden').text().trim()
+    });
   });
 }
