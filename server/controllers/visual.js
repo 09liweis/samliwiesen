@@ -30,8 +30,12 @@ function getCast(cast,$) {
       })
     }
   }
+  const name = cast.find('a.name');
+  const hrefArray = name.attr('href').split('/');
+  const id = hrefArray[hrefArray.length - 2];
   return {
-    name:cast.find('a.name').text(),
+    id,
+    name:name.text(),
     avt:getAvtUrl(cast),
     role:cast.find('.role').text(),
     works
