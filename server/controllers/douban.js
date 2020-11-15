@@ -83,3 +83,12 @@ exports.getPhotos = (req,resp) => {
     resp.status(statusCode).json({title,photos,types,page,type});
   });
 }
+
+exports.getCast = (req, resp) => {
+  const {cast_id} = req.body;
+  const url = `https://movie.douban.com/celebrity/${cast_id}`;
+  sendRequest(url,'GET',resp,(statusCode,$,body) => {
+    const name = $('h1').text();
+    resp.status(statusCode).json({cast_id,name});
+  });
+}
