@@ -88,6 +88,10 @@ exports.getCast = (req, resp) => {
   const {cast_id} = req.body;
   const url = `https://movie.douban.com/celebrity/${cast_id}`;
   sendRequest(url,'GET',resp,(statusCode,$,body) => {
+    var sexMatch = /性别:<\/span>(.*?)<\/li>/g.exec(body);
+    if (sexMatch) {
+      var sex = $(sexMatch[1]).text().trim(': ');
+    }
     resp.status(statusCode).json({
       cast_id,
       name: $('h1').text(),
