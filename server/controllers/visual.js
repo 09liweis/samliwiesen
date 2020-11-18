@@ -50,7 +50,12 @@ function getVisualComments($) {
       var comment = $(commentsMatch[i]);
       var rating = comment.find('.rating').attr('class');
       if (typeof rating == 'string') {
-        rating = rating.replace('rating','').replace('allstar','').trim();
+        try {
+          rating = rating.replace('rating','').replace('allstar','').trim();
+          rating = parseFloat(rating) / 10;
+        } catch (e) {
+          console.error(e)
+        }
       }
       const text = comment.find('.short').text();
       if (text) {
@@ -76,7 +81,12 @@ function getVisualReviews($) {
       var review = $(reviewsMatch[i]);
       var rating = review.find('.main-title-rating').attr('class');
       if (typeof rating == 'string') {
-        rating = rating.replace('main-title-rating','').replace('allstar','').trim();
+        try {
+          rating = rating.replace('main-title-rating','').replace('allstar','').trim();
+          rating = parseFloat(rating) / 10;
+        } catch (error) {
+          console.error(error);
+        }
       }
       reviews.push({
         title: review.find('h2 a').text(),
