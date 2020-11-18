@@ -66,7 +66,7 @@ POST http://localhost:8081/api/visuals/summary HTTP/1.1
 content-type: application/json
 
 {
-  "douban_id": "25907124"
+  "douban_id": "30172002"
 }
 //25907124
 
