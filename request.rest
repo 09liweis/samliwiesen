@@ -12,10 +12,10 @@ Content-Type: application/json
 
 {
   "step": {
-    "_id": "5fb4445e19be8d00042e6da3",
+    "_id": "5fb446fa19be8d00042e6dbe",
     "status": "working",
-    "name": "工作",
-    "idx": 0
+    "name": "小程序更新",
+    "idx": 3
   },
   "mode": "update"
 }
