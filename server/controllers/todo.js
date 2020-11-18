@@ -107,7 +107,7 @@ exports.updateStep = (req,resp) => {
       update['$pull'] = {steps:{_id:step._id}}
       break;
     case 'update':
-      if (step.idx != '') {
+      if (step.idx == '') {
         return resp.status(400).json({msg: 'Missing step idx'});
       }
       query['steps._id'] = step._id;
