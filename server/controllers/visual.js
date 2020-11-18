@@ -32,9 +32,10 @@ function getCast(cast,$) {
   }
   const name = cast.find('a.name');
   const href = name.attr('href');
+  var id;
   if (href) {
     const hrefArray = href.split('/');
-    const id = hrefArray[hrefArray.length - 2];
+    id = hrefArray[hrefArray.length - 2];
   }
   return {
     id,
