@@ -58,11 +58,11 @@ exports.todo_detail = (req, res) => {
 };
 
 exports.todo_update = (req, res) => {
-  const steps = req.body.steps;
-  const todo = {
-    name:req.body.name,
-    date:req.body.date,
-    status:req.body.status,
+  const {steps,name,date,status} = req.body;
+  let todo = {
+    name,
+    date,
+    status,
   }
   if (steps) {
     todo.steps = steps;
