@@ -86,17 +86,25 @@ exports.getPhotos = (req,resp) => {
 
 exports.getCast = (req, resp) => {
   const {cast_id} = req.body;
-  const url = `https://movie.douban.com/celebrity/${cast_id}`;
+  const url = `https://m.douban.com/movie/celebrity/${cast_id}`;
+  // const url = `https://movie.douban.com/celebrity/${cast_id}`;
   sendRequest(url,'GET',resp,(statusCode,$,body) => {
-    var sexMatch = /性别:<\/span>(.*?)<\/li>/g.exec(body);
-    if (sexMatch) {
-      var sex = $(sexMatch[1]).text().trim(': ');
+    const infoMatch = $('.more-info.list li');
+    const infos = {};
+    if (infoMatch) {
+      for (let i = 0; i < infoMatch.length; i++) {
+        const info = $(infoMatch[i]);
+        const key = info.find('.key').text();
+        const val = info.find('span:last-child').text();
+        infos[key] = val;
+      }
     }
     resp.status(statusCode).json({
       cast_id,
-      name: $('h1').text(),
-      poster: $('#headline img').attr('src'),
-      intro: $('#intro .all.hidden').text().trim()
+      infos,
+      name: $('h1.title').text(),
+      poster: $('#celebrity img').attr('src'),
+      intro: $('.celebrity-intro p').text().trim()
     });
   });
 }
