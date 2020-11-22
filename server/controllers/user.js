@@ -31,7 +31,7 @@ exports.register = async (req,res)=>{
 }
 exports.login = async (req, resp) => {
   const {eml,pwd} = req.body;
-  let user = await User.findOne({eml},'_id nm eml pwd');
+  let user = await User.findOne({eml},'_id pwd');
   if (!user) {
     return resp.status(400).json({msg:'Email does not exist'});
   }
@@ -44,9 +44,12 @@ exports.login = async (req, resp) => {
   resp.header('auth-token',token);
   resp.status(200).json({msg:'Login'});
 }
-exports.detail = (req,resp) => {
-  console.log(req.user);
-  resp.status(200).json({});
+exports.detail = async (req,resp) => {
+  let user = req.user;
+  if (user) {
+    user = await User.findOne({_id:user._id},'nm eml lts')
+    resp.status(200).json({data:user}); 
+  }
 }
 function handleError(res, err) {
   if (err) {
