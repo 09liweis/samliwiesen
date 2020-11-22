@@ -12,8 +12,8 @@ exports.register = async (req,res)=>{
   let user = await User.findOne({eml})
   let msg = 'ok';
   if (user) {
-    msg = 'Email has been registered';
-    return res.status(200).json({msg});
+    msg = 'Email is taken';
+    return res.status(400).json({msg});
   } else {
     user = new User(body);
     await user.save()
