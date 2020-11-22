@@ -1,0 +1,1 @@
+exports.token_secret = 'samliweisen';
