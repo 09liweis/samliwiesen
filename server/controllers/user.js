@@ -8,13 +8,13 @@ exports.list = (req, res) => {
     res.json(users);
   });
 };
-exports.register = async (req,res)=>{
+exports.register = async (req,resp)=>{
   const {eml,nm,pwd} = req.body;
   let user = await User.findOne({eml})
   let msg = 'ok';
   if (user) {
     msg = 'Email is taken';
-    return res.status(400).json({msg});
+    return resp.status(400).json({msg});
   } else {
     const salt = await bcrypt.genSalt(10);
     const hashPassword = await bcrypt.hash(pwd,salt);
@@ -26,7 +26,9 @@ exports.register = async (req,res)=>{
     });
     await user.save()
     msg = 'Register done'
-    res.status(200).json({msg});
+    const token = sign({_id:user._id});
+    resp.header('auth-token',token);
+    resp.status(200).json({msg});
   }
 }
 exports.login = async (req, resp) => {
@@ -40,7 +42,6 @@ exports.login = async (req, resp) => {
     return resp.status(400).json({msg:'Password not correct'});
   }
   const token = sign({_id:user._id});
-  delete user.pwd;
   resp.header('auth-token',token);
   resp.status(200).json({msg:'Login'});
 }
