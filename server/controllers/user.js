@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const bcrypt = require('bcrypt');
 
 exports.list = (req, res) => {
   User.find({}, '_id title url content image category published created_at').sort('-created_at').exec((err, users) => {
@@ -7,8 +8,7 @@ exports.list = (req, res) => {
   });
 };
 exports.register = async (req,res)=>{
-  const body = req.body;
-  const eml = body.eml;
+  const {eml,nm,pwd} = req.body;
   let user = await User.findOne({eml})
   let msg = 'ok';
   if (user) {
