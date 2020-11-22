@@ -28,9 +28,18 @@ exports.register = async (req,res)=>{
     res.status(200).json({msg});
   }
 }
-exports.login = (req, resp) => {
-  const {eml,nm,pwd} = req.body;
-  
+exports.login = async (req, resp) => {
+  const {eml,pwd} = req.body;
+  let user = await User.findOne({eml},'_id nm eml pwd lts');
+  if (!user) {
+    return resp.status(400).json({msg:'Email does not exist'});
+  }
+  const isValidPwd = await bcrypt.compare(pwd,user.pwd);
+  if (!isValidPwd) {
+    return resp.status(400).json({msg:'Password not correct'});
+  }
+  delete user.pwd;
+  resp.status(200).json({data:user});
 }
 function handleError(res, err) {
   if (err) {
