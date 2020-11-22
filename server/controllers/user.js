@@ -39,8 +39,7 @@ exports.login = async (req, resp) => {
   if (!isValidPwd) {
     return resp.status(400).json({msg:'Password not correct'});
   }
-  const {_id,nm} = user;
-  const token = sign({_id,eml,nm});
+  const token = sign({_id:user._id});
   delete user.pwd;
   resp.header('auth-token',token);
   resp.status(200).json({msg:'Login'});
