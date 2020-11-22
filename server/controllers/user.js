@@ -1,6 +1,6 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const {sign} = require('../helpers/verifyToken');
 
 exports.list = (req, res) => {
   User.find({}, '_id title url content image category published created_at').sort('-created_at').exec((err, users) => {
@@ -31,7 +31,7 @@ exports.register = async (req,res)=>{
 }
 exports.login = async (req, resp) => {
   const {eml,pwd} = req.body;
-  let user = await User.findOne({eml},'_id nm eml pwd lts');
+  let user = await User.findOne({eml},'_id nm eml pwd');
   if (!user) {
     return resp.status(400).json({msg:'Email does not exist'});
   }
@@ -39,8 +39,11 @@ exports.login = async (req, resp) => {
   if (!isValidPwd) {
     return resp.status(400).json({msg:'Password not correct'});
   }
+  const {_id,nm} = user;
+  const token = sign({_id,eml,nm});
   delete user.pwd;
-  resp.status(200).json({data:user});
+  resp.header('auth-token',token);
+  resp.status(200).json({msg:'Login'});
 }
 function handleError(res, err) {
   if (err) {
