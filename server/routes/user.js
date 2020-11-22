@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const {verify} = require('../helpers/verifyToken');
 
 const UserController = require('../controllers/user.js');
 
@@ -8,6 +9,7 @@ router.route('/')
 
 router.route('/register').post(UserController.register);
 router.route('/login').post(UserController.login);
+router.post('/detail',verify, UserController.detail);
 
 // router.route('/:id')
 // .get(BlogController.blog_detail)
