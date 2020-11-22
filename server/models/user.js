@@ -4,7 +4,7 @@ const UserSchema = new Schema({
   eml:String,
   nm:String,
   pwd:String,
-  lastLogin:Date,
+  lts:Date, //Last Login
   created_at:{
     type:Date,
     default:Date.now
