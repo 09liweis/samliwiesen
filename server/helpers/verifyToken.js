@@ -9,6 +9,7 @@ exports.verify = (req,resp,next) => {
   try {
     const verified = jwt.verify(token, token_secret);
     req.user = verified;
+    return next();
   } catch (error) {
     resp.status(400).json({msg:'Invalid token'});
   }
