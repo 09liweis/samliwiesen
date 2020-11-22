@@ -44,6 +44,10 @@ exports.login = async (req, resp) => {
   resp.header('auth-token',token);
   resp.status(200).json({msg:'Login'});
 }
+exports.detail = (req,resp) => {
+  console.log(req.user);
+  resp.status(200).json({});
+}
 function handleError(res, err) {
   if (err) {
     res.send(err);
