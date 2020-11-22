@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 exports.list = (req, res) => {
   User.find({}, '_id title url content image category published created_at').sort('-created_at').exec((err, users) => {
