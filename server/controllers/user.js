@@ -49,7 +49,7 @@ exports.detail = async (req,resp) => {
   let user = req.user;
   if (user) {
     user = await User.findOne({_id:user._id},'nm eml lts')
-    resp.status(200).json({data:user}); 
+    resp.status(200).json({user}); 
   }
 }
 function handleError(res, err) {
