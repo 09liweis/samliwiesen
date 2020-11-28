@@ -15,8 +15,8 @@ exports.getTags = (req, resp) => {
 
 exports.getSubjects = (req, resp) => {
   var {type,tag,page,limit,sort} = req.body;
-  //sort: recommend,time,rank
-  sort = sort || 'recommend';
+  let sorts = ['recommend','time','rank'];
+  sort = sort || sorts[0];
   type = type || 'movie';
   tag = encodeURIComponent(tag || '热门');
   const page_limit = limit || 30;
@@ -33,7 +33,7 @@ exports.getSubjects = (req, resp) => {
       delete visuals[i].rate;
       delete visuals[i].id;
     }
-    return resp.status(statusCode).json({tag:decodeURIComponent(tag),visuals,page,limit});
+    return resp.status(statusCode).json({tag:decodeURIComponent(tag),visuals,page,limit,sorts});
   })
 }
 
