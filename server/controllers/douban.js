@@ -15,11 +15,13 @@ exports.getTags = (req, resp) => {
 
 exports.getSubjects = (req, resp) => {
   var {type,tag,page,limit,sort} = req.body;
+  //sort: recommend,time,rank
+  sort = sort || 'recommend';
   type = type || 'movie';
   tag = encodeURIComponent(tag || '热门');
   const page_limit = limit || 30;
   const page_start = ((page - 1) || 0) * page_limit;
-  const url = `https://movie.douban.com/j/search_subjects?type=${type}&tag=${tag}&page_limit=${page_limit}&page_start=${page_start}`;
+  const url = `https://movie.douban.com/j/search_subjects?sort=${sort}&type=${type}&tag=${tag}&page_limit=${page_limit}&page_start=${page_start}`;
   sendRequest(url,'GET', resp, (statusCode,$,body) => {
     var visuals = JSON.parse(body).subjects;
     for (let i = 0; i < visuals.length; i++) {
