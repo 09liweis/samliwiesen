@@ -49,12 +49,8 @@ exports.getPhotos = (req,resp) => {
   if (!douban_id) {
     return resp.status(400).json({msg:MISSING_DOUBAN_ID});
   }
-  if (!type) {
-    type = 'S';
-  }
-  if (!page) {
-    page = 1
-  }
+  type = type || 'S';
+  page = page || 1;
   var douban_url = `${getDoubanUrl(douban_id,{apiName:'photos'})}?type=${type}`;
   douban_url += `&start=${(page - 1)*limit}`;
   sendRequest(douban_url, 'GET', resp, (statusCode, $) => {
