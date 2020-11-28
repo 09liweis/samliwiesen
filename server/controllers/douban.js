@@ -1,6 +1,8 @@
 const {sendRequest} = require('../helpers/request');
 const {getDoubanUrl} = require('../helpers/douban');
 
+const SORTS = ['recommend','time','rank'];
+
 exports.getTags = (req, resp) => {
   var {type} = req.body;
   if (!type) {
@@ -9,14 +11,14 @@ exports.getTags = (req, resp) => {
   const url = `https://movie.douban.com/j/search_tags?type=${type}&source=`;
   sendRequest(url,'GET',resp,(statusCode,$,body) => {
     var tags = JSON.parse(body).tags;
-    resp.status(statusCode).json({type,tags});
+    resp.status(statusCode).json({type,tags,sorts:SORTS});
   });
 }
 
 exports.getSubjects = (req, resp) => {
   var {type,tag,page,limit,sort} = req.body;
-  let sorts = ['recommend','time','rank'];
-  sort = sort || sorts[0];
+  
+  sort = sort ||SORTS[0];
   type = type || 'movie';
   tag = encodeURIComponent(tag || '热门');
   const page_limit = limit || 30;
@@ -33,7 +35,7 @@ exports.getSubjects = (req, resp) => {
       delete visuals[i].rate;
       delete visuals[i].id;
     }
-    return resp.status(statusCode).json({tag:decodeURIComponent(tag),visuals,page,limit,sorts});
+    return resp.status(statusCode).json({tag:decodeURIComponent(tag),visuals,page,limit});
   })
 }
 
