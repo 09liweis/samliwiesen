@@ -14,10 +14,8 @@ exports.getTags = (req, resp) => {
 }
 
 exports.getSubjects = (req, resp) => {
-  var {type,tag,page,limit} = req.body;
-  if (!type) {
-    type = 'movie';
-  }
+  var {type,tag,page,limit,sort} = req.body;
+  type = type || 'movie';
   tag = encodeURIComponent(tag || '热门');
   const page_limit = limit || 30;
   const page_start = ((page - 1) || 0) * page_limit;
