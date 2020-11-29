@@ -1,5 +1,5 @@
 const {sendRequest} = require('../helpers/request');
-const {getDoubanUrl} = require('../helpers/douban');
+const {getDoubanUrl,DOUBAN_SITE_API} = require('../helpers/douban');
 
 const SORTS = ['recommend','time','rank'];
 
@@ -8,7 +8,7 @@ exports.getTags = (req, resp) => {
   if (!type) {
     type = 'movie';
   }
-  const url = `https://movie.douban.com/j/search_tags?type=${type}&source=`;
+  const url = `${DOUBAN_SITE_API}search_tags?type=${type}&source=`;
   sendRequest(url,'GET',resp,(statusCode,$,body) => {
     var tags = JSON.parse(body).tags;
     resp.status(statusCode).json({type,tags,sorts:SORTS});
@@ -23,7 +23,7 @@ exports.getSubjects = (req, resp) => {
   tag = encodeURIComponent(tag || '热门');
   const page_limit = limit || 30;
   const page_start = ((page - 1) || 0) * page_limit;
-  const url = `https://movie.douban.com/j/search_subjects?sort=${sort}&type=${type}&tag=${tag}&page_limit=${page_limit}&page_start=${page_start}`;
+  const url = `${DOUBAN_SITE_API}search_subjects?sort=${sort}&type=${type}&tag=${tag}&page_limit=${page_limit}&page_start=${page_start}`;
   sendRequest(url,'GET', resp, (statusCode,$,body) => {
     var visuals = JSON.parse(body).subjects;
     for (let i = 0; i < visuals.length; i++) {
