@@ -1,5 +1,5 @@
 const {sendRequest} = require('../helpers/request');
-const {getDoubanUrl,getVisualReviews} = require('../helpers/douban');
+const {getDoubanUrl,getVisualReviews,getVisualComments} = require('../helpers/douban');
 
 const IMDB_SITE = 'https://www.imdb.com/title/';
 const MISSING_DOUBAN_ID = 'Missing Douban Id';
@@ -44,37 +44,6 @@ function getCast(cast,$) {
     role:cast.find('.role').text(),
     works
   }
-}
-
-function getVisualComments($) {
-  const commentsMatch = $('.comment-item');
-  var comments = [];
-  if (commentsMatch) {
-    for (var i = 0; i < commentsMatch.length; i++) {
-      var comment = $(commentsMatch[i]);
-      var rating = comment.find('.rating').attr('class');
-      if (typeof rating == 'string') {
-        try {
-          rating = rating.replace('rating','').replace('allstar','').trim();
-          rating = parseFloat(rating) / 10;
-        } catch (e) {
-          console.error(e)
-        }
-      }
-      const text = comment.find('.short').text();
-      if (text) {
-        comments.push({
-          text,
-          author: comment.find('.comment-info a').text(),
-          avt: comment.find('img').attr('src'),
-          date: comment.find('.comment-time').text().trim(),
-          rating,
-          vote: comment.find('.votes').text()
-        });
-      }
-    }
-  }
-  return comments;
 }
 
 exports.inTheatre = (req,resp) => {
