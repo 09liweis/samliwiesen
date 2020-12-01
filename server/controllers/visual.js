@@ -1,5 +1,5 @@
 const {sendRequest} = require('../helpers/request');
-const {getDoubanUrl} = require('../helpers/douban');
+const {getDoubanUrl,getVisualReviews} = require('../helpers/douban');
 
 const IMDB_SITE = 'https://www.imdb.com/title/';
 const MISSING_DOUBAN_ID = 'Missing Douban Id';
@@ -75,37 +75,6 @@ function getVisualComments($) {
     }
   }
   return comments;
-}
-
-function getVisualReviews($) {
-  const reviewsMatch = $('.main.review-item');
-  var reviews = [];
-  if (reviewsMatch) {
-    for (var i = 0; i < reviewsMatch.length; i++) {
-      var review = $(reviewsMatch[i]);
-      var rating = review.find('.main-title-rating').attr('class');
-      if (typeof rating == 'string') {
-        try {
-          rating = rating.replace('main-title-rating','').replace('allstar','').trim();
-          rating = parseFloat(rating) / 10;
-        } catch (error) {
-          console.error(error);
-        }
-      }
-      reviews.push({
-        title: review.find('h2 a').text(),
-        content: review.find('.short-content').text(),
-        author: review.find('.name').text(),
-        avt: review.find('.avator img').attr('src'),
-        rating,
-        date: review.find('.main-meta').text(),
-        usefull_count: review.find('.action-btn.up span').text().trim(),
-        useless_count: review.find('.action-btn.down span').text().trim(),
-        reply_count: review.find('.reply').text()
-      });
-    }
-  }
-  return reviews;
 }
 
 exports.inTheatre = (req,resp) => {
