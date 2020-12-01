@@ -7,7 +7,7 @@ export const Intro = styled.div`
 `;
 
 export const Box = styled.div`
-  background-color: white;
+  background-color: rgba(255,255,255,0.5);
   border-radius: 5px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
   transform: translate3d(0,0,0);
