@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import {CSSTransition,TransitionGroup} from 'react-transition-group';
 
@@ -11,8 +11,10 @@ const Todo = () => {
   const dispatch = useDispatch();
   const loading = false;//if use loading from useSelector, no render animation
   const {items} = useSelector(state => state.todos);
-  if (items && items.length === 0) {
+  useEffect(() => {
     dispatch(getTodos());
+  },[]);
+  if (items && items.length === 0) {
   }
   var form,errorMsg;
   const handleEdit = (idx) => {
