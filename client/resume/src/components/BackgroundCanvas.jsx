@@ -35,7 +35,7 @@ const BackgroundCanvas = () => {
     }
     function init() {
       particleArray = [];
-      for (let i = 0; i < 200; i++) {
+      for (let i = 0; i < 50; i++) {
         let size = Math.random() * 20;
         let x = Math.random() * (innerWidth - size * 2);
         let y = Math.random() * (innerHeight - size * 2);
