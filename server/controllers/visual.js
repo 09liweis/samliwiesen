@@ -1,49 +1,11 @@
 const {sendRequest} = require('../helpers/request');
-const {getDoubanUrl,getVisualReviews,getVisualComments} = require('../helpers/douban');
+const {getDoubanUrl,getVisualReviews,getVisualComments,getCast} = require('../helpers/douban');
 
 const IMDB_SITE = 'https://www.imdb.com/title/';
 const MISSING_DOUBAN_ID = 'Missing Douban Id';
 
 function getImdbUrl(imdb_id) {
   return `${IMDB_SITE}${imdb_id}`;
-}
-
-function getAvtUrl(element) {
-  var avtStyle = element.find('div.avatar').attr('style');
-  var avtMatches = /url\((.*?)\)/g.exec(avtStyle);
-  let avt = '';
-  if (avtMatches) {
-    avt = avtMatches[1];
-  }
-  return avt;
-}
-
-function getCast(cast,$) {
-  const worksMatch = cast.find('.works a');
-  let works = [];
-  if (worksMatch) {
-    for (let i = 0; i < worksMatch.length; i++) {
-      const work = $(worksMatch[i]);
-      works.push({
-        url: work.attr('href'),
-        tl:work.attr('title')
-      })
-    }
-  }
-  const name = cast.find('a.name');
-  const href = name.attr('href');
-  var id;
-  if (href) {
-    const hrefArray = href.split('/');
-    id = hrefArray[hrefArray.length - 2];
-  }
-  return {
-    id,
-    name:name.text(),
-    avt:getAvtUrl(cast),
-    role:cast.find('.role').text(),
-    works
-  }
 }
 
 exports.inTheatre = (req,resp) => {
