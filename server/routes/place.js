@@ -1,13 +1,13 @@
 var express= require('express');
 var router = express.Router();
 
-const {getList,update_random,upsert,getDetail,search_google} = require('../controllers/place.js');
+const {getList,updateRandom,upsert,getDetail,search_google} = require('../controllers/place.js');
 
 router.route('/')
 .get(getList)
 .post(upsert);
 
-router.route('/update_random').get(update_random);
+router.route('/update_random').get(updateRandom);
 
 router.route('/:id')
 .get(getDetail);
