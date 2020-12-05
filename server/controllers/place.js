@@ -56,7 +56,7 @@ exports.place_list = (req, res) => {
   });
 };
 
-exports.place_detail = async function(req, res) {
+exports.getDetail = async function(req, res) {
   const id = req.params.id;
   if (!ObjectID.isValid(id)) {
     return res.status(200).json({msg:'Place Id is not valid'});
