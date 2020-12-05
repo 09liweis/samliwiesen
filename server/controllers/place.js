@@ -69,7 +69,7 @@ exports.getDetail = async function(req, res) {
   p.transactions = transactions
   res.status(200).json(p);
 };
-exports.place_upsert = async function(req, res) {
+exports.upsert = async function(req, res) {
   const place = {
     place_id:req.body.place_id,
     name:req.body.name,
