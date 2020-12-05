@@ -6,7 +6,7 @@ var Transaction = require('../models/transaction');
 const API_KEY = 'AIzaSyA74jvNet0DufU8aoTe39dELLy2rVMeuos';
 const PLACE_DETAIL_API = 'https://maps.googleapis.com/maps/api/place/details/json?key='+API_KEY+'&place_id=';
 
-exports.place_update_random = async (req,res) =>{
+exports.update_random = async (req,res) =>{
   const count = await Place.count();
   var random = Math.floor(Math.random() * count)
   Place.findOne().skip(random).exec((err,p)=>{
