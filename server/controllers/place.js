@@ -49,7 +49,7 @@ exports.update_random = async (req,res) =>{
   });
 };
 
-exports.place_list = (req, res) => {
+exports.getList = (req, res) => {
   Place.find({}, '_id place_id icon name address lat lng rating photos types').sort('-created_at').exec((err, places) => {
     if (err) return res.json(err);
     res.status(200).json(places);
