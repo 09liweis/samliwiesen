@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 const {verify} = require('../helpers/verifyToken');
 
-const UserController = require('../controllers/user.js');
+const {list,register,login,detail} = require('../controllers/user.js');
 
 router.route('/')
-.get(UserController.list);
+.get(list);
 
-router.route('/register').post(UserController.register);
-router.route('/login').post(UserController.login);
-router.post('/detail',verify, UserController.detail);
+router.route('/register').post(register);
+router.route('/login').post(login);
+router.post('/detail',verify, detail);
 
 // router.route('/:id')
 // .get(BlogController.blog_detail)
