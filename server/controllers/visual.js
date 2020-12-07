@@ -152,7 +152,7 @@ exports.getSummary = (req,resp)=>{
     var episodes = 1;
     const title = $('span[property="v:itemreviewed"]').text();
     const douban_poster = $('img[rel="v:image"]').attr('src');
-    const douban_rating = $('strong[property="v:average"]').text();
+    const douban_rating = $('strong[property="v:average"]').text() || 0;
     let duration = $('span[property="v:runtime"]').attr('content');
     const summary = $('span[property="v:summary"]').text().trim();
     const douban_vote_count = $('span[property="v:votes"]').text();
@@ -289,6 +289,7 @@ exports.getSummary = (req,resp)=>{
       website,
       duration,
       episodes,
+      visual_type: (episodes > 1) ? 'tv' : 'movie',
       photos,
       awards,
       languages,
