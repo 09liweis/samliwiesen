@@ -1,10 +1,13 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const {sign} = require('../helpers/verifyToken');
+const {sendErr} = require('../helpers/request');
 
 exports.list = (req, res) => {
   User.find({}, '_id eml lts created_at').sort('-created_at').exec((err, users) => {
-    handleError(res, err);
+    if (err) {
+      return sendErr(res,err);
+    }
     res.json(users);
   });
 };
