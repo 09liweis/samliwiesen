@@ -37,3 +37,7 @@ exports.sendRequest = (url,method,resp,cb) => {
     return cb(statusCode,$,body);
   });
 }
+
+exports.sendErr = (resp,err) => {
+  return resp.status(400).json({err});
+}
