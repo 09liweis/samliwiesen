@@ -85,7 +85,6 @@ exports.getPhotos = (req,resp) => {
 exports.getCast = (req, resp) => {
   const {cast_id} = req.body;
   const url = `https://m.douban.com/movie/celebrity/${cast_id}`;
-  // const url = `https://movie.douban.com/celebrity/${cast_id}`;
   sendRequest(url,'GET',resp,(statusCode,$,body) => {
     const infoMatch = $('.more-info.list li');
     const infos = {};
