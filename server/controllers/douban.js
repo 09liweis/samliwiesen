@@ -86,13 +86,11 @@ exports.getCast = (req, resp) => {
   const {cast_id} = req.body;
   const url = `https://movie.douban.com/celebrity/${cast_id}/`;
   sendRequest(url,'GET',resp,(statusCode,$,body) => {
-    const infoMatch = $('.more-info.list li');
+    const infoMatch = $('#headline .info li');
     const infos = {};
     if (infoMatch) {
       for (let i = 0; i < infoMatch.length; i++) {
-        const info = $(infoMatch[i]);
-        const key = info.find('.key').text();
-        const val = info.find('span:last-child').text();
+        var [key,val] = $(infoMatch[i]).text().trim().split(': ');
         infos[key] = val;
       }
     }
