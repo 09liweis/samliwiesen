@@ -96,12 +96,23 @@ exports.getCast = (req, resp) => {
         infos[key] = val;
       }
     }
+    const photosMatch = $('.pic');
+    if (photosMatch) {
+      var photos = [];
+      for (let i = 0; i < photosMatch.length; i++) {
+        const photo = $(photosMatch[i]);
+        photos.push({
+          thumb: photo.find('img').attr('src')
+        });
+      }
+    }
     resp.status(statusCode).json({
       cast_id,
       infos,
       name: $('h1.title').text(),
       poster: $('#celebrity img').attr('src'),
-      intro: $('.celebrity-intro p').text().trim()
+      intro: $('.celebrity-intro p').text().trim(),
+      photos
     });
   });
 }
