@@ -85,7 +85,7 @@ exports.getPhotos = (req,resp) => {
 exports.getCast = (req, resp) => {
   const {cast_id} = req.body;
   // const url = `https://m.douban.com/movie/celebrity/${cast_id}`;
-  const url = `https://movie.douban.com/celebrity/1006332/`;
+  const url = `https://movie.douban.com/celebrity/${cast_id}/`;
   sendRequest(url,'GET',resp,(statusCode,$,body) => {
     const infoMatch = $('.more-info.list li');
     const infos = {};
@@ -122,7 +122,7 @@ exports.getCast = (req, resp) => {
     resp.status(statusCode).json({
       cast_id,
       infos,
-      name: $('h1.title').text(),
+      name: $('#content h1').text(),
       poster: $('#headline .pic a img').attr('src'),
       intro: $('.celebrity-intro p').text().trim(),
       photos,
