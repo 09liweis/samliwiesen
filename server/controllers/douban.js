@@ -84,7 +84,8 @@ exports.getPhotos = (req,resp) => {
 
 exports.getCast = (req, resp) => {
   const {cast_id} = req.body;
-  const url = `https://m.douban.com/movie/celebrity/${cast_id}`;
+  // const url = `https://m.douban.com/movie/celebrity/${cast_id}`;
+  const url = `https://movie.douban.com/celebrity/1006332/`;
   sendRequest(url,'GET',resp,(statusCode,$,body) => {
     const infoMatch = $('.more-info.list li');
     const infos = {};
@@ -96,7 +97,7 @@ exports.getCast = (req, resp) => {
         infos[key] = val;
       }
     }
-    const photosMatch = $('.pic');
+    const photosMatch = $('#photos li a');
     if (photosMatch) {
       var photos = [];
       for (let i = 0; i < photosMatch.length; i++) {
@@ -106,13 +107,26 @@ exports.getCast = (req, resp) => {
         });
       }
     }
+    const receWorksMatch = $('#recent_movies .list-s li');
+    if (receWorksMatch) {
+      var recent_works = [];
+      for (let i = 0; i < receWorksMatch.length; i++) {
+        const work = $(receWorksMatch[i]);
+        recent_works.push({
+          img: work.find('.pic img').attr('src'),
+          title: work.find('.info a').text(),
+          rating: work.find('.info em').text()
+        });
+      }
+    }
     resp.status(statusCode).json({
       cast_id,
       infos,
       name: $('h1.title').text(),
-      poster: $('#celebrity img').attr('src'),
+      poster: $('#headline .pic a img').attr('src'),
       intro: $('.celebrity-intro p').text().trim(),
-      photos
+      photos,
+      recent_works
     });
   });
 }
