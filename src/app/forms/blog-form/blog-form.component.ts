@@ -45,7 +45,10 @@ export class BlogFormComponent implements OnInit {
   }
   
   ngAfterViewInit() {
-    console.log('test');
+  }
+
+  detectChange(e):void {
+    console.log(e);
   }
   
   submit(back: boolean):void {
