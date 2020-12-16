@@ -63,3 +63,9 @@ a {
     text-decoration:none;
   }
 }
+
+/* timy mce style */
+div.mce-edit-area {
+  max-height: 400px;
+  overflow: scroll;
+}
