@@ -26,7 +26,7 @@
     background-image: linear-gradient(179deg, #fb978e 48.32%, #fff);
   }
   &.educations {
-    background-color: #ff1702;
+    background-image: linear-gradient(#fff, #ff1702 47.9%);
   }
   &.skills {
     background-color: #000000;
@@ -35,7 +35,7 @@
     background-color: #67ad33fc;
   }
   &:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
   }
 }
 .card__title {
