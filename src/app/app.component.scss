@@ -1,4 +1,5 @@
 $hoverColor: #d2ec65;
+$sidebarBgColor: #2d3b54;
 #header {
   background-color: #aac146;
   padding: 15px;
@@ -16,7 +17,7 @@ $hoverColor: #d2ec65;
 #main__sidebar {
   width: 20%;
   // padding: 20px 0;
-  background-color: #2d3b54;
+  background-color: $sidebarBgColor;
 }
 #main__content {
   padding: 20px;
