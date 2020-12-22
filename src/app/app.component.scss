@@ -1,3 +1,4 @@
+$hoverColor: #d2ec65;
 #header {
   background-color: #aac146;
   padding: 15px;
@@ -33,12 +34,12 @@
     font-size: 36px;
   }
   &.active {
-    color: #d2ec65;
+    color: $hoverColor;
   }
   &:hover {
     text-decoration: none;
     background-color: #3f5475;
-    color: #d2ec65;
+    color: $hoverColor;
   }
 }
 .sidebar__link-text {
