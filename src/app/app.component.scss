@@ -1,5 +1,6 @@
 $hoverColor: #d2ec65;
 $sidebarBgColor: #2d3b54;
+$white: #fff;
 #header {
   background-color: #aac146;
   padding: 15px;
@@ -7,7 +8,7 @@ $sidebarBgColor: #2d3b54;
 #logo {
   font-size: 24px;
   font-weight: bold;
-  color: #fff;
+  color: $white;
   font-family: Sofia;
 }
 #main {
@@ -25,7 +26,7 @@ $sidebarBgColor: #2d3b54;
 }
 .sidebar__link {
   font-family: 'Sofia';
-  color:#fff;
+  color:$white;
   padding: 20px 0;
   display: block;
   font-size: 18px;
