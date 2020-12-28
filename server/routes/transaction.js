@@ -6,8 +6,7 @@ const TransactionController = require('../controllers/transaction.js');
 
 router.post('/',verify,TransactionController.transaction_list);
 
-router.route('/new')
-.post(TransactionController.transaction_new);
+router.post('/new',verify,TransactionController.transaction_new);
 
 router.route('/categories')
 .get(TransactionController.category_list);
