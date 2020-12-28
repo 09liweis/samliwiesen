@@ -11,7 +11,7 @@ Content-Type: application/json
 ###
 POST http://localhost:8081/api/user/detail HTTP/1.1
 Content-Type: application/json
-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI5ZGYyMWRiYmI1YzFjY2I3NjFhM2MiLCJpYXQiOjE2MDYwMjA4NzV9.DDQhapuN2FPq0jhhFMpOgh4VRjm_yfOMS5kyZF4N3fk
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmJhOWUzNzU3ZTFhYjAwMDQ3NDJlYTIiLCJpYXQiOjE2MDkxOTE1NjR9.fpqBwb4xkF81-MxQ6RojUdPRA1kMsaIqtpJ86slM1JY
 
 {
 }
@@ -86,7 +86,7 @@ POST http://localhost:8081/api/visuals/photos HTTP/1.1
 content-type: application/json
 
 {
-  "douban_id": 30467486,
+  "cast_id": 1044996,
   "page": 1,
   "type": "S"
 }
@@ -134,6 +134,7 @@ content-type: application/json
 ###
 POST http://localhost:8081/api/transactions HTTP/1.1
 content-type: application/json
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmJhOWUzNzU3ZTFhYjAwMDQ3NDJlYTIiLCJpYXQiOjE2MDkxOTE1NjR9.fpqBwb4xkF81-MxQ6RojUdPRA1kMsaIqtpJ86slM1JY
 
 {
   "date":"2020",
