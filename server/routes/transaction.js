@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
+const {verify} = require('../helpers/verifyToken');
 
 const TransactionController = require('../controllers/transaction.js');
 
-router.route('/')
-.post(TransactionController.transaction_list);
+router.post('/',verify,TransactionController.transaction_list);
 
 router.route('/new')
 .post(TransactionController.transaction_new);
