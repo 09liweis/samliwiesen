@@ -13,6 +13,9 @@ const TransactionSchema = new Schema({
     type: String,
     required: 'Date is required for transaction'
   },
+  uid: {
+    type: Schema.Types.ObjectId
+  },
   place: {
     type: Schema.Types.ObjectId,
     ref: 'Place'
