@@ -45,6 +45,7 @@ exports.login = async (req, resp) => {
     return resp.status(400).json({msg:'Password not correct'});
   }
   const token = sign({_id:user._id});
+  await User.updateOne({eml},{$set:{lts:new Date()}});
   resp.header('auth-token',token);
   resp.status(200).json({msg:'Login'});
 }
