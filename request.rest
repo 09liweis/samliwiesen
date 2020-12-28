@@ -134,7 +134,7 @@ content-type: application/json
 ###
 POST http://localhost:8081/api/transactions HTTP/1.1
 content-type: application/json
-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmJhOWUzNzU3ZTFhYjAwMDQ3NDJlYTIiLCJpYXQiOjE2MDkxOTE1NjR9.fpqBwb4xkF81-MxQ6RojUdPRA1kMsaIqtpJ86slM1JY
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmJhOWUzNzU3ZTFhYjAwMDQ3NDJlYTIiLCJpYXQiOjE2MDkxOTMyNTl9.fCEfejiVI-uBWIn9GNK8SgGRmtL9LcjPsf7BgGmh5Ow
 
 {
   "date":"2020",
