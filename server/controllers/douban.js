@@ -100,7 +100,7 @@ exports.getCast = (req, resp) => {
       for (let i = 0; i < photosMatch.length; i++) {
         const photo = $(photosMatch[i]);
         photos.push({
-          thumb: photo.find('img').attr('src')
+          src: photo.find('img').attr('src')
         });
       }
     }
