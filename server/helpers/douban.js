@@ -2,6 +2,28 @@ const DOUBAN_SITE = 'https://movie.douban.com/subject/';
 
 exports.DOUBAN_SITE_API = 'https://movie.douban.com/j/';
 
+exports.getPhotos = ($) => {
+  const photosMatch = $('.poster-col3 li');
+  var photos = [];
+  if (photosMatch) {
+    for (let i = 0; i < photosMatch.length; i++) {
+      const photo = $(photosMatch[i]);
+      const href = photo.find('a').attr('href').split('/');
+      if (href && href.length > 5) {
+        var photo_id = href[5];
+      }
+      photos.push({
+        thumb: photo.find('img').attr('src'),
+        origin: `https://img9.doubanio.com/view/photo/l/public/p${photo_id}.jpg`,
+        name: photo.find('.name').text().trim(),
+        prop: photo.find('.prop').text().trim(),
+        photo_id
+      })
+    }
+  }
+  return photos;
+}
+
 exports.getDoubanUrl = (douban_id,opt={}) => {
   let apiName = '';
   if (opt && opt.apiName) {
