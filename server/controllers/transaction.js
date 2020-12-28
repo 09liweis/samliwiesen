@@ -2,8 +2,15 @@ var Transaction = require('../models/transaction');
 var Place = require('../models/place');
 
 exports.transaction_list = (req, res) => {
-  let filter = {};
-  const {category,date,place_id,limit,page} = req.body;
+  const user = req.user;
+  if (!user) {
+    return res.status(400).json({msg:'Login Required'});
+  }
+  let filter = {uid:user._id};
+  const {category,date,place_id,limit,page,uid} = req.body;
+  if (uid) {
+    filter.uid = uid;
+  }
   let opt = {limit:10};
   if (limit) {
     if (limit != 'all') {
