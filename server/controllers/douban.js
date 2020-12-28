@@ -1,5 +1,5 @@
 const {sendRequest} = require('../helpers/request');
-const {getDoubanUrl,DOUBAN_SITE_API} = require('../helpers/douban');
+const {getDoubanUrl,DOUBAN_SITE_API,getPhotos} = require('../helpers/douban');
 
 const SORTS = ['recommend','time','rank'];
 
@@ -47,37 +47,25 @@ exports.getPhotos = (req,resp) => {
     W:'壁纸'
   }
   var limit = 30;
-  var {douban_id,page,type} = req.body;
-  if (!douban_id) {
+  var {douban_id,page,type,cast_id} = req.body;
+  if (!(douban_id || cast_id)) {
     return resp.status(400).json({msg:MISSING_DOUBAN_ID});
   }
-  type = type || 'S';
   page = page || 1;
-  var douban_url = `${getDoubanUrl(douban_id,{apiName:'photos'})}?type=${type}`;
-  douban_url += `&start=${(page - 1)*limit}`;
-  sendRequest(douban_url, 'GET', resp, (statusCode, $) => {
-    const photosMatch = $('.poster-col3 li');
+  if (douban_id) {
+    var url = `${getDoubanUrl(douban_id,{apiName:'photos'})}`;
+    type = type || 'S';
+  } else if (cast_id) {
+    var url = `https://movie.douban.com/celebrity/${cast_id}/photos/`;
+    type = type || 'C';
+  }
+  url += `?type=${type}&start=${(page - 1)*limit}`;
+  sendRequest(url, 'GET', resp, (statusCode, $) => {
     const title = $('#content h1').text();
-    var photos = [];
     if (!page) {
       page = 1;
     }
-    if (photosMatch) {
-      for (let i = 0; i < photosMatch.length; i++) {
-        const photo = $(photosMatch[i]);
-        const href = photo.find('a').attr('href').split('/');
-        if (href && href.length > 5) {
-          var photo_id = href[5];
-        }
-        photos.push({
-          thumb: photo.find('img').attr('src'),
-          origin: `https://img9.doubanio.com/view/photo/l/public/p${photo_id}.jpg`,
-          name: photo.find('.name').text().trim(),
-          prop: photo.find('.prop').text().trim(),
-          photo_id
-        })
-      }
-    }
+    const photos = getPhotos($);
     resp.status(statusCode).json({title,photos,types,page,type});
   });
 }
