@@ -46,13 +46,21 @@ exports.category_list = (req, res) => {
   });
 };
 upsertTransaction = async (req,res) =>{
-  const {id,price,date,category,place,title} = req.body;
+  const user = req.user;
+  if (!user) {
+    return res.status(400).json({msg:'Login Required'});
+  }
+  const {id,price,date,category,place,title,uid} = req.body;
   transactionData = {
+    uid:user._id,
     price,
     date,
     category,
     title
   };
+  if (uid) {
+    transactionData.uid = uid;
+  }
   let p;
   if (typeof place != 'undefined') {
     p = await Place.findOne({place_id: place.place_id});
