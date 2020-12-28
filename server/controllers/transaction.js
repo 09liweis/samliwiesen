@@ -32,6 +32,7 @@ exports.transaction_list = (req, res) => {
   if (date) {
     filter.date = new RegExp(date, 'i');
   }
+  console.log('Transactions filter ',filter);
   Transaction.find(filter, '_id title price date category',opt).populate('place', '_id name address lat lng icon').sort('-date').exec((err, transactions) => {
     handleError(res, err);
     res.status(200).json(transactions);

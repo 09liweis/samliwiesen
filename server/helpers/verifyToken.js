@@ -8,6 +8,7 @@ exports.verify = (req,resp,next) => {
   }
   try {
     const verified = jwt.verify(token, token_secret);
+    console.log('jwt verified',verified);
     req.user = verified;
     return next();
   } catch (error) {
