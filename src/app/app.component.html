@@ -1,5 +1,6 @@
 <header id="header">
   <a id="logo" routerlink="/">Sam Li</a>
+  <a id="login" (click)="showLogin()">Login</a>
 </header>
 <main id="main">
   <aside id="main__sidebar">
@@ -10,6 +11,14 @@
     <a class="sidebar__link" routerLink="gallery" routerLinkActive="active"><i class="material-icons">assignment</i><span class="sidebar__link-text">Gallery</span></a>
   </aside>
   <section id="main__content">
+    <div id="login-modal-container" *ngIf="showLoginModal">
+      <div id="login-modal-bg" (click)="showLoginModal=false"></div>
+      <div id="login-modal">
+        <input class="input" placeholder="Email" [(ngModel)]="eml"  />
+        <input class="input" type="password" placeholder="Password" [(ngModel)]="pwd" />
+        <button (click)="login()">Login</button>
+      </div>
+    </div>
     <router-outlet></router-outlet>
   </section>
 </main>
