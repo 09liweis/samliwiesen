@@ -31,7 +31,7 @@ exports.register = async (req,resp)=>{
     msg = 'Register done'
     const token = sign({_id:user._id});
     resp.header('auth-token',token);
-    resp.status(200).json({msg});
+    resp.status(200).json({msg,token});
   }
 }
 exports.login = async (req, resp) => {
