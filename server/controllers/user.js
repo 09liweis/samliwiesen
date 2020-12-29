@@ -47,7 +47,7 @@ exports.login = async (req, resp) => {
   const token = sign({_id:user._id});
   await User.updateOne({eml},{$set:{lts:new Date()}});
   resp.header('auth-token',token);
-  resp.status(200).json({msg:'Login'});
+  resp.status(200).json({msg:'Login',token});
 }
 exports.detail = async (req,resp) => {
   let user = req.user;
