@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import {genAPI} from '../constant';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
+  headers: new HttpHeaders({'Content-Type': 'application/json','auth-token':localStorage.getItem('auth-token')})
 }
 
 @Injectable({
@@ -15,7 +15,7 @@ export class TransactionService {
   constructor(private http: HttpClient) { }
   
   getList(filters={}): Observable<any> {
-    return this.http.post(genAPI(this.endpoint),filters);
+    return this.http.post(genAPI(this.endpoint),filters,httpOptions);
   }
 
   getCategores(): Observable<any> {
