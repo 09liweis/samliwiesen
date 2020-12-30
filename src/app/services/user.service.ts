@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {genAPI} from '../constant';
-
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-}
+import {genAPI,buildHttpOptions,getAuthToken} from '../constant';
 
 @Injectable({
   providedIn: 'root'
@@ -15,19 +11,23 @@ export class UserService {
   constructor(private http: HttpClient) { }
   
   login(user): Observable<any> {
+    var httpOptions = buildHttpOptions();
     return this.http.post(genAPI(this.endpoint + '/login'), user, httpOptions);
   }
 
-  detail(): Observable<any> {
-    const token = localStorage.getItem('auth-token');
-    if (!token) {
+  getList(): Observable<any> {
+    if (!getAuthToken()) {
       return null;
     }
-    var headers = new HttpHeaders();
-    headers = headers.set('Content-Type','application/json').set('auth-token',token);
-    const httpOptions = {
-      headers
+    var httpOptions = buildHttpOptions();
+    return this.http.post(genAPI(this.endpoint + '/login'), {}, httpOptions);
+  }
+
+  detail(): Observable<any> {
+    if (!getAuthToken()) {
+      return null;
     }
+    var httpOptions = buildHttpOptions();
     return this.http.post(genAPI(this.endpoint + '/detail'),{}, httpOptions);
   }
 }
