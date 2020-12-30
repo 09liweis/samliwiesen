@@ -15,6 +15,10 @@ export class TransactionService {
   constructor(private http: HttpClient) { }
   
   getList(filters={}): Observable<any> {
+    var token = localStorage.getItem('auth-token');
+    if (!token) {
+      return null;
+    }
     return this.http.post(genAPI(this.endpoint),filters,httpOptions);
   }
 
