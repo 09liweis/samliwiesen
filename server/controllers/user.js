@@ -12,6 +12,7 @@ exports.list = (req, res) => {
   });
 };
 exports.register = async (req,resp)=>{
+  console.log('register ',req.body);
   const {eml,nm,pwd} = req.body;
   let user = await User.findOne({eml})
   let msg = 'ok';
@@ -27,6 +28,7 @@ exports.register = async (req,resp)=>{
       pwd: hashPassword,
       lts: new Date()
     });
+    console.log(user);
     await user.save()
     msg = 'Register done'
     const token = sign({_id:user._id});
