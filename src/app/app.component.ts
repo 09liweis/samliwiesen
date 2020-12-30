@@ -19,13 +19,19 @@ export class AppComponent {
     private userService: UserService,
   ) { }
   ngOnInit() {
-    this.userService.detail().subscribe(ret => {
-      if (ret && ret.user) {
-        this.isLogin = false;
-        this.nm = ret.user.nm;
-        this.lts = ret.user.lts;
-      }
-    });
+    this.getUserDetail();
+  }
+  getUserDetail() {
+    const detailInfo = this.userService.detail();
+    if (detailInfo) {
+      detailInfo.subscribe(ret => {
+        if (ret && ret.user) {
+          this.isLogin = false;
+          this.nm = ret.user.nm;
+          this.lts = ret.user.lts;
+        }
+      });
+    }
   }
   ngAfterViewInit() {
   }
@@ -41,7 +47,16 @@ export class AppComponent {
       if (ret.token) {
         localStorage.setItem('auth-token',ret.token);
         this.showLoginModal = false;
+        this.getUserDetail();
+        window.location.reload();
       }
     });
+  }
+  logout() {
+    this.isLogin = false;
+    localStorage.setItem('auth-token','');
+    this.nm = '';
+    this.lts = '';
+    window.location.reload();
   }
 }
