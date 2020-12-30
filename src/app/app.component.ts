@@ -12,10 +12,20 @@ export class AppComponent {
   showLoginModal = false;
   eml = 'weisen.li@hotmail.com';
   pwd = '12345';
+  nm = '';
+  lts = '';
+  isLogin = true;
   constructor(
     private userService: UserService,
   ) { }
   ngOnInit() {
+    this.userService.detail().subscribe(ret => {
+      if (ret && ret.user) {
+        this.isLogin = false;
+        this.nm = ret.user.nm;
+        this.lts = ret.user.lts;
+      }
+    });
   }
   ngAfterViewInit() {
   }
@@ -28,7 +38,10 @@ export class AppComponent {
       pwd: this.pwd
     };
     this.userService.login(user).subscribe(ret=>{
-      console.log(ret);
+      if (ret.token) {
+        localStorage.setItem('auth-token',ret.token);
+        this.showLoginModal = false;
+      }
     });
   }
 }
