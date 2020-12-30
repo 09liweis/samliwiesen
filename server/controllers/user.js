@@ -4,7 +4,15 @@ const {sign} = require('../helpers/verifyToken');
 const {sendErr} = require('../helpers/request');
 
 exports.list = (req, res) => {
-  User.find({}, '_id eml lts created_at').sort('-created_at').exec((err, users) => {
+  const user = req.user;
+  if (!user) {
+    return res.status(400).json({msg:'Login Required'});
+  }
+  const {roles} = user;
+  if (!roles || roles.indexOf('admin') == -1) {
+    return res.status(400).json({msg:'Admin Required'});
+  }
+  User.find({}, '_id eml nm lts created_at').sort('-created_at').exec((err, users) => {
     if (err) {
       return sendErr(res,err);
     }
@@ -38,7 +46,7 @@ exports.register = async (req,resp)=>{
 }
 exports.login = async (req, resp) => {
   const {eml,pwd} = req.body;
-  let user = await User.findOne({eml},'_id pwd');
+  let user = await User.findOne({eml},'_id roles pwd');
   if (!user) {
     return resp.status(400).json({msg:'Email does not exist'});
   }
@@ -46,7 +54,7 @@ exports.login = async (req, resp) => {
   if (!isValidPwd) {
     return resp.status(400).json({msg:'Password not correct'});
   }
-  const token = sign({_id:user._id});
+  const token = sign({_id:user._id,roles:user.roles});
   await User.updateOne({eml},{$set:{lts:new Date()}});
   resp.header('auth-token',token);
   resp.status(200).json({msg:'Login',token});
