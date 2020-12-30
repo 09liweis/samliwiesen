@@ -1,6 +1,10 @@
 <header id="header">
   <a id="logo" routerlink="/">Sam Li</a>
-  <a id="login" (click)="showLogin()">Login</a>
+  <a id="login" *ngIf="isLogin; else elseBlock" (click)="showLogin()">Login</a>
+  <ng-template #elseBlock>
+    <span>{{nm}}</span>
+    <a>Logout</a>
+  </ng-template>
 </header>
 <main id="main">
   <aside id="main__sidebar">
