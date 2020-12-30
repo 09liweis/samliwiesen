@@ -4,8 +4,7 @@ const {verify} = require('../helpers/verifyToken');
 
 const {list,register,login,detail} = require('../controllers/user.js');
 
-router.route('/')
-.get(list);
+router.post('/list',verify,list);
 
 router.route('/register').post(register);
 router.route('/login').post(login);
