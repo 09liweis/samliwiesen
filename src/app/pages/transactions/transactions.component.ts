@@ -77,14 +77,17 @@ export class TransactionsComponent implements OnInit {
     }
     this.loading = true;
     this.trans = [];
-    this.transactionService.getList(opt).subscribe(ret=>{
-      this.loading = false;
-      this.trans = ret;
-      this.total = 0;
-      for (let i = 0; i < ret.length; i++) {
-        const transaction = ret[i];
-        this.total += Math.abs(transaction.price);
-      }
-    });
+    var getList = this.transactionService.getList(opt);
+    if (getList) {
+      getList.subscribe(ret=>{
+        this.trans = ret;
+        this.total = 0;
+        for (let i = 0; i < ret.length; i++) {
+          const transaction = ret[i];
+          this.total += Math.abs(transaction.price);
+        }
+      });
+    }
+    this.loading = false;
   }
 }
