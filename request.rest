@@ -9,6 +9,16 @@ Content-Type: application/json
 }
 
 ###
+POST http://localhost:8081/api/user/register HTTP/1.1
+Content-Type: application/json
+
+{
+  "eml":"liweisen007@gmail.com",
+  "nm": "Sam Li",
+  "pwd": "12345"
+}
+
+###
 POST http://localhost:8081/api/user/detail HTTP/1.1
 Content-Type: application/json
 auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmJhOWUzNzU3ZTFhYjAwMDQ3NDJlYTIiLCJpYXQiOjE2MDkxOTE1NjR9.fpqBwb4xkF81-MxQ6RojUdPRA1kMsaIqtpJ86slM1JY
