@@ -1,3 +1,5 @@
+import { HttpHeaders } from '@angular/common/http';
+
 const API = 'https://samliweisen.herokuapp.com/api/';
 // const API = 'http://localhost:8081/api/'
 function genAPI(endpoint) {
@@ -9,7 +11,20 @@ function getAuthToken() {
   return localStorage.getItem('auth-token');
 }
 
+function buildHttpOptions() {
+  var authToken = getAuthToken();
+  var headers = new HttpHeaders();
+  headers = headers.set('Content-Type','application/json');
+  if (authToken) {
+    headers = headers.set('auth-token',authToken);
+  }
+  return {
+    headers
+  };
+}
+
 export {
   genAPI,
-  getAuthToken
+  getAuthToken,
+  buildHttpOptions
 };
