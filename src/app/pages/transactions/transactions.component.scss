@@ -35,6 +35,15 @@
     margin-top: 20px;
     display: flex;
   }
+  .user {
+    display: inline-block;
+    border: 1px solid #ccc;
+    transition: 0.4;
+    &.selected {
+      background-color: red;
+      color: #fff;
+    }
+  }
 }
 .list {
   margin-top: 20px;

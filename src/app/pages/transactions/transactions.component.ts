@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import {getToday} from '../../helpers';
 import { TransactionService } from '../../services/transaction.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-transactions',
@@ -9,6 +10,7 @@ import { TransactionService } from '../../services/transaction.service';
   styleUrls: ['./transactions.component.scss']
 })
 export class TransactionsComponent implements OnInit {
+  public users = [];
   public trans = [];
   public categories = [];
   public selectedId = '';
@@ -16,6 +18,7 @@ export class TransactionsComponent implements OnInit {
   public loading = false;
   public categoryTp = '$in';
   public filters = {
+    uid:'',
     limit:'all',
     date: '',
     category: {
@@ -26,6 +29,7 @@ export class TransactionsComponent implements OnInit {
 
   constructor(
     private transactionService: TransactionService,
+    private userService: UserService,
     private route: ActivatedRoute,
     private router: Router,
   ) { }
@@ -42,6 +46,11 @@ export class TransactionsComponent implements OnInit {
       this.selectedId = tId;
       this.toggleTransactionForm();
     }
+    this.getUsers();
+  }
+
+  selectUser(id) {
+    this.filters.uid = id;
   }
 
   toggleCategory() {
@@ -89,5 +98,11 @@ export class TransactionsComponent implements OnInit {
       });
     }
     this.loading = false;
+  }
+
+  getUsers() {
+    this.userService.getList().subscribe(ret=>{
+      this.users = ret;
+    });
   }
 }

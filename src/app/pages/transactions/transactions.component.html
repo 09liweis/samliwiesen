@@ -1,11 +1,14 @@
 <div class="transactions">
   <div *ngIf="showTransactionForm" (click)="toggleTransactionForm()" class="backdrop"></div>
-  <app-transaction-form [toggleTransactionForm]="toggleTransactionForm" [selectedId]="selectedId" [categories]="categories" *ngIf="showTransactionForm"></app-transaction-form>
+  <app-transaction-form [toggleTransactionForm]="toggleTransactionForm" [selectedId]="selectedId" [categories]="categories" [users]="users" *ngIf="showTransactionForm"></app-transaction-form>
   <a class="button" (click)="toggleTransactionForm()">Add New</a>
   <div class="filters">
     <div class="filter">
       <label>Date</label>
       <input type="month" [(ngModel)]="filters.date" placeholder="2020-08" />
+    </div>
+    <div class="filter">
+      <span *ngFor="let u of users" class="user {{filters.uid == u._id ? 'selected': ''}}"  (click)="selectUser(u._id)">{{u.nm}}</span>
     </div>
     <div class="filter">
       <label>Category</label>
