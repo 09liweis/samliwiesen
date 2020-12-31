@@ -20,7 +20,7 @@ export class UserService {
       return null;
     }
     var httpOptions = buildHttpOptions();
-    return this.http.post(genAPI(this.endpoint + '/login'), {}, httpOptions);
+    return this.http.post(genAPI(this.endpoint + '/list'), {}, httpOptions);
   }
 
   detail(): Observable<any> {
