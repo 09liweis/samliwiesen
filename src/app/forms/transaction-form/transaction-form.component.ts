@@ -16,12 +16,14 @@ export class TransactionFormComponent implements OnInit {
   @Input() selectedId;
   @Input() categories;
   @Input() toggleTransactionForm;
+  @Input() users;
   public transaction = {
     _id: '',
     title: '',
     price: 0,
     date: '',
     category: '',
+    uid:'',
     place: {}
   };
   autocompleteInput: string;
@@ -48,7 +50,6 @@ export class TransactionFormComponent implements OnInit {
       const {year,m,d} = getToday();
       this.transaction.date = `${year}-${m}-${d}`;
     }
-    // this.searchPlaces('axd');
     this.initMap();
   }
 
@@ -90,12 +91,16 @@ export class TransactionFormComponent implements OnInit {
         lat:geometry.location.lat(),
         lng:geometry.location.lng(),
       };
-      this.submit(false);
+      this.submit(true);
     });
   }
 
   selectCategory(c) {
     this.transaction.category = c;
+  }
+
+  selectUser(id) {
+    this.transaction.uid = id;
   }
   
   submit(back: boolean):void {
