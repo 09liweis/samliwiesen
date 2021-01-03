@@ -23,8 +23,11 @@ exports.transaction_list = (req, res) => {
     opt.skip = parseInt(page)*opt.limit;
   }
   if (category) {
-    //{'$in':[],'$nin':[]}
-    filter.category = category;
+    var inCate = category['$in'];
+    var ninCate = category['$nin'];
+    if ((inCate && inCate.length > 0) || (ninCate && ninCate.length > 0)) {
+      filter.category = category;
+    }
   }
   if (place_id) {
     filter.place = place_id;
