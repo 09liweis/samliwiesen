@@ -25,11 +25,14 @@ port = process.env.PORT || 8081;
 
 mongoose.Promise = global.Promise;
 
+var dbUrl;
 if (port == 8081) {
-  mongoose.connect('mongodb://localhost:27017/tdlisting');
+  dbUrl = 'mongodb://localhost:27017/tdlisting';
 } else {
-  mongoose.connect('mongodb://heroku_6njptcbp:dg8h3o8v9dpjk1osignqn3ibel@ds125489.mlab.com:25489/heroku_6njptcbp');
+  dbUrl = 'mongodb://heroku_6njptcbp:dg8h3o8v9dpjk1osignqn3ibel@ds125489.mlab.com:25489/heroku_6njptcbp';
 }
+
+mongoose.connect(dbUrl,{ useNewUrlParser: true, useUnifiedTopology:true });
 
 mongoose.connection.on('connected', function() {
   console.log('Connected to db');
