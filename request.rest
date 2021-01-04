@@ -149,8 +149,16 @@ auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmJhOWUzNzU3ZTFhYjA
 {
   "date":"2020",
   "category":{
-    "$in":["internet"]
+    "$in":[]
   }
+}
+
+###
+POST http://localhost:8081/api/transactions/5febb1b4f4ec8200045721f0 HTTP/1.1
+content-type: application/json
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmJhOWUzNzU3ZTFhYjAwMDQ3NDJlYTIiLCJpYXQiOjE2MDkxOTMyNTl9.fCEfejiVI-uBWIn9GNK8SgGRmtL9LcjPsf7BgGmh5Ow
+
+{
 }
 
 ###
