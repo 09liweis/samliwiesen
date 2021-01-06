@@ -32,7 +32,8 @@ if (port == 8081) {
   dbUrl = 'mongodb://heroku_6njptcbp:dg8h3o8v9dpjk1osignqn3ibel@ds125489.mlab.com:25489/heroku_6njptcbp';
 }
 
-mongoose.connect(dbUrl,{ useNewUrlParser: true, useUnifiedTopology:true });
+mongoose.connect(dbUrl);
+//,{ useNewUrlParser: true, useUnifiedTopology:true,useFindAndModify:true }
 
 mongoose.connection.on('connected', function() {
   console.log('Connected to db');
