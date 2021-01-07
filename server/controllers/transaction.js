@@ -97,12 +97,12 @@ upsertTransaction = async (req,res) =>{
     });
   }
 }
-exports.transaction_new = (req, res) => {
-  upsertTransaction(req,res);
+exports.transaction_new = (req, resp) => {
+  upsertTransaction(req,resp);
 };
 
-exports.transaction_update = (req, res) => {
-  upsertTransaction(req,res);
+exports.transaction_update = (req, resp) => {
+  upsertTransaction(req,resp);
 };
 
 exports.transaction_detail = async function(req, resp) {
