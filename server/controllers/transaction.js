@@ -111,11 +111,11 @@ exports.transaction_detail = async function(req, resp) {
   resp.json(t);
 };
 
-exports.transaction_delete = (req, res) => {
+exports.transaction_delete = (req, resp) => {
   //Delete transaction
   Transaction.remove({_id: req.params.id}, (err) => {
-    handleError(res, err);
-    res.json({ok:1,msg:'Transaction Deleted'});
+    handleError(resp, err);
+    resp.json({ok:1,msg:'Transaction Deleted'});
   });
 };
 
