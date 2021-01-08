@@ -48,10 +48,10 @@ exports.category_list = (req, res) => {
     res.json(categories);
   });
 };
-upsertTransaction = async (req,res) =>{
+upsertTransaction = async (req,resp) =>{
   const user = req.user;
   if (!user) {
-    return res.status(400).json({msg:'Login Required'});
+    return resp.status(400).json({msg:'Login Required'});
   }
   const {id,price,date,category,place,title,uid} = req.body;
   transactionData = {
@@ -86,14 +86,14 @@ upsertTransaction = async (req,res) =>{
     Transaction.findOneAndUpdate({_id: id}, transaction, {returnNewDocument: true,upsert: true},(err, t)=>{
       console.error(err);
       t.place = p;
-      return res.status(200).json(t);
+      return resp.status(200).json(t);
     });
   } else {
     transaction = new Transaction(transactionData);
     transaction.save(function(err, t) {
-      handleError(res, err);
+      handleError(resp, err);
       t.place = p;
-      return res.status(200).json(t);
+      return resp.status(200).json(t);
     });
   }
 }
