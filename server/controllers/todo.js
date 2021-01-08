@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
 Todo = require('../models/todo');
 
-exports.todo_list = (req, res) => {
+exports.todo_list = (req, resp) => {
   const {page,limit,status} = req.query;
   let options = {};
   let query = {};
@@ -18,8 +18,8 @@ exports.todo_list = (req, res) => {
     options.limit = parseInt(limit);
   }
   Todo.find(query, '_id name date steps status', options).sort('-created_at').exec((err, todos) => {
-    handleError(res, err);
-    res.status(200).json(todos);
+    handleError(resp, err);
+    resp.status(200).json(todos);
   });
 };
 
