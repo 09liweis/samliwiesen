@@ -93,7 +93,7 @@ upsertTransaction = async (req,res) =>{
     transaction.save(function(err, t) {
       handleError(res, err);
       t.place = p;
-      res.json(t);
+      return res.status(200).json(t);
     });
   }
 }
