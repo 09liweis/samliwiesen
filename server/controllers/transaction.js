@@ -86,7 +86,7 @@ upsertTransaction = async (req,res) =>{
     Transaction.findOneAndUpdate({_id: id}, transaction, {returnNewDocument: true,upsert: true},(err, t)=>{
       console.error(err);
       t.place = p;
-      res.json(t);
+      return res.status(200).json(t);
     });
   } else {
     transaction = new Transaction(transactionData);
