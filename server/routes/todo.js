@@ -4,7 +4,7 @@ var router = express.Router();
 const TodoController = require('../controllers/todo.js');
 
 router.route('/')
-.get(TodoController.todo_list)
+.get(TodoController.findList)
 .post(TodoController.todo_new);
 
 router.route('/:id')

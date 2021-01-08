@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
 Todo = require('../models/todo');
 
-exports.todo_list = (req, resp) => {
+exports.findList = (req, resp) => {
   const {page,limit,status} = req.query;
   let options = {};
   let query = {};
