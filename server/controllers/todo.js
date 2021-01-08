@@ -23,7 +23,7 @@ exports.findList = (req, resp) => {
   });
 };
 
-exports.todo_new = (req, res) => {
+exports.create = (req, res) => {
   const steps = req.body.steps;
   const todo = {
     name:req.body.name,

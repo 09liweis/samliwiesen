@@ -5,7 +5,7 @@ const TodoController = require('../controllers/todo.js');
 
 router.route('/')
 .get(TodoController.findList)
-.post(TodoController.todo_new);
+.post(TodoController.create);
 
 router.route('/:id')
 .get(TodoController.todo_detail)
