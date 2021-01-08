@@ -8,7 +8,7 @@ router.route('/')
 .post(TodoController.create);
 
 router.route('/:id')
-.get(TodoController.todo_detail)
+.get(TodoController.findDetail)
 .put(TodoController.todo_update)
 .delete(TodoController.todo_delete);
 

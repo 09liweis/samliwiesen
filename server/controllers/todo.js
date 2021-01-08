@@ -44,7 +44,7 @@ exports.create = (req, res) => {
   });
 };
 
-exports.todo_detail = (req, res) => {
+exports.findDetail = (req, res) => {
   const todoId = req.params.id;
   if (!todoId) {
     return res.status(404).json({msg:'Invalid todo Id'});
