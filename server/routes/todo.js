@@ -10,7 +10,7 @@ router.route('/')
 router.route('/:id')
 .get(TodoController.findDetail)
 .put(TodoController.update)
-.delete(TodoController.todo_delete);
+.delete(TodoController.delete);
 
 router.route('/:id/update_step')
 .post(TodoController.updateStep)
