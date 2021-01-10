@@ -97,7 +97,7 @@ upsertTransaction = async (req,resp) =>{
     });
   }
 }
-exports.transaction_new = (req, resp) => {
+exports.create = (req, resp) => {
   upsertTransaction(req,resp);
 };
 
