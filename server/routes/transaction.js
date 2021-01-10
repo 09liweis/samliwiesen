@@ -4,7 +4,7 @@ const {verify} = require('../helpers/verifyToken');
 
 const TransactionController = require('../controllers/transaction.js');
 
-router.post('/',verify,TransactionController.transaction_list);
+router.post('/',verify,TransactionController.findList);
 
 router.post('/new',verify,TransactionController.transaction_new);
 
