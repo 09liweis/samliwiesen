@@ -105,7 +105,7 @@ exports.transaction_update = (req, resp) => {
   upsertTransaction(req,resp);
 };
 
-exports.transaction_detail = async function(req, resp) {
+exports.detail = async function(req, resp) {
   const id = req.params.id;
   const t = await Transaction.findById(id,'title price date category').populate('place', '_id place_id name address lat lng');
   resp.json(t);
