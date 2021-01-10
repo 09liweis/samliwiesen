@@ -1,7 +1,7 @@
 var Transaction = require('../models/transaction');
 var Place = require('../models/place');
 
-exports.transaction_list = (req, res) => {
+exports.findList = (req, res) => {
   const user = req.user;
   if (!user) {
     return res.status(400).json({msg:'Login Required'});
