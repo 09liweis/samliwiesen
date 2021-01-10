@@ -101,7 +101,7 @@ exports.create = (req, resp) => {
   upsertTransaction(req,resp);
 };
 
-exports.transaction_update = (req, resp) => {
+exports.update = (req, resp) => {
   upsertTransaction(req,resp);
 };
 
