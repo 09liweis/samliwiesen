@@ -9,7 +9,7 @@ router.route('/')
 
 router.route('/:id')
 .get(TodoController.findDetail)
-.put(TodoController.todo_update)
+.put(TodoController.update)
 .delete(TodoController.todo_delete);
 
 router.route('/:id/update_step')
