@@ -57,7 +57,7 @@ exports.findDetail = (req, res) => {
   });
 };
 
-exports.todo_update = (req, res) => {
+exports.update = (req, res) => {
   const {steps,name,date,status} = req.body;
   let todo = {
     name,
