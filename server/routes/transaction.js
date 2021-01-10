@@ -12,7 +12,7 @@ router.route('/categories')
 .get(TransactionController.category_list);
 
 router.route('/:id')
-.post(TransactionController.transaction_detail)
+.post(TransactionController.detail)
 .put(TransactionController.transaction_update)
 .delete(TransactionController.transaction_delete);
 
