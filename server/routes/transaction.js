@@ -13,7 +13,7 @@ router.route('/categories')
 
 router.route('/:id')
 .post(TransactionController.detail)
-.put(TransactionController.transaction_update)
+.put(TransactionController.update)
 .delete(TransactionController.transaction_delete);
 
 module.exports = router;
