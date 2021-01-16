@@ -78,10 +78,10 @@ exports.update = (req, res) => {
   });
 };
 
-exports.delete = (req, res) => {
+exports.delete = (req, resp) => {
   Todo.remove({_id: req.params.id}, (err) => {
-    handleError(res, err);
-    res.status(200).json({ok:1});
+    handleError(resp, err);
+    resp.status(200).json({ok:1});
   });
 };
 
