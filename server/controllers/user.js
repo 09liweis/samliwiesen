@@ -66,8 +66,3 @@ exports.detail = async (req,resp) => {
     resp.status(200).json({user}); 
   }
 }
-function handleError(res, err) {
-  if (err) {
-    res.send(err);
-  }
-}
