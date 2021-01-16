@@ -57,7 +57,7 @@ exports.findDetail = (req, res) => {
   });
 };
 
-exports.update = (req, res) => {
+exports.update = (req, resp) => {
   const {steps,name,date,status} = req.body;
   let todo = {
     name,
@@ -73,8 +73,8 @@ exports.update = (req, res) => {
   }
   todo.update_at = new Date();
   Todo.findOneAndUpdate({_id: req.params.id}, todo, {upsert: true}, (err, todo) => {
-    handleError(res, err);
-    res.status(200).json(todo);
+    handleError(resp, err);
+    resp.status(200).json(todo);
   });
 };
 
