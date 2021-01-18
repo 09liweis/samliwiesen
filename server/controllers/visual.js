@@ -197,11 +197,7 @@ exports.getSummary = (req,resp)=>{
             src = imgMatches[1];
           }
         }
-        photos.push({
-          tp,
-          src,
-          href
-        });
+        photos.push({tp,src,href});
       }
     }
 
