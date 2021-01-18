@@ -70,12 +70,13 @@ exports.getDetail = async function(req, res) {
   res.status(200).json(p);
 };
 exports.upsert = async function(req, res) {
+  var {place_id, name, address, lat, lng} = req.body;
   const place = {
-    place_id:req.body.place_id,
-    name:req.body.name,
-    address:req.body.address,
-    lat:req.body.lat,
-    lng:req.body.lng,
+    place_id,
+    name,
+    address,
+    lat,
+    lng,
   }
   let p = await Place.findOne({place_id: place.place_id});
   if (!p) {
