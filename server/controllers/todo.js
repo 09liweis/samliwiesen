@@ -49,7 +49,7 @@ exports.findDetail = (req, res) => {
   if (!todoId) {
     return res.status(404).json({msg:'Invalid todo Id'});
   }
-  Todo.findById(req.params.id, (err, todo) => {
+  Todo.findById(todoId, (err, todo) => {
     if (err) {
       return handleError(res, err);
     }
