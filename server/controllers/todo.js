@@ -44,16 +44,16 @@ exports.create = (req, res) => {
   });
 };
 
-exports.findDetail = (req, res) => {
+exports.findDetail = (req, resp) => {
   const todoId = req.params.id;
   if (!todoId) {
-    return res.status(404).json({msg:'Invalid todo Id'});
+    return resp.status(404).json({msg:'Invalid todo Id'});
   }
   Todo.findById(todoId, (err, todo) => {
     if (err) {
-      return handleError(res, err);
+      return handleError(resp, err);
     }
-    res.status(200).json(todo);
+    resp.status(200).json(todo);
   });
 };
 
