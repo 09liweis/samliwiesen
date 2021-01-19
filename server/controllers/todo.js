@@ -24,11 +24,11 @@ exports.findList = (req, resp) => {
 };
 
 exports.create = (req, res) => {
-  const steps = req.body.steps;
+  const {steps,name,date,status} = req.body;
   const todo = {
-    name:req.body.name,
-    date:req.body.date,
-    status:req.body.status,
+    name,
+    date,
+    status,
   }
   if (steps) {
     todo.steps = steps;
