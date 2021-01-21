@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-router.route('/').get(function(req, res) {
-  res.status(200).json('Resume site comming soon');
+router.route('/').get(function(req, resp) {
+  resp.status(200).json('Resume site comming soon');
 });
 
 router.route('/movie/:id').get((req,resp) => {
