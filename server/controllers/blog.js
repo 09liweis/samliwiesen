@@ -22,12 +22,12 @@ exports.blog_detail = (req, resp) => {
   });
 };
 
-exports.blog_update = (req, res) => {
+exports.blog_update = (req, resp) => {
   let updateblog = req.body;
   updateblog.update_at = new Date();
   Blog.findOneAndUpdate({_id: req.params.id}, updateblog, {upsert: true}, (err, blog) => {
-    handleError(res, err);
-    res.json(blog);
+    handleError(resp, err);
+    resp.json(blog);
   });
 };
 
