@@ -31,10 +31,10 @@ exports.blog_update = (req, resp) => {
   });
 };
 
-exports.blog_delete = (req, res) => {
+exports.blog_delete = (req, resp) => {
   Blog.remove({_id: req.params.id}, (err) => {
-    handleError(res, err);
-    res.status(200).json('ok');
+    handleError(resp, err);
+    resp.status(200).json('ok');
   });
 };
 
