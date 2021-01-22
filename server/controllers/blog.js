@@ -7,11 +7,11 @@ exports.blog_list = (req, resp) => {
   });
 };
 
-exports.blog_add = (req, res) => {
+exports.blog_add = (req, resp) => {
   const newBlog = new Blog(req.body);
   newBlog.save((err, blog) => {
-    handleError(res, err);
-    res.json(blog);
+    handleError(resp, err);
+    resp.json(blog);
   });
 };
 
