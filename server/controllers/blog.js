@@ -15,10 +15,10 @@ exports.blog_add = (req, resp) => {
   });
 };
 
-exports.blog_detail = (req, res) => {
+exports.blog_detail = (req, resp) => {
   Blog.findById(req.params.id, (err, blog) => {
-    handleError(res, err);
-    res.json(blog);
+    handleError(resp, err);
+    resp.json(blog);
   });
 };
 
