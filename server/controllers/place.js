@@ -61,7 +61,7 @@ exports.getDetail = async function(req, res) {
   if (!ObjectID.isValid(id)) {
     return res.status(200).json({msg:'Place Id is not valid'});
   }
-  const p = await Place.findById(req.params.id);
+  const p = await Place.findById(id);
   if (!p) {
     return res.status(200).json({msg:'No Place Found'});
   }
