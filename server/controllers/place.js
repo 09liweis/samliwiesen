@@ -56,18 +56,18 @@ exports.getList = (req, resp) => {
   });
 };
 
-exports.getDetail = async function(req, res) {
+exports.getDetail = async function(req, resp) {
   const id = req.params.id;
   if (!ObjectID.isValid(id)) {
-    return res.status(200).json({msg:'Place Id is not valid'});
+    return resp.status(200).json({msg:'Place Id is not valid'});
   }
   const p = await Place.findById(id);
   if (!p) {
-    return res.status(200).json({msg:'No Place Found'});
+    return resp.status(200).json({msg:'No Place Found'});
   }
   const transactions = await Transaction.find({place: p._id},'_id title price date category');
   p.transactions = transactions
-  res.status(200).json(p);
+  resp.status(200).json(p);
 };
 exports.upsert = async function(req, res) {
   var {place_id, name, address, lat, lng} = req.body;
