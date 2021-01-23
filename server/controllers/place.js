@@ -69,7 +69,7 @@ exports.getDetail = async function(req, resp) {
   p.transactions = transactions
   resp.status(200).json(p);
 };
-exports.upsert = async function(req, res) {
+exports.upsert = async function(req, resp) {
   var {place_id, name, address, lat, lng} = req.body;
   const place = {
     place_id,
@@ -89,5 +89,5 @@ exports.upsert = async function(req, res) {
     p.lng = place.lng;
     await Place.findOneAndUpdate({_id: p._id}, p, {upsert: true});
   }
-  res.status(200).json(p);
+  resp.status(200).json(p);
 };
