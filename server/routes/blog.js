@@ -5,7 +5,7 @@ const BlogController = require('../controllers/blog.js');
 
 router.route('/')
 .get(BlogController.findList)
-.post(BlogController.blog_add);
+.post(BlogController.add);
 
 router.route('/:id')
 .get(BlogController.blog_detail)

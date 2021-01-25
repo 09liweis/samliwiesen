@@ -7,7 +7,7 @@ exports.findList = (req, resp) => {
   });
 };
 
-exports.blog_add = (req, resp) => {
+exports.add = (req, resp) => {
   const newBlog = new Blog(req.body);
   newBlog.save((err, blog) => {
     handleError(resp, err);
