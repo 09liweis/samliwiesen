@@ -8,7 +8,7 @@ router.route('/')
 .post(BlogController.add);
 
 router.route('/:id')
-.get(BlogController.blog_detail)
+.get(BlogController.findDetail)
 .put(BlogController.blog_update)
 .delete(BlogController.blog_delete);
 
