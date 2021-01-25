@@ -10,6 +10,6 @@ router.route('/')
 router.route('/:id')
 .get(BlogController.findDetail)
 .put(BlogController.update)
-.delete(BlogController.blog_delete);
+.delete(BlogController.remove);
 
 module.exports = router;
