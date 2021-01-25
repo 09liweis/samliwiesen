@@ -22,7 +22,7 @@ exports.findDetail = (req, resp) => {
   });
 };
 
-exports.blog_update = (req, resp) => {
+exports.update = (req, resp) => {
   let updateblog = req.body;
   updateblog.update_at = new Date();
   Blog.findOneAndUpdate({_id: req.params.id}, updateblog, {upsert: true}, (err, blog) => {

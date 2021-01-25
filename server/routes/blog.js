@@ -9,7 +9,7 @@ router.route('/')
 
 router.route('/:id')
 .get(BlogController.findDetail)
-.put(BlogController.blog_update)
+.put(BlogController.update)
 .delete(BlogController.blog_delete);
 
 module.exports = router;
