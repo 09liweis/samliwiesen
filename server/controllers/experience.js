@@ -7,7 +7,7 @@ exports.findList = (req, res) => {
   });
 };
 
-exports.experience_detail = (req, res) => {
+exports.findDetail = (req, res) => {
   Experience.findById(req.params.id, (err, experience) => {
     handleError(res, err);
     res.json(experience);
