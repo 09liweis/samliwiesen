@@ -23,7 +23,7 @@ exports.create = (req, res) => {
   });
 };
 
-exports.experience_update = (req, res) => {
+exports.update = (req, res) => {
   let updateExperience = req.body;
   updateExperience.update_at = new Date();
   Experience.findOneAndUpdate({_id: req.params.id}, updateExperience, {upsert: true}, (err, experience) => {

@@ -9,6 +9,6 @@ router.route('/')
 
 router.route('/:id')
 .get(ExperienceController.findDetail)
-.put(ExperienceController.experience_update);
+.put(ExperienceController.update);
 
 module.exports = router;
