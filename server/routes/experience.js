@@ -4,7 +4,7 @@ var router = express.Router();
 const ExperienceController = require('../controllers/experience.js');
 
 router.route('/')
-.get(ExperienceController.experience_list)
+.get(ExperienceController.findList)
 .post(ExperienceController.experience_new);
 
 router.route('/:id')
