@@ -5,7 +5,7 @@ const ExperienceController = require('../controllers/experience.js');
 
 router.route('/')
 .get(ExperienceController.findList)
-.post(ExperienceController.experience_new);
+.post(ExperienceController.create);
 
 router.route('/:id')
 .get(ExperienceController.findDetail)

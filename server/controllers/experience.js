@@ -14,7 +14,7 @@ exports.findDetail = (req, res) => {
   });
 };
 
-exports.experience_new = (req, res) => {
+exports.create = (req, res) => {
   delete req.body._id;
   const newExperience = new Experience(req.body);
   newExperience.save((err, experience) => {
