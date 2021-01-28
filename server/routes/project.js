@@ -9,6 +9,6 @@ router.route('/')
 
 router.route('/:id')
 .get(ProjecctController.findDetail)
-.put(ProjecctController.project_update);
+.put(ProjecctController.update);
 
 module.exports = router;
