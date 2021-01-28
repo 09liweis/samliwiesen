@@ -4,7 +4,7 @@ var router = express.Router();
 const ProjecctController = require('../controllers/project.js');
 
 router.route('/')
-.get(ProjecctController.project_list)
+.get(ProjecctController.getList)
 .post(ProjecctController.project_new);
 
 router.route('/:id')
