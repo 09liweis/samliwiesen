@@ -16,7 +16,7 @@ exports.create = (req, res) => {
   });
 };
 
-exports.project_detail = (req, res) => {
+exports.findDetail = (req, res) => {
   Project.findById(req.params.id, (err, project) => {
     handleError(res, err);
     res.json(project);

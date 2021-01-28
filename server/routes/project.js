@@ -8,7 +8,7 @@ router.route('/')
 .post(ProjecctController.create);
 
 router.route('/:id')
-.get(ProjecctController.project_detail)
+.get(ProjecctController.findDetail)
 .put(ProjecctController.project_update);
 
 module.exports = router;
