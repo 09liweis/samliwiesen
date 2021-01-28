@@ -8,7 +8,7 @@ exports.getList = (req, res) => {
   });
 };
 
-exports.project_new = (req, res) => {
+exports.create = (req, res) => {
   const newProject = new Project(req.body);
   newProject.save((err, project) => {
     handleError(res, err);

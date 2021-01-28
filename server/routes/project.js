@@ -5,7 +5,7 @@ const ProjecctController = require('../controllers/project.js');
 
 router.route('/')
 .get(ProjecctController.getList)
-.post(ProjecctController.project_new);
+.post(ProjecctController.create);
 
 router.route('/:id')
 .get(ProjecctController.project_detail)
