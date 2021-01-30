@@ -23,7 +23,7 @@ exports.getSubjects = (req, resp) => {
   sort = sort ||SORTS[0];
   type = type || 'movie';
   tag = encodeURIComponent(tag || '热门');
-  const page_limit = limit || 30;
+  const page_limit = limit || NUM_LIMIT;
   const page_start = ((page - 1) || 0) * page_limit;
   const url = `${DOUBAN_SITE_API}search_subjects?sort=${sort}&type=${type}&tag=${tag}&page_limit=${page_limit}&page_start=${page_start}`;
   sendRequest(url,'GET', resp, (statusCode,$,body) => {
