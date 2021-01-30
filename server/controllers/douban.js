@@ -3,6 +3,8 @@ const {getDoubanUrl,DOUBAN_SITE_API,getPhotos} = require('../helpers/douban');
 
 const SORTS = ['recommend','time','rank'];
 
+const NUM_LIMIT = 30;
+
 exports.getTags = (req, resp) => {
   var {type} = req.body;
   if (!type) {
