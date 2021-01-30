@@ -48,7 +48,6 @@ exports.getPhotos = (req,resp) => {
     R:'海报',
     W:'壁纸'
   }
-  var limit = 30;
   var {douban_id,page,type,cast_id} = req.body;
   if (!(douban_id || cast_id)) {
     return resp.status(400).json({msg:MISSING_DOUBAN_ID});
@@ -61,7 +60,7 @@ exports.getPhotos = (req,resp) => {
     var url = `https://movie.douban.com/celebrity/${cast_id}/photos/`;
     type = type || 'C';
   }
-  url += `?type=${type}&start=${(page - 1)*limit}`;
+  url += `?type=${type}&start=${(page - 1)*NUM_LIMIT}`;
   sendRequest(url, 'GET', resp, (statusCode, $) => {
     const title = $('#content h1').text();
     if (!page) {
