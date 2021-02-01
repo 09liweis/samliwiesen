@@ -8,11 +8,11 @@ exports.getList = (req, resp) => {
   });
 };
 
-exports.create = (req, res) => {
+exports.create = (req, resp) => {
   const newProject = new Project(req.body);
   newProject.save((err, project) => {
-    handleError(res, err);
-    res.json(project);
+    handleError(resp, err);
+    resp.json(project);
   });
 };
 
