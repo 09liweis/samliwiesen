@@ -16,10 +16,10 @@ exports.create = (req, resp) => {
   });
 };
 
-exports.findDetail = (req, res) => {
+exports.findDetail = (req, resp) => {
   Project.findById(req.params.id, (err, project) => {
-    handleError(res, err);
-    res.json(project);
+    handleError(resp, err);
+    resp.json(project);
   });
 };
 
