@@ -1,10 +1,10 @@
 var mongoose = require('mongoose'),
 Project = require('../models/project');
 
-exports.getList = (req, res) => {
+exports.getList = (req, resp) => {
   Project.find({}).sort('-created_at').exec((err, projects) => {
-    handleError(res, err);
-    res.json(projects);
+    handleError(resp, err);
+    resp.json(projects);
   });
 };
 
