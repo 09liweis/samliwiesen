@@ -95,7 +95,7 @@ exports.updateStep = (req,resp) => {
   var query = {_id:todoId};
   let {step,mode} = req.body;
   if (!step.name) {
-    return resp.status(400).json({msg: 'Missing step name'});
+    return resp.status(400).json({msg: STRINGS.STEP_NAME});
   }
   if (!step.status) {
     step.status = 'pending';
