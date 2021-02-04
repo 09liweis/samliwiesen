@@ -2,7 +2,8 @@ var mongoose = require('mongoose'),
 Todo = require('../models/todo');
 
 const STRINGS = {
-  BAD_ID: 'Invalid todo id'
+  BAD_ID: 'Invalid todo id',
+  STEP_NAME: 'Missing step name'
 };
 
 exports.findList = (req, resp) => {
