@@ -1,6 +1,10 @@
 var mongoose = require('mongoose'),
 Todo = require('../models/todo');
 
+const STRINGS = {
+  BAD_ID: 'Invalid todo id'
+};
+
 exports.findList = (req, resp) => {
   const {page,limit,status} = req.query;
   let options = {};
