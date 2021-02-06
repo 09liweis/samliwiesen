@@ -74,7 +74,7 @@ exports.getPhotos = (req,resp) => {
 
 exports.getCast = (req, resp) => {
   const {cast_id} = req.body;
-  const url = `https://movie.douban.com/celebrity/${cast_id}/`;
+  const url = `${CAST_DOUBAN_URL}${cast_id}/`;
   sendRequest(url,'GET',resp,(statusCode,$,body) => {
     const infoMatch = $('#headline .info li');
     const infos = {};
