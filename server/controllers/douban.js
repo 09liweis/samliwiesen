@@ -1,6 +1,7 @@
 const {sendRequest} = require('../helpers/request');
 const {getDoubanUrl,DOUBAN_SITE_API,getPhotos} = require('../helpers/douban');
 
+const CAST_DOUBAN_URL = 'https://movie.douban.com/celebrity/';
 const SORTS = ['recommend','time','rank'];
 
 const NUM_LIMIT = 30;
