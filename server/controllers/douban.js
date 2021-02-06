@@ -58,7 +58,7 @@ exports.getPhotos = (req,resp) => {
     var url = `${getDoubanUrl(douban_id,{apiName:'photos'})}`;
     type = type || 'S';
   } else if (cast_id) {
-    var url = `https://movie.douban.com/celebrity/${cast_id}/photos/`;
+    var url = `${CAST_DOUBAN_URL}${cast_id}/photos/`;
     type = type || 'C';
   }
   url += `?type=${type}&start=${(page - 1)*NUM_LIMIT}`;
