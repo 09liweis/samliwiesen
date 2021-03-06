@@ -1,10 +1,10 @@
 const Category = require('../models/category');
 const Transaction = require('../models/transaction');
 
-exports.category_list = (req, res) => {
+exports.category_list = (req, resp) => {
   Category.find().exec((err, categories) => {
-    handleError(res, err);
-    res.json(categories);
+    handleError(resp, err);
+    resp.json(categories);
   });
 };
 exports.category_detail = (req,res)=>{
