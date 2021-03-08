@@ -121,7 +121,6 @@ exports.delete = (req, resp) => {
 
 function handleError(res, err) {
   if (err) {
-    res.send(err);
-    return;
+    return res.send(err);
   }
 }
