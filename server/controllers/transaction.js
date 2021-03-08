@@ -1,10 +1,10 @@
 var Transaction = require('../models/transaction');
 var Place = require('../models/place');
 
-exports.findList = (req, res) => {
+exports.findList = (req, resp) => {
   const user = req.user;
   if (!user) {
-    return res.status(400).json({msg:'Login Required'});
+    return resp.status(400).json({msg:'Login Required'});
   }
   let filter = {uid:user._id};
   const {category,date,place_id,limit,page,uid} = req.body;
@@ -37,8 +37,8 @@ exports.findList = (req, res) => {
   }
   console.log('Transactions filter ',filter);
   Transaction.find(filter, '_id title price date category',opt).populate('place', '_id name address lat lng icon').sort('-date').exec((err, transactions) => {
-    handleError(res, err);
-    res.status(200).json(transactions);
+    handleError(resp, err);
+    resp.status(200).json(transactions);
   });
 };
 
