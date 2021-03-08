@@ -42,10 +42,10 @@ exports.findList = (req, resp) => {
   });
 };
 
-exports.category_list = (req, res) => {
+exports.category_list = (req, resp) => {
   Transaction.distinct('category', (err, categories) => {
-    handleError(res, err);
-    res.json(categories);
+    handleError(resp, err);
+    resp.json(categories);
   });
 };
 upsertTransaction = async (req,resp) =>{
