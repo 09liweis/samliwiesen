@@ -30,10 +30,11 @@ exports.getSubjects = (req, resp) => {
   sendRequest(url,'GET', resp, (statusCode,$,body) => {
     var visuals = JSON.parse(body).subjects;
     for (let i = 0; i < visuals.length; i++) {
-      const {cover,rate,id} = visuals[i];
+      const {cover,rate,id,episodes_info} = visuals[i];
       visuals[i].poster = cover;
       visuals[i].douban_rating = rate;
       visuals[i].douban_id = id;
+      visuals[i].episodes_info = episodes_info;
       delete visuals[i].cover;
       delete visuals[i].rate;
       delete visuals[i].id;
