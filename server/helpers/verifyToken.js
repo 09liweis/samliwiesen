@@ -16,6 +16,5 @@ exports.verify = (req,resp,next) => {
   }
 }
 exports.sign = (data) => {
-  const token = jwt.sign(data,token_secret);
-  return token;
+  return jwt.sign(data,token_secret);
 }
