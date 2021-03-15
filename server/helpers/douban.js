@@ -74,8 +74,8 @@ exports.getVisualReviews = ($) => {
   const reviewsMatch = $('.main.review-item');
   var reviews = [];
   if (reviewsMatch) {
-    for (var i = 0; i < reviewsMatch.length; i++) {
-      var review = $(reviewsMatch[i]);
+    reviewsMatch.toArray().forEach(item => {
+      var review = $(item);
       var rating = review.find('.main-title-rating').attr('class');
       if (typeof rating == 'string') {
         try {
@@ -96,7 +96,7 @@ exports.getVisualReviews = ($) => {
         useless_count: review.find('.action-btn.down span').text().trim(),
         reply_count: review.find('.reply').text()
       });
-    }
+    });
   }
   return reviews;
 }
