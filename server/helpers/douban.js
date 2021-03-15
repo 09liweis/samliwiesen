@@ -82,6 +82,7 @@ exports.getVisualReviews = ($) => {
           rating = rating.replace('main-title-rating','').replace('allstar','').trim();
           rating = parseFloat(rating) / 10;
         } catch (error) {
+          rating = 'N/A';
           console.error(error);
         }
       }
