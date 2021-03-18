@@ -70,7 +70,7 @@ exports.getCast = (cast,$) => {
   }
 }
 
-exports.getVisualReviews = ($) => {
+exports.getReviews = ($) => {
   const reviewsMatch = $('.main.review-item');
   var reviews = [];
   if (reviewsMatch) {
