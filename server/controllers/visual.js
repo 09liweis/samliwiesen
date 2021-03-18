@@ -1,5 +1,5 @@
 const {sendRequest} = require('../helpers/request');
-const {getDoubanUrl,getVisualReviews,getVisualComments,getCast} = require('../helpers/douban');
+const {getDoubanUrl,getReviews,getVisualComments,getCast} = require('../helpers/douban');
 
 const IMDB_SITE = 'https://www.imdb.com/title/';
 const MISSING_DOUBAN_ID = 'Missing Douban Id';
@@ -134,7 +134,7 @@ exports.getReviews = (req,resp) => {
   }
   const douban_url = getDoubanUrl(douban_id,{apiName:'reviews'});
   sendRequest(douban_url,'GET',resp,(statusCode,$,body) => {
-    const reviews = getVisualReviews($);
+    const reviews = getReviews($);
     return resp.status(statusCode).json({reviews});
   });
 }
@@ -213,7 +213,7 @@ exports.getSummary = (req,resp)=>{
       }
     }
 
-    const reviews = getVisualReviews($);
+    const reviews = getReviews($);
 
     const castMatches = $('.celebrity');
     if (castMatches) {
