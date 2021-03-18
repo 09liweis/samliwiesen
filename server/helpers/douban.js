@@ -102,7 +102,7 @@ exports.getReviews = ($) => {
   return reviews;
 }
 
-exports.getVisualComments = ($) => {
+exports.getComments = ($) => {
   const commentsMatch = $('.comment-item');
   var comments = [];
   if (commentsMatch) {
