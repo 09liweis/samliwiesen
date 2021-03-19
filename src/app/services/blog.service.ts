@@ -35,6 +35,6 @@ export class BlogService {
     }
   }
   delete(id: string): Observable<any> {
-    return this.http.delete(genAPI(this.endpoint) + id, httpOptions);
+    return this.http.delete(genAPI(this.endpoint + '/' + id), httpOptions);
   }
 }
