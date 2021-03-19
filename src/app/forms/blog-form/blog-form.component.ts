@@ -57,7 +57,7 @@ export class BlogFormComponent implements OnInit {
         alert('保存成功啦～～～～')
       }
       if (back) {
-        this.router.navigate(['/']); 
+        this.router.navigate(['/blogs']); 
       }
     });
   }
