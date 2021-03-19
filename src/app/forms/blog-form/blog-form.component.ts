@@ -65,7 +65,7 @@ export class BlogFormComponent implements OnInit {
   delete(id: string): void {
     this.blogService.delete(id).subscribe(res => {
       if (res == 'ok') {
-        this.router.navigate(['/']);
+        this.router.navigate(['/blogs']);
       }
     });
   }
