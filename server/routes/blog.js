@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-const BlogController = require('../controllers/blog.js');
+const {findList,add,findDetail,update,remove} = require('../controllers/blog.js');
 
 router.route('/')
-.get(BlogController.findList)
-.post(BlogController.add);
+.get(findList)
+.post(add);
 
 router.route('/:id')
-.get(BlogController.findDetail)
-.put(BlogController.update)
-.delete(BlogController.remove);
+.get(findDetail)
+.put(update)
+.delete(remove);
 
 module.exports = router;
