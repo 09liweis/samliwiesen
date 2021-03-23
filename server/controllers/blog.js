@@ -38,8 +38,8 @@ exports.remove = (req, resp) => {
   });
 };
 
-function handleError(res, err) {
+function handleError(resp, err) {
   if (err) {
-    return res.send(err);
+    return resp.send(err);
   }
 }
