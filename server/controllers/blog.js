@@ -40,6 +40,6 @@ exports.remove = (req, resp) => {
 
 function handleError(resp, err) {
   if (err) {
-    return resp.send(err);
+    return resp.status(400).json({err});
   }
 }
