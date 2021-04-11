@@ -32,10 +32,10 @@ exports.update = (req, resp) => {
   });
 };
 
-exports.remove = (req, res) =>{
+exports.remove = (req, resp) =>{
   Project.remove({_id: req.params.id}, (err) =>{
-    handleError(res, err);
-    res.json({ok:1,msg:'Project Deleted'});
+    handleError(resp, err);
+    resp.json({ok:1,msg:'Project Deleted'});
   });
 };
 
