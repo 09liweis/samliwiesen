@@ -23,12 +23,12 @@ exports.findDetail = (req, resp) => {
   });
 };
 
-exports.update = (req, res) => {
+exports.update = (req, resp) => {
   let updateProject = req.body;
   updateProject.update_at = new Date();
   Project.findOneAndUpdate({_id: req.params.id}, updateProject, {upsert: true}, (err, project) => {
-    handleError(res, err);
-    res.json(project);
+    handleError(resp, err);
+    resp.json(project);
   });
 };
 
