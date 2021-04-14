@@ -168,7 +168,7 @@
 }
 .todo__form {
   z-index:1;
-  position:absolute;
+  position:fixed;
   top:50%;
   transform:translateY(-50%);
   max-width:680px;
