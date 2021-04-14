@@ -8,3 +8,12 @@ export const getTodos = () => {
     );
   }
 };
+
+export const addTodo = (todo) => {
+  return dispatch=> {
+    axios.post('/api/todos',todo)
+    .then(ex=>
+      dispatch({type:'ADD_TODO',ex:ex.data})
+    );
+  }
+}
