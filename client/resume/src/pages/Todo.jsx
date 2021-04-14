@@ -2,12 +2,14 @@ import React, {useState,useEffect} from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import {CSSTransition,TransitionGroup} from 'react-transition-group';
 
-import {getTodos} from '../actions/todo';
+import {getTodos, addTodo} from '../actions/todo';
 
 import '../css/todo.css';
 
 const Todo = () => {
+  const emptyTodo = {name:'',date:'2021-04-14',status:'pending'};
   const [showForm,setShowForm] = useState(false);
+  const [curTodo, setCurTodo] = useState(emptyTodo)
   const dispatch = useDispatch();
   const loading = false;//if use loading from useSelector, no render animation
   const {items} = useSelector(state => state.todos);
@@ -16,9 +18,9 @@ const Todo = () => {
   },[]);
   if (items && items.length === 0) {
   }
-  var form,errorMsg;
+  var errorMsg;
   const handleEdit = (idx) => {
-
+    console.log(idx);
   }
   const handleComplete = (idx) => {
 
@@ -26,15 +28,33 @@ const Todo = () => {
   const handleRemove = (idx) => {
 
   }
+  const handleAdd = () => {
+    dispatch(addTodo(curTodo));
+    setShowForm(false);
+  }
+  const handleChange = (e) => {
+    var {value,name} = e.target;
+    var todo = Object.assign({},curTodo);
+    todo[name] = value;
+    setCurTodo(todo);
+  }
+  const todoForm = (
+    <div className="todo__form">
+      <input className="todo__input" name="name" placeholder="title" value={curTodo.name} onChange={(e)=>handleChange(e)} />
+      <input className="todo__input" name="date" placeholder="date" value={curTodo.date} onChange={(e)=>handleChange(e)} />
+      <input className="todo__input" name="status" placeholder="status" value={curTodo.status} onChange={(e)=>handleChange(e)} />
+      <div className="todo__btn" onClick={()=>handleAdd()}>OK</div>
+    </div>
+  );
   const todoList = items.map((todo, idx) => 
     <CSSTransition key={todo._id} timeout={500} classNames="todoAnimation">
       <div className={`todo ${todo.status}`}>
         <div className="todo__title">{todo.name}</div>
         {todo.status != 'done'?
         <div className="todo__actions">
-          <div className="todo__edit" onClick={handleEdit(idx)}>Edit</div>
-          <div className="todo__complete" onClick={handleComplete(idx)}>{todo.status == 'pending' ? 'Working' : 'Done'}</div>
-          <div className="todo__remove" onClick={handleRemove(idx, todo._id)}>Remove</div>
+          <div className="todo__edit" onClick={()=>handleEdit(idx)}>Edit</div>
+          <div className="todo__complete" onClick={()=>handleComplete(idx)}>{todo.status == 'pending' ? 'Working' : 'Done'}</div>
+          <div className="todo__remove" onClick={()=>handleRemove(idx, todo._id)}>Remove</div>
         </div>
         :null}
         {todo.steps.map((s,i)=>
@@ -45,10 +65,10 @@ const Todo = () => {
   );
   return (
     <div className="container">
-      {form}
+      {showForm?todoForm:''}
       <h2 className="todos__title">Todo List</h2>
       <div className="todos__container">
-        <a className="todo__btn">Add New</a>
+        <a className="todo__btn" onClick={()=>setShowForm(true)}>Add New</a>
         <div className="todo__statics">
           <span className="done">Done</span>
           <span className="working">In Progress</span>
