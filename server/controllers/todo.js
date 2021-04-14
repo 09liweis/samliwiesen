@@ -77,7 +77,7 @@ exports.update = (req, resp) => {
     todo.steps = JSON.parse(steps);
   }
   todo.update_at = new Date();
-  Todo.findOneAndUpdate({_id: req.params.id}, todo, {upsert: true}, (err, todo) => {
+  Todo.findOneAndUpdate({_id: req.params.id}, todo, {upsert: true, new: true}, (err, todo) => {
     handleError(resp, err);
     resp.status(200).json(todo);
   });
