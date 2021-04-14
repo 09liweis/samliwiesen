@@ -177,9 +177,18 @@
   left:0;
   right:0;
   margin:auto;
-  padding:10px;
+  padding:20px;
   border:1px solid #ccc;
-  display:flex;
+}
+.todo__input {
+  width: 100%;
+  border-radius: 5px;
+  outline:none;
+  border:none;
+  box-shadow: 1px 2px 4px 1px rgba(0, 0, 0, 0.48);
+  padding: 15px;
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 #form {
   width:50%;
