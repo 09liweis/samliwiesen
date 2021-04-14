@@ -5,6 +5,11 @@ const todos = (state = {items:[],loading:true}, action) => {
     case 'ADD_TODO':
       var items = [action.ex,...state.items];
       return {items};
+    case 'EDIT_TODO':
+      var updateTodo = action.ex;
+      var idx = action.idx;
+      state.items[idx]= updateTodo;
+      return {items:state.items};
     case 'DELETE_TODO':
       var idx = action.idx;
       state.items.splice(idx,1);
