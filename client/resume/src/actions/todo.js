@@ -17,3 +17,12 @@ export const addTodo = (todo) => {
     );
   }
 }
+
+export const deleteTodo = (todoId,idx) => {
+  return dispatch=> {
+    axios.delete(`/api/todos/${todoId}`)
+    .then(ex=>
+      dispatch({type:'DELETE_TODO',idx})
+    );
+  }
+}
