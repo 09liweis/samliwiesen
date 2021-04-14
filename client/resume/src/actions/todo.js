@@ -18,6 +18,15 @@ export const addTodo = (todo) => {
   }
 }
 
+export const editTodo = (todo,idx) => {
+  return dispatch=> {
+    axios.put(`/api/todos/${todo._id}`,todo)
+    .then(ex=>
+      dispatch({type:'EDIT_TODO',ex:ex.data,idx})
+    );
+  }
+}
+
 export const deleteTodo = (todoId,idx) => {
   return dispatch=> {
     axios.delete(`/api/todos/${todoId}`)
