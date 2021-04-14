@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import {CSSTransition,TransitionGroup} from 'react-transition-group';
 
-import {getTodos, addTodo} from '../actions/todo';
+import {getTodos, addTodo, deleteTodo} from '../actions/todo';
 
 import '../css/todo.css';
 
@@ -25,8 +25,8 @@ const Todo = () => {
   const handleComplete = (idx) => {
 
   }
-  const handleRemove = (idx) => {
-
+  const handleRemove = (todoId, idx) => {
+    dispatch(deleteTodo(todoId, idx));
   }
   const handleAdd = () => {
     dispatch(addTodo(curTodo));
@@ -54,7 +54,7 @@ const Todo = () => {
         <div className="todo__actions">
           <div className="todo__edit" onClick={()=>handleEdit(idx)}>Edit</div>
           <div className="todo__complete" onClick={()=>handleComplete(idx)}>{todo.status == 'pending' ? 'Working' : 'Done'}</div>
-          <div className="todo__remove" onClick={()=>handleRemove(idx, todo._id)}>Remove</div>
+          <div className="todo__remove" onClick={()=>handleRemove(todo._id,idx)}>Remove</div>
         </div>
         :null}
         {todo.steps.map((s,i)=>
