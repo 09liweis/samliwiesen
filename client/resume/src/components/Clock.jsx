@@ -19,7 +19,7 @@ export default class Clock extends React.Component {
       sec: ''	
     };
   }
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     this.tick();
     this.intervalId = setInterval(
       () => this.tick(), 1000

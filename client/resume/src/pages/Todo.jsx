@@ -7,7 +7,7 @@ import {getTodos, addTodo, editTodo, deleteTodo} from '../actions/todo';
 import '../css/todo.css';
 
 const Todo = () => {
-  const emptyTodo = {name:'',date:'2021-04-14',status:'pending',steps:[]};
+  const emptyTodo = {name:'',date:'',status:'pending',steps:[]};
   const [showForm,setShowForm] = useState(false);
   const [curTodo, setCurTodo] = useState(emptyTodo)
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ const Todo = () => {
   const todoForm = (
     <div className="todo__form">
       <input className="todo__input" name="name" placeholder="title" value={curTodo.name} onChange={(e)=>handleChange(e)} />
-      <input className="todo__input" name="date" placeholder="date" value={curTodo.date} onChange={(e)=>handleChange(e)} />
+      <input type="date" className="todo__input" name="date" placeholder="date" value={curTodo.date} onChange={(e)=>handleChange(e)} />
       <input className="todo__input" name="status" placeholder="status" value={curTodo.status} onChange={(e)=>handleChange(e)} />
       {curTodo.steps.length?
         <div className="">

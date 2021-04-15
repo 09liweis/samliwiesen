@@ -65,7 +65,7 @@ export default class Transactions extends React.Component {
     };
     this.getList = this.getList.bind(this);
   }
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     this.getList();
   }
   getFilters() {

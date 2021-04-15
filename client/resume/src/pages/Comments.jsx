@@ -35,7 +35,7 @@ export default class Comments extends React.Component {
       }
     };
   }
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     this.getComments();
   }
   getComments() {

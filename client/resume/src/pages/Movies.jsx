@@ -16,7 +16,7 @@ export default class Movies extends React.Component {
     };
     this.loadmore = this.loadmore.bind(this);
   }
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     this.setState({loading: true});
     this.page = 1;
     this.getVisuals();
