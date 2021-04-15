@@ -15,6 +15,7 @@ const widgets = () => {
       <div id="widgetBg" className={widgetClass} onClick={()=>setShow(false)}></div>
       <div className={widgetClass} id="widgetToggle" onClick={()=>setShow(true)}><i className="fa fa-angle-double-right"></i></div>
       <div id="widgets" className={widgetClass}>
+        <div id="widgetClose" className="fa fa-times" onClick={()=>setShow(false)}></div>
         <About/>
         <DeviceInfo/>
         {/* <Clock/> */}
