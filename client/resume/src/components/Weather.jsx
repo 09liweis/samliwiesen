@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import {Box, BoxTitle, BoxBody} from './style.jsx';
@@ -36,7 +36,7 @@ export default class Weather extends React.Component {
       loading: true
     };
   }
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     if (window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition((position) => {
         this.setState({
