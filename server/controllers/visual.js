@@ -149,7 +149,6 @@ exports.getSummary = (req,resp)=>{
   }
   douban_url = getDoubanUrl(douban_id);
   sendRequest(douban_url,'GET',resp,function(statusCode,$,body) {
-    var episodes = 1;
     const title = $('span[property="v:itemreviewed"]').text();
     const douban_poster = $('img[rel="v:image"]').attr('src');
     const douban_rating = $('strong[property="v:average"]').text() || 0;
@@ -237,6 +236,7 @@ exports.getSummary = (req,resp)=>{
     }
 
     var episodesMatch = /集数:<\/span>(.*?)<br\/>/g.exec(body);
+    let episodes = 1;
     if (episodesMatch) {
       episodes = parseInt(episodesMatch[1].trim());
     }
