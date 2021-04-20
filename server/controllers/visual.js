@@ -202,13 +202,13 @@ exports.getSummary = (req,resp)=>{
     const awardsMatch = $('.award');
     if (awardsMatch) {
       var awards = [];
-      for (let i = 0; i < awardsMatch.length; i++) {
-        const award = $(awardsMatch[i]);
+      awardsMatch.toArray().forEach((item)=>{
+        const award = $(item);
         awards.push({
           nm: award.find('li:first-child a').text(),
           award: award.find('li:nth-child(2)').text()
         });
-      }
+      })
     }
 
     const reviews = getReviews($);
