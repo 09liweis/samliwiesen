@@ -152,7 +152,6 @@ exports.getSummary = (req,resp)=>{
     const title = $('span[property="v:itemreviewed"]').text();
     const douban_poster = $('img[rel="v:image"]').attr('src');
     const douban_rating = $('strong[property="v:average"]').text() || 0;
-    let duration = $('span[property="v:runtime"]').attr('content');
     const summary = $('span[property="v:summary"]').text().trim();
     const douban_vote_count = $('span[property="v:votes"]').text();
 
@@ -242,6 +241,7 @@ exports.getSummary = (req,resp)=>{
     }
 
     var durationMatch = /单集片长:<\/span>(.*?)<br\/>/g.exec(body);
+    let duration = $('span[property="v:runtime"]').attr('content');
     if (durationMatch) {
       duration = durationMatch[1].trim();
       if (/分钟/.test(duration)) {
