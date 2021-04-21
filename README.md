@@ -13,6 +13,7 @@ Tech Stack: Nodejs, ExpressJs, MongoDB, Angular 6 for Front End CMS, react for r
 * Implement mailchimp or email server
 
 # Dashboard Design
+https://quilljs.com
 
 # What I Watched Management Tool
 
