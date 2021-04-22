@@ -12,14 +12,14 @@ exports.add = (req, resp) => {
   const newBlog = new Blog(req.body);
   newBlog.save((err, blog) => {
     handleError(resp, err);
-    resp.json(blog);
+    return sendResp(resp,blog);
   });
 };
 
 exports.findDetail = (req, resp) => {
   Blog.findById(req.params.id, (err, blog) => {
     handleError(resp, err);
-    resp.json(blog);
+    return sendResp(resp,blog);
   });
 };
 
@@ -28,19 +28,19 @@ exports.update = (req, resp) => {
   updateblog.update_at = new Date();
   Blog.findOneAndUpdate({_id: req.params.id}, updateblog, {upsert: true}, (err, blog) => {
     handleError(resp, err);
-    resp.json(blog);
+    return sendResp(resp,blog);
   });
 };
 
 exports.remove = (req, resp) => {
   Blog.remove({_id: req.params.id}, (err) => {
     handleError(resp, err);
-    resp.status(200).json('ok');
+    return sendResp(resp,'ok');
   });
 };
 
 function handleError(resp, err) {
   if (err) {
-    return resp.status(400).json({err});
+    return sendErr(resp,err);
   }
 }
