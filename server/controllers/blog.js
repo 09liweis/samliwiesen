@@ -1,9 +1,10 @@
+const {sendResp} = require('../helpers/request');
 const Blog = require('../models/blog');
 
 exports.findList = (req, resp) => {
   Blog.find({}, '_id title url content image category published created_at').sort('-created_at').exec((err, blogs) => {
     handleError(resp, err);
-    resp.status(200).json(blogs);
+    return sendResp(resp,blogs);
   });
 };
 
