@@ -1,4 +1,4 @@
-const {sendRequest} = require('../helpers/request');
+const {sendRequest, sendResp, sendErr} = require('../helpers/request');
 const {getDoubanUrl,getReviews,getComments,getCast} = require('../helpers/douban');
 
 const IMDB_SITE = 'https://www.imdb.com/title/';
