@@ -12,10 +12,10 @@ Tech Stack: Nodejs, ExpressJs, MongoDB, Angular 6 for Front End CMS, react for r
 * Add ctrl + s / cmd + s to save content
 * Implement mailchimp or email server
 
-# Dashboard Design
-https://quilljs.com
+## Dashboard Design
+[Quilljs](https://quilljs.com)
 
-# What I Watched Management Tool
+## What I Watched Management Tool
 
-# Transaction
+## Transaction
 https://dribbble.com/shots/5465599-Order-Management/attachments/1182859
