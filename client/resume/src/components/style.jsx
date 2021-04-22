@@ -13,6 +13,7 @@ export const Box = styled.div`
   transform: translate3d(0,0,0);
   transition: 0.3s ease;
   margin-bottom: 20px;
+  backdrop-filter: blur(10px);
 `;
 export const BoxTitle = styled.h2`
   padding: 10px;
