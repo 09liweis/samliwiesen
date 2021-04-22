@@ -2,7 +2,7 @@
 
 Tech Stack: Nodejs, ExpressJs, MongoDB, Angular 6 for Front End CMS, react for resume site
 
-## Exist Feature
+## Todo List
 
 * Todo List [Demo link](https://samliweisen.herokuapp.com/#/todo)
 * Profolio Single Page (under development)
