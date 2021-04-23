@@ -17,7 +17,6 @@ const headers = {
 };
 
 exports.sendRequest = (url,method,resp,cb) => {
-  var opt = {url,method,headers};
   if (method == 'POST'){
     // opt.json = {douban_id}
     // json:{
@@ -25,7 +24,7 @@ exports.sendRequest = (url,method,resp,cb) => {
     // }
     //for post method
   }
-  request(opt, function (error, response, body) {
+  request({url,method,headers}, function (error, response, body) {
     var statusCode = 200;
     if (response) {
       statusCode = response.statusCode;
