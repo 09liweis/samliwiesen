@@ -96,8 +96,8 @@ exports.getCast = (req, resp) => {
       }
     }
     const receWorksMatch = $('#recent_movies .list-s li');
+    var recent_works = [];
     if (receWorksMatch) {
-      var recent_works = [];
       for (let i = 0; i < receWorksMatch.length; i++) {
         const work = $(receWorksMatch[i]);
         recent_works.push({
