@@ -8,9 +8,7 @@ const NUM_LIMIT = 30;
 
 exports.getTags = (req, resp) => {
   var {type} = req.body;
-  if (!type) {
-    type = 'movie';
-  }
+  type = type || 'movie';
   const url = `${DOUBAN_SITE_API}search_tags?type=${type}&source=`;
   sendRequest(url,'GET',resp,(statusCode,$,body) => {
     var tags = JSON.parse(body).tags;
