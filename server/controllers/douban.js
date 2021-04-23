@@ -65,9 +65,6 @@ exports.getPhotos = (req,resp) => {
   url += `?type=${type}&start=${(page - 1)*NUM_LIMIT}`;
   sendRequest(url, 'GET', resp, (statusCode, $) => {
     const title = $('#content h1').text();
-    if (!page) {
-      page = 1;
-    }
     const photos = getPhotos($);
     resp.status(statusCode).json({title,photos,types,page,type});
   });
