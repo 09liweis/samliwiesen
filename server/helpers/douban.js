@@ -24,12 +24,9 @@ exports.getPhotos = ($) => {
   return photos;
 }
 
-exports.getDoubanUrl = (douban_id,opt={}) => {
-  let apiName = '';
-  if (opt && opt.apiName) {
-    apiName = opt.apiName;
-  }
-  return `${DOUBAN_SITE}${douban_id}/${apiName}`;
+exports.getDoubanUrl = (douban_id,{apiName}) => {
+  let endPoint = '' || apiName;
+  return `${DOUBAN_SITE}${douban_id}/${endPoint}`;
 }
 
 function getAvtUrl(element) {
