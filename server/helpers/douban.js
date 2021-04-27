@@ -24,8 +24,8 @@ exports.getPhotos = ($) => {
   return photos;
 }
 
-exports.getDoubanUrl = (douban_id,{apiName}) => {
-  let endPoint = '' || apiName;
+exports.getDoubanUrl = (douban_id,opt = {}) => {
+  let endPoint = opt.apiName || '';
   return `${DOUBAN_SITE}${douban_id}/${endPoint}`;
 }
 
