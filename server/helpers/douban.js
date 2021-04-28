@@ -103,29 +103,30 @@ exports.getReviews = ($) => {
 exports.getComments = ($) => {
   const commentsMatch = $('.comment-item');
   var comments = [];
-  if (commentsMatch) {
-    for (var i = 0; i < commentsMatch.length; i++) {
-      var comment = $(commentsMatch[i]);
-      var rating = comment.find('.rating').attr('class');
-      if (typeof rating == 'string') {
-        try {
-          rating = rating.replace('rating','').replace('allstar','').trim();
-          rating = parseFloat(rating) / 10;
-        } catch (e) {
-          console.error(e)
-        }
+  if (!commentsMatch) {
+    return comments;
+  }
+  for (var i = 0; i < commentsMatch.length; i++) {
+    var comment = $(commentsMatch[i]);
+    var rating = comment.find('.rating').attr('class');
+    if (typeof rating == 'string') {
+      try {
+        rating = rating.replace('rating','').replace('allstar','').trim();
+        rating = parseFloat(rating) / 10;
+      } catch (e) {
+        console.error(e)
       }
-      const text = comment.find('.short').text();
-      if (text) {
-        comments.push({
-          text,
-          author: comment.find('.comment-info a').text(),
-          avt: comment.find('img').attr('src'),
-          date: comment.find('.comment-time').text().trim(),
-          rating,
-          vote: comment.find('.votes').text()
-        });
-      }
+    }
+    const text = comment.find('.short').text();
+    if (text) {
+      comments.push({
+        text,
+        author: comment.find('.comment-info a').text(),
+        avt: comment.find('img').attr('src'),
+        date: comment.find('.comment-time').text().trim(),
+        rating,
+        vote: comment.find('.votes').text()
+      });
     }
   }
   return comments;
