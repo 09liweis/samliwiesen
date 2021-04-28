@@ -114,7 +114,7 @@ exports.delete = (req, resp) => {
   //Delete transaction
   Transaction.remove({_id: req.params.id}, (err) => {
     handleError(resp, err);
-    resp.json({ok:1,msg:'Transaction Deleted'});
+    resp.status(200).json({ok:1,msg:'Transaction Deleted'});
   });
 };
 
