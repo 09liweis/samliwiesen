@@ -1,12 +1,8 @@
 const {sendRequest, sendResp, sendErr} = require('../helpers/request');
 const {getDoubanUrl,getReviews,getComments,getCast} = require('../helpers/douban');
+const {getImdbSummary} = require('../helpers/imdb');
 
-const IMDB_SITE = 'https://www.imdb.com/title/';
 const MISSING_DOUBAN_ID = 'Missing Douban Id';
-
-function getImdbUrl(imdb_id) {
-  return `${IMDB_SITE}${imdb_id}`;
-}
 
 exports.inTheatre = (req,resp) => {
   let {city} = req.body;
@@ -302,13 +298,9 @@ exports.getSummary = (req,resp)=>{
       return resp.status(statusCode).json(visual);
     }
     //handle scraping imdb data
-    url = getImdbUrl(imdb_id);
-    sendRequest(url,'GET',resp,function(statusCode,$,body) {
-      visual.imdb_title = $('.title_wrapper h1').text().trim();
-      visual.imdb_rating = $('span[itemprop="ratingValue"]').text();
-      visual.imdb_rating_count = $('span[itemprop="ratingCount"]').text();
-      visual.poster = $('.poster a img').attr('src');
+    getImdbSummary(imdb_id, (err, imdbObj) => {
+      visual = Object.assign(visual,imdbObj);
       return resp.status(statusCode).json(visual);
-    });
+    })
   });
 }
