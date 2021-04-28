@@ -70,32 +70,33 @@ exports.getCast = (cast,$) => {
 exports.getReviews = ($) => {
   const reviewsMatch = $('.main.review-item');
   var reviews = [];
-  if (reviewsMatch) {
-    reviewsMatch.toArray().forEach(item => {
-      var review = $(item);
-      var rating = review.find('.main-title-rating').attr('class');
-      if (typeof rating == 'string') {
-        try {
-          rating = rating.replace('main-title-rating','').replace('allstar','').trim();
-          rating = parseFloat(rating) / 10;
-        } catch (error) {
-          rating = 'N/A';
-          console.error(error);
-        }
-      }
-      reviews.push({
-        title: review.find('h2 a').text(),
-        content: review.find('.short-content').text(),
-        author: review.find('.name').text(),
-        avt: review.find('.avator img').attr('src'),
-        rating,
-        date: review.find('.main-meta').text(),
-        usefull_count: review.find('.action-btn.up span').text().trim(),
-        useless_count: review.find('.action-btn.down span').text().trim(),
-        reply_count: review.find('.reply').text()
-      });
-    });
+  if (!reviewsMatch) {
+    return reviews;
   }
+  reviewsMatch.toArray().forEach(item => {
+    var review = $(item);
+    var rating = review.find('.main-title-rating').attr('class');
+    if (typeof rating == 'string') {
+      try {
+        rating = rating.replace('main-title-rating','').replace('allstar','').trim();
+        rating = parseFloat(rating) / 10;
+      } catch (error) {
+        rating = 'N/A';
+        console.error(error);
+      }
+    }
+    reviews.push({
+      title: review.find('h2 a').text(),
+      content: review.find('.short-content').text(),
+      author: review.find('.name').text(),
+      avt: review.find('.avator img').attr('src'),
+      rating,
+      date: review.find('.main-meta').text(),
+      usefull_count: review.find('.action-btn.up span').text().trim(),
+      useless_count: review.find('.action-btn.down span').text().trim(),
+      reply_count: review.find('.reply').text()
+    });
+  });
   return reviews;
 }
 
