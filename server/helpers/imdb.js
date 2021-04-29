@@ -8,7 +8,10 @@ function getImdbUrl(imdb_id) {
 
 exports.getImdbSummary = (imdb_id,cb) => {
   var url = getImdbUrl(imdb_id);
-  sendRequest(url,'GET',null,function(statusCode,$,body) {
+  sendRequest({url},function(err,{$}) {
+    if (err) {
+      return cb(err,null);
+    }
     var imdbObj = {};
     imdbObj.imdb_title = $('.title_wrapper h1').text().trim();
     imdbObj.imdb_rating = $('span[itemprop="ratingValue"]').text();
