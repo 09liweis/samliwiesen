@@ -71,7 +71,7 @@ exports.getPhotos = (req,resp) => {
 exports.getCast = (req, resp) => {
   const {cast_id} = req.body;
   const url = `${CAST_DOUBAN_URL}${cast_id}/`;
-  sendRequest(url,'GET',resp,(statusCode,$,body) => {
+    sendRequest({url},(err,{statusCode,$,body}) => {
     const infoMatch = $('#headline .info li');
     const infos = {};
     if (infoMatch) {
