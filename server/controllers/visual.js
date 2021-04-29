@@ -11,7 +11,7 @@ exports.inTheatre = (req,resp) => {
     city = 'guangzhou';
   }
   const url = `https://movie.douban.com/cinema/nowplaying/${city}/`;
-  sendRequest(url,'GET',resp,function(statusCode,$,body) {
+  sendRequest({url},function(err,{statusCode,$}) {
     const listItems = $('.list-item');
     var movies = [];
     if (listItems) {
