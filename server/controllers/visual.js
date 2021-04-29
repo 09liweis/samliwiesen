@@ -64,7 +64,7 @@ exports.getCelebrities = (req,resp)=>{
     return resp.status(400).json({msg:MISSING_DOUBAN_ID});
   }
   const douban_url = getDoubanUrl(douban_id,{apiName:'celebrities'});
-  sendRequest(douban_url,'GET',resp,function(statusCode,$,body) {
+  sendRequest({url:douban_url},function(err,{statusCode,$,body}) {
     const castsMatch = $('.list-wrapper');
     let casts = [];
     for (let i = 0; i < castsMatch.length; i++) {
