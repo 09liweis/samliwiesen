@@ -144,7 +144,7 @@ exports.getSummary = (req,resp)=>{
     return resp.status(400).json({msg:MISSING_DOUBAN_ID});
   }
   douban_url = getDoubanUrl(douban_id);
-  sendRequest(douban_url,'GET',resp,function(statusCode,$,body) {
+  sendRequest({url:douban_url},function(err,{statusCode,$,body}) {
     const title = $('span[property="v:itemreviewed"]').text();
     const douban_poster = $('img[rel="v:image"]').attr('src');
     const douban_rating = $('strong[property="v:average"]').text() || 0;
