@@ -64,7 +64,7 @@ exports.getPhotos = (req,resp) => {
   sendRequest({url}, (err,{statusCode, $}) => {
     const title = $('#content h1').text();
     const photos = getPhotos($);
-    resp.status(statusCode).json({title,photos,types,page,type});
+    return sendResp(resp,{title,photos,types,page,type});
   });
 }
 
