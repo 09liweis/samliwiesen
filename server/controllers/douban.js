@@ -10,7 +10,7 @@ exports.getTags = (req, resp) => {
   var {type} = req.body;
   type = type || 'movie';
   const url = `${DOUBAN_SITE_API}search_tags?type=${type}&source=`;
-  sendRequest(url,'GET',resp,(statusCode,$,body) => {
+  sendRequest({url},(err,{statusCode,$,body}) => {
     var tags = JSON.parse(body).tags;
     resp.status(statusCode).json({type,tags,sorts:SORTS});
   });
