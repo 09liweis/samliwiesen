@@ -1,9 +1,12 @@
-const {sendRequest} = require('../helpers/request');
+const {sendRequest,sendErr} = require('../helpers/request');
 
 const IMDB_BOXOFFICE = 'https://www.imdb.com/chart/boxoffice';
 
 exports.getImdbBoxOffice = (req,resp) => {
-  sendRequest(IMDB_BOXOFFICE,'GET',resp,(statusCode, $) => {
+  sendRequest({url:IMDB_BOXOFFICE},(err,{statusCode, $}) => {
+    if (err) {
+      return sendErr(resp,err);
+    }
     const chart = $('table.chart tbody tr');
     let movies = [];
     if (chart) {
