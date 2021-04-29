@@ -117,7 +117,7 @@ exports.getComments = (req, resp) => {
     return resp.status(400).json({msg:MISSING_DOUBAN_ID});
   }
   const douban_url = getDoubanUrl(douban_id,{apiName:'comments'});
-  sendRequest(douban_url,'GET', resp, (statusCode,$,body) => {
+  sendRequest({url:douban_url}, (err,{statusCode,$,body}) => {
     const comments = getComments($);
     return resp.status(statusCode).json({comments});
   })
