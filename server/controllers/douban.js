@@ -1,4 +1,4 @@
-const {sendRequest} = require('../helpers/request');
+const {sendRequest,sendResp} = require('../helpers/request');
 const {getDoubanUrl,DOUBAN_SITE_API,getPhotos} = require('../helpers/douban');
 
 const CAST_DOUBAN_URL = 'https://movie.douban.com/celebrity/';
@@ -37,7 +37,7 @@ exports.getSubjects = (req, resp) => {
       delete visuals[i].rate;
       delete visuals[i].id;
     }
-    return resp.status(statusCode).json({tag:decodeURIComponent(tag),visuals,page,limit});
+    return sendResp(resp,{tag:decodeURIComponent(tag),visuals,page,limit});
   })
 }
 
