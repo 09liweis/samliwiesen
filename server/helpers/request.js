@@ -16,7 +16,7 @@ const headers = {
   'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36'
 };
 
-exports.sendRequest = (url,method,resp,cb) => {
+exports.sendRequest = ({url,method='GET'},cb) => {
   if (method == 'POST'){
     // opt.json = {douban_id}
     // json:{
@@ -30,10 +30,10 @@ exports.sendRequest = (url,method,resp,cb) => {
       statusCode = response.statusCode;
     }
     if (error || statusCode != 200) {
-      return resp.status(statusCode).json(error);
+      return cb(error,null);
     }
     var $ = getCheerio(body);
-    return cb(statusCode,$,body);
+    return cb(null,{statusCode,$,body});
   });
 }
 
