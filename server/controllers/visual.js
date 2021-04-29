@@ -91,7 +91,7 @@ exports.getPhotoDetail = (req, resp) => {
     return resp.json({msg:'No Photo Id'});
   }
   const douban_url = `https://movie.douban.com/photos/photo/${photo_id}`;
-  sendRequest(douban_url,'GET',resp,(statusCode,$,body) => {
+  sendRequest({url:douban_url},(err,{statusCode,$,body}) => {
     const commentsMatch = $('.comment-item');
     let comments = [];
     const uploader = $('.poster-info li:nth-child(5) a').text();
