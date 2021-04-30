@@ -1,4 +1,5 @@
 'use strict';
+const DEFAULT_PORT = 8080;
 const express = require('express'),
 path = require('path'),
 app = express(),
@@ -21,12 +22,12 @@ userRoute = require('./server/routes/user'),
 visualRoute = require('./server/routes/visual'),
 categoryRoute = require('./server/routes/category'),
 
-port = process.env.PORT || 8081;
+port = process.env.PORT || DEFAULT_PORT;
 
 mongoose.Promise = global.Promise;
 
 var dbUrl;
-if (port == 8081) {
+if (port == DEFAULT_PORT) {
   dbUrl = 'mongodb://localhost:27017/tdlisting';
 } else {
   dbUrl = 'mongodb+srv://samliweisen:`Qq363404661@samliweisen.3amrq.mongodb.net/heroku_6njptcbp?retryWrites=true&w=majority';
