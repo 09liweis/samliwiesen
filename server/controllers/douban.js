@@ -102,7 +102,7 @@ exports.getCast = (req, resp) => {
         });
       }
     }
-    resp.status(statusCode).json({
+    sendResp(resp,{
       cast_id,
       infos,
       name: $('#content h1').text(),
@@ -110,6 +110,6 @@ exports.getCast = (req, resp) => {
       intro: $('#intro .all.hidden').text().trim(),
       photos,
       recent_works
-    });
+    })
   });
 }
