@@ -81,7 +81,7 @@ exports.getCelebrities = (req,resp)=>{
         celebrities
       });
     }
-    resp.status(statusCode).json({douban_url,casts});
+    sendResp(resp,{douban_url,casts});
   });
 }
 
