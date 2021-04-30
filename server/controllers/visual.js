@@ -107,7 +107,7 @@ exports.getPhotoDetail = (req, resp) => {
         });
       }
     }
-    resp.status(statusCode).json({uploader,upload_date,comments});
+    sendResp(resp,{uploader,upload_date,comments});
   });
 }
 
