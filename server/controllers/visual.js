@@ -54,7 +54,7 @@ exports.search = (req, resp) => {
         });
       }
     }
-    resp.status(statusCode).json({keyword,visuals});
+    sendResp(resp,{keyword,visuals});
   });
 }
 
