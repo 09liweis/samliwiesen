@@ -28,7 +28,7 @@ exports.inTheatre = (req,resp) => {
         movies.push(movie);
       }
     }
-    resp.status(statusCode).json({city,movies});
+    sendResp(resp,{city,movies});
   });
 }
 
