@@ -53,7 +53,7 @@ exports.updateRandom = async (req,res) =>{
 exports.getList = (req, resp) => {
   Place.find({}, '_id place_id icon name address lat lng rating photos types').sort('-created_at').exec((err, places) => {
     if (err) return resp.json(err);
-    resp.status(200).json(places);
+    sendResp(resp,places);
   });
 };
 
