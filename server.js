@@ -111,6 +111,5 @@ app.use('/api/visuals', visualRoute);
 app.use('/api/category', categoryRoute);
 
 app.listen(port, () => {
-  console.log('Web server runs on: ' + port);
-  console.log(new Date());
+  console.log(`${new Date()} Web server runs on: ${port}`);
 });
