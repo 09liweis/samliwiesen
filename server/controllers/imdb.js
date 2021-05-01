@@ -1,4 +1,4 @@
-const {sendRequest,sendErr} = require('../helpers/request');
+const {sendRequest,sendResp,sendErr} = require('../helpers/request');
 
 const IMDB_BOXOFFICE = 'https://www.imdb.com/chart/boxoffice';
 
@@ -32,6 +32,6 @@ exports.getImdbBoxOffice = (req,resp) => {
       date: $('#boxoffice h4').text(),
       movies
     }
-    resp.status(statusCode).json(boxOffice);
+    sendResp(resp,boxOffice);
   });
 }
