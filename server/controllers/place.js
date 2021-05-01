@@ -1,8 +1,9 @@
 const https = require('https');
-var request = require('request');
 var ObjectID = require('mongodb').ObjectID
 var Place = require('../models/place');
 var Transaction = require('../models/transaction');
+const {sendResp} = require('../helpers/request');
+
 const API_KEY = 'AIzaSyA74jvNet0DufU8aoTe39dELLy2rVMeuos';
 const PLACE_DETAIL_API = 'https://maps.googleapis.com/maps/api/place/details/json?key='+API_KEY+'&place_id=';
 
