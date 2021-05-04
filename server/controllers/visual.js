@@ -65,22 +65,17 @@ exports.getCelebrities = (req,resp)=>{
   }
   const douban_url = getDoubanUrl(douban_id,{apiName:'celebrities'});
   sendRequest({url:douban_url},function(err,{statusCode,$,body}) {
-    const castsMatch = $('.list-wrapper');
-    let casts = [];
-    for (let i = 0; i < castsMatch.length; i++) {
-      const castSection = $(castsMatch[i]);
+    const castsMatches = $('.list-wrapper');
+    let casts = castsMatches.toArray().map((c) => {
+      const castSection = $(c);
       let castTl = castSection.find('h2').text()
       const celebritiesMatch = castSection.find('.celebrity');
-      let celebrities = [];
-      for (let j = 0; j < celebritiesMatch.length; j++) {
-        const celebrity = $(celebritiesMatch[j]);
-        celebrities.push(getCast(celebrity,$));
-      }
-      casts.push({
+      let celebrities = celebritiesMatch.toArray().map(c => getCast($(c),$));
+      return {
         tl:castTl,
         celebrities
-      });
-    }
+      };
+    });
     sendResp(resp,{douban_url,casts});
   });
 }
