@@ -300,7 +300,7 @@ exports.getSummary = (req,resp)=>{
     //handle scraping imdb data
     getImdbSummary(imdb_id, (err, imdbObj) => {
       visual = Object.assign(visual,imdbObj);
-      return resp.status(statusCode).json(visual);
+      return sendResp(resp,visual);
     })
   });
 }
