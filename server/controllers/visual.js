@@ -295,7 +295,7 @@ exports.getSummary = (req,resp)=>{
       imdb_id,
     };
     if (!imdb_id) {
-      return resp.status(statusCode).json(visual);
+      return sendResp(resp,visual);
     }
     //handle scraping imdb data
     getImdbSummary(imdb_id, (err, imdbObj) => {
