@@ -8,24 +8,23 @@ exports.getImdbBoxOffice = (req,resp) => {
       return sendErr(resp,err);
     }
     const chart = $('table.chart tbody tr');
-    let movies = [];
     if (chart) {
-      for (let i = 0; i < chart.length; i++) {
-        const movie = $(chart[i]);
+      var movies = chart.toArray().map((c)=>{
+        const movie = $(c);
         const [weekend,gross] = movie.find('.ratingColumn').text().trim().split('  ');
         var imdbUrl = movie.find('.posterColumn a').attr('href').split('?')[0];
         if (imdbUrl) {
           var imdb_id = imdbUrl.split('/')[2];
         }
-        movies.push({
+        return {
           imdb_id,
           title: movie.find('.titleColumn a').text(),
           poster: movie.find('.posterColumn img').attr('src'),
           weekend,
           gross,
           weeks: movie.find('.weeksColumn').text()
-        });
-      }
+        };
+      });
     }
     let boxOffice = {
       title: $('h1.header').text(),
