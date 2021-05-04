@@ -119,7 +119,7 @@ exports.getComments = (req, resp) => {
   const douban_url = getDoubanUrl(douban_id,{apiName:'comments'});
   sendRequest({url:douban_url}, (err,{statusCode,$,body}) => {
     const comments = getComments($);
-    return resp.status(statusCode).json({comments});
+    return sendResp(resp,{comments});
   })
 }
 
