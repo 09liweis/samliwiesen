@@ -97,15 +97,15 @@ exports.getPhotoDetail = (req, resp) => {
     const uploader = $('.poster-info li:nth-child(5) a').text();
     const upload_date = $('.poster-info li:nth-child(6)').text();
     if (commentsMatch) {
-      for (let i = 0; i < commentsMatch.length; i++) {
-        const comment = $(commentsMatch[i]);
-        comments.push({
+      comments = commentsMatch.toArray().map((c) => {
+        const comment = $(c);
+        return {
           pic:comment.find('img').attr('src'),
           date: comment.find('.author span').text(),
           author: comment.find('.author a').text(),
           content: comment.find('p').text()
-        });
-      }
+        };
+      });
     }
     sendResp(resp,{uploader,upload_date,comments});
   });
