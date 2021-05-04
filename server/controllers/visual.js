@@ -207,11 +207,7 @@ exports.getSummary = (req,resp)=>{
 
     const castMatches = $('.celebrity');
     if (castMatches) {
-      var casts = []
-      for(var i = 0; i < castMatches.length; i++) {
-        var cast = $(castMatches[i]);
-        casts.push(getCast(cast,$));
-      }
+      var casts = castMatches.toArray().map(c => getCast($(c), $));
     }
 
     var websiteMatch = /官方网站:<\/span>(.*?)<br\/>/g.exec(body);
