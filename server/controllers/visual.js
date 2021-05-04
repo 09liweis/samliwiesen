@@ -173,9 +173,8 @@ exports.getSummary = (req,resp)=>{
 
     const photosMatch = $('.related-pic-bd li');
     if (photosMatch) {
-      var photos = [];
-      photosMatch.toArray().forEach((item) => {
-        const media = $(item);
+      var photos = photosMatch.toArray().map((p) => {
+        const media = $(p);
         let tp = 'photo';
         let src = media.find('img').attr('src');
         let href = media.find('a').attr('href');
@@ -187,7 +186,7 @@ exports.getSummary = (req,resp)=>{
             src = imgMatches[1];
           }
         }
-        photos.push({tp,src,href});
+        return {tp,src,href};
       })
     }
 
