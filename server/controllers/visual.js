@@ -193,14 +193,12 @@ exports.getSummary = (req,resp)=>{
 
     const awardsMatch = $('.award');
     if (awardsMatch) {
-      var awards = [];
-      awardsMatch.toArray().forEach((item)=>{
-        const award = $(item);
-        awards.push({
-          nm: award.find('li:first-child a').text(),
-          award: award.find('li:nth-child(2)').text()
-        });
-      })
+      var awards = awardsMatch.toArray().map((a)=>{
+        return {
+          nm: $(a).find('li:first-child a').text(),
+          award: $(a).find('li:nth-child(2)').text()
+        }
+      });
     }
 
     const reviews = getReviews($);
