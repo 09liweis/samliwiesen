@@ -214,7 +214,7 @@ exports.getSummary = (req,resp)=>{
     if (websiteMatch) {
       var website = $(websiteMatch[1]).text().trim();
       if (website.indexOf('http') == -1) {
-        website = `http://${website}`;
+        website = `https://${website}`;
       }
     }
     var originalTitleMatch = /又名:<\/span>(.*?)<br\/>/g.exec(body);
