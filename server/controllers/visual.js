@@ -131,7 +131,7 @@ exports.getReviews = (req,resp) => {
   const douban_url = getDoubanUrl(douban_id,{apiName:'reviews'});
   sendRequest({url:douban_url},(err,{statusCode,$,body}) => {
     const reviews = getReviews($);
-    return resp.status(statusCode).json({reviews});
+    return sendResp(resp,{reviews});
   });
 }
 
