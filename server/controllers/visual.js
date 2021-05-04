@@ -158,15 +158,14 @@ exports.getSummary = (req,resp)=>{
 
     const recommendsMatch = $('.recommendations-bd dl');
     if (recommendsMatch) {
-      var recommends = [];
-      for (var i = 0; i < recommendsMatch.length; i++) {
-        var recommend = $(recommendsMatch[i]);
-        recommends.push({
+      var recommends = recommendsMatch.toArray().map((r)=>{
+        var recommend = $(r);
+        return {
           img: recommend.find('dt img').attr('src'),
           title: recommend.find('dd a').text(),
           url: recommend.find('dd a').attr('href')
-        });
-      }
+        };
+      });
     }
 
     const comments = getComments($);
