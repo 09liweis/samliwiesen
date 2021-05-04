@@ -153,11 +153,7 @@ exports.getSummary = (req,resp)=>{
 
     const genresMatch = $('span[property="v:genre"]');
     if (genresMatch) {
-      var genres = [];
-      for (let i = 0; i < genresMatch.length; i++) {
-        const genre = $(genresMatch[i]);
-        genres.push(genre.text());
-      }
+      var genres = genresMatch.toArray().map(g => $(g).text());
     }
 
     const recommendsMatch = $('.recommendations-bd dl');
