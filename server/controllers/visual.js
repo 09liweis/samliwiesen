@@ -28,7 +28,7 @@ exports.inTheatre = (req,resp) => {
         movies.push(movie);
       }
     }
-    sendResp(resp,{city,movies});
+    return sendResp(resp,{city,movies});
   });
 }
 
