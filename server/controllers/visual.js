@@ -88,11 +88,10 @@ exports.getPhotoDetail = (req, resp) => {
   const douban_url = `https://movie.douban.com/photos/photo/${photo_id}`;
   sendRequest({url:douban_url},(err,{statusCode,$,body}) => {
     const commentsMatch = $('.comment-item');
-    let comments = [];
     const uploader = $('.poster-info li:nth-child(5) a').text();
     const upload_date = $('.poster-info li:nth-child(6)').text();
     if (commentsMatch) {
-      comments = commentsMatch.toArray().map((c) => {
+      var comments = commentsMatch.toArray().map((c) => {
         const comment = $(c);
         return {
           pic:comment.find('img').attr('src'),
