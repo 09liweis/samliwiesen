@@ -86,13 +86,7 @@ exports.getCast = (req, resp) => {
     }
     const photosMatch = $('#photos li a');
     if (photosMatch) {
-      var photos = [];
-      for (let i = 0; i < photosMatch.length; i++) {
-        const photo = $(photosMatch[i]);
-        photos.push({
-          src: photo.find('img').attr('src')
-        });
-      }
+      var photos = photosMatch.toArray().map(p => $(p).find('img').attr('src'));
     }
     const receWorksMatch = $('#recent_movies .list-s li');
     var recent_works = [];
