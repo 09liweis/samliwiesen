@@ -70,10 +70,7 @@ exports.getCelebrities = (req,resp)=>{
       let castTl = castSection.find('h2').text()
       const celebritiesMatch = castSection.find('.celebrity');
       let celebrities = celebritiesMatch.toArray().map(c => getCast($(c),$));
-      return {
-        tl:castTl,
-        celebrities
-      };
+      return { tl:castTl, celebrities };
     });
     sendResp(resp,{douban_url,casts});
   });
