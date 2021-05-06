@@ -43,16 +43,16 @@ exports.search = (req, resp) => {
     const results = $('.search_results_subjects a');
     let visuals = [];
     if (results) {
-      for (let i = 0; i < results.length; i++) {
-        const visual = $(results[i]);
+      visuals = results.toArray().map((r)=>{
+        const visual = $(r);
         const [a,movie,subject,douban_id,b] = visual.attr('href').split('/');
-        visuals.push({
+        return {
           douban_id,
           poster: visual.find('img').attr('src'),
           name: visual.find('.subject-title').text(),
           rating: visual.find('.rating span:nth-child(2)').text()
-        });
-      }
+        };
+      });
     }
     sendResp(resp,{keyword,visuals});
   });
