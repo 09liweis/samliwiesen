@@ -89,16 +89,15 @@ exports.getCast = (req, resp) => {
       var photos = photosMatch.toArray().map(p => $(p).find('img').attr('src'));
     }
     const receWorksMatch = $('#recent_movies .list-s li');
-    var recent_works = [];
     if (receWorksMatch) {
-      for (let i = 0; i < receWorksMatch.length; i++) {
-        const work = $(receWorksMatch[i]);
-        recent_works.push({
+      var recent_works = receWorksMatch.toArray().map((r)=>{
+        const work = $(r);
+        return {
           img: work.find('.pic img').attr('src'),
           title: work.find('.info a').text(),
           rating: work.find('.info em').text()
-        });
-      }
+        };
+      });
     }
     sendResp(resp,{
       cast_id,
