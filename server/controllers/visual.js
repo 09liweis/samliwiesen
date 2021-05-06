@@ -41,9 +41,8 @@ exports.search = (req, resp) => {
   const url = `https://m.douban.com/search/?query=${encodeURIComponent(keyword)}&type=movie`;
   sendRequest({url},function(err,{statusCode,$,body}) {
     const results = $('.search_results_subjects a');
-    let visuals = [];
     if (results) {
-      visuals = results.toArray().map((r)=>{
+      var visuals = results.toArray().map((r)=>{
         const visual = $(r);
         const [a,movie,subject,douban_id,b] = visual.attr('href').split('/');
         return {
