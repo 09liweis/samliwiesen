@@ -75,7 +75,7 @@ exports.getPhotos = (req,resp) => {
 exports.getCast = (req, resp) => {
   const {cast_id} = req.body;
   const url = `${CAST_DOUBAN_URL}${cast_id}/`;
-    sendRequest({url},(err,{statusCode,$,body}) => {
+  sendRequest({url},(err,{statusCode,$,body}) => {
     const infoMatch = $('#headline .info li');
     const infos = {};
     if (infoMatch) {
@@ -92,9 +92,14 @@ exports.getCast = (req, resp) => {
     if (receWorksMatch) {
       var recent_works = receWorksMatch.toArray().map((r)=>{
         const work = $(r);
+        var workDoubanUrl = work.find('.info a').attr('href');
+        if (workDoubanUrl) {
+          var douban_id = workDoubanUrl.split('/')[4]
+        }
         return {
           img: work.find('.pic img').attr('src'),
           title: work.find('.info a').text(),
+          douban_id,
           rating: work.find('.info em').text()
         };
       });
