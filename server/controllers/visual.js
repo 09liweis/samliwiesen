@@ -150,10 +150,14 @@ exports.getSummary = (req,resp)=>{
     if (recommendsMatch) {
       var recommends = recommendsMatch.toArray().map((r)=>{
         var recommend = $(r);
+        var url = recommend.find('dd a').attr('href');
+        if (url) {
+          var douban_id = url.split('/')[4];
+        }
         return {
           img: recommend.find('dt img').attr('src'),
           title: recommend.find('dd a').text(),
-          url: recommend.find('dd a').attr('href')
+          douban_id
         };
       });
     }
