@@ -50,7 +50,6 @@ mongoose.connection.on('disconnected', function () {
 
 app.use(function (req, res, next) {
   var host = req.headers.host;
-  console.log(host, req.protocol);
   // if (host != 'localhost:8081' && req.protocol == 'http') {
   //   return res.redirect('https://' + req.headers.host + req.url);
   // }
