@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
 Todo = require('../models/todo');
+var {sendResp} = require('../helpers/request');
 
 const STRINGS = {
   BAD_ID: 'Invalid todo id',
@@ -24,7 +25,7 @@ exports.findList = (req, resp) => {
   }
   Todo.find(query, '_id name date steps status', options).sort('-created_at').exec((err, todos) => {
     handleError(resp, err);
-    resp.status(200).json(todos);
+    return sendResp(resp,todos);
   });
 };
 
