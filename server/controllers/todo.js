@@ -46,7 +46,7 @@ exports.create = (req, res) => {
   const newTodo = new Todo(todo);
   newTodo.save((err, todo) => {
     handleError(res, err);
-    res.status(200).json(todo);
+    return sendResp(res,todo);
   });
 };
 
