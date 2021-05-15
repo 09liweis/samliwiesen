@@ -29,7 +29,7 @@ exports.getSubjects = (req, resp) => {
   const page_limit = limit || NUM_LIMIT;
   const page_start = ((page - 1) || 0) * page_limit;
   const url = `${DOUBAN_SITE_API}search_subjects?sort=${sort}&type=${type}&tag=${tag}&page_limit=${page_limit}&page_start=${page_start}`;
-    sendRequest({url}, (err,{statusCode,$,body}) => {
+  sendRequest({url}, (err,{statusCode,$,body}) => {
     var visuals = JSON.parse(body).subjects;
     for (let i = 0; i < visuals.length; i++) {
       const {cover,rate,id,episodes_info} = visuals[i];
@@ -42,7 +42,7 @@ exports.getSubjects = (req, resp) => {
       delete visuals[i].id;
     }
     return sendResp(resp,{tag:decodeURIComponent(tag),visuals,page,limit});
-  })
+  });
 }
 
 exports.getPhotos = (req,resp) => {
