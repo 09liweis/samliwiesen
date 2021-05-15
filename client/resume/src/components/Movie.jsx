@@ -44,13 +44,13 @@ const Visual = styled.div`
     transform: translateX(2px);
   }
   @media (min-width: 426px) {
-    width: 50%;
+    width: ${100/2}%;
   }
   @media (min-width: 570px) {
-    width: 33.333%;
+    width: ${100/4}%;
   }
   @media (min-width: 768px) {
-    width: 20%;
+    width: ${100/6}%;
   }
 `;
 const VisualTitle = styled.h3`
