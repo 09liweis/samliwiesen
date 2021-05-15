@@ -53,7 +53,7 @@ exports.updateRandom = async (req,res) =>{
 exports.getList = (req, resp) => {
   Place.find({}, '_id place_id icon name address lat lng rating photos types').sort('-created_at').exec((err, places) => {
     if (err) return resp.json(err);
-    sendResp(resp,places);
+    return sendResp(resp,places);
   });
 };
 
@@ -68,7 +68,7 @@ exports.getDetail = async function(req, resp) {
   }
   const transactions = await Transaction.find({place: p._id},'_id title price date category');
   p.transactions = transactions
-  resp.status(200).json(p);
+  return sendResp(resp,p);
 };
 exports.upsert = async function(req, resp) {
   var {place_id, name, address, lat, lng} = req.body;
