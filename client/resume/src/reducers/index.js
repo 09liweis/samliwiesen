@@ -6,6 +6,7 @@ import nav from './nav.js';
 import blogs from './blogs.js';
 import skills from './skills.js';
 import todos from './todos.js';
+import movies from './movies.js';
 
 export default combineReducers({
   blogs,
@@ -14,5 +15,6 @@ export default combineReducers({
   experiences,
   skills,
   todos,
-  characters
+  characters,
+  movies
 });
