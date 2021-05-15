@@ -90,5 +90,5 @@ exports.upsert = async function(req, resp) {
     p.lng = place.lng;
     await Place.findOneAndUpdate({_id: p._id}, p, {upsert: true});
   }
-  resp.status(200).json(p);
+  return sendResp(resp,p);
 };
