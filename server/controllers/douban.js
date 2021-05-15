@@ -16,7 +16,7 @@ exports.getTags = (req, resp) => {
     } catch (error) {
       var tags = [];
     }
-    resp.status(statusCode).json({type,tags,sorts:SORTS});
+    return sendResp(resp,{type,tags,sorts:SORTS});
   });
 }
 
