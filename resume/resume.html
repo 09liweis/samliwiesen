@@ -101,19 +101,19 @@
   <!-- <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=725a691f58945b3391bc415e4da7107c"></script> -->
   <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA74jvNet0DufU8aoTe39dELLy2rVMeuos&libraries=places"></script> -->
   <script>
-      if ('serviceWorker' in window.navigator) {
-      window.addEventListener('load', function() {
-          window.navigator.serviceWorker.register('/resume/sw.js').then(function(registration) {
-            console.log('Worker registration successful', registration.scope);
-          }, function(err) {
-            console.log('Worker registration failed', err);
-          }).catch(function(err) {
-            console.log(err);
-          });
-      });
-      } else {
-        console.log('Service Worker is not supported by browser.');
-      }
+    if ('serviceWorker' in window.navigator) {
+    window.addEventListener('load', function() {
+      window.navigator.serviceWorker.register('/resume/sw.js').then(function(registration) {
+        console.log('Worker registration successful', registration.scope);
+      }, function(err) {
+        console.log('Worker registration failed', err);
+      }).catch(function(err) {
+        console.log(err);
+        });
+    });
+    } else {
+      console.log('Service Worker is not supported by browser.');
+    }
   </script>
   <script type="text/javascript" src="/resume/index_bundle.js?v=401"></script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
