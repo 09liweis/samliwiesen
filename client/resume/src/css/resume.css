@@ -72,6 +72,11 @@ ul li:hover {
 .navItem:hover {
   color:#000;
 }
+#status {
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+}
 .container {
   max-width: 1200px;
   width: 100%;
