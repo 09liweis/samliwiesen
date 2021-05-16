@@ -9,6 +9,7 @@ import reducer from './reducers';
 // import { getCharacters } from './reducer/characters/actions';
 
 import BackgroundCanvas from './components/BackgroundCanvas.jsx';
+import Status from './components/Status.jsx';
 import Nav from './components/Nav.jsx';
 
 import Widgets from './components/Widgets.jsx';
@@ -38,6 +39,7 @@ export default class Main extends React.Component {
           <div>
             <BackgroundCanvas />
             <Nav key="nav" />
+            <Status key="status"/>
             <div id="mainContainer" className="container">
               <Widgets/>
               <main id="main">
