@@ -25,8 +25,8 @@ const Status = () => {
   getBatteryStatus();
   return(
     <header id="status">
-      <span>{level}</span>
-      <span>{isCharging?'charging':''}</span>
+      <div className="carrie"></div>
+      <div className={`battery ${isCharging?'charging':''}`}>{level * 100}</div>
     </header>
   );
 }

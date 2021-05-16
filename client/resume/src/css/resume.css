@@ -73,9 +73,23 @@ ul li:hover {
   color:#000;
 }
 #status {
+  font-size: 12px;
   max-width: 1200px;
   margin: auto;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.battery {
+  margin-right: 10px;
+  border: 1px solid;
+  background-color: #fff;
+  padding: 1px;
+  outline: 2px solid #fff;
+}
+.battery.isCharging {
+
 }
 .container {
   max-width: 1200px;
