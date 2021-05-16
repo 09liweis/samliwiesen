@@ -38,8 +38,8 @@ export default class Main extends React.Component {
         <HashRouter key="page">
           <div>
             <BackgroundCanvas />
-            <Nav key="nav" />
             <Status key="status"/>
+            <Nav key="nav" />
             <div id="mainContainer" className="container">
               <Widgets/>
               <main id="main">
