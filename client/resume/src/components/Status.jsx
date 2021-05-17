@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+import Clock from './Clock.jsx';
 
 const Status = () => {
   const [level, setLevel] = useState(0);
@@ -26,9 +27,12 @@ const Status = () => {
   return(
     <header id="status">
       <div className="carrie"></div>
-      <div className={`battery ${isCharging?'charging':''}`}>
-        {isCharging ? <span className="fa fa-bolt"></span> : null}
-        <div className="battery__level">{level * 100}%</div>
+      <div className="rightContainer">
+        <Clock />
+        <div className={`battery ${isCharging?'charging':''}`}>
+          {isCharging ? <span className="fa fa-bolt"></span> : null}
+          <div className="battery__level">{level * 100}%</div>
+        </div>
       </div>
     </header>
   );
