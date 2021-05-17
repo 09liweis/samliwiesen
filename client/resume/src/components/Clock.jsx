@@ -1,9 +1,12 @@
 import React,{useState,useEffect} from 'react';
 import styled from 'styled-components';
 
-const Dates = styled.span`
+const Dates = styled.div`
   font-size: 1em;
-  margin-right: 10px;
+`;
+
+const ClockContainer = styled.div`
+  margin-right: 5px;
 `;
 
 const getCurrentTime = () => {
@@ -32,11 +35,14 @@ const getCurrentTime = () => {
 const Clock = () => {
   const [clock, setClock] = useState(getCurrentTime());
   const {year,month,day,hour,min,sec} = clock;
+  setInterval(() => {
+    setClock(getCurrentTime());
+  }, 1000);
   return (
-    <div>
+    <ClockContainer>
       <Dates>{year}-{month}-{day}</Dates>
       <span>{hour} : {min} : {sec}</span>
-    </div>
+    </ClockContainer>
   );
 }
 export default Clock;
