@@ -83,13 +83,32 @@ ul li:hover {
 }
 .battery {
   margin-right: 10px;
-  border: 1px solid;
-  background-color: #fff;
-  padding: 1px;
-  outline: 2px solid #fff;
+  border: 3px solid #333;
+  padding: 2px;
+  border-radius: 4px;
+  position: relative;
 }
-.battery.isCharging {
-
+.battery::before {
+  content: "";
+  height: 18px;
+  width: 3px;
+  background: #333;
+  display: block;
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 0px 4px 4px 0;
+}
+.battery__level {
+  padding: 2px 10px;
+  background-color: #30b455;
+}
+.battery.charging .fa-bolt {
+  position: absolute;
+  right: 3px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .container {
   max-width: 1200px;

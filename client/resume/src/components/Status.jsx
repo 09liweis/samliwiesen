@@ -26,7 +26,10 @@ const Status = () => {
   return(
     <header id="status">
       <div className="carrie"></div>
-      <div className={`battery ${isCharging?'charging':''}`}>{level * 100}</div>
+      <div className={`battery ${isCharging?'charging':''}`}>
+        {isCharging ? <span className="fa fa-bolt"></span> : null}
+        <div className="battery__level">{level * 100}%</div>
+      </div>
     </header>
   );
 }
