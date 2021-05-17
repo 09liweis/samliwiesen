@@ -81,6 +81,10 @@ ul li:hover {
   justify-content: space-between;
   margin-bottom: 5px;
 }
+.rightContainer {
+  display: flex;
+  align-items: center;
+}
 .battery {
   margin-right: 10px;
   border: 3px solid #333;
