@@ -7,6 +7,7 @@ import blogs from './blogs.js';
 import skills from './skills.js';
 import todos from './todos.js';
 import movies from './movies.js';
+import videos from './videos.js';
 
 export default combineReducers({
   blogs,
@@ -16,5 +17,6 @@ export default combineReducers({
   skills,
   todos,
   characters,
-  movies
+  movies,
+  videos
 });
