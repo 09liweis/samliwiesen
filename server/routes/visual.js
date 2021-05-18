@@ -4,6 +4,7 @@ const router = express.Router();
 const {search,inTheatre,getCelebrities,getSummary,getPhotoDetail,getComments,getReviews} = require('../controllers/visual.js');
 const {getImdbBoxOffice} = require('../controllers/imdb.js');
 const {getSubjects,getTags,getPhotos,getCast} = require('../controllers/douban.js');
+const {getBilibili} = require('../controllers/bilibili.js');
 
 router.route('/search').post(search);
 
@@ -28,5 +29,7 @@ router.route('/imdb_boxoffice').post(getImdbBoxOffice);
 router.route('/douban').post(getSubjects);
 
 router.route('/douban/tags').post(getTags);
+
+router.route('/bilibili').post(getBilibili);
 
 module.exports = router;
