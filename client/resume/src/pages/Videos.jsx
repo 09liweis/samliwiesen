@@ -3,7 +3,7 @@ import { useSelector,useDispatch } from 'react-redux';
 import {getVideos} from '../actions/video';
 import {Box, BoxTitle, BoxBody} from '../components/style.jsx';
 
-import '../css/movies.css';
+import '../css/videos.css';
 
 const Movies = () => {
   var [page,setPage] = useState(1);
@@ -14,14 +14,17 @@ const Movies = () => {
   },[]);
   const visuals = items.map((v) => {
     return (
-      <Movie v={v} key={v.id} />
+      <a href={`https://www.bilibili.com/video/${v.bvid}`} target="_blank" className="bVideo" key={v.bvid}>
+        <img src={v.pic} />
+        <h4>{v.title}</h4>
+      </a>
     );
   });
   return (
     <Box className="movies">
       <BoxTitle>
         <i className="boxIcon fa fa-film" aria-hidden="true"></i>
-        <span>What I Watched</span>
+        <span>Vlog</span>
       </BoxTitle>
       <BoxBody>
         <div className="visual__list">
