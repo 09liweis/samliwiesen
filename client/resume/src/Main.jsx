@@ -16,6 +16,7 @@ import Widgets from './components/Widgets.jsx';
 
 import Home from './pages/Home.jsx';
 import Todo from './pages/Todo.jsx';
+import Videos from './pages/Videos.jsx';
 import Movies from './pages/Movies.jsx';
 import Movie from './pages/Movie.jsx';
 import Blogs from './pages/Blogs.jsx';
@@ -48,6 +49,7 @@ export default class Main extends React.Component {
                 <Route path='/movies' component={Movies} />
                 <Route path='/movie/:id' component={Movie} />
                 <Route path='/blogs' component={Blogs} />
+                <Route path='/videos' component={Videos} />
                 <Route path='/comments' component={Comments} />
                 {/* <Route path='/transactions' component={Transactions} /> */}
               </main>
