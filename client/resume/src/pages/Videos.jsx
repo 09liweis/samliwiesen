@@ -7,11 +7,16 @@ import '../css/movies.css';
 
 const Movies = () => {
   var [page,setPage] = useState(1);
-  const {items,loading} = useSelector(state => state.vidoes);
+  const {items,loading} = useSelector(state => state.videos);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getVideos());
   },[]);
+  const visuals = items.map((v) => {
+    return (
+      <Movie v={v} key={v.id} />
+    );
+  });
   return (
     <Box className="movies">
       <BoxTitle>
