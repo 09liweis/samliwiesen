@@ -6,7 +6,7 @@ const navs = [
   {url:'/',tl:'home',icon:'fa fa-home'},
   {url:'/movies',tl:'movies',icon:'fa fa-film'},
   {url:'/blogs',tl:'blogs',icon:'fa fa-rss'},
-  {url:'/videos',tl:'videos',icon:'fa fa-film'},
+  {url:'/videos',tl:'vlog',icon:'fa fa-film'},
   {url:'/todo',tl:'todos',icon:'fa fa-list-ol'},
   {url:'/comments',tl:'comments',icon:'fa fa-comments'},
 ];
