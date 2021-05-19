@@ -11,6 +11,7 @@ Tech Stack: Nodejs, ExpressJs, MongoDB, Angular 6 for Front End CMS, react for r
 * Add snackbar for saving contents
 * Add ctrl + s / cmd + s to save content
 * Implement mailchimp or email server
+* movies page add [link](https://piaofang.maoyan.com/dashboard-ajax/movie)
 
 ## Dashboard Design
 [Quilljs](https://quilljs.com)
