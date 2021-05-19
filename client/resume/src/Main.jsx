@@ -8,7 +8,6 @@ import thunk from 'redux-thunk';
 import reducer from './reducers';
 // import { getCharacters } from './reducer/characters/actions';
 
-import BackgroundCanvas from './components/BackgroundCanvas.jsx';
 import Status from './components/Status.jsx';
 import Nav from './components/Nav.jsx';
 
@@ -38,7 +37,6 @@ export default class Main extends React.Component {
       <Provider store={store} key="provider">
         <HashRouter key="page">
           <div>
-            <BackgroundCanvas />
             <Status key="status"/>
             <Nav key="nav" />
             <div id="mainContainer" className="container">
