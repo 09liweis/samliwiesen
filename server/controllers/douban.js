@@ -6,6 +6,10 @@ const SORTS = ['recommend','time','rank'];
 
 const NUM_LIMIT = 30;
 
+exports.getAlltimeBoxOffice = (req, resp) => {
+  const url = 'https://www.douban.com/doulist/1641439/'
+}
+
 exports.getTags = (req, resp) => {
   var {type} = req.body;
   type = type || 'movie';
