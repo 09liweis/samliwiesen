@@ -5,6 +5,7 @@ const {search,inTheatre,getCelebrities,getSummary,getPhotoDetail,getComments,get
 const {getImdbBoxOffice} = require('../controllers/imdb.js');
 const {getSubjects,getTags,getPhotos,getCast} = require('../controllers/douban.js');
 const {getBilibili} = require('../controllers/bilibili.js');
+const {getMaoyan} = require('../controllers/maoyan.js');
 
 router.route('/search').post(search);
 
@@ -31,5 +32,7 @@ router.route('/douban').post(getSubjects);
 router.route('/douban/tags').post(getTags);
 
 router.route('/bilibili').post(getBilibili);
+
+router.route('/maoyan').post(getMaoyan);
 
 module.exports = router;
