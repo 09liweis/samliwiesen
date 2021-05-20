@@ -10,6 +10,10 @@ exports.getAlltimeBoxOffice = (req, resp) => {
   const url = 'https://www.douban.com/doulist/1641439/'
 }
 
+exports.getCurrentChinaBoxOffice = (req,resp) => {
+  const url = 'https://www.endata.com.cn/BoxOffice/BO/RealTime/reTimeBO.html';
+}
+
 exports.getTags = (req, resp) => {
   var {type} = req.body;
   type = type || 'movie';
