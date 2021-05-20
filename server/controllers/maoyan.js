@@ -8,7 +8,11 @@ exports.getMaoyan = (req,resp) => {
     } catch (error) {
       var ret = {};
     }
-    console.log(ret);
-    return sendResp(resp,ret);
+    var maoyan = {};
+    var {movieList} = ret;
+    if (movieList) {
+      maoyan.movies = movieList.data.list;
+    }
+    return sendResp(resp,maoyan);
   });
 }
