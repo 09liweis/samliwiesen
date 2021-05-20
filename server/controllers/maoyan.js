@@ -1,3 +1,4 @@
+//Blocked by maoyan
 const {sendRequest, sendResp, sendErr} = require('../helpers/request');
 
 exports.getMaoyan = (req,resp) => {
