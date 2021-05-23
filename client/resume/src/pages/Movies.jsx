@@ -11,7 +11,9 @@ const Movies = () => {
   const {items,loading} = useSelector(state => state.movies);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getMovies({limit:15,page}));
+    if (items.length == 0) {
+      dispatch(getMovies({limit:15,page}));
+    }
   },[]);
   const handleLoadmore = () => {
     page += 1;
