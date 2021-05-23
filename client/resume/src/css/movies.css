@@ -28,6 +28,25 @@
   vertical-align: middle;
   color: #86643d;
 }
+.visual__status {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 2px 3px;
+  border-radius: 5px;
+  color: #FFFFFF;
+  min-width: 44px;
+  text-align: center;
+}
+.visual__status.done {
+  background-color: #3e8c3e;
+}
+.visual__status.in_progress {
+  background-color: #ffc107;
+}
+.visual__status.not_started {
+  background-color: red;
+}
 .visual__loadmore {
   text-align:center;
   cursor: pointer;

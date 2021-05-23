@@ -2,25 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const Status = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 2px 3px;
-  border-radius: 5px;
-  color: #FFFFFF;
-  min-width: 44px;
-  text-align: center;
-  &.done {
-    background-color: #3e8c3e;
-  }
-  &.in_progress {
-    background-color: #ffc107;
-  }
-  &.not_started {
-    background-color: red;
-  }
-`;
 const ReleaseDate = styled.div`
   position: absolute;
   top: 0;
@@ -87,7 +68,7 @@ export default class Movie extends React.Component {
     return (
       <Visual>
         <VisualContainer>
-          <Status className={status}>{v.current_episode}/{v.episodes}</Status>
+          <span className={`visual__status ${status}`}>{v.current_episode}/{v.episodes}</span>
           <ReleaseDate>{v.release_date.substr(0,4)}</ReleaseDate>
           <Link to={movieHref}>
             <img className="visual__image" src={v.poster} alt={v.original_title} onError={(e)=>this.handleErrorImg(e)} />
