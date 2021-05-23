@@ -31,6 +31,7 @@
 .visual__loadmore {
   text-align:center;
   cursor: pointer;
+  margin-bottom: 50px;
 }
 @media (min-width: 426px) {
   .visual__image {
