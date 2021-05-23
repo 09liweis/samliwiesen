@@ -52,7 +52,19 @@
   cursor: pointer;
   margin-bottom: 50px;
 }
+.visual {
+  padding: 0 10px;
+  width: 100%;
+  margin-bottom: 15px;
+  transition: 0.3s;
+  &:hover {
+    transform: translateX(2px);
+  }
+}
 @media (min-width: 426px) {
+  .visual {
+    width: 50%;
+  }
   .visual__image {
     width: 100%;
   }
@@ -60,7 +72,16 @@
     width: 100%;
   }
 }
-
+@media (min-width: 570px) {
+  .visual {
+    width: 25%;
+  }
+}
+@media (min-width: 768px) {
+  .visual {
+    width: 16.6666%;
+  }
+}
 .lds-hourglass {
   display: inline-block;
   position: relative;

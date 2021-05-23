@@ -16,24 +16,6 @@ const VisualContainer = styled.div`
   box-shadow: 0 1px 6px rgba(0,0,0,.117647), 0 1px 4px rgba(0,0,0,.117647);
   position: relative;
 `;
-const Visual = styled.div`
-  padding: 0 10px;
-  width: 100%;
-  margin-bottom: 15px;
-  transition: 0.3s;
-  &:hover {
-    transform: translateX(2px);
-  }
-  @media (min-width: 426px) {
-    width: ${100/2}%;
-  }
-  @media (min-width: 570px) {
-    width: ${100/4}%;
-  }
-  @media (min-width: 768px) {
-    width: ${100/6}%;
-  }
-`;
 const VisualTitle = styled.h3`
   margin: 0;
   color: #4b8a2c;
@@ -66,7 +48,7 @@ export default class Movie extends React.Component {
     }
     const movieHref = "/movie/" + v.id;
     return (
-      <Visual>
+      <div className="visual">
         <VisualContainer>
           <span className={`visual__status ${status}`}>{v.current_episode}/{v.episodes}</span>
           <ReleaseDate>{v.release_date.substr(0,4)}</ReleaseDate>
@@ -89,7 +71,7 @@ export default class Movie extends React.Component {
             </div>
           </div>
         </VisualContainer>
-      </Visual>
+      </div>
     );
   }
 }
