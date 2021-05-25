@@ -89,7 +89,10 @@ exports.getVideos = (req, resp) => {
       var title = $(mod).find('h2').text()
       var videos = {title};
       videos.list = $('.video-list li').toArray().map((v) => {
+        var [protocol,a,domain,type,video_id,left] = $(v).find('.pr-video').attr('href').split('/');        
         return {
+          type,
+          video_id,
           photo: $(v).find('.pr-video img').attr('src'),
         };
       });
