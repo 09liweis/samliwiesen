@@ -81,7 +81,22 @@ exports.getPhotos = (req,resp) => {
 }
 
 exports.getVideos = (req, resp) => {
-  sendResp(resp,{});
+  const {douban_id} = req.body;
+  const url = `https://movie.douban.com/subject/${douban_id}/trailer`;
+  sendRequest({url},(err,{$}) => {
+    const mods = $('.mod');
+    var ret = mods.toArray().map((mod) => {
+      var title = $(mod).find('h2').text()
+      var videos = {title};
+      videos.list = $('.video-list li').toArray().map((v) => {
+        return {
+          photo: $(v).find('.pr-video img').attr('src'),
+        };
+      });
+      return videos;
+    });
+    sendResp(resp,ret);
+  });
 }
 
 exports.getCast = (req, resp) => {

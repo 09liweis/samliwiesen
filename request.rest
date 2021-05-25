@@ -107,6 +107,13 @@ content-type: application/json
   "douban_id": "34845781"
 }
 //25907124
+###
+POST http://localhost:8081/api/visuals/videos HTTP/1.1
+content-type: application/json
+
+{
+  "douban_id": 25907124
+}
 
 ###
 POST http://localhost:8081/api/visuals/photos HTTP/1.1
