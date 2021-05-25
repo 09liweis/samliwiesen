@@ -80,6 +80,10 @@ exports.getPhotos = (req,resp) => {
   });
 }
 
+exports.getVideos = (req, resp) => {
+  sendResp(resp,{});
+}
+
 exports.getCast = (req, resp) => {
   const {cast_id} = req.body;
   const url = `${CAST_DOUBAN_URL}${cast_id}/`;
