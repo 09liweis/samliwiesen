@@ -95,6 +95,7 @@ exports.getVideos = (req, resp) => {
           type,
           video_id,
           photo: $(v).find('.pr-video img').attr('src'),
+          date: $(v).find('.trail-meta span').text()
         };
       });
       return videos;
