@@ -94,6 +94,7 @@ exports.getVideos = (req, resp) => {
           title:$(v).find('p:nth-child(2) a').text(),
           type,
           video_id,
+          length: $(v).find('.pr-video em').text(),
           photo: $(v).find('.pr-video img').attr('src'),
           date: $(v).find('.trail-meta span').text()
         };
