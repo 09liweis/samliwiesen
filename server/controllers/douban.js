@@ -105,6 +105,10 @@ exports.getVideos = (req, resp) => {
   });
 }
 
+exports.getVideo = (req, resp) => {
+  sendResp(resp,'test');
+}
+
 exports.getCast = (req, resp) => {
   const {cast_id} = req.body;
   const url = `${CAST_DOUBAN_URL}${cast_id}/`;
