@@ -3,7 +3,7 @@ const router = express.Router();
 
 const {search,inTheatre,getCelebrities,getSummary,getPhotoDetail,getComments,getReviews} = require('../controllers/visual.js');
 const {getImdbBoxOffice} = require('../controllers/imdb.js');
-const {getSubjects,getTags,getPhotos,getVideos,getCast} = require('../controllers/douban.js');
+const {getSubjects,getTags,getPhotos,getVideos,getVideo,getCast} = require('../controllers/douban.js');
 const {getBilibili} = require('../controllers/bilibili.js');
 const {getMaoyan} = require('../controllers/maoyan.js');
 
@@ -18,6 +18,8 @@ router.route('/cast').post(getCast);
 router.route('/summary').post(getSummary);
 
 router.route('/videos').post(getVideos);
+
+router.route('/video').post(getVideo);
 
 router.route('/photos').post(getPhotos);
 
