@@ -85,7 +85,7 @@ exports.getVideos = (req, resp) => {
   const url = `https://movie.douban.com/subject/${douban_id}/trailer`;
   sendRequest({url},(err,{$}) => {
     const mods = $('.mod');
-    var ret = mods.toArray().map((mod) => {
+    var video_list = mods.toArray().map((mod) => {
       var title = $(mod).find('h2').text()
       var videos = {title};
       videos.list = $(mod).find('.video-list li').toArray().map((v) => {
@@ -101,7 +101,7 @@ exports.getVideos = (req, resp) => {
       });
       return videos;
     });
-    sendResp(resp,ret);
+    sendResp(resp,{douban_id,video_list});
   });
 }
 
