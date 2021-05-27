@@ -1,5 +1,5 @@
 const {sendRequest,sendResp} = require('../helpers/request');
-const {getDoubanUrl,DOUBAN_SITE_API,getPhotos} = require('../helpers/douban');
+const {getDoubanUrl,DOUBAN_SITE_API,getPhotos,getComments} = require('../helpers/douban');
 
 const CAST_DOUBAN_URL = 'https://movie.douban.com/celebrity/';
 const SORTS = ['recommend','time','rank'];
@@ -106,7 +106,18 @@ exports.getVideos = (req, resp) => {
 }
 
 exports.getVideo = (req, resp) => {
-  sendResp(resp,'test');
+  var {video_id,tp} = req.body;
+  if (!tp) {
+    tp = 'trailer';
+  }
+  var url = `https://movie.douban.com/${tp}/${video_id}`;
+  sendRequest({url},(err,{$}) => {
+    var title = $('h1').text();
+    var src = $('video source').attr('src');
+    var comments = getComments($);
+    var video = {title,src,comments}
+    sendResp(resp,video);
+  });
 }
 
 exports.getCast = (req, resp) => {
