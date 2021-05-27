@@ -120,7 +120,8 @@ POST http://localhost:8081/api/visuals/video HTTP/1.1
 content-type: application/json
 
 {
-  "video_id": 274530
+  "video_id": 274530,
+  "tp": "trailer"
 }
 
 ###
