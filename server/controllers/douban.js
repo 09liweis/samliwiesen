@@ -116,7 +116,7 @@ exports.getVideo = (req, resp) => {
     var src = $('video source').attr('src');
     var comments = getComments($);
     var video = {title,src,comments}
-    sendResp(resp,video);
+    return sendResp(resp,video);
   });
 }
 
