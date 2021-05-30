@@ -101,7 +101,7 @@ exports.getVideos = (req, resp) => {
       });
       return videos;
     });
-    sendResp(resp,{douban_id,video_list});
+    return sendResp(resp,{douban_id,video_list});
   });
 }
 
