@@ -119,6 +119,9 @@ exports.getVideo = (req, resp) => {
   tp = tp ?? 'trailer';
   var url = `https://movie.douban.com/${tp}/${video_id}`;
   sendRequest({url},(err,{$}) => {
+    if (err) {
+      return sendErr(resp, err);
+    }
     var title = $('h1').text();
     var src = $('video source').attr('src');
     var comments = getComments($);
