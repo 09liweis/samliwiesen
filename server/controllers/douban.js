@@ -113,6 +113,9 @@ exports.getVideos = (req, resp) => {
 
 exports.getVideo = (req, resp) => {
   var {video_id,tp} = req.body;
+  if (!video_id) {
+    return sendErr(resp,'No video id');
+  }
   tp = tp ?? 'trailer';
   var url = `https://movie.douban.com/${tp}/${video_id}`;
   sendRequest({url},(err,{$}) => {
