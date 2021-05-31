@@ -113,9 +113,7 @@ exports.getVideos = (req, resp) => {
 
 exports.getVideo = (req, resp) => {
   var {video_id,tp} = req.body;
-  if (!tp) {
-    tp = 'trailer';
-  }
+  tp = tp ?? 'trailer';
   var url = `https://movie.douban.com/${tp}/${video_id}`;
   sendRequest({url},(err,{$}) => {
     var title = $('h1').text();
