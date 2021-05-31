@@ -1,4 +1,4 @@
-const {sendRequest,sendResp} = require('../helpers/request');
+const {sendRequest,sendResp,sendErr} = require('../helpers/request');
 const {getDoubanUrl,DOUBAN_SITE_API,getPhotos,getComments} = require('../helpers/douban');
 
 const CAST_DOUBAN_URL = 'https://movie.douban.com/celebrity/';
@@ -82,6 +82,9 @@ exports.getPhotos = (req,resp) => {
 
 exports.getVideos = (req, resp) => {
   const {douban_id} = req.body;
+  if (!douban_id) {
+    return sendErr(resp, 'No douban id');
+  }
   const url = `https://movie.douban.com/subject/${douban_id}/trailer`;
   sendRequest({url},(err,{$}) => {
     const mods = $('.mod');
