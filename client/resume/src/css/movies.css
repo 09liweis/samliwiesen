@@ -57,9 +57,9 @@
   width: 100%;
   margin-bottom: 15px;
   transition: 0.3s;
-  &:hover {
-    transform: translateX(2px);
-  }
+}
+.visual:hover {
+  transform: translateX(2px);
 }
 @media (min-width: 426px) {
   .visual {
