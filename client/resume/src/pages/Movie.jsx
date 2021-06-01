@@ -48,7 +48,7 @@ const Movie = (props) => {
     <Box className="movies">
       <BoxTitle>
         <i className="boxIcon fa fa-film" aria-hidden="true"></i>
-        <span>{'Movie Title' || visual.title }</span>
+        <span>{ visual.title || 'Movie Title' }</span>
       </BoxTitle>
       <BoxBody>
         {loading ?
@@ -56,7 +56,6 @@ const Movie = (props) => {
         <div style={{position:'relative'}}>
           <Poster src={visual.poster} />
           <div style={{padding:'20px 10px 10px',marginTop:'-20px',backgroundColor:'#ccc',border:'1px solid',borderRadius:'10px'}}>
-            <h2>{visual.title}</h2>
             <div>{visual.release_date} {visual.duration}min</div>
             <div className="visual__rating">{visual.douban_rating}</div>
             <p>{visual.summary}</p>
