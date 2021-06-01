@@ -3,6 +3,8 @@ import axios from 'axios';
 import styled from 'styled-components';
 import {Box, BoxTitle, BoxBody} from '../components/style.jsx';
 
+import '../css/movie.css';
+
 const Poster = styled.img`
   width: 180px;
   display: block;
@@ -61,7 +63,7 @@ const Movie = (props) => {
             <p>{visual.summary}</p>
             <Casts>
               {visual.casts.map((c)=>
-                <div className="cast">
+                <div className="cast" key={c.id}>
                   <img src={'https://images.weserv.nl/?url='+c.avt} />
                   <span>{c.name}</span>
                   <span>{c.role}</span>
