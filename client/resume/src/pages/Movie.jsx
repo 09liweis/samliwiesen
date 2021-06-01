@@ -72,12 +72,12 @@ const Movie = (props) => {
             </Casts>
             <div className="comments">
               {visual.comments.map((c)=>
-                <div className="comment">{c.author}: {c.text}</div>
+                <div className="comment" key={c.author}>{c.author}: {c.text}</div>
               )}
             </div>
             <div className="reviews">
               {visual.reviews.map((r)=>
-                <div className="review">
+                <div className="review" key={r.title}>
                   <h5>{r.title}</h5>
                   <p>{r.content}</p>
                 </div>
