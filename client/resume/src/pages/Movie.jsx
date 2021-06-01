@@ -54,7 +54,7 @@ const Movie = (props) => {
       </BoxTitle>
       <BoxBody>
         {loading ?
-        <div className="">Loading</div>:
+        <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>:
         <div style={{position:'relative'}}>
           <Poster src={visual.poster} />
           <div style={{padding:'20px 10px 10px',marginTop:'-20px',backgroundColor:'#ccc',border:'1px solid',borderRadius:'10px'}}>
