@@ -36,7 +36,7 @@ export default class Main extends React.Component {
     return ([
       <Provider store={store} key="provider">
         <HashRouter key="page">
-          <div>
+          <React.Fragment>
             <Status key="status"/>
             <Nav key="nav" />
             <div id="mainContainer" className="container">
@@ -52,7 +52,7 @@ export default class Main extends React.Component {
                 {/* <Route path='/transactions' component={Transactions} /> */}
               </main>
             </div>
-          </div>
+          </React.Fragment>
         </HashRouter>
       </Provider>,
     ]);
