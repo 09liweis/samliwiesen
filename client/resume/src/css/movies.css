@@ -8,6 +8,13 @@
   width: 100%;
   z-index: 1;
 }
+.movie_detail_close {
+  font-size: 16px;
+  position: absolute;
+  z-index: 2;
+  right: 10px;
+  top: 10px;
+}
 .visual__list {
   display: flex;
   flex-wrap: wrap;
