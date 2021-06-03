@@ -26,14 +26,24 @@ const Movies = (props) => {
     setPage(page);
     dispatch(getMovies({limit:15,page}));
   }
+  const handleVisualClick = (id) => {
+    setMovieId(id);
+  }
   const visuals = items.map((v) => {
     return (
-      <Movie v={v} key={v.id} />
+      <div className="visual" key={v.id} onClick={()=>handleVisualClick(v.id)}>
+        <Movie v={v} />
+      </div>
     );
   });
   return (
     <Box id="movies">
-      {movieId?<MoviePage id={movieId} />:''}
+      {movieId?
+        <React.Fragment>
+          <span className="fa fa-times movie_detail_close" onClick={()=>setMovieId(0)}></span>
+          <MoviePage id={movieId} />
+        </React.Fragment>
+      :''}
       <BoxTitle>
         <i className="boxIcon fa fa-film" aria-hidden="true"></i>
         <span>What I Watched</span>
