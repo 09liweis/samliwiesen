@@ -45,7 +45,7 @@ export default class Main extends React.Component {
                 <Route exact path='/' component={Home} />
                 <Route path='/todo' component={Todo} />
                 <Route path='/movies' component={Movies} />
-                <Route path='/movie/:id' component={Movies} />
+                {/* <Route path='/movie/:id' component={Movies} /> */}
                 <Route path='/blogs' component={Blogs} />
                 <Route path='/videos' component={Videos} />
                 <Route path='/comments' component={Comments} />
