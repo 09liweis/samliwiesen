@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const ReleaseDate = styled.div`
   position: absolute;
@@ -46,32 +46,31 @@ export default class Movie extends React.Component {
             status = 'not_started';
         }
     }
-    const movieHref = "/movie/" + v.id;
+    // const movieHref = "/movie/" + v.id;
     return (
-      <div className="visual">
-        <VisualContainer>
-          <span className={`visual__status ${status}`}>{v.current_episode}/{v.episodes}</span>
-          <ReleaseDate>{v.release_date.substr(0,4)}</ReleaseDate>
-          <Link to={movieHref}>
-            <img className="visual__image" src={'https://images.weserv.nl/?url='+v.poster} alt={v.original_title} onError={(e)=>this.handleErrorImg(e)} />
-          </Link>
-          <div className="visual__detail">
-            <VisualTitle>{v.title}</VisualTitle>
-            <div className="visual__ratings">
-              <a className="visual__rating" target="_blank" href={'https://movie.douban.com/subject/' + v.douban_id}>
-                <img className="visual__rating-icon" src={doubanIcon} alt="" />
-                <span className="visual__rating-point">{v.douban_rating}</span>
-              </a>
-              {v.imdb_id ?
-              <a className="visual__rating" target="_blank" href={'https://www.imdb.com/title/' + v.imdb_id}>
-                <img className="visual__rating-icon" src={imdbIcon} alt="" />
-                <span className="visual__rating-point">{v.imdb_rating}</span>
-              </a>
-              : null}
-            </div>
+      <VisualContainer>
+        <span className={`visual__status ${status}`}>{v.current_episode}/{v.episodes}</span>
+        <ReleaseDate>{v.release_date.substr(0,4)}</ReleaseDate>
+        {/* <Link to={movieHref}>
+          <img className="visual__image" src={'https://images.weserv.nl/?url='+v.poster} alt={v.original_title} onError={(e)=>this.handleErrorImg(e)} />
+        </Link> */}
+        <img className="visual__image" src={'https://images.weserv.nl/?url='+v.poster} alt={v.original_title} onError={(e)=>this.handleErrorImg(e)} />
+        <div className="visual__detail">
+          <VisualTitle>{v.title}</VisualTitle>
+          <div className="visual__ratings">
+            <a className="visual__rating" target="_blank" href={'https://movie.douban.com/subject/' + v.douban_id}>
+              <img className="visual__rating-icon" src={doubanIcon} alt="" />
+              <span className="visual__rating-point">{v.douban_rating}</span>
+            </a>
+            {v.imdb_id ?
+            <a className="visual__rating" target="_blank" href={'https://www.imdb.com/title/' + v.imdb_id}>
+              <img className="visual__rating-icon" src={imdbIcon} alt="" />
+              <span className="visual__rating-point">{v.imdb_rating}</span>
+            </a>
+            : null}
           </div>
-        </VisualContainer>
-      </div>
+        </div>
+      </VisualContainer>
     );
   }
 }
