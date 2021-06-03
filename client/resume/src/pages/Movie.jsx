@@ -26,7 +26,7 @@ const Casts = styled.div`
 `;
 
 const Movie = (props) => {
-  const [visual,setVisual] = useState({casts:[],id:props.match.params.id});
+  const [visual,setVisual] = useState({casts:[],id:props.id});
   const [loading,setLoading] = useState(true);
   function getSummary(douban_id,cb) {
     axios.post('/api/visuals/summary',{douban_id}).then((res) => {
@@ -47,7 +47,7 @@ const Movie = (props) => {
     });
   },[]);
   return (
-    <Box className="movies">
+    <Box id="movie_detail">
       <BoxTitle>
         <i className="boxIcon fa fa-film" aria-hidden="true"></i>
         <span>{ visual.title || 'Movie Title' }</span>

@@ -1,3 +1,13 @@
+#movies {
+  position: relative;
+}
+#movie_detail  {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
 .visual__list {
   display: flex;
   flex-wrap: wrap;

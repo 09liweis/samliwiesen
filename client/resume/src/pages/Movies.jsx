@@ -3,16 +3,22 @@ import { useSelector,useDispatch } from 'react-redux';
 import {getMovies} from '../actions/movie';
 import {Box, BoxTitle, BoxBody} from '../components/style.jsx';
 import Movie from '../components/Movie.jsx';
+import MoviePage from './Movie.jsx';
 
 import '../css/movies.css';
 
-const Movies = () => {
+const Movies = (props) => {
+  var currentId = props.match.params.id;
+  var [movieId, setMovieId] = useState(0);
   var [page,setPage] = useState(1);
   const {items,loading} = useSelector(state => state.movies);
   const dispatch = useDispatch();
   useEffect(() => {
     if (items.length == 0) {
       dispatch(getMovies({limit:15,page}));
+    }
+    if (currentId) {
+      setMovieId(currentId)
     }
   },[]);
   const handleLoadmore = () => {
@@ -26,7 +32,8 @@ const Movies = () => {
     );
   });
   return (
-    <Box className="movies">
+    <Box id="movies">
+      {movieId?<MoviePage id={movieId} />:''}
       <BoxTitle>
         <i className="boxIcon fa fa-film" aria-hidden="true"></i>
         <span>What I Watched</span>
