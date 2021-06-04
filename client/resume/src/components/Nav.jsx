@@ -1,7 +1,5 @@
-import React from 'react';
-import { connect,useSelector,useDispatch } from 'react-redux';
+import React,{useState} from 'react';
 import { Link,withRouter } from 'react-router-dom';
-import {setNav,hoverNav} from '../actions/nav.js';
 const navs = [
   {url:'/',tl:'home',icon:'fa fa-home'},
   {url:'/movies',tl:'movies',icon:'fa fa-film'},
@@ -10,6 +8,27 @@ const navs = [
   {url:'/todo',tl:'todos',icon:'fa fa-list-ol'},
   {url:'/comments',tl:'comments',icon:'fa fa-comments'},
 ];
+
+const getNavClientRect = (id) => {
+  if (!id) return {highLightPosLeft:0,highLightPosWidth:0};
+  const el = document.getElementById(id);
+  const elData = el.getBoundingClientRect();
+  let offset = 0;
+  if (window.innerWidth >= 1200) {
+    offset = (window.innerWidth - 1200)/2;
+  }
+  return {highLightPosLeft:elData.left-offset,highLightPosWidth:elData.width}
+}
+
+const setNav = (navId) => {
+  const {highLightPosLeft,highLightPosWidth} = getNavClientRect(navId);
+  return {highLightPosId:navId,highLightPosLeft,highLightPosWidth};
+};
+
+const hoverNav = (navId) => {
+  const {highLightPosLeft,highLightPosWidth} = getNavClientRect(navId);
+  return {highLightPosLeft,highLightPosWidth};
+}
 
 const getTlWithUrl = (url)=> {
   let id;
@@ -22,18 +41,16 @@ const getTlWithUrl = (url)=> {
 }
 
 const Nav = (props) => {
-  const nav = useSelector(state => state.nav);
-  const dispatch = useDispatch();
-  const {highLightPosId,highLightPosLeft,highLightPosWidth} = nav;
+  const [activeNav, setActiveNav] = useState({highLightPosId:'',highLightPosLeft:0,highLightPosWidth:0});
   const {location} = props;
   const tl = getTlWithUrl(location.pathname);
-  if (highLightPosId == '') {
+  if (activeNav.highLightPosId == '') {
     setTimeout(()=>{
-      dispatch(setNav(tl));
+      setActiveNav(setNav(tl));
     },500);
   }
   window.addEventListener('resize', () => {
-    dispatch(setNav(tl))
+    setActiveNav(setNav(tl))
   });
   const links = navs.map((nav)=> {
     let navClass = 'navItem';
@@ -41,15 +58,15 @@ const Nav = (props) => {
       navClass += ' active';
     }
     return (
-      <Link className={navClass} id={nav.tl} key={nav.url} to={nav.url} onMouseEnter={()=>dispatch(hoverNav(nav.tl))} onClick={()=>dispatch(setNav(nav.tl))}>
+      <Link className={navClass} id={nav.tl} key={nav.url} to={nav.url} onMouseEnter={()=>setActiveNav(hoverNav(nav.tl))} onClick={()=>setActiveNav(setNav(nav.tl))}>
         <i className={nav.icon}></i>
         <span>{nav.tl}</span>
       </Link>
     )}
   );
   return(
-    <nav id="nav" className="box-shadow" onMouseLeave={()=>dispatch(setNav(highLightPosId))}>
-      <div id="navHighlight" style={{left:highLightPosLeft,width:highLightPosWidth}}></div>
+    <nav id="nav" className="box-shadow" onMouseLeave={()=>setActiveNav(setNav(activeNav.highLightPosId))}>
+      <div id="navHighlight" style={{left:activeNav.highLightPosLeft,width:activeNav.highLightPosWidth}}></div>
       {links}
     </nav>
   );
