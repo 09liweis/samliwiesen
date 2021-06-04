@@ -62,7 +62,7 @@ const Nav = (props) => {
       navClass += ' active';
     }
     return (
-      <Link className={navClass} id={nav.tl} key={nav.url} to={nav.url} onMouseEnter={()=>handleNav(nav.tl)} onClick={()=>handleNav(nav.tl,1)}>
+      <Link className={navClass} id={nav.tl} key={nav.url} to={nav.url} onMouseEnter={()=>handleNav(nav.tl,0)} onClick={()=>handleNav(nav.tl,1)}>
         <i className={nav.icon}></i>
         <span>{nav.tl}</span>
       </Link>
