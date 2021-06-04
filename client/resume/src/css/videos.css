@@ -3,6 +3,9 @@
   color: #007f20;
   text-decoration: none;
 }
+.video_img {
+  width: 100%;
+}
 
 @media (min-width: 768px) {
   .bVideo {
