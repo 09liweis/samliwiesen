@@ -1,7 +1,12 @@
 .bVideo {
+  padding: 10px;
   width: 100%;
   color: #007f20;
   text-decoration: none;
+  transition: 0.3s;
+}
+.bVideo:hover {
+  transform: translate3d(5px,5px,15px);
 }
 .video_img {
   width: 100%;
