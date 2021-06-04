@@ -20,15 +20,14 @@ const getNavClientRect = (id) => {
   return {highLightPosLeft:elData.left-offset,highLightPosWidth:elData.width}
 }
 
-const setNav = (navId) => {
+const getNavElementData = (navId,isClick) => {
   const {highLightPosLeft,highLightPosWidth} = getNavClientRect(navId);
-  return {highLightPosId:navId,highLightPosLeft,highLightPosWidth};
+  var ret = {highLightPosLeft,highLightPosWidth};
+  if (isClick) {
+    ret.highLightPosId = navId;
+  }
+  return ret;
 };
-
-const hoverNav = (navId) => {
-  const {highLightPosLeft,highLightPosWidth} = getNavClientRect(navId);
-  return {highLightPosLeft,highLightPosWidth};
-}
 
 const getTlWithUrl = (url)=> {
   let id;
@@ -42,30 +41,35 @@ const getTlWithUrl = (url)=> {
 
 const Nav = (props) => {
   const [activeNav, setActiveNav] = useState({highLightPosId:'',highLightPosLeft:0,highLightPosWidth:0});
+
   const {location} = props;
   const tl = getTlWithUrl(location.pathname);
   if (activeNav.highLightPosId == '') {
     setTimeout(()=>{
-      setActiveNav(setNav(tl));
+      handleNav(tl,1);
     },500);
   }
   window.addEventListener('resize', () => {
-    setActiveNav(setNav(tl))
+    handleNav(tl,1);
   });
+  const handleNav = (id, isClick) => {
+    var ret = getNavElementData(id,isClick);
+    setActiveNav(Object.assign(activeNav,ret));
+  }
   const links = navs.map((nav)=> {
     let navClass = 'navItem';
     if (nav.tl == tl) {
       navClass += ' active';
     }
     return (
-      <Link className={navClass} id={nav.tl} key={nav.url} to={nav.url} onMouseEnter={()=>setActiveNav(hoverNav(nav.tl))} onClick={()=>setActiveNav(setNav(nav.tl))}>
+      <Link className={navClass} id={nav.tl} key={nav.url} to={nav.url} onMouseEnter={()=>handleNav(nav.tl)} onClick={()=>handleNav(nav.tl,1)}>
         <i className={nav.icon}></i>
         <span>{nav.tl}</span>
       </Link>
     )}
   );
   return(
-    <nav id="nav" className="box-shadow" onMouseLeave={()=>setActiveNav(setNav(activeNav.highLightPosId))}>
+    <nav id="nav" className="box-shadow" onMouseLeave={()=>handleNav(activeNav.highLightPosId,1)}>
       <div id="navHighlight" style={{left:activeNav.highLightPosLeft,width:activeNav.highLightPosWidth}}></div>
       {links}
     </nav>
