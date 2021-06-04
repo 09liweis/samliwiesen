@@ -15,7 +15,7 @@ const Movies = () => {
   const visuals = items.map((v) => {
     return (
       <a href={`https://www.bilibili.com/video/${v.bvid}`} target="_blank" className="bVideo" key={v.bvid}>
-        <img src={v.pic} />
+        <img src={'https://images.weserv.nl/?url='+v.pic} />
         <h4>{v.title}</h4>
       </a>
     );
