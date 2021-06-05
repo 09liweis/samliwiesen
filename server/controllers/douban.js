@@ -29,9 +29,14 @@ exports.getCommingMovies = (req, resp) => {
     var movies = [];
     if (listItems) {
       movies = listItems.toArray().map((item) => {
+        var movieUrl = $(item).find('.thumb').attr('href');
         return {
+          douban_id: movieUrl.split('/')[4],
           poster: $(item).find('.thumb img').attr('src'),
-          title: $(item).find('.intro h3 a').text()
+          title: $(item).find('.intro h3 a').text(),
+          release: $(item).find('ul .dt:nth-child(1)').text(),
+          category:$(item).find('ul .dt:nth-child(2)').text(),
+          country:$(item).find('ul .dt:nth-child(3)').text()
         }
       });
     }
