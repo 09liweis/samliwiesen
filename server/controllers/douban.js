@@ -15,7 +15,28 @@ exports.getCurrentChinaBoxOffice = (req,resp) => {
 }
 
 exports.getCommingMovies = (req, resp) => {
-  
+  let {city} = req.body;
+  city = city.trim();
+  if (!city) {
+    city = 'guangzhou';
+  }
+  const url = `https://movie.douban.com/cinema/later/${city}/`;
+  sendRequest({url},function(err,{statusCode,$}) {
+    if (err) {
+      return sendErr(resp,err);
+    }
+    const listItems = $('#showing-soon .item');
+    var movies = [];
+    if (listItems) {
+      movies = listItems.toArray().map((item) => {
+        return {
+          poster: $(item).find('.thumb img').attr('src'),
+          title: $(item).find('.intro h3 a').text()
+        }
+      });
+    }
+    return sendResp(resp,{city,movies});
+  });
 }
 
 exports.getTags = (req, resp) => {
