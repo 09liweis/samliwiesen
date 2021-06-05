@@ -14,6 +14,10 @@ exports.getCurrentChinaBoxOffice = (req,resp) => {
   const url = 'https://www.endata.com.cn/BoxOffice/BO/RealTime/reTimeBO.html';
 }
 
+exports.getCommingMovies = (req, resp) => {
+  
+}
+
 exports.getTags = (req, resp) => {
   var {type} = req.body;
   type = type || 'movie';
