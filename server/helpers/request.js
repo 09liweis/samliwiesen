@@ -29,7 +29,7 @@ exports.sendRequest = ({url,method='GET'},cb) => {
     if (response) {
       statusCode = response.statusCode;
     }
-    if (error || statusCode != 200) {
+    if (error) {
       return cb(error,null);
     }
     var $ = getCheerio(body);
