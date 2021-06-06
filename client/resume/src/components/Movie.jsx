@@ -34,6 +34,10 @@ export default class Movie extends React.Component {
     e.target.onerror = null;
     e.target.src = errImg;
   }
+  handleLink(e) {
+    e.stopPropagation();
+    return false;
+  }
   render() {
     const v = this.props.v;
     let status;
@@ -58,12 +62,12 @@ export default class Movie extends React.Component {
         <div className="visual__detail">
           <VisualTitle>{v.title}</VisualTitle>
           <div className="visual__ratings">
-            <a className="visual__rating" target="_blank" href={'https://movie.douban.com/subject/' + v.douban_id}>
+            <a className="visual__rating" target="_blank" onClick={(e)=>this.handleLink(e)} href={'https://movie.douban.com/subject/' + v.douban_id}>
               <img className="visual__rating-icon" src={doubanIcon} alt="" />
               <span className="visual__rating-point">{v.douban_rating}</span>
             </a>
             {v.imdb_id ?
-            <a className="visual__rating" target="_blank" href={'https://www.imdb.com/title/' + v.imdb_id}>
+            <a className="visual__rating" target="_blank" onClick={(e)=>this.handleLink(e)} href={'https://www.imdb.com/title/' + v.imdb_id}>
               <img className="visual__rating-icon" src={imdbIcon} alt="" />
               <span className="visual__rating-point">{v.imdb_rating}</span>
             </a>
