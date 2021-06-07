@@ -1,18 +1,18 @@
 var express = require('express');
 var router = express.Router();
 
-const TodoController = require('../controllers/todo.js');
+const {findList,create,findDetail,update,remove,updateStep} = require('../controllers/todo.js');
 
 router.route('/')
-.get(TodoController.findList)
-.post(TodoController.create);
+.get(findList)
+.post(create);
 
 router.route('/:id')
-.get(TodoController.findDetail)
-.put(TodoController.update)
-.delete(TodoController.delete);
+.get(findDetail)
+.put(update)
+.delete(remove);
 
 router.route('/:id/update_step')
-.post(TodoController.updateStep)
+.post(updateStep)
 
 module.exports = router;
