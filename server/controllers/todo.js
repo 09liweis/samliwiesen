@@ -84,7 +84,7 @@ exports.update = (req, resp) => {
   });
 };
 
-exports.delete = (req, resp) => {
+exports.remove = (req, resp) => {
   Todo.remove({_id: req.params.id}, (err) => {
     handleError(resp, err);
     resp.status(200).json({ok:1});
