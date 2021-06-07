@@ -1,14 +1,14 @@
 var express= require('express');
 var router = express.Router();
 
-const ProjecctController = require('../controllers/project.js');
+const {getList,create,findDetail,update} = require('../controllers/project.js');
 
 router.route('/')
-.get(ProjecctController.getList)
-.post(ProjecctController.create);
+.get(getList)
+.post(create);
 
 router.route('/:id')
-.get(ProjecctController.findDetail)
-.put(ProjecctController.update);
+.get(findDetail)
+.put(update);
 
 module.exports = router;
