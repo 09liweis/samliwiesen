@@ -2,18 +2,18 @@ var express = require('express');
 var router = express.Router();
 const {verify} = require('../helpers/verifyToken');
 
-const TransactionController = require('../controllers/transaction.js');
+const {findList,create,category_list,detail,update,remove} = require('../controllers/transaction.js');
 
-router.post('/',verify,TransactionController.findList);
+router.post('/',verify,findList);
 
-router.post('/new',verify,TransactionController.create);
+router.post('/new',verify,create);
 
 router.route('/categories')
-.get(TransactionController.category_list);
+.get(category_list);
 
 router.route('/:id')
-.post(TransactionController.detail)
-.put(TransactionController.update)
-.delete(TransactionController.remove);
+.post(detail)
+.put(update)
+.delete(remove);
 
 module.exports = router;
