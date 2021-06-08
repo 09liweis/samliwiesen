@@ -14,6 +14,6 @@ router.route('/categories')
 router.route('/:id')
 .post(TransactionController.detail)
 .put(TransactionController.update)
-.delete(TransactionController.delete);
+.delete(TransactionController.remove);
 
 module.exports = router;
