@@ -3,7 +3,7 @@ const {sendRequest,sendResp,sendErr} = require('../helpers/request');
 const IMDB_BOXOFFICE = 'https://www.imdb.com/chart/boxoffice';
 
 exports.getImdbBoxOffice = (req,resp) => {
-  sendRequest({url:IMDB_BOXOFFICE},(err,{statusCode, $}) => {
+  sendRequest({url:IMDB_BOXOFFICE},(err,{$}) => {
     if (err) {
       return sendErr(resp,err);
     }
