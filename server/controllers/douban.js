@@ -103,7 +103,7 @@ exports.getPhotos = (req,resp) => {
     type = type || 'C';
   }
   url += `?type=${type}&start=${(page - 1)*NUM_LIMIT}`;
-  sendRequest({url}, (err,{statusCode, $}) => {
+  sendRequest({url}, (err,{$}) => {
     const title = $('#content h1').text();
     const photos = getPhotos($);
     return sendResp(resp,{title,photos,types,page,type});
