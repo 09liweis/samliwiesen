@@ -39,7 +39,7 @@ exports.search = (req, resp) => {
     return resp.status(400).json({msg:'No Keyword'});
   }
   const url = `https://m.douban.com/search/?query=${encodeURIComponent(keyword)}&type=movie`;
-  sendRequest({url},function(err,{statusCode,$,body}) {
+  sendRequest({url},function(err,{$}) {
     const results = $('.search_results_subjects a');
     if (results) {
       var visuals = results.toArray().map((r)=>{
