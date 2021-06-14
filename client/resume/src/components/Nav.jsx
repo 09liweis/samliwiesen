@@ -1,12 +1,12 @@
 import React,{useState} from 'react';
 import { Link,withRouter } from 'react-router-dom';
 const navs = [
-  {url:'/',tl:'home',icon:'fa fa-home'},
-  {url:'/movies',tl:'movies',icon:'fa fa-film'},
-  {url:'/blogs',tl:'blogs',icon:'fa fa-rss'},
-  {url:'/videos',tl:'vlog',icon:'fa fa-film'},
-  {url:'/todo',tl:'todos',icon:'fa fa-list-ol'},
-  {url:'/comments',tl:'comments',icon:'fa fa-comments'},
+  {url:'/',ch:'',tl:'home',icon:'fa fa-home'},
+  {url:'/movies',ch:'影视',tl:'movies',icon:'fa fa-film'},
+  {url:'/blogs',ch:'博客',tl:'blogs',icon:'fa fa-rss'},
+  {url:'/videos',ch:'视频',tl:'vlog',icon:'fa fa-film'},
+  {url:'/todo',ch:'计划',tl:'todos',icon:'fa fa-list-ol'},
+  {url:'/comments',ch:'',tl:'comments',icon:'fa fa-comments'},
 ];
 
 const getNavClientRect = (id) => {
@@ -63,7 +63,8 @@ const Nav = (props) => {
     }
     return (
       <Link className={navClass} id={nav.tl} key={nav.url} to={nav.url} onMouseEnter={()=>handleNav(nav.tl,0)} onClick={()=>handleNav(nav.tl,1)}>
-        <i className={nav.icon}></i>
+        {/* <i className={nav.icon}></i> */}
+        <span>{nav.ch}</span>
         <span>{nav.tl}</span>
       </Link>
     )}
