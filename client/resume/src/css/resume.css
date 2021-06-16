@@ -79,7 +79,13 @@ ul li:hover {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 5px;
+}
+.carrie {
+  font-size: 24px;
+  color: #06A763;
+  text-shadow: 1px 4px 6px;
 }
 .rightContainer {
   display: flex;
