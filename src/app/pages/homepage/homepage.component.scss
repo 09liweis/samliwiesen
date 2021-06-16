@@ -17,10 +17,10 @@
   border-bottom: 1px solid #ccc;
   transition: transform 0.2s ease;
   &.experiences {
-    background-image: linear-gradient(0.96rad, #697ae7 40.34%, #ffffff 89.08%);
+    background-image: linear-gradient(0.6193rad, #69e7ca 40.34%, #9cce59 89.08%);
   }
   &.blogs {
-    background-image: linear-gradient(140deg, #b87bf6 68.49%, #fff);
+    background-image: linear-gradient(158deg, #ff7272d4 68.49%, #de6363);
   }
   &.projects {
     background-image: linear-gradient(179deg, #fb978e 48.32%, #fff);
@@ -44,6 +44,9 @@
 }
 .card__number {
   font-size: 1.4em;
+}
+.card__link {
+  color: #fff;
 }
 @media only screen and (min-width: 768px) {
   .card {
