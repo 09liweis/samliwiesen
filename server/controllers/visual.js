@@ -1,4 +1,4 @@
-const {sendRequest, sendResp, sendErr} = require('../helpers/request');
+const {sendRequest, sendResp} = require('../helpers/request');
 const {getDoubanUrl,getReviews,getComments,getCast} = require('../helpers/douban');
 const {getImdbSummary} = require('../helpers/imdb');
 
