@@ -23,3 +23,6 @@ https://dribbble.com/shots/5465599-Order-Management/attachments/1182859
 update google map to mapbox
 
 https://api.mapbox.com/geocoding/v5/mapbox.places/17%20ingram%20road.json?access_token=[access_token]&cachebuster=1622573383792&autocomplete=true
+
+
+API: https://animechan.vercel.app
