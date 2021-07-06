@@ -108,7 +108,7 @@ exports.update = (req, resp) => {
 exports.detail = async function(req, resp) {
   const id = req.params.id;
   const t = await Transaction.findById(id,'title price date category').populate('place', '_id place_id name address lat lng');
-  resp.status(200).json(t);
+  sendResp(resp, t);
 };
 
 exports.remove = (req, resp) => {
