@@ -38,7 +38,7 @@ exports.findList = (req, resp) => {
   }
   Transaction.find(filter, '_id title price date category',opt).populate('place', '_id name address lat lng icon').sort('-date').exec((err, transactions) => {
     handleError(resp, err);
-    resp.status(200).json(transactions);
+    sendResp(resp,transactions);
   });
 };
 
