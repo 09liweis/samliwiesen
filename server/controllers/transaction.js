@@ -86,14 +86,14 @@ upsertTransaction = async (req,resp) =>{
     Transaction.findOneAndUpdate({_id: id}, transaction, {returnNewDocument: true,upsert: true},(err, t)=>{
       console.error(err);
       t.place = p;
-      return resp.status(200).json(t);
+      return sendResp(resp,t);
     });
   } else {
     transaction = new Transaction(transactionData);
     transaction.save(function(err, t) {
       handleError(resp, err);
       t.place = p;
-      return resp.status(200).json(t);
+      return sendResp(resp,t);
     });
   }
 }
