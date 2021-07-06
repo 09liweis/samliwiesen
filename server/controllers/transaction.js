@@ -45,7 +45,7 @@ exports.findList = (req, resp) => {
 exports.category_list = (req, resp) => {
   Transaction.distinct('category', (err, categories) => {
     handleError(resp, err);
-    resp.status(200).json(categories);
+    sendResp(resp,categories);
   });
 };
 upsertTransaction = async (req,resp) =>{
